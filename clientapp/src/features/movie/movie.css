@@ -1,0 +1,24 @@
+video {
+    height: auto !important;
+    width: 100%;
+    object-fit: cover !important;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+  }
+
+  .ui.grid>*{
+    padding-left: 0.5rem !important; 
+    padding-right: 0.5rem !important;
+  }
+
+  .limit-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1;
+    /* number of lines to show */
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+}

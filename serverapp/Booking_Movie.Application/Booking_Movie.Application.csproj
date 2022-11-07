@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" Version="6.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Booking_Movie.Data\Booking_Movie.Data.csproj" />
+    <ProjectReference Include="..\Booking_Movie.Utilities\Booking_Movie.Utilities.csproj" />
+    <ProjectReference Include="..\Booking_Movie.ViewModel\Booking_Movie.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Catalog\MovieTypes\" />
+    <Folder Include="Catalog\Cinemas\" />
+    <Folder Include="Catalog\MovieCategories\" />
+    <Folder Include="Catalog\Coupons\" />
+    <Folder Include="Catalog\PaymentMethods\" />
+    <Folder Include="Catalog\Seats\" />
+  </ItemGroup>
+
+</Project>

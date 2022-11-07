@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.Application", "Booking_Movie.Application\Booking_Movie.Application.csproj", "{9A483D1E-5563-4E6C-930C-760FBC22C0D7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.Data", "Booking_Movie.Data\Booking_Movie.Data.csproj", "{94C60C93-2DE9-483A-AEC1-ECD1A1F5BD92}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.Utilities", "Booking_Movie.Utilities\Booking_Movie.Utilities.csproj", "{D56FE2BB-7C01-44ED-972D-A89FA0B14504}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.ViewModel", "Booking_Movie.ViewModel\Booking_Movie.ViewModel.csproj", "{7E29892F-9E14-433A-B6C5-48CC28F980BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.AdminApp", "Booking_Movie.AdminApp\Booking_Movie.AdminApp.csproj", "{F1A6D4A0-9860-47A2-9B4E-1A92B80E8BFC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.BackendApi", "Booking_Movie.BackendApi\Booking_Movie.BackendApi.csproj", "{2764D908-FAC7-47D8-BFA0-35834D0F98F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "server", "server", "{7E49DCBF-128B-4DA2-B9E0-4205530D4999}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A483D1E-5563-4E6C-930C-760FBC22C0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A483D1E-5563-4E6C-930C-760FBC22C0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A483D1E-5563-4E6C-930C-760FBC22C0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A483D1E-5563-4E6C-930C-760FBC22C0D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94C60C93-2DE9-483A-AEC1-ECD1A1F5BD92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94C60C93-2DE9-483A-AEC1-ECD1A1F5BD92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94C60C93-2DE9-483A-AEC1-ECD1A1F5BD92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94C60C93-2DE9-483A-AEC1-ECD1A1F5BD92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56FE2BB-7C01-44ED-972D-A89FA0B14504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56FE2BB-7C01-44ED-972D-A89FA0B14504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56FE2BB-7C01-44ED-972D-A89FA0B14504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56FE2BB-7C01-44ED-972D-A89FA0B14504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E29892F-9E14-433A-B6C5-48CC28F980BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E29892F-9E14-433A-B6C5-48CC28F980BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E29892F-9E14-433A-B6C5-48CC28F980BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E29892F-9E14-433A-B6C5-48CC28F980BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A6D4A0-9860-47A2-9B4E-1A92B80E8BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A6D4A0-9860-47A2-9B4E-1A92B80E8BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A6D4A0-9860-47A2-9B4E-1A92B80E8BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A6D4A0-9860-47A2-9B4E-1A92B80E8BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2764D908-FAC7-47D8-BFA0-35834D0F98F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2764D908-FAC7-47D8-BFA0-35834D0F98F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2764D908-FAC7-47D8-BFA0-35834D0F98F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2764D908-FAC7-47D8-BFA0-35834D0F98F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A483D1E-5563-4E6C-930C-760FBC22C0D7} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
+		{94C60C93-2DE9-483A-AEC1-ECD1A1F5BD92} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
+		{D56FE2BB-7C01-44ED-972D-A89FA0B14504} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
+		{7E29892F-9E14-433A-B6C5-48CC28F980BB} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
+		{F1A6D4A0-9860-47A2-9B4E-1A92B80E8BFC} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
+		{2764D908-FAC7-47D8-BFA0-35834D0F98F4} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B93B35A-E273-44A9-BA9A-F6917CD34F40}
+	EndGlobalSection
+EndGlobal
