@@ -8,7 +8,10 @@ namespace Booking_Movie.ViewModel.Catalog.ScreeningVM
 {
     public class ScreeningViewModel
     {
-        public string CinameName { get; set; } = null!;
+        public int ScreeningId { get; set; }
+        public int CinemaId { get; set; }
+        public string CinemaName { get; set; } = null!;
+        public string AuditoriumName { get; set; } = null!;
         public string? ScreeningTypeName { get; set; }
         public DateTime[]? ShowTime { get; set; } 
     }

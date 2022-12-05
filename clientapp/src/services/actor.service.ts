@@ -1,4 +1,4 @@
-import { Actor } from './../features/actor/actorSlice';
+import { Actor } from '../slices/actor/actorSlice';
 import http from "../common/http-common";
 import { AxiosRequestConfig } from 'axios';
 

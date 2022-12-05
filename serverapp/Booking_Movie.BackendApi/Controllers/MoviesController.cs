@@ -1,7 +1,10 @@
 ﻿using Booking_Movie.Application.Catalog.Movies;
+using Booking_Movie.ViewModel.Catalog.ActorVM;
 using Booking_Movie.ViewModel.Catalog.MovieVM;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Booking_Movie.BackendApi.Controllers
 {
@@ -28,7 +31,7 @@ namespace Booking_Movie.BackendApi.Controllers
             return Ok(movies);
         }
 
-         [HttpGet("detail/{id}")]
+        [HttpGet("detail/{id}")]
         public async Task<IActionResult> GetDetail(int id)
         {
             var host = $"{Request.Scheme}://{Request.Host}";
@@ -55,7 +58,64 @@ namespace Booking_Movie.BackendApi.Controllers
             return Ok(screenings);
         }
 
+        [HttpPost("create")]
+        //[Authorize(Roles = "Admin")]
+        [RequestSizeLimit(50 * 1024 * 1024)]
+        [RequestFormLimits(MultipartBodyLengthLimit = 50 * 1024 * 1024)]
+        public async Task<IActionResult> Create([FromForm] MovieCreateRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var host = $"{Request.Scheme}://{Request.Host}";
+            var movieId = await _movieService.Create(request);
+            if (movieId == null) return BadRequest();
 
+            var movie_created = await _movieService.GetById(movieId.Value, host);
+            return Ok(movie_created);
+        }
 
+        [HttpPost("add-movie-categories/{Id}")]
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AddMovieCategories(int Id, [FromForm] int[] categoriesId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var isAddSuccessful = await _movieService.AddMovieCategories(Id, categoriesId);
+            if (isAddSuccessful == false) return BadRequest();
+            return Ok(isAddSuccessful);
+        }
+
+        [HttpPost("add-cast/{Id}")]
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AddCast(int Id, [FromForm] Guid[] actorsId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var isAddSuccessful = await _movieService.AddCast(Id, actorsId);
+            if (isAddSuccessful == false) return BadRequest();
+            return Ok(isAddSuccessful);
+        }
+
+        [HttpPost("add-movie-director/{Id}")]
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AddMovieCategory(int Id, [FromForm] Guid[] directorsId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var isAddSuccessful = await _movieService.AddMovieDirector(Id, directorsId);
+            if (isAddSuccessful == false) return BadRequest();
+            return Ok(isAddSuccessful);
+        }
     }
 }

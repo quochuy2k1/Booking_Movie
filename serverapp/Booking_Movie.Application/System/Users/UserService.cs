@@ -1,6 +1,7 @@
 ﻿using Booking_Movie.Data.Entities;
 using Booking_Movie.Utilities.Constants;
 using Booking_Movie.ViewModel.System.Users;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -17,19 +18,22 @@ namespace Booking_Movie.Application.System.Users
         private readonly RoleManager<AppRole> _roleManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IConfiguration _configuration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserService(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, SignInManager<AppUser> signInManager, IConfiguration configuration)
+        public UserService(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, SignInManager<AppUser> signInManager, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<LoginResponse?> Authenticate(LoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
             var expJWT = DateTime.Now.AddHours(3);
+            var Jti = Guid.NewGuid().ToString();
             if (user != null && await _userManager.CheckPasswordAsync(user, request.Password))
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
@@ -38,7 +42,7 @@ namespace Booking_Movie.Application.System.Users
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.UserName),
                     new Claim(ClaimTypes.Name, $"{user.LastName} {user.FirstName}"),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim(JwtRegisteredClaimNames.Jti, Jti),
                 };
 
                 foreach (var role in userRoles)
@@ -51,6 +55,7 @@ namespace Booking_Movie.Application.System.Users
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     exp = expJWT,
+                    sessionId = Jti,
                     appUser = new LoginUserViewModel()
                     {
                         UserName = user.UserName,

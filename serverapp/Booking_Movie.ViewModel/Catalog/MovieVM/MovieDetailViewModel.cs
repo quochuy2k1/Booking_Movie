@@ -14,6 +14,7 @@ namespace Booking_Movie.ViewModel.Catalog.MovieVM
         public DateTime ReleaseDate { get; set; }
         public string Content { get; set; } = null!;
         public string ImagePreview { get; set; } = null!;
+        public string ImageBackground { get; set; } = null!;
         public string VideoTrailer { get; set; } = null!;
         public string Nationality { get; set; } = null!;
         public string Producer { get; set; } = null!;

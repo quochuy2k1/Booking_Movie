@@ -21,6 +21,8 @@ using Booking_Movie.Application.Catalog.Movies;
 using Booking_Movie.Application.Catalog.Tickets;
 using Booking_Movie.Application.Catalog.Combos;
 using Booking_Movie.Application.Catalog.Auditoriums;
+using Booking_Movie.Application.Catalog.PaymentMethods;
+using Booking_Movie.Application.Catalog.Categories;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -38,6 +40,14 @@ builder.Services.AddCors(option => option.AddPolicy("ApiCorsPolicy", builder =>
 builder.Services.AddMvc();
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 builder.Services.AddDbContext<BookingMovieContext>(option =>
 {
     var conn = configuration.GetConnectionString(SystemConstant.MainConnectionString);
@@ -75,20 +85,24 @@ builder.Services.AddTransient<IDbFactory, DbFactory>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 //
 builder.Services.AddTransient<ActorRepository>();
-builder.Services.AddTransient<DirectorRepository>();
-builder.Services.AddTransient<ProducerRepository>();
-builder.Services.AddTransient<MovieRepository>();
-builder.Services.AddTransient<TicketRepository>();
-builder.Services.AddTransient<ComboRepository>();
 builder.Services.AddTransient<AuditoriumRepository>();
+builder.Services.AddTransient<CategoryRepository>();
+builder.Services.AddTransient<ComboRepository>();
+builder.Services.AddTransient<DirectorRepository>();
+builder.Services.AddTransient<MovieRepository>();
+builder.Services.AddTransient<PaymentMethodRepository>();
+builder.Services.AddTransient<ProducerRepository>();
+builder.Services.AddTransient<TicketRepository>();
 //
-builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IDirectorService, DirectorService>();
-builder.Services.AddTransient<IProducerService, ProducerService>();
-builder.Services.AddTransient<IMovieService, MovieService>();
-builder.Services.AddTransient<IComboService, ComboService>();
 builder.Services.AddTransient<IAuditoriumService, AuditoriumService>();
+builder.Services.AddTransient<IComboService, ComboService>();
+builder.Services.AddTransient<ICateroryService, CategoryService>();
+builder.Services.AddTransient<IDirectorService, DirectorService>();
+builder.Services.AddTransient<IMovieService, MovieService>();
+builder.Services.AddTransient<IProducerService, ProducerService>();
+builder.Services.AddTransient<IPaymentMethodService, PaymentMethodService>();
 builder.Services.AddTransient<ITicketService, TicketService>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 // Cấu hình AutoMapper - Cách 1
 var mappingConfig = new MapperConfiguration(mc =>
@@ -157,7 +171,7 @@ app.UseRouting();
 app.UseCors("ApiCorsPolicy");
 
 app.UseAuthorization();
-
+app.UseSession();
 app.MapControllers();
 
 app.UseSwaggerUI(options =>

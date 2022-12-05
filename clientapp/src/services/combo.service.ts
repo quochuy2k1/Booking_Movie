@@ -1,5 +1,5 @@
 import http from "../common/http-common";
-import { Combo } from "../features/combos/comboSlice";
+import { Combo } from "../slices/combos/comboSlice";
 
 
 

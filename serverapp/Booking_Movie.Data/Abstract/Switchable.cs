@@ -2,6 +2,6 @@
 {
     public class Switchable : ISwichable
     {
-        public bool Stauts { get; set; }
+        public bool? Stauts { get; set; }
     }
 }

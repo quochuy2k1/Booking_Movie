@@ -9,15 +9,17 @@ namespace Booking_Movie.Application.Catalog.Movies
 {
     public interface IMovieService
     {
-        //Task<Guid> Create(MovieCreateRequest Request);
-
+        Task<int?> Create(MovieCreateRequest Request);
+        Task<bool?> AddMovieCategories(int Id, int[] CategotyId);
+        Task<bool?> AddCast(int Id, Guid[] actorsId);
+        Task<bool?> AddMovieDirector(int Id, Guid[] directorsId);
         //Task<List<MovieViewModel>> GetAll();
         //Task<List<MovieViewModel>> GetAllByJoin();
 
 
         Task<PagedResult<MovieViewModel>> GetAllPaging(GetMoviePagingRequest pagingRequest, string host);
         Task<MovieDetailViewModel?> GetMovieDetails(int Id, string host);
-        //Task<MovieViewModel> GetById(Guid id);
+        Task<MovieViewModel?> GetById(int id, string host);
         Task<List<ScreeningViewModel>> GetScreeningByMovieId(int Id);
         Task<bool> UpdateImageVideo(int id, MovieUpdateImageVideoRequest request);
 

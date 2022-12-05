@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\movie-content\video-trailer\" />
+    <Folder Include="wwwroot\category-content\" />
     <Folder Include="wwwroot\user-content\" />
   </ItemGroup>
 

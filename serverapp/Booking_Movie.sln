@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.AdminApp", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.BackendApi", "Booking_Movie.BackendApi\Booking_Movie.BackendApi.csproj", "{2764D908-FAC7-47D8-BFA0-35834D0F98F4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "server", "server", "{7E49DCBF-128B-4DA2-B9E0-4205530D4999}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,14 +48,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{9A483D1E-5563-4E6C-930C-760FBC22C0D7} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
-		{94C60C93-2DE9-483A-AEC1-ECD1A1F5BD92} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
-		{D56FE2BB-7C01-44ED-972D-A89FA0B14504} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
-		{7E29892F-9E14-433A-B6C5-48CC28F980BB} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
-		{F1A6D4A0-9860-47A2-9B4E-1A92B80E8BFC} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
-		{2764D908-FAC7-47D8-BFA0-35834D0F98F4} = {7E49DCBF-128B-4DA2-B9E0-4205530D4999}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B93B35A-E273-44A9-BA9A-F6917CD34F40}

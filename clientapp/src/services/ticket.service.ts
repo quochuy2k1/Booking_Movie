@@ -1,5 +1,5 @@
 import http from "../common/http-common";
-import { Ticket } from "../features/tickets/ticketSlice";
+import { Ticket } from "../slices/tickets/ticketSlice";
 
 
 

@@ -29,5 +29,17 @@ namespace Booking_Movie.BackendApi.Controllers
             
             return BadRequest();    
         }
+        
+        [HttpGet("{id}/seat-row")]
+        public async Task<IActionResult> GetRowOfSeatByAuditorium(int id)
+        {
+            var rows = await _auditoriumService.GetRowOfSeatsByAuditoriumId(id);
+            if(rows != null)
+            {
+                return Ok(rows);
+            }
+            
+            return BadRequest();    
+        }
     }
 }

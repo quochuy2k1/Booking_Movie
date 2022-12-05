@@ -120,7 +120,7 @@ namespace Booking_Movie.Application.Catalog.Actors
             var data = await query.ToListAsync();
             foreach (var actor in data)
             {
-                actor.Image = $"{host}/{ACTOR_CONTENT_FOLDER_NAME}/{actor.Image}";
+                actor!.Image = $"{host}/{ACTOR_CONTENT_FOLDER_NAME}/{actor.Image}";
             }
             var dataMapper = _mapper.Map<List<ActorViewModel>>(data);
 
@@ -137,7 +137,7 @@ namespace Booking_Movie.Application.Catalog.Actors
         {
             var actor = await actorRepository.GetSingleByCondition(a => a.ID == id);
             var actorVm = _mapper.Map<ActorViewModel>(actor);
-            actorVm.Image = $"{host}/{ACTOR_CONTENT_FOLDER_NAME}/{actorVm.Image}";
+            actorVm.Image = actorVm.Image != null ? $"{host}/{ACTOR_CONTENT_FOLDER_NAME}/{actorVm.Image}" : null;
             return actorVm!;
         }
 
