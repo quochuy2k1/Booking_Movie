@@ -21,7 +21,7 @@ const MovieList: React.FC<{}> = () => {
 
     const GetAllMovie = useCallback(async (request?: MoviePagingRequest): Promise<void> => {
         try {
-            console.log(await dispatch(GetAllMoviePagingAsync({ PageIndex: request?.PageIndex || 0, PageSize: request?.PageSize || 8, Status: request?.Status || 0 })))
+            console.log(await dispatch(GetAllMoviePagingAsync({ PageIndex: request?.PageIndex || 0, PageSize: request?.PageSize || 16, Status: request?.Status || 0 })))
         } catch (error) {
 
         }

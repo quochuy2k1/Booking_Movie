@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
-import { GetAllMoviePaging, MoviePagingRequest } from "../../services/movie.service";
+import { CreateMovie, GetAllMoviePaging, MovieCreateRequest, MoviePagingRequest } from "../../services/movie.service";
 
 
 export interface MovieModel{
@@ -45,6 +45,20 @@ export const GetAllMoviePagingAsync = createAsyncThunk(
     }
 );
 
+export const CreateNewMovieAsync = createAsyncThunk(
+    "movie/create",
+    async (request: MovieCreateRequest, {rejectWithValue}) => {
+        try {
+            const response = await CreateMovie(request);
+            // The value we return becomes the `fulfilled` action payload
+            return response.data;
+          }
+          catch (err: any) {
+            return rejectWithValue(err.response.data)
+          }
+    }
+);
+
 export const MovieSlice = createSlice({
     name: "movie",
     initialState,
@@ -65,6 +79,10 @@ export const MovieSlice = createSlice({
         })
         .addCase(GetAllMoviePagingAsync.rejected, (state, action) =>{
             state.status = "failed"
+        });
+
+        builder.addCase(CreateNewMovieAsync.fulfilled, (state, action) => {
+            state.movies.push(action.payload)
         })
     }
 });

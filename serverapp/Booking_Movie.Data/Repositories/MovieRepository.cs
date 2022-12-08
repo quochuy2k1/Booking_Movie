@@ -24,8 +24,18 @@ namespace Booking_Movie.Data.Repositories
         Task<Movie?> UpdateImageVideo(int Id, string? preview, string? background, string? video);
 
         void AddMovieCategories(int Id, int[] categoryId);
-        void AddCast(int Id, Guid[] actorsId);
+        Task<List<MovieCategory>> FindMovieCategoryByMovieId(int Id);
+        Task<MovieCategory?> FindMovieCategoryByMovieId(int Id, int categoryId);
+        Task UpdateMovieCategory(int Id, int[] categoriesId);
+        Task AddCast(int Id, Guid[] actorsId);
+        Task<List<Cast>> FindCastByMovieId(int Id);
+        Task<Cast?> FindCastByMovieId(int Id, Guid actorId);
+        Task UpdateCast(int Id, Guid[] actorsId);
+
         void AddMovieDirector(int Id, Guid[] directorsId);
+        Task<List<MovieDirector>> FindMovieDirectorByMovieId(int Id);
+        Task<MovieDirector?> FindMovieDirectorByMovieId(int Id, Guid directorId);
+        Task UpdateMovieDirector(int Id, Guid[] directorsId);
 
     }
     public class MovieRepository : RepositoryBase<Movie>, IMovieRepository
@@ -221,7 +231,7 @@ namespace Booking_Movie.Data.Repositories
 
         }
 
-        public void AddCast(int Id, Guid[] actorsId)
+        public async Task AddCast(int Id, Guid[] actorsId)
         {
 
             if (actorsId.Length == 1)
@@ -231,7 +241,7 @@ namespace Booking_Movie.Data.Repositories
                     MovieId = Id,
                     ActorId = actorsId[0]
                 };
-                this.MovieContext.Casts.Add(Cast);
+              await this.MovieContext.Casts.AddAsync(Cast);
 
             }
             else
@@ -243,10 +253,9 @@ namespace Booking_Movie.Data.Repositories
                         MovieId = Id,
                         ActorId = actorId
                     };
-                    this.MovieContext.Casts.Add(Cast);
+                   await this.MovieContext.Casts.AddAsync(Cast);
                 }
             }
-
 
         }
 
@@ -274,6 +283,119 @@ namespace Booking_Movie.Data.Repositories
                     this.MovieContext.MovieDirectors.Add(MovieDirector);
                 }
             }
+        }
+
+        public async Task<Cast?> FindCastByMovieId(int Id, Guid actorId)
+        {
+            return await this.MovieContext.Casts.Where(x => x.MovieId == Id && x.ActorId == actorId).FirstOrDefaultAsync();
+        }
+
+        public async Task<List<Cast>?> FindCastByMovieId(int Id)
+        {
+            return await this.MovieContext.Casts.Where(x => x.MovieId == Id).ToListAsync();
+        }
+
+        public async Task UpdateCast(int Id, Guid[] actorsId)
+        {
+           
+            var oldActor = this.MovieContext.Casts.Where(c => c.MovieId ==Id && !actorsId.Contains(c.ActorId));
+            if (oldActor != null)
+            {
+                this.MovieContext.Casts.RemoveRange(oldActor);
+            }
+
+            foreach (var actorId in actorsId)
+            {
+                var hasActor = await FindCastByMovieId(Id, actorId);
+
+                if (hasActor == null)
+                {
+                    var cast = await this.MovieContext.Casts.AddAsync(new Cast()
+                    {
+                        MovieId = Id,
+                        ActorId = actorId
+                    });
+                    
+
+                }
+            }
+
+        }
+
+        public async Task<List<MovieCategory>> FindMovieCategoryByMovieId(int Id)
+        {
+            return await this.MovieContext.MovieCategories.Where(x => x.MovieId == Id).ToListAsync();
+        }
+        
+        public async Task<MovieCategory?> FindMovieCategoryByMovieId(int Id, int categoryId)
+        {
+            return await this.MovieContext.MovieCategories.Where(x => x.MovieId == Id && x.CategoryId == categoryId).FirstOrDefaultAsync();
+        }
+
+        public async Task UpdateMovieCategory(int Id, int[] categoriesId)
+        {
+
+            var oldMovieCategories = this.MovieContext.MovieCategories.Where(c => c.MovieId == Id && !categoriesId.Contains(c.CategoryId));
+            if (oldMovieCategories != null)
+            {
+                this.MovieContext.MovieCategories.RemoveRange(oldMovieCategories);
+            }
+
+            foreach (var categoryId in categoriesId)
+            {
+                var hasCategory = await FindMovieCategoryByMovieId(Id, categoryId);
+
+                if (hasCategory == null)
+                {
+                    var cast = await this.MovieContext.MovieCategories.AddAsync(new MovieCategory()
+                    {
+                        MovieId = Id,
+                        CategoryId = categoryId
+                    });
+
+
+                }
+            }
+
+
+
+        }
+
+        public async Task<List<MovieDirector>> FindMovieDirectorByMovieId(int Id)
+        {
+            return await this.MovieContext.MovieDirectors.Where(x => x.MovieId == Id).ToListAsync();
+        }
+
+        public async Task<MovieDirector?> FindMovieDirectorByMovieId(int Id, Guid directorId)
+        {
+            return await this.MovieContext.MovieDirectors.Where(x => x.MovieId == Id && x.DirectorId == directorId).FirstOrDefaultAsync();
+        }
+
+        public async Task UpdateMovieDirector(int Id, Guid[] directorsId)
+        {
+
+            var oldMovieDirector = this.MovieContext.MovieDirectors.Where(c => c.MovieId == Id && !directorsId.Contains(c.DirectorId));
+            if (oldMovieDirector != null)
+            {
+                this.MovieContext.MovieDirectors.RemoveRange(oldMovieDirector);
+            }
+
+            foreach (var directorId in directorsId)
+            {
+                var hasMovieDirector = await FindMovieDirectorByMovieId(Id, directorId);
+                       
+                if (hasMovieDirector == null)
+                {
+                    await this.MovieContext.MovieDirectors.AddAsync(new MovieDirector()
+                    {
+                        MovieId = Id,
+                        DirectorId = directorId
+                    });
+
+
+                }
+            }
+
         }
     }
 }

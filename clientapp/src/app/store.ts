@@ -9,6 +9,10 @@ import auditoriumReducer from '../slices/auditoriums/AuditoriumSlice';
 import screeningReducer from '../slices/screenings/ScreeningSlice';
 import bookingReducer from '../slices/bookings/BookingSlice';
 import paymentReducer from '../slices/payments/PaymentSlice';
+import categoryReducer from '../slices/categories/categorySlice';
+import producerReducer from '../slices/producers/producerSlice';
+import directorReducer from '../slices/directors/directorSlice';
+import nationalityReducer from '../slices/nationalities/nationalitySlice';
 import customizationReducer from '../slices/customizations/customizationsSlice';
 
 export const store = configureStore({
@@ -23,6 +27,10 @@ export const store = configureStore({
     screening: screeningReducer,
     booking: bookingReducer,
     payment: paymentReducer,
+    category: categoryReducer,
+    producer: producerReducer,
+    director: directorReducer,
+    nationality: nationalityReducer,
     customization: customizationReducer
   },
   middleware: (getDefaultMiddleware) => {
