@@ -1,0 +1,21 @@
+.ui.input > input {
+    /* font-size: 1.2rem; */
+    background-color: #6b7280 !important;
+  }
+  
+  .ui.input > input:focus {
+    color: rgba(238, 238, 238, .9) !important;
+    opacity: .85;
+    transition: all .1s ease-in;
+  }
+
+  .ui.checkbox label:hover, .ui.checkbox+label:hover {
+    color: rgba(255,255,255,.8) !important;
+}
+
+.ui.checkbox label, .ui.checkbox+label {
+    color: rgba(255,255,255,.87) !important;
+    text-align: justify;
+    line-height: 1.30;
+    transition: color .1s ease;
+}

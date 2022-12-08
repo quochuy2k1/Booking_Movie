@@ -18,7 +18,7 @@ namespace Booking_Movie.BackendApi.Controllers
             this.webHostEnvironment = webHostEnvironment;
         }
 
-        [HttpGet]
+        [HttpGet("get-all")]
         [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
@@ -26,7 +26,7 @@ namespace Booking_Movie.BackendApi.Controllers
             return Ok(directors);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("detail/{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetById(Guid id)
         {

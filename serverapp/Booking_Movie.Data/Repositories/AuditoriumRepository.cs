@@ -1,32 +1,57 @@
 ﻿using Booking_Movie.Data.EF;
 using Booking_Movie.Data.Entities;
 using Booking_Movie.Data.Infrastructure;
+using Booking_Movie.Data.Models;
+using Booking_Movie.ViewModel.Catalog.AuditoriumVM;
 using Booking_Movie.ViewModel.Catalog.SeatVM;
 
 namespace Booking_Movie.Data.Repositories
 {
     public interface IAuditoriumRepository: IRepository<Auditorium>
     {
-        Task<IQueryable<SeatViewModel>> GetSeatsByAuditoriumId(int Id);
+        Task<IQueryable<SeatInAuditoriumViewModel>> GetSeatsByAuditoriumId(int Id);
+        Task<IQueryable<string>> GetRowOfSeatsByAuditoriumId(int Id);
     }
     public class AuditoriumRepository : RepositoryBase<Auditorium>, IAuditoriumRepository
     {
+       
         public AuditoriumRepository(BookingMovieContext movieContext, IDbFactory dbFactory) : base(movieContext, dbFactory)
         {
         }
 
-        public Task<IQueryable<SeatViewModel>> GetSeatsByAuditoriumId(int Id)
+        public Task<IQueryable<SeatInAuditoriumViewModel>> GetSeatsByAuditoriumId(int Id)
         {
-            var query = from au in this.MovieContext.Auditoriums
+            IQueryable<SeatInAuditoriumViewModel> query = (from au in this.MovieContext.Auditoriums
                         join sn in this.MovieContext.SeatNos on au.Id equals sn.AuditoriumId
                         join s in this.MovieContext.Seats on sn.SeatId equals s.SeatId
-                        select new SeatViewModel()
+                        where au.Id == Id
+                        group new { s, sn.Stauts, sn.RowIndex, sn.ColumnIndex, sn.SeatStyleId } by s.Row into g
+                        select new SeatInAuditoriumViewModel()
                         {
-                            Id = s.SeatId,
-                            Number = s.Number,
-                            Row = s.Row,
-                            Status = sn.Stauts
-                        };
+                            PhysicalName = g.Key,
+                            Seats = g.Select(x => new SeatViewModel()
+                            {
+                                Id = x.s.SeatId,
+                                Number = x.s.Number,
+                                Row = x.s.Row,
+                                Status = x.Stauts,
+                                RowIndex =x.RowIndex,
+                                ColumnIndex =x.ColumnIndex,
+                                SeatStyle = x.SeatStyleId,
+                            }).ToList()
+                        }).OrderBy(x=> x.PhysicalName).AsQueryable();
+            
+            return Task.FromResult(query);
+        }
+        
+        public Task<IQueryable<string>> GetRowOfSeatsByAuditoriumId(int Id)
+        {
+            var query = (from au in this.MovieContext.Auditoriums
+                        join sn in this.MovieContext.SeatNos on au.Id equals sn.AuditoriumId
+                        join s in this.MovieContext.Seats on sn.SeatId equals s.SeatId
+                        where au.Id == Id
+                        select s.Row).Distinct();
+            
             return Task.FromResult(query);
         }
     }

@@ -76,79 +76,79 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("354b3fae-02fc-482f-bf68-1cc40b04c34f"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1689),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4605),
                             DateOfBirth = new DateTime(1990, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.64m,
                             Image = "",
                             Name = "Ninh Dương Lan Ngọc",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1690),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4605),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("1fa1a35a-d969-4b44-8cc0-1f6fbff578fb"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1692),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4608),
                             DateOfBirth = new DateTime(1991, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.67m,
                             Image = "",
                             Name = "Katy Nguyễn",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1692),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4608),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("343d4b37-c4f7-4d24-adb6-05abeda8aa41"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1694),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4610),
                             DateOfBirth = new DateTime(1989, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.7m,
                             Image = "",
                             Name = "NSƯT Lê Khanh",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1695),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4611),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("bf79e94c-2b38-4763-aacd-8161006e8347"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1696),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4613),
                             DateOfBirth = new DateTime(1988, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.65m,
                             Image = "",
                             Name = "Hữu Châu",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1697),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4613),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("26340d49-35d2-4696-addf-e4fc97cd5300"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1699),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4615),
                             DateOfBirth = new DateTime(1987, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.81m,
                             Image = "",
                             Name = "Lãnh Thanh",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1699),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4615),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("376ef100-3a18-45dd-b83c-517d2cafc0dc"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1701),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4616),
                             DateOfBirth = new DateTime(1986, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.76m,
                             Image = "",
                             Name = "Lê Xuân Tiền",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1701),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4617),
                             ViewCount = 0
                         });
                 });
@@ -311,13 +311,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("ab778d64-0d3e-4ab6-bc7c-a50b93de737b"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dacace37-2b55-4f61-bb95-125e792d8aa0",
+                            ConcurrencyStamp = "40e6ad9c-e4af-491d-9c5d-325283e96858",
                             Email = "dangit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Đăng",
                             LastName = "Nguyễn Minh",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAENlJ8anXBH+JCxhPVNDIWcN4s2PLwZ1pbh90HFmMIggfS4F5mZhIq7QC5tNW/ealHA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEODhqFu96D/9/B0ffUuU/U5D0Y+bTLgO9HD5q7MEhGjH0g270mW5kRmM3+1t96ghnA==",
                             PhoneNumber = "0364125410",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -327,13 +327,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("d83ac55f-ef97-468f-a493-e9a8eeec395e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "40124d97-04b8-47b8-bfa7-2bd837a87770",
+                            ConcurrencyStamp = "4b841d22-b93c-4c40-8efe-30ebc8112611",
                             Email = "khanhit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Khánh",
                             LastName = "Nguyễn",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEFeywE1BCV2m1szcZMJIwdmZncTYbJSyb99n1t0KiHpdlXtYKF4zp2lLjz0cHYQmcw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEfvzzR1V+QojSusXjTbthduFMlZuDx5Hl/AR/xQ8IYp8tzf9Kc2A0vDRSrUJ9rFvw==",
                             PhoneNumber = "0364125420",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -343,13 +343,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("c8a04d06-2334-4806-92a6-6f6db3ed6692"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "beb71e1d-56e2-4622-b823-08ae0e3206dd",
+                            ConcurrencyStamp = "cb78997c-fe6e-461c-abbf-ba0b346f9a50",
                             Email = "thaoit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Thảo",
                             LastName = "Nguyễn Hoàng",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEC0dPTiwjDrcEluCbEVahksZDX0VZD9XEkA5/MqWUN36NIJ9m64ZzLDT85tgnWy4jg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECL/nm5gZmRFxJ2YCrHeTVpZUDTi5DvpCL6vNBRkGYs/Gybn/FrPStIktOR8uAv1/w==",
                             PhoneNumber = "0364125430",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -465,7 +465,7 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<int>("ScreeningId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Stauts")
+                    b.Property<bool?>("Stauts")
                         .HasColumnType("bit");
 
                     b.Property<decimal>("Total")
@@ -514,7 +514,7 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Stauts")
+                    b.Property<bool?>("Stauts")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -566,7 +566,7 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Stauts")
+                    b.Property<bool?>("Stauts")
                         .HasColumnType("bit");
 
                     b.Property<int>("TicketId")
@@ -1117,118 +1117,118 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("01c9b39b-ad45-41fe-ace0-244b38254f99"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1594),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4514),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Jaume Collet-Serra",
                             NationalityId = "es",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1608),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4523),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("88034877-a697-472c-a2d8-3d133792c463"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1613),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4525),
                             DateOfBirth = new DateTime(1986, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.85m,
                             Image = "",
                             Name = "Bảo Nhân",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1613),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4526),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("55266710-251a-45a1-b11b-d2e2e7e104ea"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1616),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4529),
                             DateOfBirth = new DateTime(1985, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.65m,
                             Image = "",
                             Name = "Nam Cito",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1616),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4529),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("c089db2a-468a-4287-8b45-a832bb10fe93"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1618),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4531),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Jaume Collet-Serra",
                             NationalityId = "es",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1618),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4531),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("ff9a4cc9-3191-4da4-9bf8-6cd8bd129138"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1620),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4533),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Ilya Maksimov",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1620),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4533),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("e37edc8f-48ff-40fe-bcfc-d37a689a5b04"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1622),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4538),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Lee Seok Hoon",
                             NationalityId = "ukr",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1623),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4538),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("eb504714-17f9-4aa3-8b5b-6360102f8453"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1624),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4540),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Brando Lee",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1625),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4540),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("7e02a8db-94e7-4842-8b35-96c48d0e0c63"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1627),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4542),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Parker Finn",
                             NationalityId = "ms",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1627),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4542),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("e717c0c2-82f5-46a8-8e50-95999e661a67"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1629),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4544),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Park Gyu Tae",
                             NationalityId = "tha",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1629),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4544),
                             ViewCount = 0
                         });
                 });
@@ -1428,14 +1428,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 1,
                             Alias = "Co_Gai_Den_Tu_Qua_Khu",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1726),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4641),
                             Duration = (short)105,
                             Name = "Cô Gái Từ Quá Khứ",
                             NationalityId = "vi",
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1727),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4641),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1443,14 +1443,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 2,
                             Alias = "Black_Adam",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1730),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4644),
                             Duration = (short)105,
                             Name = "Black Adam",
                             NationalityId = "en",
                             ProducerId = new Guid("3f8ba972-52da-4a37-b152-a92628e4b714"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1730),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4644),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1458,14 +1458,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 3,
                             Alias = "Confidential_Assignment_2_:_International",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1732),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4646),
                             Duration = (short)105,
                             Name = "Confidential Assignment 2: International",
                             NationalityId = "vi",
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1732),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4646),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1473,14 +1473,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 4,
                             Alias = "Prey_For_The_Devil",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1737),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4648),
                             Duration = (short)105,
                             Name = "Prey For The Devil",
                             NationalityId = "ukr",
                             ProducerId = new Guid("c6c6386c-78d9-4e32-b993-d7b660210437"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1737),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4648),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1488,14 +1488,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 5,
                             Alias = "Don't_Look_At_The_Demon",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1739),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4650),
                             Duration = (short)105,
                             Name = "Don't Look At The Demon",
                             NationalityId = "tha",
                             ProducerId = new Guid("34652a25-e4ce-4994-a412-84ae013d775b"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1740),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4650),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1503,14 +1503,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 6,
                             Alias = "Gulliver_Returns",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1742),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4652),
                             Duration = (short)105,
                             Name = "Gulliver Returns",
                             NationalityId = "ms",
                             ProducerId = new Guid("272d7cd7-6ed5-428d-9bd9-ddeb0f5affea"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1742),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4652),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1518,14 +1518,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 7,
                             Alias = "Life_Is_Beautiful",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1744),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4654),
                             Duration = (short)105,
                             Name = "Life Is Beautiful",
                             NationalityId = "ko",
                             ProducerId = new Guid("e8a07088-de72-4b6c-bdd8-14370ab2a3ab"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1745),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4655),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1533,14 +1533,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 8,
                             Alias = "Smile",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1746),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4656),
                             Duration = (short)105,
                             Name = "Smile",
                             NationalityId = "es",
                             ProducerId = new Guid("8e82c641-c8f2-4ac9-820a-f59789bbd12f"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1747),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4656),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1548,14 +1548,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 9,
                             Alias = "Love_Destiny_The_Movie",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1749),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4658),
                             Duration = (short)105,
                             Name = "Love Destiny The Movie",
                             NationalityId = "vi",
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1749),
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4659),
                             VideoTrailer = "duongdan.mp4"
                         });
                 });
@@ -1950,10 +1950,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_dien_tu_momo",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(2218),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(5170),
                             Name = "Ví điện tử momo",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(2219)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(5171)
                         },
                         new
                         {
@@ -1961,10 +1961,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_Zalo",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(2221),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(5173),
                             Name = "Ví Zalo",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(2222)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(5173)
                         },
                         new
                         {
@@ -1972,10 +1972,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "VNPAY",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(2226),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(5174),
                             Name = "VNPAY",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(2227)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(5175)
                         },
                         new
                         {
@@ -1983,10 +1983,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "HSBC/Payoo-ATM/VISA/MASTER/JCB/QRCODE",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(2228),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(5176),
                             Name = "HSBC/Payoo - ATM/VISA/MASTER/JCB/QRCODE",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(2229)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(5176)
                         },
                         new
                         {
@@ -1994,10 +1994,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_ShoppePay",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(2230),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(5177),
                             Name = "Ví ShopeePay",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(2230)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(5177)
                         });
                 });
 
@@ -2041,65 +2041,65 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1652),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4563),
                             Image = "",
                             Name = "MAR6 Pictures",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1652)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4563)
                         },
                         new
                         {
                             ID = new Guid("8e82c641-c8f2-4ac9-820a-f59789bbd12f"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1654),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4565),
                             Image = "",
                             Name = "GDH 559",
                             NationalityId = "tha",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1655)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4565)
                         },
                         new
                         {
                             ID = new Guid("e8a07088-de72-4b6c-bdd8-14370ab2a3ab"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1656),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4567),
                             Image = "",
                             Name = "Warner Bros",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1657)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4567)
                         },
                         new
                         {
                             ID = new Guid("272d7cd7-6ed5-428d-9bd9-ddeb0f5affea"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1658),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4569),
                             Image = "",
                             Name = "CJ Entertainment",
                             NationalityId = "ko",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1659)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4569)
                         },
                         new
                         {
                             ID = new Guid("34652a25-e4ce-4994-a412-84ae013d775b"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1660),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4571),
                             Image = "",
                             Name = "Lionsgate",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1661)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4571)
                         },
                         new
                         {
                             ID = new Guid("c6c6386c-78d9-4e32-b993-d7b660210437"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1662),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4572),
                             Image = "",
                             Name = "Bliss Pictures",
                             NationalityId = "ms",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1662)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4573)
                         },
                         new
                         {
                             ID = new Guid("3f8ba972-52da-4a37-b152-a92628e4b714"),
-                            CreatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1664),
+                            CreatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4574),
                             Image = "",
                             Name = "95 Animation Studio",
                             NationalityId = "ukr",
-                            UpdatedDate = new DateTime(2022, 11, 1, 21, 12, 57, 107, DateTimeKind.Local).AddTicks(1664)
+                            UpdatedDate = new DateTime(2022, 11, 14, 18, 29, 46, 962, DateTimeKind.Local).AddTicks(4575)
                         });
                 });
 
@@ -2331,6 +2331,12 @@ namespace Booking_Movie.Data.Migrations
                     b.ToTable("Seats", (string)null);
 
                     b.HasData(
+                        new
+                        {
+                            SeatId = "00",
+                            Number = (byte)0,
+                            Row = "0"
+                        },
                         new
                         {
                             SeatId = "A1",
@@ -3256,11 +3262,20 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<int>("AuditoriumId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ColumnIndex")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RowIndex")
+                        .HasColumnType("int");
+
                     b.Property<string>("SeatId")
                         .IsRequired()
                         .HasColumnType("varchar(5)");
 
-                    b.Property<bool>("Stauts")
+                    b.Property<int?>("SeatStyleId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Stauts")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -3269,6 +3284,8 @@ namespace Booking_Movie.Data.Migrations
 
                     b.HasIndex("SeatId");
 
+                    b.HasIndex("SeatStyleId");
+
                     b.ToTable("SeatNos", (string)null);
 
                     b.HasData(
@@ -3276,1064 +3293,1526 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = 1,
                             AuditoriumId = 1,
+                            ColumnIndex = 1,
+                            RowIndex = 1,
                             SeatId = "A1",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 2,
                             AuditoriumId = 1,
+                            ColumnIndex = 2,
+                            RowIndex = 1,
                             SeatId = "A2",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 3,
                             AuditoriumId = 1,
+                            ColumnIndex = 5,
+                            RowIndex = 1,
                             SeatId = "A3",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 4,
                             AuditoriumId = 1,
+                            ColumnIndex = 5,
+                            RowIndex = 1,
                             SeatId = "A4",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 5,
                             AuditoriumId = 1,
+                            ColumnIndex = 7,
+                            RowIndex = 1,
                             SeatId = "A5",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 6,
                             AuditoriumId = 1,
+                            ColumnIndex = 8,
+                            RowIndex = 1,
                             SeatId = "A6",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 7,
                             AuditoriumId = 1,
+                            ColumnIndex = 9,
+                            RowIndex = 1,
                             SeatId = "A7",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 8,
                             AuditoriumId = 1,
+                            ColumnIndex = 10,
+                            RowIndex = 1,
                             SeatId = "A8",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 9,
                             AuditoriumId = 1,
+                            ColumnIndex = 11,
+                            RowIndex = 1,
                             SeatId = "A9",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 10,
                             AuditoriumId = 1,
+                            ColumnIndex = 12,
+                            RowIndex = 1,
                             SeatId = "A10",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 11,
                             AuditoriumId = 1,
+                            ColumnIndex = 13,
+                            RowIndex = 1,
                             SeatId = "A11",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 12,
                             AuditoriumId = 1,
+                            ColumnIndex = 14,
+                            RowIndex = 1,
                             SeatId = "A12",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 13,
                             AuditoriumId = 1,
+                            ColumnIndex = 1,
+                            RowIndex = 2,
                             SeatId = "B1",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 14,
                             AuditoriumId = 1,
+                            ColumnIndex = 2,
+                            RowIndex = 2,
                             SeatId = "B2",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 15,
                             AuditoriumId = 1,
+                            ColumnIndex = 5,
+                            RowIndex = 2,
                             SeatId = "B3",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 16,
                             AuditoriumId = 1,
+                            ColumnIndex = 6,
+                            RowIndex = 2,
                             SeatId = "B4",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 17,
                             AuditoriumId = 1,
+                            ColumnIndex = 7,
+                            RowIndex = 2,
                             SeatId = "B5",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 18,
                             AuditoriumId = 1,
+                            ColumnIndex = 8,
+                            RowIndex = 2,
                             SeatId = "B6",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 19,
                             AuditoriumId = 1,
+                            ColumnIndex = 9,
+                            RowIndex = 2,
                             SeatId = "B7",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 20,
                             AuditoriumId = 1,
+                            ColumnIndex = 10,
+                            RowIndex = 2,
                             SeatId = "B8",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 21,
                             AuditoriumId = 1,
+                            ColumnIndex = 11,
+                            RowIndex = 2,
                             SeatId = "B9",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 22,
                             AuditoriumId = 1,
+                            ColumnIndex = 12,
+                            RowIndex = 2,
                             SeatId = "B10",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 23,
                             AuditoriumId = 1,
+                            ColumnIndex = 13,
+                            RowIndex = 2,
                             SeatId = "B11",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 24,
                             AuditoriumId = 1,
+                            ColumnIndex = 14,
+                            RowIndex = 2,
                             SeatId = "B12",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 25,
                             AuditoriumId = 1,
+                            ColumnIndex = 1,
+                            RowIndex = 3,
                             SeatId = "C1",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 26,
                             AuditoriumId = 1,
+                            ColumnIndex = 2,
+                            RowIndex = 3,
                             SeatId = "C2",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 27,
                             AuditoriumId = 1,
+                            ColumnIndex = 5,
+                            RowIndex = 3,
                             SeatId = "C3",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 28,
                             AuditoriumId = 1,
+                            ColumnIndex = 6,
+                            RowIndex = 3,
                             SeatId = "C4",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 29,
                             AuditoriumId = 1,
+                            ColumnIndex = 7,
+                            RowIndex = 3,
                             SeatId = "C5",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 30,
                             AuditoriumId = 1,
+                            ColumnIndex = 8,
+                            RowIndex = 3,
                             SeatId = "C6",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 31,
                             AuditoriumId = 1,
+                            ColumnIndex = 9,
+                            RowIndex = 3,
                             SeatId = "C7",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 32,
                             AuditoriumId = 1,
+                            ColumnIndex = 10,
+                            RowIndex = 3,
                             SeatId = "C8",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 33,
                             AuditoriumId = 1,
+                            ColumnIndex = 11,
+                            RowIndex = 3,
                             SeatId = "C9",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 34,
                             AuditoriumId = 1,
+                            ColumnIndex = 12,
+                            RowIndex = 3,
                             SeatId = "C10",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 35,
                             AuditoriumId = 1,
+                            ColumnIndex = 13,
+                            RowIndex = 3,
                             SeatId = "C11",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 36,
                             AuditoriumId = 1,
+                            ColumnIndex = 14,
+                            RowIndex = 3,
                             SeatId = "C12",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 37,
                             AuditoriumId = 1,
+                            ColumnIndex = 1,
+                            RowIndex = 4,
                             SeatId = "D1",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 38,
                             AuditoriumId = 1,
+                            ColumnIndex = 2,
+                            RowIndex = 4,
                             SeatId = "D2",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 39,
                             AuditoriumId = 1,
+                            ColumnIndex = 5,
+                            RowIndex = 4,
                             SeatId = "D3",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 40,
                             AuditoriumId = 1,
+                            ColumnIndex = 6,
+                            RowIndex = 4,
                             SeatId = "D4",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 41,
                             AuditoriumId = 1,
+                            ColumnIndex = 7,
+                            RowIndex = 4,
                             SeatId = "D5",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 42,
                             AuditoriumId = 1,
+                            ColumnIndex = 8,
+                            RowIndex = 4,
                             SeatId = "D6",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 43,
                             AuditoriumId = 1,
+                            ColumnIndex = 9,
+                            RowIndex = 4,
                             SeatId = "D7",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 44,
                             AuditoriumId = 1,
+                            ColumnIndex = 10,
+                            RowIndex = 4,
                             SeatId = "D8",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 45,
                             AuditoriumId = 1,
+                            ColumnIndex = 11,
+                            RowIndex = 4,
                             SeatId = "D9",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 46,
                             AuditoriumId = 1,
+                            ColumnIndex = 12,
+                            RowIndex = 4,
                             SeatId = "D10",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 47,
                             AuditoriumId = 1,
+                            ColumnIndex = 13,
+                            RowIndex = 4,
                             SeatId = "D11",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 48,
                             AuditoriumId = 1,
+                            ColumnIndex = 14,
+                            RowIndex = 4,
                             SeatId = "D12",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 49,
                             AuditoriumId = 1,
+                            ColumnIndex = 1,
+                            RowIndex = 5,
                             SeatId = "E1",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 50,
                             AuditoriumId = 1,
+                            ColumnIndex = 2,
+                            RowIndex = 5,
                             SeatId = "E2",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 51,
                             AuditoriumId = 1,
+                            ColumnIndex = 5,
+                            RowIndex = 5,
                             SeatId = "E3",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 52,
                             AuditoriumId = 1,
+                            ColumnIndex = 6,
+                            RowIndex = 5,
                             SeatId = "E4",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 53,
                             AuditoriumId = 1,
+                            ColumnIndex = 7,
+                            RowIndex = 5,
                             SeatId = "E5",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 54,
                             AuditoriumId = 1,
+                            ColumnIndex = 8,
+                            RowIndex = 5,
                             SeatId = "E6",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 55,
                             AuditoriumId = 1,
+                            ColumnIndex = 9,
+                            RowIndex = 5,
                             SeatId = "E7",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 56,
                             AuditoriumId = 1,
+                            ColumnIndex = 10,
+                            RowIndex = 5,
                             SeatId = "E8",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 57,
                             AuditoriumId = 1,
+                            ColumnIndex = 11,
+                            RowIndex = 5,
                             SeatId = "E9",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 58,
                             AuditoriumId = 1,
+                            ColumnIndex = 12,
+                            RowIndex = 5,
                             SeatId = "E10",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 59,
                             AuditoriumId = 1,
+                            ColumnIndex = 13,
+                            RowIndex = 5,
                             SeatId = "E11",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 60,
                             AuditoriumId = 1,
+                            ColumnIndex = 14,
+                            RowIndex = 5,
                             SeatId = "E12",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 61,
                             AuditoriumId = 1,
+                            ColumnIndex = 1,
+                            RowIndex = 6,
                             SeatId = "F1",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 62,
                             AuditoriumId = 1,
+                            ColumnIndex = 2,
+                            RowIndex = 6,
                             SeatId = "F2",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 63,
                             AuditoriumId = 1,
+                            ColumnIndex = 5,
+                            RowIndex = 6,
                             SeatId = "F3",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 64,
                             AuditoriumId = 1,
+                            ColumnIndex = 6,
+                            RowIndex = 6,
                             SeatId = "F4",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 65,
                             AuditoriumId = 1,
+                            ColumnIndex = 7,
+                            RowIndex = 6,
                             SeatId = "F5",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 66,
                             AuditoriumId = 1,
+                            ColumnIndex = 8,
+                            RowIndex = 6,
                             SeatId = "F6",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 67,
                             AuditoriumId = 1,
+                            ColumnIndex = 9,
+                            RowIndex = 6,
                             SeatId = "F7",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 68,
                             AuditoriumId = 1,
+                            ColumnIndex = 10,
+                            RowIndex = 6,
                             SeatId = "F8",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 69,
                             AuditoriumId = 1,
+                            ColumnIndex = 11,
+                            RowIndex = 6,
                             SeatId = "F9",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 70,
                             AuditoriumId = 1,
+                            ColumnIndex = 12,
+                            RowIndex = 6,
                             SeatId = "F10",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 71,
                             AuditoriumId = 1,
+                            ColumnIndex = 13,
+                            RowIndex = 6,
                             SeatId = "F11",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 72,
                             AuditoriumId = 1,
+                            ColumnIndex = 14,
+                            RowIndex = 6,
                             SeatId = "F12",
+                            SeatStyleId = 1,
                             Stauts = false
                         },
                         new
                         {
                             Id = 73,
                             AuditoriumId = 1,
+                            ColumnIndex = 1,
+                            RowIndex = 7,
                             SeatId = "G1",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 74,
                             AuditoriumId = 1,
+                            ColumnIndex = 2,
+                            RowIndex = 7,
                             SeatId = "G2",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 75,
                             AuditoriumId = 1,
+                            ColumnIndex = 5,
+                            RowIndex = 7,
                             SeatId = "G3",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 76,
                             AuditoriumId = 1,
+                            ColumnIndex = 6,
+                            RowIndex = 7,
                             SeatId = "G4",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 77,
                             AuditoriumId = 1,
+                            ColumnIndex = 7,
+                            RowIndex = 7,
                             SeatId = "G5",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 78,
                             AuditoriumId = 1,
+                            ColumnIndex = 8,
+                            RowIndex = 7,
                             SeatId = "G6",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 79,
                             AuditoriumId = 1,
+                            ColumnIndex = 9,
+                            RowIndex = 7,
                             SeatId = "G7",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 80,
                             AuditoriumId = 1,
+                            ColumnIndex = 10,
+                            RowIndex = 7,
                             SeatId = "G8",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 81,
                             AuditoriumId = 1,
+                            ColumnIndex = 11,
+                            RowIndex = 7,
                             SeatId = "G9",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 82,
                             AuditoriumId = 1,
+                            ColumnIndex = 12,
+                            RowIndex = 7,
                             SeatId = "G10",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 83,
                             AuditoriumId = 1,
+                            ColumnIndex = 13,
+                            RowIndex = 7,
                             SeatId = "G11",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 84,
                             AuditoriumId = 1,
+                            ColumnIndex = 14,
+                            RowIndex = 7,
                             SeatId = "G12",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 85,
                             AuditoriumId = 1,
+                            ColumnIndex = 1,
+                            RowIndex = 8,
                             SeatId = "H1",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 86,
                             AuditoriumId = 1,
+                            ColumnIndex = 2,
+                            RowIndex = 8,
                             SeatId = "H2",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 87,
                             AuditoriumId = 1,
+                            ColumnIndex = 5,
+                            RowIndex = 8,
                             SeatId = "H3",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 88,
                             AuditoriumId = 1,
+                            ColumnIndex = 6,
+                            RowIndex = 8,
                             SeatId = "H4",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 89,
                             AuditoriumId = 1,
+                            ColumnIndex = 7,
+                            RowIndex = 8,
                             SeatId = "H5",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 90,
                             AuditoriumId = 1,
+                            ColumnIndex = 8,
+                            RowIndex = 8,
                             SeatId = "H6",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 91,
                             AuditoriumId = 1,
+                            ColumnIndex = 9,
+                            RowIndex = 8,
                             SeatId = "H7",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 92,
                             AuditoriumId = 1,
+                            ColumnIndex = 10,
+                            RowIndex = 8,
                             SeatId = "H8",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 93,
                             AuditoriumId = 1,
+                            ColumnIndex = 11,
+                            RowIndex = 8,
                             SeatId = "H9",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 94,
                             AuditoriumId = 1,
+                            ColumnIndex = 12,
+                            RowIndex = 8,
                             SeatId = "H10",
+                            SeatStyleId = 5,
                             Stauts = false
                         },
                         new
                         {
                             Id = 95,
                             AuditoriumId = 1,
+                            ColumnIndex = 13,
+                            RowIndex = 8,
                             SeatId = "H11",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 96,
                             AuditoriumId = 1,
+                            ColumnIndex = 14,
+                            RowIndex = 8,
                             SeatId = "H12",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 97,
                             AuditoriumId = 1,
+                            ColumnIndex = 1,
+                            RowIndex = 9,
                             SeatId = "I1",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 98,
                             AuditoriumId = 1,
+                            ColumnIndex = 2,
+                            RowIndex = 9,
                             SeatId = "I2",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 99,
                             AuditoriumId = 1,
+                            ColumnIndex = 5,
+                            RowIndex = 9,
                             SeatId = "I3",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 100,
                             AuditoriumId = 1,
+                            ColumnIndex = 6,
+                            RowIndex = 9,
                             SeatId = "I4",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 101,
                             AuditoriumId = 1,
+                            ColumnIndex = 7,
+                            RowIndex = 9,
                             SeatId = "I5",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 102,
                             AuditoriumId = 1,
+                            ColumnIndex = 8,
+                            RowIndex = 9,
                             SeatId = "I6",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 103,
                             AuditoriumId = 1,
+                            ColumnIndex = 9,
+                            RowIndex = 9,
                             SeatId = "I7",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 104,
                             AuditoriumId = 1,
+                            ColumnIndex = 10,
+                            RowIndex = 9,
                             SeatId = "I8",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 105,
                             AuditoriumId = 1,
+                            ColumnIndex = 11,
+                            RowIndex = 9,
                             SeatId = "I9",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 106,
                             AuditoriumId = 1,
+                            ColumnIndex = 12,
+                            RowIndex = 9,
                             SeatId = "I10",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 107,
                             AuditoriumId = 1,
+                            ColumnIndex = 13,
+                            RowIndex = 9,
                             SeatId = "I11",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 108,
                             AuditoriumId = 1,
+                            ColumnIndex = 14,
+                            RowIndex = 9,
                             SeatId = "I12",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 109,
                             AuditoriumId = 1,
-                            SeatId = "J1",
-                            Stauts = false
+                            SeatId = "00"
                         },
                         new
                         {
                             Id = 110,
                             AuditoriumId = 1,
-                            SeatId = "J2",
+                            ColumnIndex = 1,
+                            RowIndex = 11,
+                            SeatId = "J1",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 111,
                             AuditoriumId = 1,
-                            SeatId = "J3",
+                            ColumnIndex = 2,
+                            RowIndex = 11,
+                            SeatId = "J2",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 112,
                             AuditoriumId = 1,
-                            SeatId = "J4",
+                            ColumnIndex = 3,
+                            RowIndex = 11,
+                            SeatId = "J3",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 113,
                             AuditoriumId = 1,
-                            SeatId = "J5",
+                            ColumnIndex = 4,
+                            RowIndex = 11,
+                            SeatId = "J4",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 114,
                             AuditoriumId = 1,
-                            SeatId = "J6",
+                            ColumnIndex = 5,
+                            RowIndex = 11,
+                            SeatId = "J5",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 115,
                             AuditoriumId = 1,
-                            SeatId = "J7",
+                            ColumnIndex = 6,
+                            RowIndex = 11,
+                            SeatId = "J6",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 116,
                             AuditoriumId = 1,
-                            SeatId = "J8",
+                            ColumnIndex = 7,
+                            RowIndex = 11,
+                            SeatId = "J7",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 117,
                             AuditoriumId = 1,
-                            SeatId = "J9",
+                            ColumnIndex = 8,
+                            RowIndex = 11,
+                            SeatId = "J8",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 118,
                             AuditoriumId = 1,
-                            SeatId = "J10",
+                            ColumnIndex = 9,
+                            RowIndex = 11,
+                            SeatId = "J9",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 119,
                             AuditoriumId = 1,
-                            SeatId = "J11",
+                            ColumnIndex = 10,
+                            RowIndex = 11,
+                            SeatId = "J10",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 120,
                             AuditoriumId = 1,
-                            SeatId = "J12",
+                            ColumnIndex = 11,
+                            RowIndex = 11,
+                            SeatId = "J11",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 121,
                             AuditoriumId = 1,
-                            SeatId = "J13",
+                            ColumnIndex = 12,
+                            RowIndex = 11,
+                            SeatId = "J12",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 122,
                             AuditoriumId = 1,
-                            SeatId = "J14",
+                            ColumnIndex = 13,
+                            RowIndex = 11,
+                            SeatId = "J13",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 123,
                             AuditoriumId = 1,
-                            SeatId = "K1",
+                            ColumnIndex = 14,
+                            RowIndex = 11,
+                            SeatId = "J14",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 124,
                             AuditoriumId = 1,
-                            SeatId = "K2",
+                            ColumnIndex = 1,
+                            RowIndex = 12,
+                            SeatId = "K1",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 125,
                             AuditoriumId = 1,
-                            SeatId = "K3",
+                            ColumnIndex = 2,
+                            RowIndex = 12,
+                            SeatId = "K2",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 126,
                             AuditoriumId = 1,
-                            SeatId = "K4",
+                            ColumnIndex = 3,
+                            RowIndex = 12,
+                            SeatId = "K3",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 127,
                             AuditoriumId = 1,
-                            SeatId = "K5",
+                            ColumnIndex = 4,
+                            RowIndex = 12,
+                            SeatId = "K4",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 128,
                             AuditoriumId = 1,
-                            SeatId = "K6",
+                            ColumnIndex = 5,
+                            RowIndex = 12,
+                            SeatId = "K5",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 129,
                             AuditoriumId = 1,
-                            SeatId = "K7",
+                            ColumnIndex = 6,
+                            RowIndex = 12,
+                            SeatId = "K6",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 130,
                             AuditoriumId = 1,
-                            SeatId = "K8",
+                            ColumnIndex = 7,
+                            RowIndex = 12,
+                            SeatId = "K7",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 131,
                             AuditoriumId = 1,
-                            SeatId = "K9",
+                            ColumnIndex = 8,
+                            RowIndex = 12,
+                            SeatId = "K8",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 132,
                             AuditoriumId = 1,
-                            SeatId = "K10",
+                            ColumnIndex = 9,
+                            RowIndex = 12,
+                            SeatId = "K9",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 133,
                             AuditoriumId = 1,
-                            SeatId = "K11",
+                            ColumnIndex = 10,
+                            RowIndex = 12,
+                            SeatId = "K10",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 134,
                             AuditoriumId = 1,
-                            SeatId = "K12",
+                            ColumnIndex = 11,
+                            RowIndex = 12,
+                            SeatId = "K11",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 135,
                             AuditoriumId = 1,
-                            SeatId = "K13",
+                            ColumnIndex = 12,
+                            RowIndex = 12,
+                            SeatId = "K12",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 136,
                             AuditoriumId = 1,
-                            SeatId = "K14",
+                            ColumnIndex = 13,
+                            RowIndex = 12,
+                            SeatId = "K13",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 137,
                             AuditoriumId = 1,
-                            SeatId = "L1",
+                            ColumnIndex = 14,
+                            RowIndex = 12,
+                            SeatId = "K14",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 138,
                             AuditoriumId = 1,
-                            SeatId = "L2",
+                            ColumnIndex = 1,
+                            RowIndex = 13,
+                            SeatId = "L1",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 139,
                             AuditoriumId = 1,
-                            SeatId = "L3",
+                            ColumnIndex = 2,
+                            RowIndex = 13,
+                            SeatId = "L2",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 140,
                             AuditoriumId = 1,
-                            SeatId = "L4",
+                            ColumnIndex = 3,
+                            RowIndex = 13,
+                            SeatId = "L3",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 141,
                             AuditoriumId = 1,
-                            SeatId = "L5",
+                            ColumnIndex = 4,
+                            RowIndex = 13,
+                            SeatId = "L4",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 142,
                             AuditoriumId = 1,
-                            SeatId = "L6",
+                            ColumnIndex = 5,
+                            RowIndex = 13,
+                            SeatId = "L5",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 143,
                             AuditoriumId = 1,
-                            SeatId = "L7",
+                            ColumnIndex = 6,
+                            RowIndex = 13,
+                            SeatId = "L6",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 144,
                             AuditoriumId = 1,
-                            SeatId = "L8",
+                            ColumnIndex = 7,
+                            RowIndex = 13,
+                            SeatId = "L7",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 145,
                             AuditoriumId = 1,
-                            SeatId = "L9",
+                            ColumnIndex = 8,
+                            RowIndex = 13,
+                            SeatId = "L8",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 146,
                             AuditoriumId = 1,
-                            SeatId = "L10",
+                            ColumnIndex = 9,
+                            RowIndex = 13,
+                            SeatId = "L9",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 147,
                             AuditoriumId = 1,
-                            SeatId = "L11",
+                            ColumnIndex = 10,
+                            RowIndex = 13,
+                            SeatId = "L10",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 148,
                             AuditoriumId = 1,
-                            SeatId = "L12",
+                            ColumnIndex = 11,
+                            RowIndex = 13,
+                            SeatId = "L11",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 149,
                             AuditoriumId = 1,
-                            SeatId = "L13",
+                            ColumnIndex = 12,
+                            RowIndex = 13,
+                            SeatId = "L12",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 150,
                             AuditoriumId = 1,
-                            SeatId = "L14",
+                            ColumnIndex = 13,
+                            RowIndex = 13,
+                            SeatId = "L13",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 151,
                             AuditoriumId = 1,
-                            SeatId = "L15",
+                            ColumnIndex = 14,
+                            RowIndex = 13,
+                            SeatId = "L14",
+                            SeatStyleId = 4,
                             Stauts = false
                         },
                         new
                         {
                             Id = 152,
                             AuditoriumId = 1,
+                            ColumnIndex = 15,
+                            RowIndex = 13,
+                            SeatId = "L15",
+                            SeatStyleId = 4,
+                            Stauts = false
+                        },
+                        new
+                        {
+                            Id = 153,
+                            AuditoriumId = 1,
+                            ColumnIndex = 16,
+                            RowIndex = 13,
                             SeatId = "L16",
+                            SeatStyleId = 4,
                             Stauts = false
                         });
                 });
@@ -4353,7 +4832,7 @@ namespace Booking_Movie.Data.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<bool>("Stauts")
+                    b.Property<bool?>("Stauts")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -4385,6 +4864,57 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 1,
                             SeatNoId = 4,
                             Stauts = true
+                        });
+                });
+
+            modelBuilder.Entity("Booking_Movie.Data.Entities.SeatStyle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(255)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SeatStyles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Ghế VIP"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Ghế Couple"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Ghế Cao cấp"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Ghế Không thể chọn"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Ghế Thường"
                         });
                 });
 
@@ -4827,9 +5357,18 @@ namespace Booking_Movie.Data.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_seatno_seat");
 
+                    b.HasOne("Booking_Movie.Data.Entities.SeatStyle", "SeatStyle")
+                        .WithMany("SeatNos")
+                        .HasForeignKey("SeatStyleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_seatno_seatstyle");
+
                     b.Navigation("Auditorium");
 
                     b.Navigation("Seat");
+
+                    b.Navigation("SeatStyle");
                 });
 
             modelBuilder.Entity("Booking_Movie.Data.Entities.SeatReserved", b =>
@@ -4963,6 +5502,11 @@ namespace Booking_Movie.Data.Migrations
             modelBuilder.Entity("Booking_Movie.Data.Entities.SeatNo", b =>
                 {
                     b.Navigation("SeatReserveds");
+                });
+
+            modelBuilder.Entity("Booking_Movie.Data.Entities.SeatStyle", b =>
+                {
+                    b.Navigation("SeatNos");
                 });
 
             modelBuilder.Entity("Booking_Movie.Data.Entities.Ticket", b =>

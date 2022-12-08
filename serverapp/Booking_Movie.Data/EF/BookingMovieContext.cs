@@ -42,6 +42,7 @@ namespace Booking_Movie.Data.EF
             modelBuilder.ApplyConfiguration(new ScreeningConfiguration());
             modelBuilder.ApplyConfiguration(new SeatConfiguration());
             modelBuilder.ApplyConfiguration(new SeatNoConfiguration());
+            modelBuilder.ApplyConfiguration(new SeatStyleConfiguration());
             modelBuilder.ApplyConfiguration(new SeatReservedConfiguration());
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
 
@@ -88,6 +89,7 @@ namespace Booking_Movie.Data.EF
         public DbSet<Seat> Seats { get; set; }
 
         public DbSet<SeatNo> SeatNos { get; set; }
+        public DbSet<SeatStyle> SeatStyles { get; set; }
 
         public DbSet<SeatReserved> SeatReserveds { get; set; }
         public DbSet<Ticket> Tickets { get; set; }

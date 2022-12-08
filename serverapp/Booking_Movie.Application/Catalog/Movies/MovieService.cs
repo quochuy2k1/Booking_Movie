@@ -10,6 +10,9 @@ using Booking_Movie.ViewModel.Catalog.ScreeningVM;
 using Booking_Movie.ViewModel.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Hosting;
+using System.Drawing;
 using System.Linq.Expressions;
 using System.Net.Http.Headers;
 
@@ -31,30 +34,43 @@ namespace Booking_Movie.Application.Catalog.Movies
             _mapper = mapper;
         }
 
-        //public async Task<Guid> Create(MovieCreateRequest Request)
-        //{
-        //    var movie = new Movie()
-        //    {
-        //        Name = Request.Name,
-        //        Height = Request.Height,
-        //        ViewCount = 0,
-        //        DateOfBirth = Request.DateOfBirth,
-        //        NationalityId = Request.Nationality,
-        //        CreatedDate = DateTime.Now,
-        //        UpdatedDate = DateTime.Now,
-        //    };
+        public async Task<int?> Create(MovieCreateRequest Request)
+        {
+            var movie = new Movie()
+            {
+                Name = Request.Name,
+                Alias = Request.Alias,
+                Duration = Request.Duration,
+                ReleaseDate = Request.ReleaseDate,
+                Content = Request.Content,
+                Status = Request.Status,
+                ProducerId = Request.ProducerId,
+                NationalityId = Request.NationalityId,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+            };
 
-        //    if (Request.Image != null)
-        //    {
-        //        movie.Image = await SaveFile(Request.Image);
-        //    }
+            if (Request.ImageBackground != null)
+            {
+                movie.ImageBackground = await SaveFile(Request.ImageBackground);
+            }
 
-        //    //_Context.Actors.Add(actor);
-        //    //await _Context.SaveChangesAsync();
-        //    var query = _movieRepository.Add(movie);
-        //    await _unitOfWork.Commit();
-        //    return await Task.Run(() => movie.ID);
-        //}
+            if (Request.ImageReview != null)
+            {
+                movie.ImagePreview = await SaveFile(Request.ImageReview);
+            }
+
+
+            if (Request.VideoTrailer != null)
+            {
+                movie.VideoTrailer = await SaveFile(Request.VideoTrailer, "video-trailer");
+            }
+
+         
+            var query = _movieRepository.Add(movie);
+            await _unitOfWork.Commit();
+            return await Task.Run(() => movie.Id);
+        }
 
         //public async Task<bool> Delete(Guid id)
         //{
@@ -95,36 +111,56 @@ namespace Booking_Movie.Application.Catalog.Movies
         {
             //1. query
             int total = 0;
-            Expression<Func<Movie, bool>>? expression = null;
-            IQueryable<Movie> query = null!;
+            List<Expression<Func<MovieVM, bool>>>? expression = new List<Expression<Func<MovieVM, bool>>>();
+            IQueryable<MovieVM> query = null!;
 
 
             //2. filter
-            if (!String.IsNullOrEmpty(pagingRequest.Nationality))
+            if (!String.IsNullOrEmpty(pagingRequest.Nationality) && pagingRequest.Nationality != "all")
             {
                 //query = query.Where();
-                expression = q => q.Nationality.Name.ToUpper().Contains(pagingRequest.Nationality.ToUpper());
+                Expression<Func<MovieVM, bool>> nationalityFilter = m => m.nationality.Id.ToUpper().Contains(pagingRequest.Nationality.ToUpper()); ;
+                expression!.Add(nationalityFilter);
             }
 
             //3.paging
-            query = _movieRepository.GetMultiPaging(expression, out total, pagingRequest.PageIndex, pagingRequest.PageSize);
+            query =  _movieRepository.GetMoviePaging(expression, out total, pagingRequest.PageIndex, pagingRequest.PageSize);
 
 
             //4. Get data
 
-            var data = await query.ToListAsync();
-            var dataMapper = _mapper.Map<List<MovieViewModel>>(data);
+           
+            var data = await query.Select(an => new MovieViewModel()
+            {
+
+                Id = an.movie.Id,
+                Name = an.movie.Name,
+                Content = an.movie.Content,
+                Duration = an.movie.Duration,
+                ReleaseDate = an.movie.ReleaseDate,
+                VideoTrailer = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/video-trailer/{an.movie.VideoTrailer}",
+                ImagePreview = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{an.movie.ImagePreview}",
+                ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{an.movie.ImageBackground}",
+                Actors = String.Join(", ", an.actors),
+                Producer = an.movie.Producer.Name,
+                Directors = String.Join(", ", an.directors),
+                Categories = String.Join(", ", an.categories),
+                Nationality = an.nationality.Name
 
 
-            dataMapper.ForEach((movie) => {
-                movie.ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{movie.ImageBackground}";
-                movie.ImagePreview = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{movie.ImagePreview}";
-                movie.VideoTrailer = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/video-trailer/{movie.VideoTrailer}";
-            });
+            }).ToListAsync();
+            //var dataMapper = _mapper.Map<List<MovieViewModel>>(data);
 
+
+            //dataMapper.ForEach((movie) => {
+            //    movie.ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{movie.ImageBackground}";
+            //    movie.ImagePreview = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{movie.ImagePreview}";
+            //    movie.VideoTrailer = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/video-trailer/{movie.VideoTrailer}";
+            //});
+          
             var pagedResult = new PagedResult<MovieViewModel>()
             {
-                Result = dataMapper,
+                Result = data,
                 Total = total,
             };
 
@@ -133,7 +169,7 @@ namespace Booking_Movie.Application.Catalog.Movies
 
         public async Task<MovieDetailViewModel?> GetMovieDetails(int Id, string host)
         {
-            Expression<Func<MovieDetailsVM, bool>> expression = m => m.movie.Id == Id;
+            Expression<Func<MovieVM, bool>> expression = m => m.movie.Id == Id;
             try
             {
                 var query = await _movieRepository.GetMovieDetails(expression);
@@ -149,11 +185,12 @@ namespace Booking_Movie.Application.Catalog.Movies
                     ReleaseDate = an.movie.ReleaseDate,
                     VideoTrailer = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/video-trailer/{an.movie.VideoTrailer}",
                     ImagePreview = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{an.movie.ImagePreview}",
+                    ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{an.movie.ImageBackground}",
                     Actors = String.Join(", ", an.actors),
                     Producer = an.movie.Producer.Name,
                     Directors = String.Join(", ", an.directors),
                     Categories = String.Join(", ", an.categories),
-                    Nationality = an.nationality
+                    Nationality = an.nationality.Name
 
 
                 }).SingleOrDefaultAsync();
@@ -169,12 +206,17 @@ namespace Booking_Movie.Application.Catalog.Movies
 
         }
 
-        //public async Task<MovieViewModel> GetById(Guid id)
-        //{
-        //    var movie = await _movieRepository.GetSingleByCondition(a => a.ID == id);
-        //    var movieVm = _mapper.Map<MovieViewModel>(movie);
-        //    return movieVm!;
-        //}
+        public async Task<MovieViewModel?> GetById(int id, string host)
+        {
+            var movie = await _movieRepository.GetSingleByCondition(m => m.Id == id);
+
+            movie!.ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{movie!.ImageBackground}";
+            movie!.ImagePreview = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{movie!.ImagePreview}";
+            movie!.VideoTrailer = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/video-trailer/{movie!.VideoTrailer}";
+            
+            var movieVm = _mapper.Map<MovieViewModel>(movie);
+            return movieVm;
+        }
 
         //public async Task<bool> Update(Guid id, MovieUpdateRequest Request)
         //{
@@ -240,7 +282,7 @@ namespace Booking_Movie.Application.Catalog.Movies
                 throw new Exception(ex.Message);
             }
         }
-        private async Task<string> SaveFile(IFormFile file, string? folder)
+        private async Task<string> SaveFile(IFormFile file, string? folder = null)
         {
             var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName!.Trim('"'); // get original file name from Content Disposition Header
             var fileName = $"{Guid.NewGuid()}{Path.GetExtension(originalFileName)}"; // create file name with Guid is the name of the file
@@ -253,6 +295,37 @@ namespace Booking_Movie.Application.Catalog.Movies
             return fileName;
         }
 
-       
+        public async Task<bool?> AddMovieCategories(int Id, int[] CategoriesId)
+        {
+            if(CategoriesId.Length > 0)
+            {
+                _movieRepository.AddMovieCategories(Id, CategoriesId);
+                return await _unitOfWork.Commit();
+            }
+
+            return false;
+        }
+
+        public async Task<bool?> AddCast(int Id, Guid[] actorsId)
+        {
+            if (actorsId.Length > 0)
+            {
+                _movieRepository.AddCast(Id, actorsId);
+                return await _unitOfWork.Commit();
+            }
+
+            return false;
+        }
+
+        public async Task<bool?> AddMovieDirector(int Id, Guid[] directorsId)
+        {
+            if (directorsId.Length > 0)
+            {
+                _movieRepository.AddMovieDirector(Id, directorsId);
+                return await _unitOfWork.Commit();
+            }
+
+            return false;
+        }
     }
 }

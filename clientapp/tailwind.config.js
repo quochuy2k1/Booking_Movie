@@ -17,6 +17,13 @@ module.exports = {
       },
       transitionDuration: {
         '4000': '4000ms',
+      },
+      translate: {
+        'neg-1/2': '-50%',
+      },
+      zIndex: {
+        '1000': '1000',
+        '1010': '1010',
       }
     },
   },

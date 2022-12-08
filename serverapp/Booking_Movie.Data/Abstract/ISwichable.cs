@@ -2,6 +2,6 @@
 {
     public interface ISwichable
     {
-        bool Stauts { get; set; }
+        bool? Stauts { get; set; }
     }
 }

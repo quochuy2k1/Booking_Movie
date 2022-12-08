@@ -119,6 +119,16 @@ namespace Booking_Movie.Data.Infrastructure
             return await dbSet.FindAsync(id);
         }
 
+        public async Task<T?> GetSingleById(string id)
+        {
+            return await dbSet.FindAsync(id);
+        }
+
+        public async Task<T?> GetSingleById(Guid id)
+        {
+            return await dbSet.FindAsync(id);
+        }
+
         public void Update(T entity)
         {
             dbSet.Attach(entity);

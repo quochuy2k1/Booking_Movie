@@ -25,7 +25,6 @@
     <Folder Include="Catalog\Cinemas\" />
     <Folder Include="Catalog\MovieCategories\" />
     <Folder Include="Catalog\Coupons\" />
-    <Folder Include="Catalog\PaymentMethods\" />
     <Folder Include="Catalog\Seats\" />
   </ItemGroup>
 

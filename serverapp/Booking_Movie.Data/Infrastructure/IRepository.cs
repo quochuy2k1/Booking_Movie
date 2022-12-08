@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Linq.Expressions;
 
 namespace Booking_Movie.Data.Infrastructure
@@ -21,6 +22,8 @@ namespace Booking_Movie.Data.Infrastructure
 
         // Get an entity by int id
         Task<T?> GetSingleById(int id);
+        Task<T?> GetSingleById(string id);
+        Task<T?> GetSingleById(Guid id);
 
         Task<T?> GetSingleByCondition(Expression<Func<T, bool>> expression, string[]? includes = null);
 

@@ -1,4 +1,6 @@
-﻿using Booking_Movie.ViewModel.Catalog.SeatVM;
+﻿using Booking_Movie.Data.Models;
+using Booking_Movie.ViewModel.Catalog.AuditoriumVM;
+using Booking_Movie.ViewModel.Catalog.SeatVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ namespace Booking_Movie.Application.Catalog.Auditoriums
 {
     public interface IAuditoriumService
     {
-        Task<List<SeatViewModel>?> GetSeatByAuditoriumId(int id);
+        Task<List<SeatInAuditoriumViewModel>?> GetSeatByAuditoriumId(int id);
+        Task<List<string>> GetRowOfSeatsByAuditoriumId(int Id);
     }
 }

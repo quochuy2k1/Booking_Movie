@@ -35,7 +35,7 @@ namespace Booking_Movie.BackendApi.Controllers
 
         [HttpPost("/user/signup")]
         [AllowAnonymous]
-        public async Task<IActionResult> SignUp([FromForm] RegisterRequest request)
+        public async Task<IActionResult> SignUp([FromBody] RegisterRequest request)
         {
             if(!ModelState.IsValid) return BadRequest(ModelState);
 
