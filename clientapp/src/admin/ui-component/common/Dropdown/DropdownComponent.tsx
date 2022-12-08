@@ -2,27 +2,40 @@ import React from "react";
 
 import { Dropdown, DropdownProps } from 'semantic-ui-react';
 import "./dropdown.css"
-interface dataCountryOption {
-    key: string,
-    value: string,
+export interface dataDropdownOption {
+    key: string | number,
+    value: string | number | boolean,
     flag?: string,
     text: string
 }
 
 interface IDropdownProps {
-    dataOption?: dataCountryOption[],
+    dataOption?: dataDropdownOption[],
     inline?: boolean | undefined,
+    selection?: boolean,
+    search?: boolean,
+    multiple?: boolean,
+    loading?: boolean,
+    placeholder?: string,
     onSelectChange?:  (e: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => void | undefined
 }
 
-const DropdownComponent: React.FC<IDropdownProps> = ({ dataOption, inline, onSelectChange}) => {
+const DropdownComponent: React.FC<IDropdownProps> = ({ dataOption, inline, selection, search, multiple, loading, placeholder, onSelectChange}) => {
 
 
     return <>
         <Dropdown
             inline={inline}
+            loading={loading}
             options={dataOption}
-            defaultValue={dataOption![0].value}
+            multiple={multiple}
+            selection={selection}
+            search={search}
+            clearable
+            labeled
+            fluid
+            placeholder={placeholder}
+            // defaultValue={}
             onChange={onSelectChange}
         />
     </>

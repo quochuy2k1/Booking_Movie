@@ -4,6 +4,8 @@ using Booking_Movie.ViewModel.Catalog.MovieVM;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace Booking_Movie.BackendApi.Controllers
@@ -72,13 +74,87 @@ namespace Booking_Movie.BackendApi.Controllers
             var movieId = await _movieService.Create(request);
             if (movieId == null) return BadRequest();
 
-            var movie_created = await _movieService.GetById(movieId.Value, host);
+            var movie_created = await _movieService.GetMovieDetails(movieId.Value, host);
             return Ok(movie_created);
+        }
+
+        [HttpPut("{id}/update")]
+        //[Authorize(Roles = "Admin")]
+        [RequestSizeLimit(50 * 1024 * 1024)]
+        [RequestFormLimits(MultipartBodyLengthLimit = 50 * 1024 * 1024)]
+        public async Task<IActionResult> Update(int id, [FromForm] MovieUpdateRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var host = $"{Request.Scheme}://{Request.Host}";
+                var movieId = await _movieService.Update(id, request);
+                if (movieId == null) return BadRequest();
+
+                var movie_updated = await _movieService.GetMovieDetails(movieId.Value, host);
+                return Ok(movie_updated);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+           
+        }
+
+        [HttpDelete("del")]
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete([FromForm] int[] id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var isSuccess = await _movieService.Delete(id);
+                if (!isSuccess) return BadRequest();
+                return Ok(isSuccess);
+
+            }
+            catch (DbUpdateException)
+            {
+                
+                return StatusCode(500, "Không thể xoá nếu bảng movie còn tham chiếu đến bảng khác. (Danh mục phim, Đạo diễn, Diễn viên). Phải xoá những tham chiếu đến bảng này hết trước khi xoá.");
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+
+            }
+
+        }
+
+
+        [HttpPatch("{id}/update-cast")]
+        public async Task<IActionResult> UpdateCast(int id, Guid[] actorsId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var isSuccessful = await _movieService.UpdateCast(id, actorsId);
+                return Ok(isSuccessful);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            
         }
 
         [HttpPost("add-movie-categories/{Id}")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddMovieCategories(int Id, [FromForm] int[] categoriesId)
+        public async Task<IActionResult> AddMovieCategories(int Id, [FromBody] int[] categoriesId)
         {
             if (!ModelState.IsValid)
             {
@@ -92,7 +168,7 @@ namespace Booking_Movie.BackendApi.Controllers
 
         [HttpPost("add-cast/{Id}")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddCast(int Id, [FromForm] Guid[] actorsId)
+        public async Task<IActionResult> AddCast(int Id, [FromBody] Guid[] actorsId)
         {
             if (!ModelState.IsValid)
             {
@@ -106,7 +182,7 @@ namespace Booking_Movie.BackendApi.Controllers
 
         [HttpPost("add-movie-director/{Id}")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddMovieCategory(int Id, [FromForm] Guid[] directorsId)
+        public async Task<IActionResult> AddMovieCategory(int Id, [FromBody] Guid[] directorsId)
         {
             if (!ModelState.IsValid)
             {
@@ -116,6 +192,57 @@ namespace Booking_Movie.BackendApi.Controllers
             var isAddSuccessful = await _movieService.AddMovieDirector(Id, directorsId);
             if (isAddSuccessful == false) return BadRequest();
             return Ok(isAddSuccessful);
+        }
+
+        [HttpGet("{id}/get-movie-director")]
+        public async Task<IActionResult> GetMovieDirector(int id)
+        {
+           
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var movieDirectors = await _movieService.FindMovieDirectorByMovieId(id);
+                return Ok(movieDirectors);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message); 
+            }
+            
+        }
+
+        [HttpGet("{id}/get-movie-category")]
+        public async Task<IActionResult> GetMovieCategory(int id)
+        {
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var movieCategorys = await _movieService.FindMovieCategoryByMovieId(id);
+                return Ok(movieCategorys);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        } 
+        
+        [HttpGet("{id}/get-cast")]
+        public async Task<IActionResult> GetCast(int id)
+        {
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var cast = await _movieService.FindCastByMovieId(id);
+                return Ok(cast);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
         }
     }
 }

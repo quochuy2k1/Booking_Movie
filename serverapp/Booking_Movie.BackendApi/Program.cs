@@ -23,6 +23,7 @@ using Booking_Movie.Application.Catalog.Combos;
 using Booking_Movie.Application.Catalog.Auditoriums;
 using Booking_Movie.Application.Catalog.PaymentMethods;
 using Booking_Movie.Application.Catalog.Categories;
+using Booking_Movie.Application.Catalog.Nationalities;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -33,7 +34,7 @@ IWebHostEnvironment environment = builder.Environment;
 // Add services to the container.
 builder.Services.AddCors(option => option.AddPolicy("ApiCorsPolicy", builder =>  
 {
-        builder.WithOrigins("http://localhost:3000", "https://localhost:44397")
+        builder.WithOrigins("http://localhost:3000", "https://localhost:44397, http://127.0.0.1:8001")
                          .AllowAnyMethod()
                          .AllowAnyHeader();
     }));
@@ -90,6 +91,7 @@ builder.Services.AddTransient<CategoryRepository>();
 builder.Services.AddTransient<ComboRepository>();
 builder.Services.AddTransient<DirectorRepository>();
 builder.Services.AddTransient<MovieRepository>();
+builder.Services.AddTransient<NationalityRepository>();
 builder.Services.AddTransient<PaymentMethodRepository>();
 builder.Services.AddTransient<ProducerRepository>();
 builder.Services.AddTransient<TicketRepository>();
@@ -99,6 +101,7 @@ builder.Services.AddTransient<IComboService, ComboService>();
 builder.Services.AddTransient<ICateroryService, CategoryService>();
 builder.Services.AddTransient<IDirectorService, DirectorService>();
 builder.Services.AddTransient<IMovieService, MovieService>();
+builder.Services.AddTransient<INationalityService, NationalityService>();
 builder.Services.AddTransient<IProducerService, ProducerService>();
 builder.Services.AddTransient<IPaymentMethodService, PaymentMethodService>();
 builder.Services.AddTransient<ITicketService, TicketService>();

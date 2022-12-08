@@ -23,9 +23,16 @@ namespace Booking_Movie.Data.Infrastructure
             this.dbFactory = dbFactory;
         }
 
-        public EntityEntry<T> Add(T entity)
+        public T Add(T entity)
         {
-            return dbSet.Add(entity);
+            var addNew = dbSet.Add(entity);
+            return addNew.Entity;
+        }
+
+        public async Task<T> AddAsync(T entity)
+        {
+            var addNew = await dbSet.AddAsync(entity);
+            return addNew.Entity;
         }
 
         public bool CheckContains(Expression<Func<T, bool>> predicate)
@@ -53,9 +60,55 @@ namespace Booking_Movie.Data.Infrastructure
             return this.dbSet.Remove(entity!);
         }
 
-        public void DeleteMulti(Expression<Func<T, bool>> where)
+        public async Task<List<T>?> DeleteMulti(int[] idList)
         {
-            throw new NotImplementedException();
+            List<T> entities = new List<T>();
+            try
+            {
+                foreach (var id in idList)
+                {
+                    var entity = await this.dbSet.FindAsync(id);
+                    if(entity != null)
+                    {
+                        entities.Add(entity);
+                        this.dbSet.Remove(entity!);
+                    }
+                    
+                }
+
+                return entities;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+
+        }
+
+        public async Task<bool> DeleteMulti(Guid[] idList)
+        {
+            try
+            {
+                foreach (var id in idList)
+                {
+                    var entity = await this.dbSet.FindAsync(id);
+                    this.dbSet.Remove(entity!);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+
+            return true;
+
         }
 
         public IQueryable<T> GetAll(string[]? includes = null)

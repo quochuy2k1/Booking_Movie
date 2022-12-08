@@ -38,3 +38,12 @@ export async function GetDetailActor(id: string) {
     
     // }
 }
+
+export async function GetAllActor() {
+   
+    var response = http.get<Actor[]>(`/api/actors`)
+
+    return response;
+    
+    // }
+}

@@ -7,7 +7,9 @@ namespace Booking_Movie.Data.Infrastructure
     public interface IRepository<T> where T : class
     {
         // Marks an entity as new
-        EntityEntry<T> Add(T entity);
+        T Add(T entity);
+        Task<T> AddAsync(T entity);
+
 
         // Marks an entity as modified
         void Update(T entity);
@@ -18,7 +20,7 @@ namespace Booking_Movie.Data.Infrastructure
         Task<EntityEntry<T>> Delete(int id);
 
         //Delete multi records
-        void DeleteMulti(Expression<Func<T, bool>> where);
+        Task<List<T>?> DeleteMulti(int [] idList);
 
         // Get an entity by int id
         Task<T?> GetSingleById(int id);

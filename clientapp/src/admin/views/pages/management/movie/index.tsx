@@ -1,16 +1,15 @@
 import * as React from 'react';
-import { DataGrid, GridColDef, GridValueGetterParams, GridToolbar, useGridApiContext, useGridSelector, gridPageSelector, gridPageCountSelector } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridToolbar, useGridApiContext, useGridSelector, gridPageSelector, gridPageCountSelector } from '@mui/x-data-grid';
 import MainCard from '../../../../ui-component/cards/MainCard';
 import { locateText } from '../../../../utils/locateTextDataGrid';
-import { GetAllMoviePagingAsync, MovieModel } from '../../../../../slices/movie/movieSlice';
-import { useCallback } from 'react';
+import { GetAllMoviePagingAsync } from '../../../../../slices/movie/movieSlice';
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
-import { Avatar, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, LinearProgress, Pagination, Paper, TableContainer, TablePagination, TableRow } from '@mui/material';
-import { Button, Dropdown, DropdownProps, Icon } from 'semantic-ui-react';
+import { Avatar, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, LinearProgress, Paper, TablePagination, useMediaQuery, useTheme } from '@mui/material';
+import { Button, DropdownProps, Form, Icon, Input } from 'semantic-ui-react';
 import DropdownComponent from '../../../../ui-component/common/Dropdown/DropdownComponent';
 import moment from 'moment';
-
-
+import { Editor } from '@tinymce/tinymce-react';
+import AddNewMovie from './addNewMovie';
 
 const columns: GridColDef[] = [
 	{ field: 'id', headerName: 'ID', width: 40 },
@@ -118,6 +117,9 @@ const ActorManagement: React.FC = () => {
 	const [nationality, setNationality] = React.useState<string>("all");
 	const [rowCountState, setRowCountState] = React.useState(total || 0);
 
+	
+	
+
 	React.useEffect(() => {
 		if (movies.length <= 0) {
 			dispatch(GetAllMoviePagingAsync({ PageIndex: pageIndex, PageSize: pageSize }));
@@ -129,16 +131,9 @@ const ActorManagement: React.FC = () => {
 		console.log(rowCountState, "      ", total, "rowCountState")
 	}, [dispatch, total, setRowCountState]);
 
-	const [openAdd, setOpenAdd] = React.useState(false);
 	const [openDel, setOpenDel] = React.useState(false);
 
-	const handleClickAddOpen = () => {
-		setOpenAdd(true);
-	};
-
-	const handleAddClose = () => {
-		setOpenAdd(false);
-	};
+	
 	const handleClickDelOpen = () => {
 		setOpenDel(true);
 	};
@@ -161,10 +156,8 @@ const ActorManagement: React.FC = () => {
 	return (
 		<MainCard title="Quản lý Phim">
 			<div className='py-2'>
-				<Button icon color='blue' onClick={handleClickAddOpen} labelPosition='right'>
-					<Icon name='add' /> Thêm mới
-				</Button>
-
+				
+				<AddNewMovie/>
 				<Button icon color='red' onClick={handleClickDelOpen} labelPosition='right'>
 					<Icon name='delete' /> Xoá nhiều
 				</Button>
@@ -191,29 +184,7 @@ const ActorManagement: React.FC = () => {
 					</DialogActions>
 				</Dialog>
 
-				<Dialog
-					open={openAdd}
-					onClose={handleAddClose}
-					aria-labelledby="alert-dialog-title"
-					aria-describedby="alert-dialog-description"
-				>
-					<DialogTitle id="alert-dialog-title">
-						{"Thêm mới phim"}
-					</DialogTitle>
-					<DialogContent>
-						<DialogContentText id="alert-dialog-description">
-							Khi thêm mới bộ phim sẽ thêm mới
-						</DialogContentText>
-
-						{/* Input field here */}
-					</DialogContent>
-					<DialogActions>
-						<Button color='blue' onClick={handleAddClose}>Xác nhận lưu</Button>
-						<Button color='red' onClick={handleAddClose} autoFocus>
-							Huỷ bỏ lưu
-						</Button>
-					</DialogActions>
-				</Dialog>
+				
 
 			</div>
 			<Paper elevation={1} square className='p-5 my-1'>
@@ -233,16 +204,16 @@ const ActorManagement: React.FC = () => {
 					loading={status === "loading" ? true : false}
 					rows={movies}
 					columns={columns}
-					pageSize={pageSize }
+					pageSize={pageSize}
 					rowsPerPageOptions={[1, 3, 5, 10, 20, 50, 100]}
-					onPageSizeChange={(newPageSize) => {setPageSize(newPageSize); dispatch(GetAllMoviePagingAsync({ PageIndex: pageIndex, PageSize: newPageSize, Nationality:nationality }));}}
+					onPageSizeChange={(newPageSize) => { setPageSize(newPageSize); dispatch(GetAllMoviePagingAsync({ PageIndex: pageIndex, PageSize: newPageSize, Nationality: nationality })); }}
 					pagination
 					paginationMode="server"
 					checkboxSelection
 					onPageChange={handlePageChange}
 					rowCount={rowCountState}
 					// components={{ Toolbar: GridToolbar, Pagination: CustomPagination, LoadingOverlay: LinearProgress, }}
-					components={{ Toolbar: GridToolbar,   LoadingOverlay: LinearProgress, }}
+					components={{ Toolbar: GridToolbar, LoadingOverlay: LinearProgress, }}
 					localeText={locateText}
 				/>
 

@@ -28,7 +28,7 @@ const MovieBG: React.FC<{ movies: MovieModel[] }> = ({ movies }) => {
                 />
             </div>
 
-            <Grid className="absolute right-10 top-1/2">
+            <Grid className="absolute right-10 top-1/3">
                 <Grid.Column width={9}>
                     <Button size="big" inverted icon circular basic onClick={() => setMuted((pre) => !pre)} >
                         <Icon size="large" inverted name={muted ? "volume up" : "volume off"} className="text-white" />
@@ -47,7 +47,7 @@ const MovieBG: React.FC<{ movies: MovieModel[] }> = ({ movies }) => {
                             <Icon name='ticket' />
                             Đặt vé
                         </Button>
-                        <Button as={Link} to={`movie/${movieBG && movieBG.id}`} size="big" icon labelPosition='left' color="grey">
+                        <Button as={Link} to={`/movie/${movieBG && movieBG.id}`} size="big" icon labelPosition='left' color="grey">
                             <Icon name='info' />
                             Chi tiết
                         </Button>
