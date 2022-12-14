@@ -1,8 +1,11 @@
 ﻿using Booking_Movie.Application.Catalog.Actors;
+using Booking_Movie.Data.Entities;
 using Booking_Movie.ViewModel.Catalog.ActorVM;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
 namespace Booking_Movie.BackendApi.Controllers
 {
@@ -25,7 +28,8 @@ namespace Booking_Movie.BackendApi.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
-            var actors = await _actorService.GetAll();
+            var host = $"{Request.Scheme}://{Request.Host}";
+            var actors = await _actorService.GetAll(host);
             return Ok(actors);
         }
         
@@ -67,12 +71,21 @@ namespace Booking_Movie.BackendApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var host = $"{Request.Scheme}://{Request.Host}";
-            var ActorId = await _actorService.Create(request);
-            if (ActorId == Guid.Empty) return BadRequest();
+            try
+            {
+                var host = $"{Request.Scheme}://{Request.Host}";
+                var ActorId = await _actorService.Create(request);
+                if (ActorId == Guid.Empty) return BadRequest("Xãy ra lỗi khi tạo diễn viên.Vui lòng tạo lại");
 
-            var actor_created = await _actorService.GetById(ActorId, host);
-            return Ok(actor_created);
+                var actor_created = await _actorService.GetById(ActorId, host);
+                return Ok(actor_created);
+
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            
         } 
 
         [HttpPut("update/{id}")]
@@ -83,21 +96,112 @@ namespace Booking_Movie.BackendApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var isSuccess = await _actorService.Update(id, request);
-            if (!isSuccess) return BadRequest();
-            return Ok(isSuccess);
+            try
+            {
+                var host = $"{Request.Scheme}://{Request.Host}";
+                var actorId = await _actorService.Update(id, request);
+                if (actorId == Guid.Empty) return BadRequest("Xãy ra lỗi khi cập nhật diễn viên.Vui lòng làm lại");
+                var actorUpdated = await _actorService.GetById(actorId, host);
+                return Ok(actorUpdated);
+
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-        [HttpDelete("del/{id}")]
+
+        [HttpDelete("del")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete([FromForm]Guid id)
+        public async Task<IActionResult> Delete([FromBody]Guid[] id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var isSuccess = await _actorService.Delete(id);
-            if (!isSuccess) return BadRequest();
-            return Ok(isSuccess);
+            try
+            {
+                var actorsId = await _actorService.Delete(id);
+                if (actorsId == null) return BadRequest("Không thể xoá vì một số lý do.Vui lòng thử lại.");
+                return Ok(actorsId);
+            }
+            catch (DbUpdateException)
+            {
+
+                return StatusCode(500, "Không thể xoá nếu bảng movie còn tham chiếu đến bảng khác. (Danh mục phim, Đạo diễn, Diễn viên). Phải xoá những tham chiếu đến bảng này hết trước khi xoá.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+
+            }
+        }
+
+        [HttpGet("{id}/get-actor-image-detail/{amId}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetActorImageDetail(Guid id, int amId)
+        {
+            var host = $"{Request.Scheme}://{Request.Host}";
+            var actors = await _actorService.GetActorImageDetail(amId, id, host);
+            return Ok(actors);
+        }
+
+        [HttpPost("{id}/create-actor-image")]
+        [Authorize(Roles = "Admin")]
+
+        public async Task<IActionResult> CreateActorImage(Guid id, [FromForm] ActorImageCreateRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var host = $"{Request.Scheme}://{Request.Host}";
+                var ActorImageId = await _actorService.CreateActorImage(id, request);
+                if (ActorImageId == null) return BadRequest("Xãy ra lỗi khi tạo mới hình diễn viên.Vui lòng tạo lại");
+
+                var actor_image_created = await _actorService.GetActorImageDetail(ActorImageId.Value, id, host);
+                return Ok(actor_image_created);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        }
+
+        [HttpPut("{id}/update-actor-image/{amid}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Update(Guid id, int amid, [FromForm] ActorImageUpdateRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var host = $"{Request.Scheme}://{Request.Host}";
+                var actorImageId = await _actorService.UpdateActorImage(amid, id,  request);
+                if (actorImageId == null) return BadRequest("Xãy ra lỗi khi cập nhật hình diễn viên.Vui lòng làm lại");
+                var actorMovieUpdated = await _actorService.GetActorImageDetail(actorImageId.Value, id, host);
+                return Ok(actorMovieUpdated);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("{id}/get-all-actor-image")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAllActorImage(Guid id)
+        {
+            var host = $"{Request.Scheme}://{Request.Host}";
+            var actors = await _actorService.GetAllActorImage(id, host);
+            return Ok(actors);
         }
 
         [HttpGet("Images/GetImage")]

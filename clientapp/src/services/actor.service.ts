@@ -8,6 +8,16 @@ export interface ActorPagingRequest{
     Nationality?: string,
     SortBy?: number 
 }
+export interface ActorImageModel{
+    id: number,
+    actorId: string,
+    imagePath: string,
+    caption: string,
+    isDefault: boolean,
+    dateCreated: string,
+    sortOrder: number,
+    fileSize: number
+}
 
 interface ActorsResponse<T> {
     result: T[],
@@ -42,6 +52,14 @@ export async function GetDetailActor(id: string) {
 export async function GetAllActor() {
    
     var response = http.get<Actor[]>(`/api/actors`)
+
+    return response;
+    
+    // }
+}
+export async function GetAllActorImage(id: string) {
+   
+    var response = http.get<ActorImageModel[]>(`/api/actors/${id}/get-all-actor-image`)
 
     return response;
     

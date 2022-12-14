@@ -31,24 +31,31 @@ import NotificationList from './NotificationList';
 // assets
 import { IconBell } from '@tabler/icons';
 import MainCard from '../../../../ui-component/cards/MainCard';
+import DropdownComponent from '../../../../ui-component/common/Dropdown/DropdownComponent';
+import { DropdownProps } from 'semantic-ui-react';
 
 // notification status options
 const status = [
     {
+        key: "all",
         value: 'all',
-        label: 'All Notification'
+        text: 'Tất cả thông báo'
     },
     {
+
         value: 'new',
-        label: 'New'
+        key: 'new',
+        text: 'Mới'
     },
     {
+        key: 'unread',
         value: 'unread',
-        label: 'Unread'
+        text: 'Chưa đọc'
     },
     {
-        value: 'other',
-        label: 'Other'
+        key: 'others',
+        value: 'others',
+        text: 'Khác'
     }
 ];
 
@@ -84,8 +91,8 @@ const NotificationSection: React.FC<{}> = () => {
         prevOpen.current = open;
     }, [open]);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event?.target.value) setValue(event?.target.value);
+    const handleChange = (event: React.SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
+        if (data.value ) setValue(data.value as string);
     };
 
     return (
@@ -130,6 +137,8 @@ const NotificationSection: React.FC<{}> = () => {
                 role={undefined}
                 transition
                 disablePortal
+                onResize={() => {}}
+                onResizeCapture={() => {}}
                 popperOptions={{
                     modifiers: [
                         {
@@ -141,7 +150,7 @@ const NotificationSection: React.FC<{}> = () => {
                     ]
                 }}
             >
-                {({ TransitionProps }) => (
+                {({ TransitionProps } ) => (
                     <Transitions position={matchesXs ? 'top' : 'top-right'} in={open} {...TransitionProps}>
                         <Paper elevation={16}>
                             <ClickAwayListener onClickAway={handleClose}>
@@ -151,7 +160,7 @@ const NotificationSection: React.FC<{}> = () => {
                                             <Grid container alignItems="center" justifyContent="space-between" sx={{ pt: 2, px: 2 }}>
                                                 <Grid item>
                                                     <Stack direction="row" spacing={2}>
-                                                        <Typography variant="subtitle1">All Notification</Typography>
+                                                        <Typography variant="subtitle1">Tất cả thông báo</Typography>
                                                         <Chip
                                                             size="small"
                                                             label="01"
@@ -164,7 +173,7 @@ const NotificationSection: React.FC<{}> = () => {
                                                 </Grid>
                                                 <Grid item>
                                                     <Typography component={Link} to="#" variant="subtitle2" color="primary">
-                                                        Mark as all read
+                                                       Đánh dấu đọc tất cả
                                                     </Typography>
                                                 </Grid>
                                             </Grid>
@@ -176,7 +185,13 @@ const NotificationSection: React.FC<{}> = () => {
                                                 <Grid container direction="column" spacing={2}>
                                                     <Grid item xs={12}>
                                                         <Box sx={{ px: 2, pt: 0.25 }}>
-                                                            <TextField
+                                                            <DropdownComponent
+                                                                dataOption={status}
+                                                                defaultValue={status[0].value}
+                                                                onSelectChange={handleChange}
+                                                                selection
+                                                            />
+                                                            {/* <TextField
                                                                 id="outlined-select-currency-native"
                                                                 select
                                                                 fullWidth
@@ -191,7 +206,7 @@ const NotificationSection: React.FC<{}> = () => {
                                                                         {option.label}
                                                                     </option>
                                                                 ))}
-                                                            </TextField>
+                                                            </TextField> */}
                                                         </Box>
                                                     </Grid>
                                                     <Grid item xs={12} p={0}>
@@ -205,7 +220,7 @@ const NotificationSection: React.FC<{}> = () => {
                                     <Divider />
                                     <CardActions sx={{ p: 1.25, justifyContent: 'center' }}>
                                         <Button size="small" disableElevation>
-                                            View All
+                                            Xem tất cả
                                         </Button>
                                     </CardActions>
                                 </MainCard>

@@ -1,27 +1,22 @@
-import React, { useCallback, useEffect } from "react";
-import { Button, Card, Dropdown, Grid, Header, Icon, Image, Tab } from "semantic-ui-react";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { MoviePagingRequest } from "../../../services/movie.service";
-import { GetAllMoviePagingAsync } from "../../../slices/movie/movieSlice";
-import "./movie.css"
-import MovieBG from "../../components/movies/MovieBG";
-import { Link } from "react-router-dom";
+import { useCallback, useEffect, useMemo } from "react"
+import { Link } from "react-router-dom"
+import { Card, Grid, Tab, Image, Button, Icon, Container } from "semantic-ui-react"
+import { useAppDispatch, useAppSelector } from "../../../app/hooks"
+import { MoviePagingRequest } from "../../../services/movie.service"
+import { GetAllMoviePagingAsync } from "../../../slices/movie/movieSlice"
 
 
-
-
-const MovieList: React.FC<{}> = () => {
+const MovieList: React.FC<{}> = ({}) =>{
 
     const dispatch = useAppDispatch();
-
     const { movies } = useAppSelector((state) => state.movie)
 
     // const [movieBG, setMovieBG] = useState({} as MovieModel);
 
 
-    const GetAllMovie = useCallback(async (request?: MoviePagingRequest): Promise<void> => {
+    const GetAllMovie = useMemo(() => (request?: MoviePagingRequest): void => {
         try {
-            console.log(await dispatch(GetAllMoviePagingAsync({ PageIndex: request?.PageIndex || 0, PageSize: request?.PageSize || 16, Status: request?.Status || 0 })))
+            dispatch(GetAllMoviePagingAsync({ PageIndex: request?.PageIndex || 0, PageSize: request?.PageSize || 8, Status: request?.Status || 0 }))
         } catch (error) {
 
         }
@@ -30,13 +25,13 @@ const MovieList: React.FC<{}> = () => {
 
     useEffect(() => {
 
-        GetAllMovie();
-    }, [GetAllMovie])
-
-
+        if(movies.length <= 0){
+            GetAllMovie();
+        }
+    }, [GetAllMovie, movies.length])
     const PlayingList = <Grid className="pt-2" >
         {movies && movies.map((movie, idx) => (
-            <Grid.Column key={idx} computer={2} tablet={4} mobile={8}>
+            <Grid.Column key={idx} computer={4} tablet={4} mobile={8}>
                 <Card as={Link} to={`/movie/${movie.id}`}>
                     <Image rounded src={movie.imagePreview} wrapped ui={false} />
                     <Card.Content>
@@ -56,34 +51,10 @@ const MovieList: React.FC<{}> = () => {
             </Grid.Column>
         ))}
     </Grid>
-
+    
     return (
-        <>
-
-            
-            <Grid>
-                <Grid.Column width={2} >
-                    <Header as={"h1"} className="text-white text-6xl">Phim</Header>
-                </Grid.Column>
-                <Grid.Column width={2} >
-                    <Dropdown
-                    className="bg-transparent text-white"
-                        placeholder='Thể loại phim'
-                        fluid
-                        search
-                        selection
-                        options={[
-                            { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
-                            { key: 'ax', value: 'ax', flag: 'ax', text: 'Aland Islands' },]}
-                    />
-                </Grid.Column>
-            </Grid>
-
-            
-            <MovieBG movies={movies}></MovieBG>
-
-            
-            <Tab menu={{ secondary: true, pointing: true }} panes={[
+        <Container>
+             <Tab className="pt-1" menu={{ secondary: true, pointing: true }} panes={[
                 {
                     menuItem: 'Phim đang chiếu',
                     render: () => <Tab.Pane className="bg-transparent" attached={false}> {PlayingList} </Tab.Pane>,
@@ -92,13 +63,8 @@ const MovieList: React.FC<{}> = () => {
                     menuItem: 'Phim sắp chiếu',
                     render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
                 },]} />
-
-        </>
+        </Container>
     )
-
-
 }
 
-
 export default MovieList;
-

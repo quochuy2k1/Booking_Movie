@@ -35,6 +35,14 @@ const TotalGrowBarOptions: ApexOptions = {
         type: 'category',
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     },
+    yaxis: {
+
+        labels: {
+            formatter: function (value: number) {
+                return value + "$";
+            }
+        },
+    },
     legend: {
         show: true,
         fontSize: '14px',
@@ -42,7 +50,7 @@ const TotalGrowBarOptions: ApexOptions = {
         position: 'bottom',
         offsetX: 20,
         labels: {
-            useSeriesColors: false
+            useSeriesColors: false,
         },
         markers: {
             width: 16,
@@ -63,25 +71,17 @@ const TotalGrowBarOptions: ApexOptions = {
     grid: {
         show: true
     },
-    
+
 };
 
-export const seriesBar =  [
+export const seriesBar = [
     {
-        name: 'Investment',
-        data: [35, 125, 35, 35, 35, 80, 35, 20, 35, 45, 15, 75]
+        name: 'Đồ ăn / thức uống',
+        data: [35000000, 12500000, 35000000, 35000000, 35000000, 80000000, 35000000, 20000000, 35000000, 45000000, 15000000, 75000000]
     },
     {
-        name: 'Loss',
-        data: [35, 15, 15, 35, 65, 40, 80, 25, 15, 85, 25, 75]
+        name: 'Vé bán',
+        data: [35000000, 15000000, 15000000, 35000000, 65000000, 40000000, 80000000, 25000000, 15000000, 85000000, 25000000, 75000000]
     },
-    {
-        name: 'Profit',
-        data: [35, 145, 35, 35, 20, 105, 100, 10, 65, 45, 30, 10]
-    },
-    {
-        name: 'Maintenance',
-        data: [0, 0, 75, 0, 0, 115, 0, 0, 0, 0, 150, 0]
-    }
 ]
 export default TotalGrowBarOptions;

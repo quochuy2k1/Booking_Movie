@@ -68,7 +68,7 @@ const TotalIncomeLightCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => 
                                         mt: 0.45,
                                         mb: 0.45
                                     }}
-                                    primary={<Typography variant="h4">$203k</Typography>}
+                                    primary={<Typography variant="h4">30.000.000 vnđ</Typography>}
                                     secondary={
                                         <Typography
                                             variant="subtitle2"
@@ -77,7 +77,7 @@ const TotalIncomeLightCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => 
                                                 mt: 0.5
                                             }}
                                         >
-                                            Total Income
+                                            Tổng thu nhập đồ ăn / thức uống
                                         </Typography>
                                     }
                                 />

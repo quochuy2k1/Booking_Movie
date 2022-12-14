@@ -1,13 +1,13 @@
-import { Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, useMediaQuery, useTheme } from "@mui/material";
+import { Alert, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, useMediaQuery, useTheme } from "@mui/material";
 import { Editor } from "@tinymce/tinymce-react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Button, DropdownProps, Form, Icon, Input } from "semantic-ui-react";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 import { GetAllActor } from "../../../../../services/actor.service";
-import { Actor } from "../../../../../slices/actor/actorSlice";
+import { Actor, GetAllActorAsync } from "../../../../../slices/actor/actorSlice";
 import { GetCategoriesAsync } from "../../../../../slices/categories/categorySlice";
 import { GetDirectorAsync } from "../../../../../slices/directors/directorSlice";
-import { CreateNewMovieAsync } from "../../../../../slices/movie/movieSlice";
+import { CreateNewMovieAsync, emptyMovieStatus } from "../../../../../slices/movie/movieSlice";
 import { GetNationalitiesAsync } from "../../../../../slices/nationalities/nationalitySlice";
 import { GetProducerAsync } from "../../../../../slices/producers/producerSlice";
 import DropdownComponent, { dataDropdownOption } from "../../../../ui-component/common/Dropdown/DropdownComponent";
@@ -52,7 +52,11 @@ const AddNewMovie: React.FC = () => {
     const theme = useTheme();
     const dispatch = useAppDispatch();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
+    const token = localStorage.getItem("token");
+    const status_create = useAppSelector(state => state.movie.status);
+    const error = useAppSelector(state => state.movie.error);
+    const [open, setOpen] = React.useState(false);
+    const [messageCreate, setMessageCreate] = useState<string>("");
     // input variable
 
     const [alias, setAlias] = useState<string>("");
@@ -99,29 +103,34 @@ const AddNewMovie: React.FC = () => {
     const [dataDirectorsOption, setDataDirectorsOption] = useState<dataDropdownOption[]>();
 
     // 
-    const [actors, setActors] = useState<Actor[]>();
-    const [statusActors, setStatusActors] = useState<string>("loading");
+    const actors = useAppSelector(state => state.actor.result);
+    const statusActors = useAppSelector(state => state.actor.status);
     const [dataActorsOption, setDataActorsOption] = useState<dataDropdownOption[]>();
 
     // 
 
-    const GetActorsAsync = useCallback(async () => {
+    // const GetActorsAsync = useCallback(async () => {
 
-        const result = await GetAllActor();
-        setActors(result.data);
-        setStatusActors("idle")
-    }, []);
+    //     const result = await GetAllActor();
+       
+    // }, []);
 
     useEffect(() => {
 
-        dispatch(GetCategoriesAsync());
-        dispatch(GetNationalitiesAsync());
-        dispatch(GetProducerAsync());
-        dispatch(GetDirectorAsync());
-        GetActorsAsync();
+       
+        if (status_create === "added") {
+            setMessageCreate("Thêm thành công")
+            setOpen(true);
+            dispatch(emptyMovieStatus())
+        }
 
+        else if (status_create === "failed") {
+            setMessageCreate(error);
+            setOpen(true);
 
-    }, [dispatch, GetActorsAsync]);
+        }
+
+    }, [dispatch, status_create]);
 
     const handleClickAddOpen = useMemo(() => () => {
         setOpenAdd(true);
@@ -162,7 +171,7 @@ const AddNewMovie: React.FC = () => {
         ));
         setDataNationalitiesOption(dataNationalitiesOption);
 
-        const dataActorsOption: dataDropdownOption[] | undefined = actors && [...actors].map(actor => (
+        const dataActorsOption: dataDropdownOption[] | undefined = [...actors].map(actor => (
             {
                 key: actor.id,
                 text: actor.name,
@@ -180,7 +189,7 @@ const AddNewMovie: React.FC = () => {
     };
     const handleConfirmAdd = () => {
         // setOpenAdd(false);
-        dispatch(CreateNewMovieAsync({name: name, alias: alias, duration,  releaseDate: new Date(releaseDate).toISOString(), content, status, imageBackground: imgBackground!, imagePreview: imgPreview!,  videoTrailer: videoTrailer!, producer: producer!, nationality: nationality!, categoryId: category!, directorId: director!, actorId: actor!  }))
+        dispatch(CreateNewMovieAsync({name: name, alias: alias, duration,  releaseDate: new Date(releaseDate).toISOString(), content, status, imageBackground: imgBackground!, imagePreview: imgPreview!,  videoTrailer: videoTrailer!, producer: producer!, nationality: nationality!, categoryId: category!, directorId: director!, actorId: actor!, token: token!  }))
         console.log(name, duration, releaseDate, content, status, imgPreview, imgBackground, videoTrailer, actor, director, producer, nationality, category, content);
     };
 
@@ -204,6 +213,17 @@ const AddNewMovie: React.FC = () => {
         setDirector(data.value as string[]);
 
     }
+
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+
+
     return (
         <>
             <Button icon color='blue' onClick={handleClickAddOpen} labelPosition='right'>
@@ -417,6 +437,12 @@ const AddNewMovie: React.FC = () => {
                     </Button>
                 </DialogActions>
             </Dialog>
+
+            <Snackbar open={open} anchorOrigin={{ horizontal: "center", vertical: "top" }} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity={error ? "error" : status_create === "added" ? "success" : undefined} sx={{ width: '100%' }}>
+                    {messageCreate}
+                </Alert>
+            </Snackbar>
         </>
 
     )

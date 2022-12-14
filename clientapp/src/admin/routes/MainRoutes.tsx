@@ -3,6 +3,7 @@ import { lazy } from 'react';
 // project imports
 import MainLayout from '../layout/MainLayout';
 import Loadable from '../ui-component/Loadable';
+import { ProtectedRoute } from './ProtectedRoute';
 
 // dashboard routing
 const DashboardDefault = Loadable(lazy(async () =>({ default: (await import('../views/dashboard/Default')).default})));

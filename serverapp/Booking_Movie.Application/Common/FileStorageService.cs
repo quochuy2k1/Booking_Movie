@@ -24,6 +24,10 @@ namespace Booking_Movie.Application.Common
             }
         }
 
+        public string GetFilePath(string fileName, string folderName)
+        {
+            return Path.Combine(_webHostEnvironment.WebRootPath, folderName, fileName);
+        }
         public string GetFileUrl(string fileName, string folderName)
         {
 

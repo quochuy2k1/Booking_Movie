@@ -14,7 +14,6 @@
     <Folder Include="Catalog\CouponVM\" />
     <Folder Include="Catalog\BookingTicketVM\" />
     <Folder Include="Catalog\BookingComboVM\" />
-    <Folder Include="Catalog\BookingVM\" />
     <Folder Include="Catalog\SeatReservedVM\" />
     <Folder Include="Catalog\ScreeningVM\" />
     <Folder Include="Catalog\PaymentMethodVM\" />

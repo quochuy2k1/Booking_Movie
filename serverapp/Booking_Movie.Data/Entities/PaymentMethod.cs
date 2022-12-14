@@ -10,7 +10,7 @@ namespace Booking_Movie.Data.Entities
         public decimal? Cost { get; set; }
         public decimal? CostAdditional { get; set; }
 
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
 
         public ICollection<Booking> Bookings { get; set; } = null!;
     }

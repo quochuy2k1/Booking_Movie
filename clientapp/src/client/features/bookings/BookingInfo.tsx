@@ -64,26 +64,26 @@ const BookingInfo: React.FC<{}> = () => {
                 <Header as="h3" className="text-orange-600">{movie?.name}</Header>
                 <Item.Group divided>
                     <Item className="py-2">
-                        <Item.Content verticalAlign='middle'>
+                        <Item.Content verticalAlign='middle' className="text-white">
                             Rạp: {screening?.cinemaName} | {screening?.auditoriumName}
                         </Item.Content>
                     </Item>
 
                     <Item className="py-2">
-                        <Item.Content verticalAlign='middle'>
+                        <Item.Content verticalAlign='middle' className="text-white">
                             Suất chiếu: {moment(screening?.showTime).format("HH:mm")} | {screening?.auditoriumName}
                         </Item.Content>
                     </Item>
 
                     <Item className="py-2">
-                        <Item.Content verticalAlign='middle'>
+                        <Item.Content verticalAlign='middle' className="text-white">
                             Combo: {combos.map(combo => combo.quantity! > 0 && ( <Label key={combo.id} className="my-1" color='teal'  horizontal>
                                 {`${combo.name} (${combo.quantity})`}
                             </Label>))}
                         </Item.Content>
                     </Item>
                     <Item className="py-2">
-                        <Item.Content verticalAlign='middle'>
+                        <Item.Content verticalAlign='middle' className="text-white">
                             Ghế: {seatRevered.map(seatNo => seatNo.id && seatNo.id).join(", ")}
                         </Item.Content>
                     </Item>

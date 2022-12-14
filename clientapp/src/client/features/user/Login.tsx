@@ -7,7 +7,7 @@ import { RootState } from "../../../app/store";
 
 
 interface mapToProps {
-    SignIn: (UserName: string, Password: string) => any
+    SignIn: (UserName: string, Password: string, Remember: boolean) => any
 }
 
 type UserProps =
@@ -21,6 +21,7 @@ interface IStateLogin {
     firstName?: string,
     lastName?: string,
     password: string,
+    remember: boolean,
     isSignIn: boolean,
 }
 
@@ -42,6 +43,7 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
             open: false,
             userName: '',
             password: '',
+            remember: true,
             isSignIn: false
         }
 
@@ -112,7 +114,7 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
     }
 
     async onSign() {
-        console.log(await this.props.SignIn(this.state.userName, this.state.password));
+        console.log(await this.props.SignIn(this.state.userName, this.state.password, this.state.remember));
         if (this.props.status === "idle") {
             this.SignInComplete()
 
@@ -139,10 +141,10 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
                         <Grid textAlign='center' verticalAlign='middle'>
                             <Grid.Column style={{ maxWidth: 450 }}>
                                 <Header as='h2'  textAlign='center' className="border-b-white text-white">
-                                    Chào Mừng Bạn Trở Lại
+                                    Chào mừng bạn trở lại,
                                 </Header>
                                 <Form size='large'>
-                                    <Segment stacked className="py-10">
+                                    <Segment stacked className="py-10 px-10">
                                         <Form.Input
                                             fluid icon='user'
                                             iconPosition='left'
@@ -158,14 +160,15 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
                                             onChange={this.onChangPassword}
                                         />
 
-                                        <Button color='blue' loading={this.props.status === "loading"} disabled={this.props.status === "loading"} fluid size='large' onClick={this.onSign}>
+                                        <Button color='olive' loading={this.props.status === "loading"} disabled={this.props.status === "loading"} fluid size='large' onClick={this.onSign}>
                                             Đăng nhập
                                         </Button>
-                                    </Segment>
-                                </Form>
-                                <Message>
+                                        <Message>
                                     Bạn là người mới? <a href='.' className="text-blue-700">Đăng ký</a>
                                 </Message>
+                                    </Segment>
+                                </Form>
+                               
                             </Grid.Column>
                         </Grid>
                     </Modal.Content>
@@ -186,7 +189,7 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         // dispatching plain actions
-        SignIn: (UserName: string, Password: string) => dispatch(SignInAsync({ UserName, Password }))
+        SignIn: (UserName: string, Password: string, Remember: boolean) => dispatch(SignInAsync({ UserName, Password, Remember }))
     }
 }
 export default connect(

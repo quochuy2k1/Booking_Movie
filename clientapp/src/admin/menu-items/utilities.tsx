@@ -13,8 +13,8 @@ const icons = {
 
 const utilities = {
     id: 'utilities',
-    title: 'Trang quản lý',
-    caption: "Trang phục vụ cho việc quản lý",
+    title: 'Trang tiện ích',
+    caption: "Trang phục vụ cho việc tìm nhanh tiện tích",
     type: 'group',
     children: [
         {

@@ -1,3 +1,4 @@
+import { object } from 'yup';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { SignIn } from "../../services/user.service";
 
@@ -10,7 +11,8 @@ export interface UserState {
     token: string,
     exp?: string,
     status: string,
-    sessionId: string
+    sessionId: string,
+    error: any,
 }
 
 const initialState: UserState =
@@ -23,15 +25,16 @@ const initialState: UserState =
     },
     token: "",
     exp: undefined,
-    sessionId: ""
+    sessionId: "",
+    error: null
 }
 
 export const SignInAsync = createAsyncThunk(
     'user/SignIn',
-    async (UserData: { UserName: string, Password: string }, { rejectWithValue }) => {
-        const { UserName, Password } = UserData;
+    async (UserData: { UserName: string, Password: string, Remember: boolean }, { rejectWithValue }) => {
+        const { UserName, Password, Remember } = UserData;
         try {
-            const response = await SignIn(UserName, Password);
+            const response = await SignIn(UserName, Password, Remember);
             // The value we return becomes the `fulfilled` action payload
             return response.data;
         }
@@ -45,7 +48,9 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-
+        emptyUserError: (state) => {
+            state.error = null;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -61,12 +66,13 @@ export const userSlice = createSlice({
                 localStorage.setItem("sessionId", action.payload.sessionId!);
                 localStorage.setItem("user_authenticate", JSON.stringify({ lastName: lastName, firstName: firstName, userName: userName, isSignIn: true }))
             })
-            .addCase(SignInAsync.rejected, (state) => {
-                state.status = 'failed';
+            .addCase(SignInAsync.rejected, (state, action: any) => {
+             
+                Object.assign(state, {status: 'failed', error: action.payload as any})
             });
     }
 
 });
-// export const { } = userSlice.actions;
+export const { emptyUserError} = userSlice.actions;
 
 export default userSlice.reducer;

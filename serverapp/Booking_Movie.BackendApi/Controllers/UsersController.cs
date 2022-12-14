@@ -28,7 +28,7 @@ namespace Booking_Movie.BackendApi.Controllers
 
             var resultToken = await _userService.Authenticate(request);
 
-            if(resultToken == null) return BadRequest("Incorrect username or password!");
+            if(resultToken.error != null) return BadRequest(resultToken.error);
             
             return Ok(resultToken);
         }

@@ -143,7 +143,7 @@ const EarningCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
                                 <Grid container alignItems="center">
                                     <Grid item>
                                         <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>
-                                            $500.00
+                                            100.000.000 vnđ
                                         </Typography>
                                     </Grid>
                                     <Grid item>
@@ -168,7 +168,7 @@ const EarningCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
                                         color: theme.palette.secondary[200]
                                     }}
                                 >
-                                    Total Earning
+                                    Tổng thu nhập
                                 </Typography>
                             </Grid>
                         </Grid>

@@ -1,5 +1,5 @@
 ﻿import * as React from "react"
-import { Container, Divider, Grid, List, Segment, Image, Header } from "semantic-ui-react";
+import { Container, Divider, Grid, List, Segment, Image, Header, Button } from "semantic-ui-react";
 
 
 const Footer: React.FC<{}> = ({ }) => {
@@ -35,29 +35,20 @@ const Footer: React.FC<{}> = ({ }) => {
                         </List>
                     </Grid.Column>
                     <Grid.Column width={7}>
-                        <Header inverted as='h4' content='Kết nối với Galaxy Cinema' />
-                        <p>
-                            Extra space for a call to action inside the footer that could help re-engage users.
-                        </p>
+                        <Header inverted as='h4' content='Kết nối với Galaxy Quốc Huy' />
+                        <div className="flex gap-1">
+                            <Button icon='facebook square' />
+                            <Button icon='youtube' />
+                            <Button icon='instagram' />
+                        </div>
                     </Grid.Column>
                 </Grid>
 
                 <Divider inverted section />
-                <Image centered size='mini' src='/logo.png' />
-                <List horizontal inverted divided link size='small'>
-                    <List.Item as='a' href='#'>
-                        Site Map
-                    </List.Item>
-                    <List.Item as='a' href='#'>
-                        Contact Us
-                    </List.Item>
-                    <List.Item as='a' href='#'>
-                        Terms and Conditions
-                    </List.Item>
-                    <List.Item as='a' href='#'>
-                        Privacy Policy
-                    </List.Item>
-                </List>
+                <div className="flex justify-center flex-col py-2">
+                <Image centered  src='/logo-white.svg' />
+                <p className="text-gray-200 italic py-4 text-center">Công Ty Cổ Phần Phim Berry, Tầng 3, Toà Nhà justin Đồng Tháp, 5, Đ. 30 Tháng 4, Phường 1, TP. Cao Lãnh, Đồng Tháp</p>
+                </div>
             </Container>
         </Segment>
         );

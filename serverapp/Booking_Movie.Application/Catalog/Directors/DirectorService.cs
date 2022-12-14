@@ -73,7 +73,7 @@ namespace Booking_Movie.Application.Catalog.Directors
                 Name = director.Name,
                 ViewCount = director.ViewCount,
                 DateOfBirth = director.DateOfBirth,
-                Height = director.Height,
+                Height = director.Height!.Value,
                 Image = director.Image,
                 NationalityId = director.Nationality.Id,
             }).ToListAsync();

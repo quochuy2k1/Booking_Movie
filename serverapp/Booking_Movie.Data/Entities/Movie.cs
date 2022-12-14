@@ -8,10 +8,10 @@ namespace Booking_Movie.Data.Entities
         public string Name { get; set; } = null!;
         public int Duration { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public string Content { get; set; } = null!;
-        public string VideoTrailer { get; set; } = null!;
-        public string ImagePreview { get; set; } = null!;
-        public string ImageBackground { get; set; } = null!;
+        public string? Content { get; set; }
+        public string? VideoTrailer { get; set; } 
+        public string? ImagePreview { get; set; } 
+        public string? ImageBackground { get; set; } 
 
         public string NationalityId { get; set; } = null!;
         public Guid ProducerId { get; set; }
