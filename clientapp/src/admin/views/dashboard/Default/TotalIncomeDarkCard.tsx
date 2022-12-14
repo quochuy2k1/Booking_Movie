@@ -72,12 +72,12 @@ const TotalIncomeDarkCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
                                     }}
                                     primary={
                                         <Typography variant="h4" sx={{ color: '#fff' }}>
-                                            $203k
+                                            70.000.000 vnđ
                                         </Typography>
                                     }
                                     secondary={
                                         <Typography variant="subtitle2" sx={{ color: 'primary.light', mt: 0.25 }}>
-                                            Total Income
+                                            Tổng thu nhập vé bán
                                         </Typography>
                                     }
                                 />

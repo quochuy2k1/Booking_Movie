@@ -24,6 +24,7 @@ using Booking_Movie.Application.Catalog.Auditoriums;
 using Booking_Movie.Application.Catalog.PaymentMethods;
 using Booking_Movie.Application.Catalog.Categories;
 using Booking_Movie.Application.Catalog.Nationalities;
+using Booking_Movie.Application.Catalog.Bookings;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -77,7 +78,9 @@ builder.Services.AddAuthentication(options =>
          ValidIssuer = configuration["JWT:Issuer"],
          IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(configuration["JWT:Key"]))
      };
- });
+      
+ })
+ ;
 // declare DI
 
 builder.Services.AddTransient<IActorService, ActorService>();
@@ -87,6 +90,7 @@ builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 //
 builder.Services.AddTransient<ActorRepository>();
 builder.Services.AddTransient<AuditoriumRepository>();
+builder.Services.AddTransient<BookingRepository>();
 builder.Services.AddTransient<CategoryRepository>();
 builder.Services.AddTransient<ComboRepository>();
 builder.Services.AddTransient<DirectorRepository>();
@@ -97,6 +101,7 @@ builder.Services.AddTransient<ProducerRepository>();
 builder.Services.AddTransient<TicketRepository>();
 //
 builder.Services.AddTransient<IAuditoriumService, AuditoriumService>();
+builder.Services.AddTransient<IBookingService, BookingService>();
 builder.Services.AddTransient<IComboService, ComboService>();
 builder.Services.AddTransient<ICateroryService, CategoryService>();
 builder.Services.AddTransient<IDirectorService, DirectorService>();

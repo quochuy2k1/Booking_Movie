@@ -76,7 +76,7 @@ namespace Booking_Movie.Data.Infrastructure
                     
                 }
 
-                return entities;
+                return entities.Any() ? entities : null;
 
 
             }
@@ -88,26 +88,56 @@ namespace Booking_Movie.Data.Infrastructure
 
         }
 
-        public async Task<bool> DeleteMulti(Guid[] idList)
+        public async Task<List<T>?> DeleteMulti(Guid[] idList)
         {
             try
             {
+                List<T> entities = new List<T>();
                 foreach (var id in idList)
                 {
                     var entity = await this.dbSet.FindAsync(id);
-                    this.dbSet.Remove(entity!);
+                    if(Equals(entity, null))
+                    {
+                        entities.Add(entity!);
+                        this.dbSet.Remove(entity!);
+                    }
                 }
 
+                return entities.Any() ? entities : null;
 
             }
             catch (Exception ex)
             {
 
-                return false;
+                return null;
             }
 
 
-            return true;
+        }
+        public async Task<List<T>?> DeleteMulti(string[] idList)
+        {
+            try
+            {
+                List<T> entities = new List<T>();
+                foreach (var id in idList)
+                {
+                    var entity = await this.dbSet.FindAsync(id);
+                    if(!Equals(entity, null))
+                    {
+                        entities.Add(entity);
+                        this.dbSet.Remove(entity);
+                    }
+                }
+
+                return entities.Any() ? entities : null;
+
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+
 
         }
 

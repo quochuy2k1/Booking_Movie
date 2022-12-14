@@ -22,15 +22,15 @@ import { RootState } from '../../../store';
 const status = [
     {
         value: 'today',
-        label: 'Today'
+        label: 'Hôm nay'
     },
     {
         value: 'month',
-        label: 'This Month'
+        label: 'Tháng này'
     },
     {
         value: 'year',
-        label: 'This Year'
+        label: 'Năm này'
     }
 ];
 
@@ -68,6 +68,9 @@ const TotalGrowthBarChart: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
                 labels: {
                     style: {
                         colors: [primary]
+                    },
+                    formatter: function (value: number) {
+                        return value.toLocaleString('it-IT', {style : 'currency', currency : 'vnd'});
                     }
                 }
             },
@@ -104,10 +107,10 @@ const TotalGrowthBarChart: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
                                 <Grid item>
                                     <Grid container direction="column" spacing={1}>
                                         <Grid item>
-                                            <Typography variant="subtitle2">Total Growth</Typography>
+                                            <Typography variant="subtitle2">Tăng trưởng tổng thể</Typography>
                                         </Grid>
                                         <Grid item>
-                                            <Typography variant="h3">$2,324.00</Typography>
+                                            <Typography variant="h3">50.000.000 vnđ</Typography>
                                         </Grid>
                                     </Grid>
                                 </Grid>

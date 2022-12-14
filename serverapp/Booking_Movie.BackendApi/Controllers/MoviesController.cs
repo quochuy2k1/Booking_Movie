@@ -58,6 +58,13 @@ namespace Booking_Movie.BackendApi.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
             var screenings = await _movieService.GetScreeningByMovieId(id);
             return Ok(screenings);
+        } 
+        
+        [HttpGet("screening")]
+        public async Task<IActionResult> GetAllScreening() { 
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var screenings = await _movieService.GetAllScreening();
+            return Ok(screenings);
         }
 
         [HttpPost("create")]
@@ -79,7 +86,7 @@ namespace Booking_Movie.BackendApi.Controllers
         }
 
         [HttpPut("{id}/update")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [RequestSizeLimit(50 * 1024 * 1024)]
         [RequestFormLimits(MultipartBodyLengthLimit = 50 * 1024 * 1024)]
         public async Task<IActionResult> Update(int id, [FromForm] MovieUpdateRequest request)
@@ -106,7 +113,7 @@ namespace Booking_Movie.BackendApi.Controllers
 
         [HttpDelete("del")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete([FromForm] int[] id)
+        public async Task<IActionResult> Delete([FromBody] int[] id)
         {
             if (!ModelState.IsValid)
             {
@@ -115,7 +122,7 @@ namespace Booking_Movie.BackendApi.Controllers
             try
             {
                 var isSuccess = await _movieService.Delete(id);
-                if (!isSuccess) return BadRequest();
+                if (isSuccess == null) return BadRequest();
                 return Ok(isSuccess);
 
             }

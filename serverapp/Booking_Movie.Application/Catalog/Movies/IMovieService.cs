@@ -12,7 +12,7 @@ namespace Booking_Movie.Application.Catalog.Movies
     {
         Task<int?> Create(MovieCreateRequest Request);
         Task<int?> Update(int id, MovieUpdateRequest Request);
-        Task<bool> Delete(int[] id);
+        Task<List<int>?> Delete(int[] id);
         Task<bool?> AddMovieCategories(int Id, int[] CategotyId);
         Task<List<MovieCategory>> FindMovieCategoryByMovieId(int Id);
 
@@ -31,6 +31,7 @@ namespace Booking_Movie.Application.Catalog.Movies
         Task<MovieDetailViewModel?> GetMovieDetails(int Id, string host);
         Task<MovieViewModel?> GetById(int id, string host);
         Task<List<ScreeningViewModel>> GetScreeningByMovieId(int Id);
+        Task<List<ScreeningViewModel>> GetAllScreening();
         Task<bool> UpdateImageVideo(int id, MovieUpdateImageVideoRequest request);
 
         //Task<bool> Delete(Guid id);

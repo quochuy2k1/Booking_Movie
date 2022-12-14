@@ -18,7 +18,7 @@ namespace Booking_Movie.Data.Entities
 
         public string Image { get; set; } = null!;
 
-        public bool HomeFlag { get; set; }
+        public bool? HomeFlag { get; set; }
 
         public ICollection<MovieCategory> MovieCategories { get; set; } = null!;
     }

@@ -12,6 +12,7 @@
         public string VideoTrailer { get; set; } = null!;
         public string Nationality { get; set; } = null!;
         public string Producer { get; set; } = null!;
+        public bool? Status { get; set; }
 
         public string Actors { get; set; } = null!;
         public string Categories { get; set; } = null!;

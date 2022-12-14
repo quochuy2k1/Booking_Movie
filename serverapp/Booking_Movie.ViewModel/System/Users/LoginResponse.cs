@@ -8,9 +8,10 @@ namespace Booking_Movie.ViewModel.System.Users
 {
     public class LoginResponse
     {
-        public string token { get; set; } = null!;
-        public DateTime exp { get; set; }
-        public string sessionId { get; set; } = null!;
-        public LoginUserViewModel appUser { get; set; } = null!;
+        public string? token { get; set; }
+        public DateTime? exp { get; set; }
+        public string? sessionId { get; set; }
+        public LoginUserViewModel? appUser { get; set; }
+        public LoginErrorResponse? error {get; set;}
     }
 }

@@ -20,7 +20,9 @@ namespace Booking_Movie.Data.Infrastructure
         Task<EntityEntry<T>> Delete(int id);
 
         //Delete multi records
-        Task<List<T>?> DeleteMulti(int [] idList);
+        Task<List<T>?> DeleteMulti(int[] idList);
+        Task<List<T>?> DeleteMulti(Guid[] idList);
+        Task<List<T>?> DeleteMulti(string[] idList);
 
         // Get an entity by int id
         Task<T?> GetSingleById(int id);

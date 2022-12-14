@@ -17,11 +17,12 @@ interface IDropdownProps {
     multiple?: boolean,
     loading?: boolean,
     placeholder?: string,
+    defaultValue?:  string | number | boolean | (string | number | boolean)[] | undefined,
     onSelectChange?:  (e: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => void | undefined
 }
 
-const DropdownComponent: React.FC<IDropdownProps> = ({ dataOption, inline, selection, search, multiple, loading, placeholder, onSelectChange}) => {
-
+const DropdownComponent: React.FC<IDropdownProps> = ({ dataOption, inline, selection, search, multiple, loading, defaultValue, placeholder, onSelectChange}) => {
+    console.log(dataOption, "dât option", defaultValue, "default value dropdown component")
 
     return <>
         <Dropdown
@@ -35,7 +36,7 @@ const DropdownComponent: React.FC<IDropdownProps> = ({ dataOption, inline, selec
             labeled
             fluid
             placeholder={placeholder}
-            // defaultValue={}
+            defaultValue={defaultValue}
             onChange={onSelectChange}
         />
     </>

@@ -23,7 +23,7 @@ namespace Booking_Movie.Data.Repositories
         Task<string> GetMovieCast(int Id);
         Task<Movie?> UpdateImageVideo(int Id, string? preview, string? background, string? video);
 
-        void AddMovieCategories(int Id, int[] categoryId);
+        Task AddMovieCategories(int Id, int[] categoryId);
         Task<List<MovieCategory>> FindMovieCategoryByMovieId(int Id);
         Task<MovieCategory?> FindMovieCategoryByMovieId(int Id, int categoryId);
         Task UpdateMovieCategory(int Id, int[] categoriesId);
@@ -32,7 +32,7 @@ namespace Booking_Movie.Data.Repositories
         Task<Cast?> FindCastByMovieId(int Id, Guid actorId);
         Task UpdateCast(int Id, Guid[] actorsId);
 
-        void AddMovieDirector(int Id, Guid[] directorsId);
+        Task AddMovieDirector(int Id, Guid[] directorsId);
         Task<List<MovieDirector>> FindMovieDirectorByMovieId(int Id);
         Task<MovieDirector?> FindMovieDirectorByMovieId(int Id, Guid directorId);
         Task UpdateMovieDirector(int Id, Guid[] directorsId);
@@ -190,7 +190,7 @@ namespace Booking_Movie.Data.Repositories
                
                 select new ScreeningViewModel()
                 {
-                    ScreeningId = g.Select(x => x.ScreeningId).FirstOrDefault(),
+                    Id = g.Select(x => x.ScreeningId).FirstOrDefault(),
                     CinemaId = g.Select(x => x.CinemaId).FirstOrDefault(),
                     CinemaName = g.Key,
                     AuditoriumName = g.Select(x => x.AuditoriumName).FirstOrDefault(),
@@ -202,7 +202,32 @@ namespace Booking_Movie.Data.Repositories
             return await Task.FromResult(query);
         }
 
-        public void AddMovieCategories(int Id, int[] categoriesId)
+        public async Task<IQueryable<ScreeningViewModel>> GetAllScreening()
+        {
+            var query =
+               (from m in this.MovieContext.Movies
+                join sc in this.MovieContext.Screenings on m.Id equals sc.MovieId
+                join st in this.MovieContext.ScreeningTypes on sc.MovieTypeId equals st.Id
+                join au in this.MovieContext.Auditoriums on sc.AuditoriumId equals au.Id
+                join c in this.MovieContext.Cinemas on au.CinemaId equals c.Id
+                group new { ScreeningId = sc.Id, CinemaId = c.Id, CinemaName = c.Name, ScreeningTypeName = st.Name, sc = sc, AuditoriumName = au.Name } by m.Name into g
+
+                select new ScreeningViewModel()
+                {
+                    Id = g.Select(x => x.ScreeningId).FirstOrDefault(),
+                    CinemaId = g.Select(x => x.CinemaId).FirstOrDefault(),
+                    CinemaName = g.Select(x => x.CinemaName).FirstOrDefault(),
+                    MovieName = g.Key,
+                    AuditoriumName = g.Select(x => x.AuditoriumName).FirstOrDefault(),
+                    ScreeningTypeName = g.Select(x => x.ScreeningTypeName).FirstOrDefault(),
+                    ShowTime = g.Select(x => x.sc.ShowTime).ToArray()
+                });
+
+
+            return await Task.FromResult(query);
+        }
+
+        public async Task AddMovieCategories(int Id, int[] categoriesId)
         {
             
             if(categoriesId.Length == 1)
@@ -212,7 +237,7 @@ namespace Booking_Movie.Data.Repositories
                     MovieId = Id,
                     CategoryId = categoriesId[0]
                 };
-                this.MovieContext.MovieCategories.Add(MovieCategory);
+               await this.MovieContext.MovieCategories.AddAsync(MovieCategory);
 
             }
             else
@@ -224,7 +249,7 @@ namespace Booking_Movie.Data.Repositories
                         MovieId = Id,
                         CategoryId = category
                     };
-                    this.MovieContext.MovieCategories.Add(MovieCategory);
+                  await  this.MovieContext.MovieCategories.AddAsync(MovieCategory);
                 }
             }
 
@@ -259,7 +284,7 @@ namespace Booking_Movie.Data.Repositories
 
         }
 
-        public void AddMovieDirector(int Id, Guid[] directorsId)
+        public async Task AddMovieDirector(int Id, Guid[] directorsId)
         {
             if (directorsId.Length == 1)
             {
@@ -268,7 +293,7 @@ namespace Booking_Movie.Data.Repositories
                     MovieId = Id,
                     DirectorId = directorsId[0]
                 };
-                this.MovieContext.MovieDirectors.Add(MovieDirector);
+                await this.MovieContext.MovieDirectors.AddAsync(MovieDirector);
 
             }
             else
@@ -280,7 +305,7 @@ namespace Booking_Movie.Data.Repositories
                         MovieId = Id,
                         DirectorId = directorId
                     };
-                    this.MovieContext.MovieDirectors.Add(MovieDirector);
+                   await this.MovieContext.MovieDirectors.AddAsync(MovieDirector);
                 }
             }
         }

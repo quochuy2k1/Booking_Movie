@@ -28,7 +28,7 @@ namespace Booking_Movie.Data.Repositories
                     Name = director.Name,
                     ViewCount = director.ViewCount,
                     DateOfBirth = director.DateOfBirth,
-                    Height = director.Height,
+                    Height = director.Height!.Value,
                     Image = director.Image,
                     NationalityId = director.Nationality.Id,
                 }).ToListAsync();

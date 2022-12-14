@@ -15,7 +15,7 @@ import chartMonthOptions, { seriesLineMonth } from './chart-data/total-order-mon
 import ChartYearOptions, { seriesLineYear } from './chart-data/total-order-year-line-chart';
 
 // assets
-import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
@@ -91,7 +91,7 @@ const TotalOrderLineChartCard: React.FC<{isLoading: boolean}> = ({ isLoading }) 
                                                 mt: 1
                                             }}
                                         >
-                                            <LocalMallOutlinedIcon fontSize="inherit" />
+                                            <ConfirmationNumberIcon fontSize="inherit" />
                                         </Avatar>
                                     </Grid>
                                     <Grid item>
@@ -102,7 +102,7 @@ const TotalOrderLineChartCard: React.FC<{isLoading: boolean}> = ({ isLoading }) 
                                             sx={{ color: 'inherit' }}
                                             onClick={(e) => handleChangeTime(e, true)}
                                         >
-                                            Month
+                                            Tháng
                                         </Button>
                                         <Button
                                             disableElevation
@@ -111,7 +111,7 @@ const TotalOrderLineChartCard: React.FC<{isLoading: boolean}> = ({ isLoading }) 
                                             sx={{ color: 'inherit' }}
                                             onClick={(e) => handleChangeTime(e, false)}
                                         >
-                                            Year
+                                            Năm
                                         </Button>
                                     </Grid>
                                 </Grid>
@@ -123,11 +123,11 @@ const TotalOrderLineChartCard: React.FC<{isLoading: boolean}> = ({ isLoading }) 
                                             <Grid item>
                                                 {timeValue ? (
                                                     <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>
-                                                        $108
+                                                        100.000
                                                     </Typography>
                                                 ) : (
                                                     <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>
-                                                        $961
+                                                        1.440.000
                                                     </Typography>
                                                 )}
                                             </Grid>
@@ -151,7 +151,7 @@ const TotalOrderLineChartCard: React.FC<{isLoading: boolean}> = ({ isLoading }) 
                                                         color: theme.palette.primary[200]
                                                     }}
                                                 >
-                                                    Total Order
+                                                    Tổng đơn đặt vé (vé)
                                                 </Typography>
                                             </Grid>
                                         </Grid>

@@ -46,7 +46,7 @@ const Screening: React.FC<{id: string}> = ({ id}) => {
 
                  <Item.Content>
                      <Item.Header className="text-white">{screening.cinemaName}</Item.Header>
-                     <Item.Meta className="text-white">
+                     <Item.Meta className="text-gray-200 text-base ">
                          <span className='price'>{screening.screeningTypeName}</span>
                      </Item.Meta>
                      <Item.Description className="pt-3">
@@ -58,7 +58,7 @@ const Screening: React.FC<{id: string}> = ({ id}) => {
                             cinemaName: screening.cinemaName,
                             auditoriumName: screening.auditoriumName, 
                             screeningTypeName: screening.screeningTypeName,
-                            showTime: showTime, status: screening.status}))}
+                            showTime: showTime}))}
                         to={`/booking/${screening.cinemaId}/movie/${movieId}/sessionId/${sessionId!}`}>{moment(showTime).format("HH:mm")}</Button>
                      ))}
                          </Item.Description>

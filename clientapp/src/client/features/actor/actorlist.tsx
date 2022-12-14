@@ -114,7 +114,7 @@ const ActorList: React.FC<ActorListProps> = (props) => {
                             pointing
                             secondary
                             boundaryRange={1}
-                            totalPages={total}
+                            totalPages={total!}
                             onPageChange={onPageChange}
                         />
                     </div>

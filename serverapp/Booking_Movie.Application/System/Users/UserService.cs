@@ -29,11 +29,19 @@ namespace Booking_Movie.Application.System.Users
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<LoginResponse?> Authenticate(LoginRequest request)
+        public async Task<LoginResponse> Authenticate(LoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
             var expJWT = DateTime.Now.AddHours(3);
             var Jti = Guid.NewGuid().ToString();
+            if(user == null) {
+                return new LoginResponse()
+                    {
+                        error = new LoginErrorResponse(){
+                            UserNameError = "Tài khoản không đúng"
+                        }
+                    };
+            }
             if (user != null && await _userManager.CheckPasswordAsync(user, request.Password))
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
@@ -66,7 +74,12 @@ namespace Booking_Movie.Application.System.Users
 
 
             }
-            return null;
+            return new LoginResponse()
+                    {
+                        error = new LoginErrorResponse(){
+                            PasswordError = "Mật khẩu không đúng"
+                        }
+                    };
         }
         
         public async Task<bool> Register(RegisterRequest request)

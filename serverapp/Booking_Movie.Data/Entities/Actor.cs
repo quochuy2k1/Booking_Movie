@@ -8,7 +8,7 @@ namespace Booking_Movie.Data.Entities
         public string Name { get; set; } = null!;
         public int ViewCount { get; set; }
         public string NationalityId { get; set; } = null!;
-        public string Description { get; set; } = null!;
+        public string? Description { get; set; }
         public float Height { get; set; }
 
         public DateTime? DateOfBirth { get; set; }

@@ -34,7 +34,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import MainCard from '../../../../ui-component/cards/MainCard';
 import Transitions from '../../../../ui-component/extended/Transitions';
 import UpgradePlanCard from './UpgradePlanCard';
-import User1 from '../../../../assets/images/users/user-round.svg';
+import User1 from '../../../../assets/images/users/user-huy.jpg';
 
 // assets
 import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
@@ -52,6 +52,8 @@ const ProfileSection: React.FC<{}> = () => {
     const [notification, setNotification] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [open, setOpen] = useState(false);
+
+    const [userInfo, setUserInfo] = useState<any | null>( null);
     /**
      * anchorRef is used on different componets and specifying one type leads to other components throwing an error
      * */
@@ -81,6 +83,11 @@ const ProfileSection: React.FC<{}> = () => {
 
     const prevOpen = useRef(open);
     useEffect(() => {
+        const user =  JSON.parse(localStorage.getItem("user_authenticate")!);
+        if(user){
+            setUserInfo(user);
+        }
+
         if (prevOpen.current === true && open === false) {
             anchorRef.current.focus();
         }
@@ -139,6 +146,8 @@ const ProfileSection: React.FC<{}> = () => {
                 role={undefined}
                 transition
                 disablePortal
+                onResize={() => {}}
+                onResizeCapture={() => {}}
                 popperOptions={{
                     modifiers: [
                         {
@@ -158,19 +167,19 @@ const ProfileSection: React.FC<{}> = () => {
                                  <Box sx={{ p: 2 }}>
                                      <Stack>
                                          <Stack direction="row" spacing={0.5} alignItems="center">
-                                             <Typography variant="h4">Good Morning,</Typography>
+                                             <Typography variant="h4">Xin chào,</Typography>
                                              <Typography component="span" variant="h4" sx={{ fontWeight: 400 }}>
-                                                 Johne Doe
+                                                 {userInfo && `${userInfo.firstName} ${userInfo.lastName}`}
                                              </Typography>
                                          </Stack>
-                                         <Typography variant="subtitle2">Project Admin</Typography>
+                                         <Typography variant="subtitle2">Dự án "Đặt vé xem phim online"</Typography>
                                      </Stack>
                                      <OutlinedInput
                                          sx={{ width: '100%', pr: 1, pl: 2, my: 2 }}
                                          id="input-search-profile"
                                          value={value}
                                          onChange={(e) => setValue(e.target.value)}
-                                         placeholder="Search profile options"
+                                         placeholder="Tìm thông tin hồ sơ cá nhân"
                                          startAdornment={
                                              <InputAdornment position="start">
                                                  <IconSearch stroke={1.5} size="1rem" color={theme.palette.grey[500]} />
@@ -185,9 +194,9 @@ const ProfileSection: React.FC<{}> = () => {
                                  </Box>
                                  <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
                                      <Box sx={{ p: 2 }}>
-                                         <UpgradePlanCard />
-                                         <Divider />
-                                         <Card
+                                         {/* <UpgradePlanCard /> */}
+                                         {/* <Divider /> */}
+                                         {/* <Card
                                              sx={{
                                                  bgcolor: theme.palette.primary.light,
                                                  my: 2
@@ -228,7 +237,7 @@ const ProfileSection: React.FC<{}> = () => {
                                                      </Grid>
                                                  </Grid>
                                              </CardContent>
-                                         </Card>
+                                         </Card> */}
                                          <Divider />
                                          <List
                                              component="nav"
@@ -254,7 +263,7 @@ const ProfileSection: React.FC<{}> = () => {
                                                  <ListItemIcon>
                                                      <IconSettings stroke={1.5} size="1.3rem" />
                                                  </ListItemIcon>
-                                                 <ListItemText primary={<Typography variant="body2">Account Settings</Typography>} />
+                                                 <ListItemText primary={<Typography variant="body2">Cài đặt tài khoản</Typography>} />
                                              </ListItemButton>
                                              <ListItemButton
                                                  sx={{ borderRadius: `${customization.borderRadius}px` }}
@@ -268,7 +277,7 @@ const ProfileSection: React.FC<{}> = () => {
                                                      primary={
                                                          <Grid container spacing={1} justifyContent="space-between">
                                                              <Grid item>
-                                                                 <Typography variant="body2">Social Profile</Typography>
+                                                                 <Typography variant="body2">{"Thông tin cập nhật"}</Typography>
                                                              </Grid>
                                                              <Grid item>
                                                                  <Chip
@@ -292,7 +301,7 @@ const ProfileSection: React.FC<{}> = () => {
                                                  <ListItemIcon>
                                                      <IconLogout stroke={1.5} size="1.3rem" />
                                                  </ListItemIcon>
-                                                 <ListItemText primary={<Typography variant="body2">Logout</Typography>} />
+                                                 <ListItemText primary={<Typography variant="body2">Đăng xuất</Typography>} />
                                              </ListItemButton>
                                          </List>
                                      </Box>
