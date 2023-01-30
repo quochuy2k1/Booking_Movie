@@ -59,6 +59,10 @@ Website đặt vé xem phim online là website giúp khách hàng có thể xem 
 ![booking_movie_payment](https://user-images.githubusercontent.com/72030082/215486824-d46ffd00-95b8-40cb-ab28-c87d3e5f9dd4.png)
 
 ### Thanh toán bằng momo
+![image](https://user-images.githubusercontent.com/72030082/215499155-fb85dff7-15a2-4113-b630-2d74e14dc09b.png)
+
+### Giao diện lịch sử đặt vé
+![image](https://user-images.githubusercontent.com/72030082/215499859-6896e389-9359-4160-9c1c-955b69da4b4e.png)
 
 ### Giao diện trang chủ quản trị
 ![booking_movie_dashboard](https://user-images.githubusercontent.com/72030082/215486888-bdf38106-6438-4ffa-928e-1f7fbb1813c0.png)
