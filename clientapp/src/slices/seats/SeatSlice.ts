@@ -1,10 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
-export interface SeatState{
+export interface SeatState {
     id: string,
     row: string,
     number: number,
+
+
+}
+
+export interface SeatNoState extends SeatState {
+
+    seatNoId: number,
     rowIndex: number,
     columnIndex: number,
     seatStyle: number,
@@ -13,14 +20,11 @@ export interface SeatState{
 }
 
 
+
 const initialState: SeatState = {
     id: "",
     row: "",
     number: 0,
-    rowIndex: 0,
-    columnIndex: 0,
-    seatStyle: 0,
-    status: false,
 
 }
 
@@ -30,8 +34,8 @@ const initialState: SeatState = {
 export const SeatSlice = createSlice({
     name: "seat",
     initialState,
-    reducers:{},
+    reducers: {},
     extraReducers: builder => {
-        
+
     }
 });

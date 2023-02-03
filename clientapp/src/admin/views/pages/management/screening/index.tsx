@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DataGrid, GridColDef, GridToolbar, useGridApiContext, useGridSelector, gridPageSelector, gridPageCountSelector, GridSelectionModel, GridRowParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridToolbar, useGridApiContext, useGridSelector, gridPageSelector, gridPageCountSelector, GridSelectionModel, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid';
 import MainCard from '../../../../ui-component/cards/MainCard';
 import { locateText } from '../../../../utils/locateTextDataGrid';
 import { emptyMovieError, GetAllMoviePagingAsync } from '../../../../../slices/movie/movieSlice';
@@ -39,9 +39,11 @@ const columns: GridColDef[] = [
 		flex: 1,
 		renderCell: (params) => params.value.map((showTime: string, idx: number) => (
 			<Label key={idx} color="olive" size="small">
-        {moment(showTime).format("hh:mm")}
+        {moment(showTime).format("hh:mm")},
+		
       </Label>
 		)),
+		
 	},
 	
 	
@@ -86,6 +88,7 @@ function CustomPagination() {
 			onPageChange={(event, value) => apiRef.current.setPage(value - 1)}
 			onRowsPerPageChange={handleChangeRowsPerPage}
 			onChange={() => console.log("clicked next")}
+			
 		/>
 
 	);
@@ -252,6 +255,7 @@ const ScreeningManagement: React.FC = () => {
 						return "bg-blue-400"
 					}}
 					onRowClick={handleRowClick}
+					
 				/>
 
 

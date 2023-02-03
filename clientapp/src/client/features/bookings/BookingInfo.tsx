@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { addMovie, MovieModel } from "../../../slices/movie/movieSlice";
 import { ScreeningModel } from "../../../slices/screenings/ScreeningSlice";
 import { bookScreening } from "../../../slices/bookings/BookingSlice";
+import { bookScreeningId } from "../../../slices/bookings/BookingSliceClient";
 // interface BookingPropsParams {
 //     movieId: string,
 //     cinemaId: string
@@ -15,7 +16,8 @@ const BookingInfo: React.FC<{}> = () => {
     const { movieId } = useParams<string>();
 
     const dispatch = useAppDispatch();
-    const { screening, seatRevered } = useAppSelector(state => state.booking);
+    const { screening } = useAppSelector(state => state.bookingClient.booking);
+    const { seatNo } = useAppSelector(state => state.seatReserved);
     const { combos } = useAppSelector(state => state.combo);
     // const contextRef = useRef<HTMLElement>(null);
     const movie: MovieModel | undefined = useAppSelector(state => state.movie.movies.find(m => m.id === Number.parseInt(movieId!)));
@@ -24,7 +26,8 @@ const BookingInfo: React.FC<{}> = () => {
 
     React.useEffect(() => {
         console.log(sessionStorage.getItem("book-movie"), "session store book-movie)")
-
+        const screening = JSON.parse(sessionStorage.getItem("book-cinema")!);
+		dispatch(bookScreeningId(screening));
         // get movie from session store
         const movie_session: string | null = sessionStorage.getItem("book-movie");
         const screening_session: string | null = sessionStorage.getItem("book-cinema");
@@ -71,7 +74,7 @@ const BookingInfo: React.FC<{}> = () => {
 
                     <Item className="py-2">
                         <Item.Content verticalAlign='middle' className="text-white">
-                            Suất chiếu: {moment(screening?.showTime).format("HH:mm")} | {screening?.auditoriumName}
+                            Suất chiếu: {moment(screening?.showTime[0]).format("HH:mm")} | {screening?.auditoriumName}
                         </Item.Content>
                     </Item>
 
@@ -84,7 +87,7 @@ const BookingInfo: React.FC<{}> = () => {
                     </Item>
                     <Item className="py-2">
                         <Item.Content verticalAlign='middle' className="text-white">
-                            Ghế: {seatRevered.map(seatNo => seatNo.id && seatNo.id).join(", ")}
+                            Ghế: {seatNo.map(seatNo => seatNo.seatId && seatNo.seatId).join(", ")}
                         </Item.Content>
                     </Item>
                 </Item.Group>

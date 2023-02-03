@@ -1,26 +1,14 @@
 import { Alert, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, useMediaQuery, useTheme } from "@mui/material";
 import { Editor } from "@tinymce/tinymce-react";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Button, DropdownProps, Form, Icon, Input } from "semantic-ui-react";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
-import { GetAllActor } from "../../../../../services/actor.service";
-import { Actor, GetAllActorAsync } from "../../../../../slices/actor/actorSlice";
-import { GetCategoriesAsync } from "../../../../../slices/categories/categorySlice";
-import { GetDirectorAsync } from "../../../../../slices/directors/directorSlice";
-import { CreateNewMovieAsync, emptyMovieStatus } from "../../../../../slices/movie/movieSlice";
-import { GetNationalitiesAsync } from "../../../../../slices/nationalities/nationalitySlice";
-import { GetProducerAsync } from "../../../../../slices/producers/producerSlice";
+import { CreateNewActorAsync, emptyActorStatus } from "../../../../../slices/actor/actorSlice";
 import DropdownComponent, { dataDropdownOption } from "../../../../ui-component/common/Dropdown/DropdownComponent";
-import { toLowerCaseNonAccentVietnamese } from "../../../../utils/NonAccentVietnamese";
 
 
 
 const AcceptedImgFileType: string = ".jpg, .png, image/*"
-
-const AcceptedVideoFileType: string = "video/*"
-
-
-
 
 const AddNewMovie: React.FC = () => {
 
@@ -34,12 +22,11 @@ const AddNewMovie: React.FC = () => {
     const [messageCreate, setMessageCreate] = useState<string>("");
     // input variable
 
-    const [alias, setAlias] = useState<string>("");
+  
     const [name, setName] = useState<string>("");
-    const [duration, setDuration] = useState<number>(0);
-    const [releaseDate, setReleaseDate] = useState<string>("");
-    const [content, setContent] = useState<string>("");
-    const [status, setStatus] = useState<boolean>(false);
+    const [height, setHeight] = useState<number>(0);
+    const [dateOfBirth, setDateOfBirth] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
     const [image, setImage] = useState<File | null>(null);
 
    
@@ -75,7 +62,7 @@ const AddNewMovie: React.FC = () => {
         if (status_create === "added") {
             setMessageCreate("Thêm thành công")
             setOpen(true);
-            dispatch(emptyMovieStatus())
+            dispatch(emptyActorStatus())
         }
 
         else if (status_create === "failed") {
@@ -111,8 +98,8 @@ const AddNewMovie: React.FC = () => {
     };
     const handleConfirmAdd = () => {
         // setOpenAdd(false);
-        // dispatch(CreateNewMovieAsync({name: name, alias: alias, duration,  releaseDate: new Date(releaseDate).toISOString(), content, status, imageBackground: imgBackground!, imagePreview: imgPreview!,  videoTrailer: videoTrailer!, producer: producer!, nationality: nationality!, categoryId: category!, directorId: director!, actorId: actor!, token: token!  }))
-        console.log(name, duration, releaseDate, content, status, nationality);
+        dispatch(CreateNewActorAsync({name: name,  height: (height/100), nationality: nationality, dateOfBirth: new Date(dateOfBirth).toISOString(), description: description, image: image, token: token!  }))
+        // console.log(name, height, dateOfBirth, description, image, nationality);
     };
 
    
@@ -145,11 +132,11 @@ const AddNewMovie: React.FC = () => {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title" className='text-3xl font-semibold'>
-                    {"Thêm mới phim"}
+                    {"Thêm mới diễn viên"}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Khi thêm mới bộ phim sẽ thêm mới
+                        Khi thêm mới bộ diễn viên sẽ thêm mới
                     </DialogContentText>
 
                     {/* Input field here */}
@@ -162,33 +149,23 @@ const AddNewMovie: React.FC = () => {
                                     label={{ tag: true, content: 'Tên' }}
                                     labelPosition='right'
                                     placeholder='Nhập tên'
-                                    onChange={(event, data) => { setName(data.value); setAlias(toLowerCaseNonAccentVietnamese(data.value)) }}
+                                    onChange={(event, data) => { setName(data.value); }}
 
                                 />
                             </Form.Field>
 
-                            <Form.Field>
-                                <Input
-                                    icon='amilia'
-                                    iconPosition='left'
-                                    label={{ tag: true, content: 'Bí danh (Alias)' }}
-                                    labelPosition='right'
-                                    placeholder='Nhập bí danh'
-                                    value={alias}
-                                    onChange={(event, data) => { setAlias(data.value) }}
-                                />
-                            </Form.Field>
+                           
 
                             <Form.Field>
                                 <Input
                                     icon='time'
                                     iconPosition='left'
-                                    label={{ tag: true, content: 'Thời lượng (phút)', }}
+                                    label={{ tag: true, content: 'Chiều cao (m)', }}
                                     labelPosition='right'
-                                    placeholder='Nhập thời lượng'
+                                    placeholder='Nhập chiều cao'
                                     type='number'
-                                    value={duration}
-                                    onChange={(event, data) => { setDuration(Number.parseInt(data.value)) }}
+                                    value={height}
+                                    onChange={(event, data) => { setHeight(Number.parseInt(data.value)) }}
                                 />
                             </Form.Field>
 
@@ -196,12 +173,12 @@ const AddNewMovie: React.FC = () => {
                                 <Input
                                     icon='calendar alternate'
                                     iconPosition='left'
-                                    label={{ tag: true, content: 'Ngày công chiếu' }}
+                                    label={{ tag: true, content: 'Ngày sinh' }}
                                     labelPosition='right'
-                                    placeholder='Ngày công chiếu'
+                                    placeholder='Ngày sinh'
                                     type='date'
-                                    value={releaseDate}
-                                    onChange={(event, data) => { setReleaseDate(data.value) }}
+                                    value={dateOfBirth}
+                                    onChange={(event, data) => { setDateOfBirth(data.value) }}
                                 />
                             </Form.Field>
 
@@ -253,7 +230,7 @@ const AddNewMovie: React.FC = () => {
                                             'removeformat | help',
                                         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
                                     }}
-                                    onEditorChange={(newText) => { setContent(newText); }}
+                                    onEditorChange={(newText) => { setDescription(newText); }}
                                 />
                             </Form.Field>
 

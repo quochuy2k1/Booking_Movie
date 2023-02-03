@@ -6,6 +6,7 @@ namespace Booking_Movie.Data.Entities
     {
         public int Id { get; set; }
         public decimal Total { get; set; }
+        public string? OrderId { get; set; }
 
         public DateTime CreatedDate { get; set; }
 

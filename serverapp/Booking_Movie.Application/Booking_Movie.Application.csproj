@@ -12,20 +12,27 @@
   
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Booking_Movie.Data\Booking_Movie.Data.csproj" />
+    <ProjectReference Include="..\Booking_Movie.Payment\Booking_Movie.Payment.csproj" />
     <ProjectReference Include="..\Booking_Movie.Utilities\Booking_Movie.Utilities.csproj" />
     <ProjectReference Include="..\Booking_Movie.ViewModel\Booking_Movie.ViewModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Catalog\MovieTypes\" />
-    <Folder Include="Catalog\Cinemas\" />
     <Folder Include="Catalog\MovieCategories\" />
     <Folder Include="Catalog\Coupons\" />
     <Folder Include="Catalog\Seats\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\launchSettings.json">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

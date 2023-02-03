@@ -10,6 +10,8 @@ import Footer from './Footer';
 import NavMenu from './NavMenu';
 import Booking from '../../features/bookings/Booking';
 import MovieList from '../../features/movie/MovieList';
+import { ProtectedRoute } from './ProtectedRoute';
+import HistoryBooking from '../../features/user/BookingHistory';
 
 
 const AppMedia = createMedia({
@@ -28,6 +30,7 @@ const { Media, MediaContextProvider } = AppMedia;
 const SwitchRoute: React.FC<{}> = () => {
     const sessionId: string | null = localStorage.getItem("sessionId");
     console.log(sessionId !== null ? sessionId : "", "sessionId layout")
+    
     return (
         <Routes>
            <Route path='/' element={<MovieHome />} />
@@ -35,7 +38,9 @@ const SwitchRoute: React.FC<{}> = () => {
             <Route path='/actor/:id' element={<ActorDetail/>} />
             <Route path='/movie' element={<MovieList />} />
             <Route path='/movie/:movieId' element={<MovieDetail/>} />
-            <Route path={`/booking/:cinemaId/movie/:movieId/sessionId/${sessionId}`} element={<Booking/>} />
+            <Route path={`/booking/:cinemaId/movie/:movieId/sessionId/:sessionId`} element={<ProtectedRoute > <Booking/></ProtectedRoute>} />
+            <Route path='/user/history-booking/' element={<ProtectedRoute ><HistoryBooking/></ProtectedRoute>} />
+           
             {/* <Route path='/fetch-data/:startDateIndex?' element={<Home/>} /> */}
             {/* <Route path='*'>
                 <div>Không phù hợp</div>

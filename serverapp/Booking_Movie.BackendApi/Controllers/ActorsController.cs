@@ -25,7 +25,7 @@ namespace Booking_Movie.BackendApi.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Get()
         {
             var host = $"{Request.Scheme}://{Request.Host}";

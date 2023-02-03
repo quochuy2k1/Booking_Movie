@@ -90,7 +90,7 @@ const MovieHome: React.FC<{}> = () => {
                 },
                 {
                     menuItem: 'Phim sắp chiếu',
-                    render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
+                    render: () => <Tab.Pane attached={false}>Tạm thời chưa có phim sắp chiếu</Tab.Pane>,
                 },]} />
 
         </>

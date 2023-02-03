@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 // material-ui
 import { Card, CardContent, CardHeader, Divider, Typography } from '@mui/material';
@@ -30,7 +30,7 @@ interface ICardPropsStyle {
 }
 
 
-const MainCard = forwardRef<HTMLDivElement | null, ICardPropsStyle>(
+const MainCard = React.forwardRef<HTMLDivElement | null, ICardPropsStyle>(
     (
         props: ICardPropsStyle,
         ref

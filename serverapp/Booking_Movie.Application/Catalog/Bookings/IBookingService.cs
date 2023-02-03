@@ -1,4 +1,5 @@
 ﻿using Booking_Movie.ViewModel.Catalog.BookingVM;
+using Booking_Movie.ViewModel.Catalog.MomoPaymentVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,13 @@ namespace Booking_Movie.Application.Catalog.Bookings
     public interface IBookingService
     {
         Task<List<BookingViewModel>?> GetAllBooking();
+        Task<List<BookingHistoryViewModel>?> GetBookingByUserId(Guid userId, string host);
+        Task<BookingHistoryViewModel?> GetBookingDetailByUserId(int id, Guid userId, string host);
+        Task<BookingHistoryViewModel?> GetBookingDetailByQrCode(string qrContent, string host);
+        Task<string?> MomoPayment(CreateMomoPaymentRequest request);
+        Task<int?> SavePayment(ResultMomoPaymentViewModel result);
+        ResultMomoPaymentViewModel? ConfirmMomoPaymentClient(ResultMomoPaymentViewModel result);
+
+        Task<bool> UpdatePaymentStatus(string orderId, bool status);
     }
 }

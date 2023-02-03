@@ -50,7 +50,7 @@ const ActorDetail: React.FC<ActorDetailProps> = (props) => {
                 Chiều cao: {actor?.height}
             </p>
             <p className="py-1 text-base">
-                Quốc tịch: {actor?.nationality}
+                Quốc tịch: {actor?.nationalityId}
             </p>
         </Grid.Column>
     </Grid>

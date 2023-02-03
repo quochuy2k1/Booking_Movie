@@ -1,21 +1,15 @@
 import { Alert, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, useMediaQuery, useTheme } from "@mui/material";
-import { GridSelectionModel } from "@mui/x-data-grid";
 import { Editor } from "@tinymce/tinymce-react";
-import moment from "moment";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { async } from "rxjs";
-import { Button, DropdownProps, Form, Icon, Input } from "semantic-ui-react";
+import React, { useEffect, useMemo, useState } from "react";
+import { Button, DropdownProps, Form, Input } from "semantic-ui-react";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
-import { GetAllActor } from "../../../../../services/actor.service";
-import { GetCasts, GetDetailMovie, GetMovieCategories, GetMovieDirectors } from "../../../../../services/movie.service";
-import { Actor, GetAllActorAsync } from "../../../../../slices/actor/actorSlice";
-import { CategoryModel, GetCategoriesAsync } from "../../../../../slices/categories/categorySlice";
-import { DirectorModel, GetDirectorAsync } from "../../../../../slices/directors/directorSlice";
-import { CreateNewMovieAsync, emptyMovieStatus, UpdateMovieAsync } from "../../../../../slices/movie/movieSlice";
+import { Actor, UpdateActorAsync, emptyActorStatus } from "../../../../../slices/actor/actorSlice";
+import { CategoryModel } from "../../../../../slices/categories/categorySlice";
+import { DirectorModel } from "../../../../../slices/directors/directorSlice";
+import { emptyMovieStatus } from "../../../../../slices/movie/movieSlice";
 import { GetNationalitiesAsync } from "../../../../../slices/nationalities/nationalitySlice";
-import { GetProducerAsync, ProducerModel } from "../../../../../slices/producers/producerSlice";
 import DropdownComponent, { dataDropdownOption } from "../../../../ui-component/common/Dropdown/DropdownComponent";
-import { toLowerCaseNonAccentVietnamese } from "../../../../utils/NonAccentVietnamese";
+import moment from "moment";
 
 
 
@@ -37,32 +31,32 @@ const dataStatusOption: dataDropdownOption[] = [
     }
 ]
 
-interface IUpdateMovieProps {
+interface IUpdateActorProps {
     isOpen: boolean,
-    setOpenUpdateMovie: (open: boolean) => void,
+    setOpenUpdateActor: (open: boolean) => void,
     [k: string]: any
 }
 
-const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
+const UpdateActor: React.FC<IUpdateActorProps> = (props) => {
 
     const theme = useTheme();
     const dispatch = useAppDispatch();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-    const error = useAppSelector(state => state.movie.error);
-    const status_update = useAppSelector(state => state.movie.status);
+    const error = useAppSelector(state => state.actor.error);
+    const status_update = useAppSelector(state => state.actor.status);
 
     const token = localStorage.getItem("token");
     // input variable
 
 
-    const [name, setName] = useState<string>(props.name);
-    const [duration, setDuration] = useState<number>(props.duration);
-    const [releaseDate, setReleaseDate] = useState<string>(moment(props.releaseDate).toISOString().substring(0, 10));
-    const [content, setContent] = useState<string>(props.content);
-    const [status, setStatus] = useState<boolean>(false);
-    const [image, setImage] = useState<File | string | null>(null);
 
-    
+    const [name, setName] = useState<string>(props.name || "");
+    const [height, setHeight] = useState<number>(props.height || 0);
+    const [dateOfBirth, setDateOfBirth] = useState<string>(moment(props.dateOfBirth).toISOString().substring(0, 10) || "");
+    const [description, setDescription] = useState<string>(props.description || "");
+    const [image, setImage] = useState<File | null>(null);
+
+
     const [nationality, setNationality] = useState<string | null>(null);
 
 
@@ -72,9 +66,6 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
     // dropdown category 
     const [openUpdate, setOpenUpdate] = useState(props.isOpen);
 
-    const categories = useAppSelector(state => state.category.categories);
-    const status_categories = useAppSelector(state => state.category.status); 
-    const [dataCategoriesOption, setDataCategoriesOption] = useState<dataDropdownOption[] | boolean>([] as dataDropdownOption[]);
 
     // 
     const nationalities = useAppSelector(state => state.nationality.nationalities);
@@ -82,32 +73,13 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
     const [dataNationalitiesOption, setDataNationalitiesOption] = useState<dataDropdownOption[] | boolean>([] as dataDropdownOption[]);
 
 
-    // 
-    const producers = useAppSelector(state => state.producer.producers);
-    const status_producers = useAppSelector(state => state.producer.status);
-    const [dataProducersOption, setDataProducersOption] = useState<dataDropdownOption[] | boolean>([] as dataDropdownOption[]);
 
-    // 
-    const directors = useAppSelector(state => state.director.directors);
-    const status_directors = useAppSelector(state => state.director.status);
-    const [dataDirectorsOption, setDataDirectorsOption] = useState<dataDropdownOption[] | boolean>([] as dataDropdownOption[]);
-
-    // 
-
-    const actors = useAppSelector(state => state.actor.actors);
-    const statusActors = useAppSelector(state => state.actor.status);
-    const [dataActorsOption, setDataActorsOption] = useState<dataDropdownOption[] | boolean>([] as dataDropdownOption[]);
 
     // 
     const [messageUpdate, setMessageUpdate] = useState<string>("");
     const [open, setOpen] = React.useState(false);
 
-    //
-    const GetActorsAsync = useCallback(async () => {
 
-        const result = await GetAllActor();
-        return result;
-    }, []);
 
     // const GetActorDetailAsync = useCallback(async () => {
 
@@ -120,42 +92,6 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
     const handleClickUpdateOpen = useMemo(() => () => {
         // setOpenUpdate(true);
 
-        const dataActorsOption:  dataDropdownOption[] | boolean =  [...actors].map(actor => (
-            {
-                key: actor.id,
-                text: actor.name,
-                value: actor.id
-            }
-        ))
-
-        setDataActorsOption(dataActorsOption);
-
-        const dataCategoriesOption: dataDropdownOption[] | boolean =  [...categories].map(category => (
-            {
-                key: category.id,
-                text: category.name,
-                value: category.id
-            }
-        ));
-        setDataCategoriesOption(dataCategoriesOption);
-
-        const dataProducersOption: dataDropdownOption[] | boolean =  [...producers].map(producer => (
-            {
-                key: producer.id,
-                text: producer.name,
-                value: producer.id
-            }
-        ));
-        setDataProducersOption(dataProducersOption);
-
-        const dataDirectorsOption: dataDropdownOption[] | boolean =  [...directors].map(director => (
-            {
-                key: director.id,
-                text: director.name,
-                value: director.id
-            }
-        ));
-        setDataDirectorsOption(dataDirectorsOption);
 
         const dataNationalitiesOption: dataDropdownOption[] | boolean = [...nationalities].map(nationality => (
             {
@@ -165,21 +101,21 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
             }
         ));
         setDataNationalitiesOption(dataNationalitiesOption);
-        
-        
-        
+
+
+
     }, []);
 
-   
+
 
 
     useEffect(() => {
 
-        
+
         if (openUpdate) {
             // dispatch(GetAllActorAsync());
             // dispatch(GetCategoriesAsync());
-            // dispatch(GetNationalitiesAsync());
+            dispatch(GetNationalitiesAsync());
             // dispatch(GetProducerAsync());
             // dispatch(GetDirectorAsync());
             // handleClickUpdateOpen();
@@ -191,7 +127,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
         if (status_update === "updated") {
             setMessageUpdate("Cập nhập thành công")
             setOpen(true);
-            dispatch(emptyMovieStatus())
+            dispatch(emptyActorStatus())
         }
 
         else if (status_update === "failed") {
@@ -199,41 +135,38 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
             setOpen(true);
 
         }
-        console.log(props.producer, "inside useeffect")
+        // console.log(props.producer, "inside useeffect")
+
+        // console.log(props)
+
+    }, [status_update, dispatch, handleClickUpdateOpen]);
 
 
-
-    }, [ status_update, dispatch, handleClickUpdateOpen ]);
-
-    
     const handleUpdateClose = () => {
         setOpenUpdate(false);
-        props.setOpenUpdateMovie(false);
+        props.setOpenUpdateActor(false);
     };
     const handleCancelUpdate = () => {
         setOpenUpdate(false);
-        props.setOpenUpdateMovie(false);
+        props.setOpenUpdateActor(false);
 
     };
     const handleConfirmUpdate = () => {
         // setOpenUpdate(false);
-        console.log(props.actors.split(", "), "actors props")
-        console.log((actors && actors!.length > 0) && actors?.filter(actor => props.actors.split(", ").indexOf(actor.name) > -1).map((actor: Actor) => actor.id)
-            , "hihi")
-        // dispatch(UpdateMovieAsync({ id: props.id, name: name, alias: alias, duration, releaseDate: new Date(releaseDate).toISOString(), content, status, imageBackground: imgBackground! as File, imagePreview: imgPreview! as File, videoTrailer: videoTrailer! as File, producer: producer!, nationality: nationality!, categoryId: category!, directorId: director!, actorId: actor!, token: token! }))
-        // console.log(name, duration, releaseDate, content, status, imgPreview, imgBackground, videoTrailer, actor, director, producer, nationality, category, content);
+        // console.log(props.actors.split(", "), "actors props")
+        // console.log((actors && actors!.length > 0) && actors?.filter(actor => props.actors.split(", ").indexOf(actor.name) > -1).map((actor: Actor) => actor.id)
+        //     , "hihi")
+        dispatch(UpdateActorAsync({ id: props.id, name: name, nationality: nationality, height: height, dateOfBirth: new Date(dateOfBirth).toISOString(), description: description, image: image as File, token: token! }))
+        console.log(name, height, dateOfBirth, description, image, nationality);
+
 
     };
 
-   
+
     const HandleNationalityChange = (e: React.SyntheticEvent<HTMLElement, Event>, data: DropdownProps) => {
         setNationality(data.value as string);
 
     }
-
-    
-
-
 
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -257,7 +190,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title" className='text-3xl font-semibold'>
-                    {`Cập nhật phim "`}<span style={{color: "#f97316"}}>{props.name}</span>{`"`}
+                    {`Cập nhật phim "`}<span style={{ color: "#f97316" }}>{props.name}</span>{`"`}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
@@ -275,33 +208,22 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
                                     labelPosition='right'
                                     placeholder='Nhập tên'
                                     value={name}
-                                    // onChange={(event, data) => { setName(data.value); setAlias(toLowerCaseNonAccentVietnamese(data.value)) }}
+                                // onChange={(event, data) => { setName(data.value); setAlias(toLowerCaseNonAccentVietnamese(data.value)) }}
 
                                 />
                             </Form.Field>
 
-                            <Form.Field>
-                                <Input
-                                    icon='amilia'
-                                    iconPosition='left'
-                                    label={{ tag: true, content: 'Bí danh (Alias)' }}
-                                    labelPosition='right'
-                                    placeholder='Nhập bí danh'
-                                    // value={alias}
-                                    // onChange={(event, data) => { setAlias(data.value) }}
-                                />
-                            </Form.Field>
 
                             <Form.Field>
                                 <Input
                                     icon='time'
                                     iconPosition='left'
-                                    label={{ tag: true, content: 'Thời lượng (phút)', }}
+                                    label={{ tag: true, content: 'Chiều cao (m)', }}
                                     labelPosition='right'
-                                    placeholder='Nhập thời lượng'
+                                    placeholder='Nhập chiều cao'
                                     type='number'
-                                    value={duration}
-                                    onChange={(event, data) => { setDuration(Number.parseInt(data.value)) }}
+                                    value={height}
+                                    onChange={(event, data) => { setHeight(Number.parseInt(data.value)) }}
                                 />
                             </Form.Field>
 
@@ -309,12 +231,12 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
                                 <Input
                                     icon='calendar alternate'
                                     iconPosition='left'
-                                    label={{ tag: true, content: 'Ngày công chiếu' }}
+                                    label={{ tag: true, content: 'Ngày sinh' }}
                                     labelPosition='right'
-                                    placeholder='Ngày công chiếu'
+                                    placeholder='Ngày sinh'
                                     type='date'
-                                    value={releaseDate}
-                                    onChange={(event, data) => { setReleaseDate(data.value) }}
+                                    value={dateOfBirth}
+                                    onChange={(event, data) => { setDateOfBirth(data.value) }}
                                 />
                             </Form.Field>
 
@@ -322,95 +244,16 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
                                 <Input
                                     icon='file image'
                                     iconPosition='left'
-                                    label={{ tag: true, content: 'Hình review' }}
+                                    label={{ tag: true, content: 'Hình ảnh' }}
                                     labelPosition='right'
-                                    placeholder='Hình review'
+                                    placeholder='Hình ảnh'
                                     type='file'
                                     accept={AcceptedImgFileType}
-                                    // onChange={(event, data) => { setImgPreview(event.target.files![0]); console.log(event.target.files![0], "imgage") }}
-                                />
-                            </Form.Field>
-
-                            <Form.Field>
-                                <Input
-                                    icon='file image'
-                                    iconPosition='left'
-                                    label={{ tag: true, content: 'Hình background' }}
-                                    labelPosition='right'
-                                    placeholder='Hình background'
-                                    accept={AcceptedImgFileType}
-                                    type='file'
-                                    // onChange={(event, data) => setImgBackground(event.target.files![0])}
-                                />
-                            </Form.Field>
-
-                            <Form.Field>
-                                <Input
-                                    icon='file video'
-                                    iconPosition='left'
-                                    label={{ tag: true, content: 'Video trailer' }}
-                                    labelPosition='right'
-                                    placeholder='Video trailer'
-                                    type='file'
-                                    accept={AcceptedVideoFileType}
-                                    // onChange={(event, data) => setVideoTrailer(event.target.files![0])}
-                                />
-                            </Form.Field>
-
-                            <Form.Field>
-                                <DropdownComponent
-                                    loading={status_categories === "loading"}
-                                    placeholder='Chọn danh mục phim'
-                                    multiple
-                                    selection
-                                    search
-                                    dataOption={dataCategoriesOption as dataDropdownOption[]}
-
-                                    defaultValue={categories && categories.filter(category => props.categories.split(", ").indexOf(category.name) > -1).map((category: CategoryModel) => category.id)}
-                                    // onSelectChange={HandleCategoryChange}
+                                    onChange={(event, data) => { setImage(event.target.files![0]); console.log(event.target.files![0], "imgage") }}
                                 />
                             </Form.Field>
 
 
-                            <Form.Field>
-                                <DropdownComponent
-                                    loading={statusActors === "loading"}
-                                    placeholder='Chọn diễn viên'
-                                    multiple
-                                    selection
-                                    search
-                                    dataOption={dataActorsOption as dataDropdownOption[]}
-
-                                    defaultValue={actors && actors.filter(actor => props.actors.split(", ").indexOf(actor.name) > -1).map((actor: Actor) => actor.id)}
-                                    // onSelectChange={HandleActorChange}
-                                />
-                            </Form.Field>
-
-                            <Form.Field>
-                                <DropdownComponent
-                                    loading={status_directors === "loading"}
-                                    placeholder='Chọn đạo diễn'
-                                    multiple
-                                    selection
-                                    search
-                                    dataOption={dataDirectorsOption as dataDropdownOption[]}
-
-                                    defaultValue={directors && directors.filter(director => props.directors.split(", ").indexOf(director.name) > -1).map((director: DirectorModel) => director.id)}
-                                    // onSelectChange={HandleDirectorChange}
-                                />
-                            </Form.Field>
-                            <Form.Field>
-                                <DropdownComponent
-                                    loading={status_producers === "loading"}
-                                    placeholder='Chọn nhà sản xuất'
-                                    selection
-                                    search
-                                    dataOption={dataProducersOption as dataDropdownOption[]}
-
-                                    defaultValue={producers && producers.find(producer => props.producer === producer.name)?.id}
-                                    // onSelectChange={HandleProducerChange}
-                                />
-                            </Form.Field>
 
 
                             <Form.Field>
@@ -420,19 +263,8 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
                                     selection
                                     search
                                     dataOption={dataNationalitiesOption as dataDropdownOption[]}
-
-                                    defaultValue={nationalities && nationalities.find(nationality => props.nationality === nationality.name)?.id}
+                                    defaultValue={nationalities && nationalities.find(nationality => props.nationalityId === nationality.name)?.id}
                                     onSelectChange={HandleNationalityChange}
-                                />
-                            </Form.Field>
-
-                            <Form.Field>
-                                <DropdownComponent
-                                    placeholder='Trạng thái'
-                                    selection
-                                    dataOption={dataStatusOption}
-                                    defaultValue={props.status}
-                                    onSelectChange={(event, data) => setStatus(data.value as boolean)}
                                 />
                             </Form.Field>
 
@@ -440,7 +272,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
                                 <Editor
                                     apiKey='yillg49dt4io6vjxyvs8k26ldhgtxqnmurmteil8v2j6mljb'
                                     onInit={(evt, editor) => editorRef.current = editor}
-                                    initialValue={content ? content : "<p>Nhập nội dung phim.</p>"}
+                                    initialValue={description ? description : "<p>Nhập tiểu sử.</p>"}
                                     init={{
                                         height: 500,
                                         menubar: false,
@@ -455,7 +287,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
                                             'removeformat | help',
                                         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
                                     }}
-                                    onEditorChange={(newText) => { setContent(newText); }}
+                                    onEditorChange={(newText) => { setDescription(newText); }}
                                 />
                             </Form.Field>
 
@@ -480,5 +312,5 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
 
     )
 }
-export default UpdateMovie;
+export default UpdateActor;
 

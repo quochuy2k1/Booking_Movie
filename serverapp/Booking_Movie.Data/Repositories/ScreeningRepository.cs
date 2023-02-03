@@ -1,6 +1,17 @@
-﻿namespace Booking_Movie.Data.Repositories
+﻿using Booking_Movie.Data.EF;
+using Booking_Movie.Data.Entities;
+using Booking_Movie.Data.Infrastructure;
+
+namespace Booking_Movie.Data.Repositories
 {
-    internal class ScreeningRepository
+    public interface IScreeningRepository: IRepository<Screening>
     {
+
+    }
+    public class ScreeningRepository : RepositoryBase<Screening>, IScreeningRepository
+    {
+        public ScreeningRepository(BookingMovieContext movieContext, IDbFactory dbFactory) : base(movieContext, dbFactory)
+        {
+        }
     }
 }

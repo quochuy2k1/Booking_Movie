@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Location } from "react-router-dom";
-import { SignInAsync, UserState } from "../../../slices/user/userSlice";
+import { SignInAsync, UserState, checkLogin } from "../../../slices/user/userSlice";
 import { Grid, Header, Form, Segment, Button, Message, Modal, Icon } from "semantic-ui-react";
 import { RootState } from "../../../app/store";
+import UserInfo from "./UserInfo";
 
 
 interface mapToProps {
-    SignIn: (UserName: string, Password: string, Remember: boolean) => any
+    SignIn: (UserName: string, Password: string, Remember: boolean) => any,
+    CheckLogin: (isLogin: boolean| null) => any
 }
 
 type UserProps =
@@ -44,7 +46,7 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
             userName: '',
             password: '',
             remember: true,
-            isSignIn: false
+            isSignIn : false
         }
 
         this.onChangeUserName = this.onChangeUserName.bind(this)
@@ -56,8 +58,27 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
 
     }
 
+    componentWillReceiveProps({isLogin, CheckLogin}: {isLogin: boolean | null, CheckLogin: (isLogin: boolean| null) => any}): void{
+             
+        console.log(isLogin, "is login")
+        if(isLogin === false){
+            this.setState(pre =>({
+                ...pre,
+                open: true
+            }));
+            CheckLogin(null);
+        }
 
+        if(isLogin === null){
+            this.setState(pre =>({
+                ...pre,
+                isSignIn: false
+            }));
+        }
+    }
     componentDidMount(): void {
+        
+        
         console.log(this.props, "login props")
         var user_auth = JSON.parse(localStorage.getItem("user_authenticate")!);
         var exp_token = localStorage.getItem("exp_token");
@@ -80,13 +101,16 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
                 firstName: user_auth.firstName,
                 lastName: user_auth.lastName,
                 isSignIn: user_auth.isSignIn
-            }))
+            }));
+            console.log("logged")
+            this.props.CheckLogin(true);
         }
         else {
             this.setState(pre => ({
                 ...pre,
                 isSignIn: false
             }))
+            this.props.CheckLogin(null);
         }
 
         console.log(this.props)
@@ -179,7 +203,8 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
 
                     </Modal.Actions>
                 </Modal>
-                    : <span>{this.state.isSignIn && `${this.state.lastName} ${this.state.firstName} | `}Đăng xuất</span>
+                    // : <span>{this.state.isSignIn && `${this.state.lastName} ${this.state.firstName} | `}Đăng xuất</span>
+                    : <UserInfo></UserInfo>
                 }
             </>
         );
@@ -189,7 +214,8 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         // dispatching plain actions
-        SignIn: (UserName: string, Password: string, Remember: boolean) => dispatch(SignInAsync({ UserName, Password, Remember }))
+        SignIn: (UserName: string, Password: string, Remember: boolean) => dispatch(SignInAsync({ UserName, Password, Remember })),
+        CheckLogin: (isLogin: boolean | null) => dispatch(checkLogin({isLogin: isLogin}))
     }
 }
 export default connect(

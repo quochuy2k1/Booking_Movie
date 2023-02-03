@@ -1,6 +1,6 @@
 import { object } from 'yup';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { SignIn } from "../../services/user.service";
+import { SignIn, SignOut } from "../../services/user.service";
 
 export interface UserState {
     appUser: {
@@ -12,6 +12,7 @@ export interface UserState {
     exp?: string,
     status: string,
     sessionId: string,
+    isLogin: boolean | null,
     error: any,
 }
 
@@ -26,6 +27,7 @@ const initialState: UserState =
     token: "",
     exp: undefined,
     sessionId: "",
+    isLogin: null,
     error: null
 }
 
@@ -44,10 +46,28 @@ export const SignInAsync = createAsyncThunk(
     }
 );
 
+export const SignOutAsync = createAsyncThunk(
+    'user/SignOut',
+    async (UserData, { rejectWithValue }) => {
+       
+        try {
+            const response = await SignOut();
+            // The value we return becomes the `fulfilled` action payload
+            return response.data;
+        }
+        catch (err: any) {
+            return rejectWithValue(err.response.data)
+        }
+    }
+);
+
 export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        checkLogin: (state, action) =>{
+            state.isLogin = action.payload.isLogin as boolean | null;
+        },
         emptyUserError: (state) => {
             state.error = null;
         }
@@ -59,7 +79,7 @@ export const userSlice = createSlice({
             })
             .addCase(SignInAsync.fulfilled, (state, action) => {
                 const { userName, lastName, firstName } = action.payload.appUser
-                Object.assign(state, { status: 'idle', appUser: action.payload.appUser })
+                Object.assign(state, { status: 'idle', appUser: action.payload.appUser, isLogin: true })
                 // console.log(action.payload, "payload")
                 localStorage.setItem("token", action.payload.token);
                 localStorage.setItem("exp_token", action.payload.exp!);
@@ -70,9 +90,26 @@ export const userSlice = createSlice({
              
                 Object.assign(state, {status: 'failed', error: action.payload as any})
             });
+
+            builder.addCase(SignOutAsync.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(SignOutAsync.fulfilled, (state, action) => {
+                const isLogout = action.payload.isLogout;
+                Object.assign(state, { status: 'idle', appUser: null, isLogin: null })
+                // console.log(action.payload, "payload")
+                localStorage.removeItem("token");
+                localStorage.removeItem("exp_token");
+                localStorage.removeItem("sessionId");
+                localStorage.removeItem("user_authenticate");
+            })
+            .addCase(SignOutAsync.rejected, (state, action: any) => {
+             
+                Object.assign(state, {status: 'failed', error: action.payload as any})
+            });
     }
 
 });
-export const { emptyUserError} = userSlice.actions;
+export const { emptyUserError, checkLogin} = userSlice.actions;
 
 export default userSlice.reducer;

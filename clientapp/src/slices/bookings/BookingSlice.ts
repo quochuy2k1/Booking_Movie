@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { GetAllBookingPaging } from "../../services/booking.service";
+import { GetAllBookingPaging, PaymentStatusUpdateRequest, UpdatePaymentStatus } from "../../services/booking.service";
 import { Combo } from "../combos/comboSlice";
 import { ScreeningModel } from "../screenings/ScreeningSlice";
 import { SeatState } from "../seats/SeatSlice";
@@ -18,6 +18,7 @@ export interface BookingModel {
     tickets: Ticket[],
     seatRevered: SeatState[]
     flagScanner: boolean,
+    status: boolean
 }
 
 export interface BookingState{
@@ -51,6 +52,21 @@ export const GetAllBookingPagingAsync = createAsyncThunk(
     }
 )
 
+export const UpdatePaymentStatusAsync = createAsyncThunk(
+    "booking/update-payment-status",
+    async (request: PaymentStatusUpdateRequest, { rejectWithValue }) => {
+        // const {PageIndex, PageSize, Nationality, Sortby} = request;
+        try {
+            const response = await UpdatePaymentStatus(request);
+            // The value we return becomes the `fulfilled` action payload
+            return response.data;
+        }
+        catch (err: any) {
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
 
 export const BookingSlice = createSlice({
     name: "booking",
@@ -59,16 +75,7 @@ export const BookingSlice = createSlice({
         bookScreening: (state, action) =>{
             // state.screening = action.payload as ScreeningModel
         },
-        bookSeat: (state, action) =>{
-            // console.log(action.payload, "book seat")
-            // state.seatRevered.push(action.payload as SeatState)
-        },
-        cancelBookSeat: (state, action) =>{
-            // const newStateSeatReserved = [...state.seatRevered];
-            // const index = newStateSeatReserved.findIndex((seat, idx) => seat.id === action.payload.id);
-            // newStateSeatReserved.splice(index, 1);
-            // state.seatRevered = newStateSeatReserved;
-        }
+       
     },
     extraReducers: builder => {
         builder.addCase(GetAllBookingPagingAsync.pending, (state, action) => {
@@ -84,9 +91,30 @@ export const BookingSlice = createSlice({
             .addCase(GetAllBookingPagingAsync.rejected, (state, action) => {
                 state.status = "failed"
             })
+
+            builder.addCase(UpdatePaymentStatusAsync.pending, (state, action) => {
+                state.status = "loading"
+            })
+                .addCase(UpdatePaymentStatusAsync.fulfilled, (state, action) => {
+                    // const { result, total } = action.payload;
+                    console.log(action.payload, "booking slice")
+                    const {id} = action.payload;
+                    state.status = "updated"
+                    const existsBooking = [...state.bookings].findIndex(booking => booking.id === id);
+                    console.log(existsBooking, "existsBooking")
+                    if(existsBooking !== -1){
+                        state.bookings[existsBooking] = action.payload
+                    }
+                    // Object.assign(state, { bookings: [...action.payload], status: "idle", total: total })
+                    // Object.assign(state, { bookings: [...action.payload], status: "idle", })
+                    // console.log( current(state.result), "payload booking lít")
+                })
+                .addCase(UpdatePaymentStatusAsync.rejected, (state, action) => {
+                    state.status = "failed"
+                })
     }
 });
 
-export const { bookScreening, bookSeat, cancelBookSeat } = BookingSlice.actions;
+export const { bookScreening, } = BookingSlice.actions;
 
 export default BookingSlice.reducer;

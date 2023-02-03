@@ -1,23 +1,14 @@
 import * as React from 'react';
-import { DataGrid, GridColDef, GridToolbar, useGridApiContext, useGridSelector, gridPageSelector, gridPageCountSelector, GridSelectionModel, GridRowParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridToolbar, useGridApiContext, useGridSelector, gridPageSelector, gridPageCountSelector, GridSelectionModel, GridRowParams, GridValueGetterParams, GridValueFormatterParams } from '@mui/x-data-grid';
 import MainCard from '../../../../ui-component/cards/MainCard';
 import { locateText } from '../../../../utils/locateTextDataGrid';
-import { emptyMovieError, GetAllMoviePagingAsync } from '../../../../../slices/movie/movieSlice';
+import { emptyMovieError } from '../../../../../slices/movie/movieSlice';
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
-import { Alert, Avatar, Collapse, IconButton, LinearProgress, Paper, TablePagination, Checkbox } from '@mui/material';
-import { DropdownProps, Label } from 'semantic-ui-react';
+import { Alert, Collapse, IconButton, LinearProgress, Paper, TablePagination, Checkbox } from '@mui/material';
+import { DropdownProps } from 'semantic-ui-react';
 import DropdownComponent from '../../../../ui-component/common/Dropdown/DropdownComponent';
 import moment from 'moment';
-import AddNewActor from './addNewActor';
-import DeleteMuilActor from './deleteMuilActor';
 import {  Close } from '@mui/icons-material';
-import UpdateMovie from './updateActor';
-import { GetCategoriesAsync } from '../../../../../slices/categories/categorySlice';
-import { GetAllActorAsync, GetAllActorPagingAsync } from '../../../../../slices/actor/actorSlice';
-import { GetDirectorAsync } from '../../../../../slices/directors/directorSlice';
-import { GetNationalitiesAsync } from '../../../../../slices/nationalities/nationalitySlice';
-import { GetProducerAsync } from '../../../../../slices/producers/producerSlice';
-import { GetAllScreeningAsync } from '../../../../../slices/screenings/ScreeningSlice';
 import { GetAllBookingPagingAsync } from '../../../../../slices/bookings/BookingSlice';
 
 const columns: GridColDef[] = [
@@ -29,10 +20,18 @@ const columns: GridColDef[] = [
 	{
 		field: 'createdDate',
 		headerName: 'Ngày tạo',
-		type: 'dateTime',
+		type: 'date',
 		flex: 1,
-		renderCell: (params) => moment(params.value).format("DD/MM/yyyy")
-		,
+		// renderCell: (params) => moment(params.value).format("DD/MM/yyyy"),
+		valueFormatter: (params: GridValueFormatterParams) => {
+			// first converts to JS Date, then to locale option through date-fns
+			
+			return moment(params.value).format("DD/MM/yyyy");
+		  },
+		// valueGetter: (params: GridValueGetterParams) => {
+		// 	return moment(params.value).format("DD/MM/yyyy");
+		//   }
+		// ,
 	},
 	{ field: 'total', headerName: 'Số tiền thanh toán', flex: 1, renderCell: (params) =>params.value.toLocaleString('it-IT', {style : 'currency', currency : 'vnd'})  },
 	{
@@ -40,8 +39,18 @@ const columns: GridColDef[] = [
 		headerName: 'Lịch chiếu',
 		type: 'dateTime',
 		flex: 1,
-		renderCell: (params) => moment(params.value).format("hh:mm")
+		// renderCell: (params) => moment(params.value).format("hh:mm"),
+		valueFormatter: (params: GridValueFormatterParams) => {
+			// first converts to JS Date, then to locale option through date-fns
+			console.log(params, "params")
+			return moment(params.value).format("hh:mm");
+		  }
 		,
+		// valueGetter: (params: GridValueGetterParams) => {
+		// 	console.log(params, "params")
+		// 	return params.value;
+		//   }
+		// ,
 	},
 	{
 		field: 'tickets',

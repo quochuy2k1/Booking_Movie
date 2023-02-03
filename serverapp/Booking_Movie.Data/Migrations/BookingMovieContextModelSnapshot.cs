@@ -75,79 +75,79 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("354b3fae-02fc-482f-bf68-1cc40b04c34f"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3335),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(444),
                             DateOfBirth = new DateTime(1990, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.64m,
                             Image = "",
                             Name = "Ninh Dương Lan Ngọc",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3336),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(444),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("1fa1a35a-d969-4b44-8cc0-1f6fbff578fb"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3340),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(447),
                             DateOfBirth = new DateTime(1991, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.67m,
                             Image = "",
                             Name = "Katy Nguyễn",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3341),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(447),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("343d4b37-c4f7-4d24-adb6-05abeda8aa41"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3343),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(449),
                             DateOfBirth = new DateTime(1989, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.7m,
                             Image = "",
                             Name = "NSƯT Lê Khanh",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3344),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(450),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("bf79e94c-2b38-4763-aacd-8161006e8347"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3352),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(452),
                             DateOfBirth = new DateTime(1988, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.65m,
                             Image = "",
                             Name = "Hữu Châu",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3352),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(452),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("26340d49-35d2-4696-addf-e4fc97cd5300"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3355),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(457),
                             DateOfBirth = new DateTime(1987, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.81m,
                             Image = "",
                             Name = "Lãnh Thanh",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3356),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(458),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("376ef100-3a18-45dd-b83c-517d2cafc0dc"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3359),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(459),
                             DateOfBirth = new DateTime(1986, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.76m,
                             Image = "",
                             Name = "Lê Xuân Tiền",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3360),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(460),
                             ViewCount = 0
                         });
                 });
@@ -309,13 +309,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("ab778d64-0d3e-4ab6-bc7c-a50b93de737b"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "acfc8024-c597-4aa2-b0cf-da2483c6874e",
+                            ConcurrencyStamp = "49f8fefb-b102-424e-93b9-5a957dff50af",
                             Email = "dangit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Đăng",
                             LastName = "Nguyễn Minh",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEMiBmII1fT09zZu8Fk/XtiAZ6zQZZpaP5txyBaPPa4b3BxeJ3WkMGxItHUVqR9u1ow==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAwgnaX0fb0pCzX0L7FDwJaGLZuJZXrGJggvGzJqJmwfp10X+nOSRm5y1ghU80rQsg==",
                             PhoneNumber = "0364125410",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -325,13 +325,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("d83ac55f-ef97-468f-a493-e9a8eeec395e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "124d57d3-824b-4433-816a-9558425c4c0f",
+                            ConcurrencyStamp = "9a528c4a-23a2-43a5-8212-cff184042424",
                             Email = "khanhit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Khánh",
                             LastName = "Nguyễn",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAELltuuK3GdLqUvR5ma/XU6TxSTWr4TXAha9JCU2r6s13h7Mer6ppyI+xCzwYOikVxA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAfBgD6qXDy8tVv3fjucrQ4neyJ5DsLbnuzfD1z5QjY0tbbYZB0kOkv8KWFU6XPNHQ==",
                             PhoneNumber = "0364125420",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -341,13 +341,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("c8a04d06-2334-4806-92a6-6f6db3ed6692"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3b204710-fb3e-4854-b472-d1c4dc64083d",
+                            ConcurrencyStamp = "e0fcb97e-bfe9-4d9e-8827-25da20a86384",
                             Email = "thaoit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Thảo",
                             LastName = "Nguyễn Hoàng",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEAqwr6EyCGUbsMTZnu/uRqC2sN908x6xEvbPDo/GUoxtxTSqaTreq2CUREQ4WeSQ4g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDkKfhv3pgHoTJYPR/tOXaARodteNTfHoOtyU6W7BCVFuYrjINMbe1X9Icf7qg3ILw==",
                             PhoneNumber = "0364125430",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -456,6 +456,9 @@ namespace Booking_Movie.Data.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderId")
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("PaymentMethodId")
                         .HasColumnType("int");
@@ -581,6 +584,11 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<bool?>("Stauts")
                         .HasColumnType("bit");
 
+                    b.Property<decimal>("Total")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(12,4)")
+                        .HasDefaultValue(0m);
+
                     b.HasKey("Id");
 
                     b.HasIndex("BookingId");
@@ -596,7 +604,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 1,
                             ComboId = 1,
                             Quantity = 2,
-                            Stauts = true
+                            Stauts = true,
+                            Total = 0m
                         },
                         new
                         {
@@ -604,7 +613,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 1,
                             ComboId = 2,
                             Quantity = 1,
-                            Stauts = true
+                            Stauts = true,
+                            Total = 0m
                         },
                         new
                         {
@@ -612,7 +622,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 1,
                             ComboId = 3,
                             Quantity = 1,
-                            Stauts = true
+                            Stauts = true,
+                            Total = 0m
                         },
                         new
                         {
@@ -620,7 +631,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 3,
                             ComboId = 3,
                             Quantity = 1,
-                            Stauts = true
+                            Stauts = true,
+                            Total = 0m
                         },
                         new
                         {
@@ -628,7 +640,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 4,
                             ComboId = 1,
                             Quantity = 1,
-                            Stauts = true
+                            Stauts = true,
+                            Total = 0m
                         },
                         new
                         {
@@ -636,7 +649,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 4,
                             ComboId = 2,
                             Quantity = 1,
-                            Stauts = true
+                            Stauts = true,
+                            Total = 0m
                         },
                         new
                         {
@@ -644,7 +658,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 5,
                             ComboId = 3,
                             Quantity = 1,
-                            Stauts = true
+                            Stauts = true,
+                            Total = 0m
                         },
                         new
                         {
@@ -652,7 +667,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 6,
                             ComboId = 1,
                             Quantity = 3,
-                            Stauts = true
+                            Stauts = true,
+                            Total = 0m
                         },
                         new
                         {
@@ -660,7 +676,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 7,
                             ComboId = 2,
                             Quantity = 3,
-                            Stauts = true
+                            Stauts = true,
+                            Total = 0m
                         },
                         new
                         {
@@ -668,7 +685,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 7,
                             ComboId = 1,
                             Quantity = 1,
-                            Stauts = true
+                            Stauts = true,
+                            Total = 0m
                         });
                 });
 
@@ -692,6 +710,11 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<int>("TicketId")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Total")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(12,4)")
+                        .HasDefaultValue(0m);
+
                     b.HasKey("Id");
 
                     b.HasIndex("BookingId");
@@ -707,7 +730,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 1,
                             Quantity = 2,
                             Stauts = true,
-                            TicketId = 1
+                            TicketId = 1,
+                            Total = 0m
                         },
                         new
                         {
@@ -715,7 +739,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 1,
                             Quantity = 1,
                             Stauts = true,
-                            TicketId = 2
+                            TicketId = 2,
+                            Total = 0m
                         },
                         new
                         {
@@ -723,7 +748,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 2,
                             Quantity = 1,
                             Stauts = true,
-                            TicketId = 1
+                            TicketId = 1,
+                            Total = 0m
                         },
                         new
                         {
@@ -731,7 +757,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 2,
                             Quantity = 1,
                             Stauts = true,
-                            TicketId = 2
+                            TicketId = 2,
+                            Total = 0m
                         },
                         new
                         {
@@ -739,7 +766,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 3,
                             Quantity = 1,
                             Stauts = true,
-                            TicketId = 1
+                            TicketId = 1,
+                            Total = 0m
                         },
                         new
                         {
@@ -747,7 +775,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 4,
                             Quantity = 3,
                             Stauts = true,
-                            TicketId = 2
+                            TicketId = 2,
+                            Total = 0m
                         },
                         new
                         {
@@ -755,7 +784,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 5,
                             Quantity = 2,
                             Stauts = true,
-                            TicketId = 2
+                            TicketId = 2,
+                            Total = 0m
                         },
                         new
                         {
@@ -763,7 +793,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 6,
                             Quantity = 3,
                             Stauts = true,
-                            TicketId = 1
+                            TicketId = 1,
+                            Total = 0m
                         },
                         new
                         {
@@ -771,7 +802,8 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 7,
                             Quantity = 1,
                             Stauts = true,
-                            TicketId = 2
+                            TicketId = 2,
+                            Total = 0m
                         });
                 });
 
@@ -1291,118 +1323,118 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("01c9b39b-ad45-41fe-ace0-244b38254f99"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3193),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(341),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Jaume Collet-Serra",
                             NationalityId = "es",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3208),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(359),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("88034877-a697-472c-a2d8-3d133792c463"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3215),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(366),
                             DateOfBirth = new DateTime(1986, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.85m,
                             Image = "",
                             Name = "Bảo Nhân",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3216),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(366),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("55266710-251a-45a1-b11b-d2e2e7e104ea"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3220),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(371),
                             DateOfBirth = new DateTime(1985, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.65m,
                             Image = "",
                             Name = "Nam Cito",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3220),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(372),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("c089db2a-468a-4287-8b45-a832bb10fe93"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3223),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(374),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Jaume Collet-Serra",
                             NationalityId = "es",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3224),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(374),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("ff9a4cc9-3191-4da4-9bf8-6cd8bd129138"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3228),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(376),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Ilya Maksimov",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3228),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(377),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("e37edc8f-48ff-40fe-bcfc-d37a689a5b04"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3231),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(379),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Lee Seok Hoon",
                             NationalityId = "ukr",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3232),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(379),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("eb504714-17f9-4aa3-8b5b-6360102f8453"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3234),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(386),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Brando Lee",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3235),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(387),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("7e02a8db-94e7-4842-8b35-96c48d0e0c63"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3238),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(389),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Parker Finn",
                             NationalityId = "ms",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3238),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(389),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("e717c0c2-82f5-46a8-8e50-95999e661a67"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3241),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(391),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Park Gyu Tae",
                             NationalityId = "tha",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3242),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(391),
                             ViewCount = 0
                         });
                 });
@@ -1597,14 +1629,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 1,
                             Alias = "Co_Gai_Den_Tu_Qua_Khu",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3397),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(482),
                             Duration = (short)105,
                             Name = "Cô Gái Từ Quá Khứ",
                             NationalityId = "vi",
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3398),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(483),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1612,14 +1644,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 2,
                             Alias = "Black_Adam",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3401),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(486),
                             Duration = (short)105,
                             Name = "Black Adam",
                             NationalityId = "en",
                             ProducerId = new Guid("3f8ba972-52da-4a37-b152-a92628e4b714"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3403),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(486),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1627,14 +1659,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 3,
                             Alias = "Confidential_Assignment_2_:_International",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3405),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(488),
                             Duration = (short)105,
                             Name = "Confidential Assignment 2: International",
                             NationalityId = "vi",
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3405),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(488),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1642,14 +1674,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 4,
                             Alias = "Prey_For_The_Devil",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3408),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(490),
                             Duration = (short)105,
                             Name = "Prey For The Devil",
                             NationalityId = "ukr",
                             ProducerId = new Guid("c6c6386c-78d9-4e32-b993-d7b660210437"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3409),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(491),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1657,14 +1689,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 5,
                             Alias = "Don't_Look_At_The_Demon",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3412),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(493),
                             Duration = (short)105,
                             Name = "Don't Look At The Demon",
                             NationalityId = "tha",
                             ProducerId = new Guid("34652a25-e4ce-4994-a412-84ae013d775b"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3412),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(493),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1672,14 +1704,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 6,
                             Alias = "Gulliver_Returns",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3415),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(495),
                             Duration = (short)105,
                             Name = "Gulliver Returns",
                             NationalityId = "ms",
                             ProducerId = new Guid("272d7cd7-6ed5-428d-9bd9-ddeb0f5affea"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3415),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(496),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1687,14 +1719,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 7,
                             Alias = "Life_Is_Beautiful",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3420),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(501),
                             Duration = (short)105,
                             Name = "Life Is Beautiful",
                             NationalityId = "ko",
                             ProducerId = new Guid("e8a07088-de72-4b6c-bdd8-14370ab2a3ab"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3420),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(501),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1702,14 +1734,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 8,
                             Alias = "Smile",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3423),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(503),
                             Duration = (short)105,
                             Name = "Smile",
                             NationalityId = "es",
                             ProducerId = new Guid("8e82c641-c8f2-4ac9-820a-f59789bbd12f"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3424),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(503),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1717,14 +1749,14 @@ namespace Booking_Movie.Data.Migrations
                             Id = 9,
                             Alias = "Love_Destiny_The_Movie",
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3427),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(505),
                             Duration = (short)105,
                             Name = "Love Destiny The Movie",
                             NationalityId = "vi",
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3428),
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(506),
                             VideoTrailer = "duongdan.mp4"
                         });
                 });
@@ -2119,10 +2151,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_dien_tu_momo",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(4255),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1121),
                             Name = "Ví điện tử momo",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(4257)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1122)
                         },
                         new
                         {
@@ -2130,10 +2162,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_Zalo",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(4259),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1124),
                             Name = "Ví Zalo",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(4260)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1125)
                         },
                         new
                         {
@@ -2141,10 +2173,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "VNPAY",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(4262),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1126),
                             Name = "VNPAY",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(4263)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1126)
                         },
                         new
                         {
@@ -2152,10 +2184,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "HSBC/Payoo-ATM/VISA/MASTER/JCB/QRCODE",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(4265),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1127),
                             Name = "HSBC/Payoo - ATM/VISA/MASTER/JCB/QRCODE",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(4266)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1128)
                         },
                         new
                         {
@@ -2163,10 +2195,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_ShoppePay",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(4270),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1129),
                             Name = "Ví ShopeePay",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(4270)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1129)
                         });
                 });
 
@@ -2210,65 +2242,65 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3275),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(412),
                             Image = "",
                             Name = "MAR6 Pictures",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3279)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(412)
                         },
                         new
                         {
                             ID = new Guid("8e82c641-c8f2-4ac9-820a-f59789bbd12f"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3283),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(414),
                             Image = "",
                             Name = "GDH 559",
                             NationalityId = "tha",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3284)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(415)
                         },
                         new
                         {
                             ID = new Guid("e8a07088-de72-4b6c-bdd8-14370ab2a3ab"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3286),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(417),
                             Image = "",
                             Name = "Warner Bros",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3286)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(417)
                         },
                         new
                         {
                             ID = new Guid("272d7cd7-6ed5-428d-9bd9-ddeb0f5affea"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3288),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(419),
                             Image = "",
                             Name = "CJ Entertainment",
                             NationalityId = "ko",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3289)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(419)
                         },
                         new
                         {
                             ID = new Guid("34652a25-e4ce-4994-a412-84ae013d775b"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3292),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(421),
                             Image = "",
                             Name = "Lionsgate",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3293)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(422)
                         },
                         new
                         {
                             ID = new Guid("c6c6386c-78d9-4e32-b993-d7b660210437"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3294),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(423),
                             Image = "",
                             Name = "Bliss Pictures",
                             NationalityId = "ms",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3295)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(423)
                         },
                         new
                         {
                             ID = new Guid("3f8ba972-52da-4a37-b152-a92628e4b714"),
-                            CreatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3297),
+                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(425),
                             Image = "",
                             Name = "95 Animation Studio",
                             NationalityId = "ukr",
-                            UpdatedDate = new DateTime(2022, 12, 14, 0, 7, 17, 294, DateTimeKind.Local).AddTicks(3298)
+                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(425)
                         });
                 });
 
