@@ -1,10 +1,13 @@
 ﻿using Booking_Movie.Application.System.Users;
 using Booking_Movie.ViewModel.System.Users;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Booking_Movie.Utilities.Constants;
 
 namespace Booking_Movie.BackendApi.Controllers
 {
@@ -20,20 +23,22 @@ namespace Booking_Movie.BackendApi.Controllers
         }
 
 
-        [HttpPost("/user/signin")]
+        [HttpPost("signin")]
         [AllowAnonymous]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> SignIn([FromBody] LoginRequest request)
         {
             if(!ModelState.IsValid) return BadRequest(ModelState);
 
             var resultToken = await _userService.Authenticate(request);
+            HttpContext.Session.SetString(SystemConstant.AppSettings.Token, resultToken.token!);
 
-            if(resultToken.error != null) return BadRequest(resultToken.error);
+            if (resultToken.error != null) return BadRequest(resultToken.error);
             
             return Ok(resultToken);
         }
 
-        [HttpPost("/user/signup")]
+        [HttpPost("signup")]
         [AllowAnonymous]
         public async Task<IActionResult> SignUp([FromBody] RegisterRequest request)
         {
@@ -46,7 +51,7 @@ namespace Booking_Movie.BackendApi.Controllers
             return Ok("Sign up successful");
         }
         
-        [HttpPost("/user/admin/signup")]
+        [HttpPost("admin/signup")]
         [AllowAnonymous]
         public async Task<IActionResult> SignUpAdmin([FromForm] RegisterRequest request)
         {
@@ -57,6 +62,16 @@ namespace Booking_Movie.BackendApi.Controllers
             if (!result) return BadRequest("Register fail!");
             
             return Ok("Sign up successful");
+        }
+
+        [HttpPost("logout")]
+       public async Task<IActionResult> Logout()
+        {
+            var response = new Dictionary<string, object>();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Remove("Token");
+            response.Add("isLogout", true);
+            return Ok(response);
         }
 
 

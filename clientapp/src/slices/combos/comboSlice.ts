@@ -4,7 +4,7 @@ import { GetTicketsAsync } from "../tickets/ticketSlice";
 
 
 
-
+// Làm đúng là tạo interface BookingCombo extends Combo
 export interface Combo {
     id: string,
     name: string,

@@ -11,12 +11,14 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Booking_Movie.Application\Booking_Movie.Application.csproj" />
+    <ProjectReference Include="..\Booking_Movie.Payment\Booking_Movie.Payment.csproj" />
     <ProjectReference Include="..\Booking_Movie.Utilities\Booking_Movie.Utilities.csproj" />
   </ItemGroup>
 

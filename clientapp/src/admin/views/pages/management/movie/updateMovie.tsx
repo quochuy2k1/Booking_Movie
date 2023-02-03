@@ -99,7 +99,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
 
     // 
 
-    const actors = useAppSelector(state => state.actor.result);
+    const actors = useAppSelector(state => state.actor.actors);
     const statusActors = useAppSelector(state => state.actor.status);
     const [dataActorsOption, setDataActorsOption] = useState<dataDropdownOption[] | boolean>([] as dataDropdownOption[]);
 

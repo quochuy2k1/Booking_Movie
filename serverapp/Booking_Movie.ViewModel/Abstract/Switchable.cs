@@ -1,7 +1,7 @@
 ﻿namespace Booking_Movie.ViewModel.Abstract
 {
-    public class Switchable : ISwichable
+    public class Switchable : ISwitchable
     {
-        public bool Stauts { get; set; }
+        public bool Status { get; set; }
     }
 }

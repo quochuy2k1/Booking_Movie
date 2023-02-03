@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import rollupReplace from "@rollup/plugin-replace";
 import path from 'path';
 
-console.log(__dirname, "__dirname");
+console.log(path.resolve(__dirname,"admin", "index.html"), "__dirname");
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "",
@@ -19,7 +19,7 @@ export default defineConfig({
       // Build two separate bundles, one for each app.
       input: {
         client: path.resolve(__dirname, "index.html"),
-        admin: path.resolve(__dirname, "admin/index.html"),
+        admin: path.resolve(__dirname,"src/admin", "index.html"),
       },
      
     },

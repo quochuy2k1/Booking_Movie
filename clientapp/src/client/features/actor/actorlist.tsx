@@ -22,7 +22,7 @@ type ActorListProps =
 
 const ActorList: React.FC<ActorListProps> = (props) => {
 
-    const { result, total, status, GetAllActorPaging } = props;
+    const { actors, total, status, GetAllActorPaging } = props;
     const [sort, setSort] = useState(0);
     const [country, setCountry] = useState("");
     const refToTop = useRef<HTMLDivElement>(null);
@@ -82,7 +82,7 @@ const ActorList: React.FC<ActorListProps> = (props) => {
                         </Segment>} */}
 
                         <div id='scrollToTop' ref={refToTop}></div>
-                        {result && result.map((actor, idx) => { 
+                        {actors && actors.map((actor, idx) => { 
                             return <Item key={idx} className="hover:shadow-lg bg-gray-700 rounded" >
                                 <Item.Image size='small' src={actor.image} />
 
@@ -97,7 +97,7 @@ const ActorList: React.FC<ActorListProps> = (props) => {
                                             Chiều cao: {actor.height}
                                         </p>
                                         <p>
-                                            Quốc tịch: {actor.nationality}
+                                            Quốc tịch: {actor.nationalityId}
                                         </p>
                                     </Item.Description>
                                 </Item.Content>

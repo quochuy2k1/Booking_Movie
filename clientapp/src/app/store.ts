@@ -8,11 +8,13 @@ import comboReducer from '../slices/combos/comboSlice';
 import auditoriumReducer from '../slices/auditoriums/AuditoriumSlice';
 import screeningReducer from '../slices/screenings/ScreeningSlice';
 import bookingReducer from '../slices/bookings/BookingSlice';
+import bookingClientReducer from '../slices/bookings/BookingSliceClient';
 import paymentReducer from '../slices/payments/PaymentSlice';
 import categoryReducer from '../slices/categories/categorySlice';
 import producerReducer from '../slices/producers/producerSlice';
 import directorReducer from '../slices/directors/directorSlice';
 import nationalityReducer from '../slices/nationalities/nationalitySlice';
+import seatReservedReducer from '../slices/seats/seatReservedSlice';
 import customizationReducer from '../slices/customizations/customizationsSlice';
 
 export const store = configureStore({
@@ -26,11 +28,13 @@ export const store = configureStore({
     auditorium: auditoriumReducer,
     screening: screeningReducer,
     booking: bookingReducer,
+    bookingClient: bookingClientReducer,
     payment: paymentReducer,
     category: categoryReducer,
     producer: producerReducer,
     director: directorReducer,
     nationality: nationalityReducer,
+    seatReserved: seatReservedReducer,
     customization: customizationReducer
   },
   middleware: (getDefaultMiddleware) => {

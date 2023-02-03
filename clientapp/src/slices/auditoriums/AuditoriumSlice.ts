@@ -2,24 +2,24 @@ import { areArraysEqual } from '@mui/base';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { StatisticLabel } from 'semantic-ui-react';
 import { GetSeatByAuditorium } from '../../services/auditorium.service';
-import { SeatState } from '../seats/SeatSlice';
+import { SeatNoState, SeatState } from '../seats/SeatSlice';
 
 export interface AuditoriumModel{
     physicalName: string,
-    seats: SeatState[],
+    seats: SeatNoState[],
     status: string
 }
 
 export interface AuditoriumState{
     areas: AuditoriumModel[],
     length: number,
-    classSelect: SeatState[],
+    classSelect: SeatNoState[],
     status?: string
 }
 
 const initialState: AuditoriumState = {
     areas: [] as AuditoriumModel[],
-    classSelect: [] as SeatState[],
+    classSelect: [] as SeatNoState[],
     length: 0,
     status: "",
 
@@ -45,10 +45,10 @@ export const AuditoriumSlice = createSlice({
     initialState,
     reducers:{
         loadClassSelect: (state, action) =>{
-            state.classSelect = action.payload as SeatState[];
+            state.classSelect = action.payload as SeatNoState[];
         },
         addClassSelect: (state, action) =>{
-            const newState = [...state.classSelect, action.payload as SeatState];
+            const newState = [...state.classSelect, action.payload as SeatNoState];
             state.classSelect = newState;
         },
         removeClassSelect: (state, action) =>{

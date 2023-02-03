@@ -16,6 +16,7 @@ namespace Booking_Movie.ViewModel.Catalog.BookingVM
         public DateTime ShowTime { get; set; }
         public bool flagScanner { get; set; }
         public string UserFullName { get; set; }
+        public string? OrderId { get; set; }
         public string PaymentMethod { get; set; }
         public int? CouponId { get; set; }
         public string[]? Combos { get; set; }

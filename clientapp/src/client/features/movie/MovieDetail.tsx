@@ -17,6 +17,7 @@ import { MovieModel } from "../../../slices/movie/movieSlice";
 
 
 const MovieDetail: React.FC<{}> = () => {
+
     const { movieId } = useParams<string>()
     var movie_detail: MovieModel = useAppSelector(state => state.movie.movies.find(movie => movie.id === Number.parseInt(movieId!)))!;
     const [movie, setMovie] = useState<MovieModel>(movie_detail);
@@ -32,14 +33,15 @@ const MovieDetail: React.FC<{}> = () => {
     }, [movieId]);
 
     useEffect(() => {
-        if (!movie) {
-            GetMovie();
-        }
-    }, [GetMovie, movie])
 
-    useEffect(() => {
-        console.log(movie, "id movie")
-    });
+
+        GetMovie();
+
+    }, [GetMovie])
+
+    // useEffect(() => {
+    //     console.log(movie, "id movie")
+    // });
 
 
     // open video trailer

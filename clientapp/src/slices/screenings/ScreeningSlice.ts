@@ -64,7 +64,7 @@ export const ScreeningSlice = createSlice({
     initialState,
     reducers:{
         addScreening: (state, action) =>{
-            state.screenings.push(action.payload)
+            state.screenings.push(action.payload as ScreeningModel)
         },
        
     },

@@ -4,8 +4,8 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { addClassSelect, GetSeatByAuditoriumAsync, loadClassSelect, removeClassSelectByIndex } from "../../../slices/auditoriums/AuditoriumSlice";
 import "./auditorium.css"
 import classNames from "classnames";
-import { SeatState } from "../../../slices/seats/SeatSlice";
-import { bookSeat, cancelBookSeat } from "../../../slices/bookings/BookingSlice";
+import { SeatNoState } from "../../../slices/seats/SeatSlice";
+import { bookSeat, cancelBookSeat } from "../../../slices/seats/seatReservedSlice";
 
 // interface AuditoriumPropsParams {
 //     cinemaId: string
@@ -40,14 +40,14 @@ const Auditorium: React.FC<{}> = () => {
         // khi di chuyển đến tab khác sẽ lấy từ session storage
         // 
         if (classSelect.length === 0 && classSelectSessionStore !== null) {
-            dispatch(loadClassSelect(JSON.parse(classSelectSessionStore) as SeatState[]));
+            dispatch(loadClassSelect(JSON.parse(classSelectSessionStore) as SeatNoState[]));
 
         }
 
         console.log(classSelect, "class selected")
     }, [GetSeatsByAuditorium, dispatch, chooseTotal]);
 
-    const selectSeat = useMemo(() => (e: React.MouseEvent<HTMLDivElement>, seat: SeatState): void => {
+    const selectSeat = useMemo(() => (e: React.MouseEvent<HTMLDivElement>, seat: SeatNoState): void => {
         const { columnIndex, rowIndex, status } = seat;
         // console.log(e, columnIndex, rowIndex)
 
@@ -111,9 +111,7 @@ const Auditorium: React.FC<{}> = () => {
                                     <div className="relative cursor-pointer" >
                                         {seats.seats.map((seat, idex) => {
 
-                                            function bookSeat(arg0: { area: number; id: string; }): any {
-                                                throw new Error("Function not implemented.");
-                                            }
+                                           
 
                                             return seat.number !== 0 && <div
                                                 key={idex}

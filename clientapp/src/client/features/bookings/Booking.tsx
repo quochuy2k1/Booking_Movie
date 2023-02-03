@@ -8,7 +8,9 @@ import BookingInfo from './BookingInfo';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { resetQuantityBookTicket } from '../../../slices/tickets/ticketSlice';
 import { Confirm } from 'semantic-ui-react';
-import { SeatState } from '../../../slices/seats/SeatSlice';
+import { SeatNoState, SeatState } from '../../../slices/seats/SeatSlice';
+import { parseJwt } from '../../utils/parseJwt';
+import { bookPayment, bookScreeningId } from '../../../slices/bookings/BookingSliceClient';
 
 const show_error: string[] = [
 	"Việc chọn vị trí ghế của bạn không được để trống 1 ghế ở bên trái, giữa hoặc bên phải trên cùng hàng ghế mà bạn vừa chọn.",
@@ -59,7 +61,7 @@ const Booking: React.FC<{}> = () => {
 
 	const dispatch = useAppDispatch();
 	const { classSelect } = useAppSelector(state => state.auditorium)
-	const { chooseTotal } = useAppSelector(state => state.ticket)
+	const { chooseTotal, tickets  } = useAppSelector(state => state.ticket)
 	const [preventNext, setPreventNext] = React.useState(false);
 	const [activeError, setActiveError] = React.useState(0);
 	const [open, setOpen] = React.useState(false);
@@ -115,6 +117,7 @@ const Booking: React.FC<{}> = () => {
 
 	const handleStep = (step: number) => {
 		console.log(step, "handle step")
+		
 		if (step === 2) {
 			// kiểm tra các ghế đã chọn
 			if(checkSelect()){
@@ -165,7 +168,7 @@ const Booking: React.FC<{}> = () => {
 
 	//
 
-	function compare(a: SeatState, b: SeatState) {
+	function compare(a: SeatNoState, b: SeatNoState) {
 
 		if (a.rowIndex === b.rowIndex) {
 			return a.columnIndex - b.columnIndex
@@ -202,6 +205,15 @@ const Booking: React.FC<{}> = () => {
 
 		// console.log(activeStep, "idle")
 		// console.log(completed, "k in complete")
+		const jwtString = localStorage.getItem("token");
+		const screening = JSON.parse(sessionStorage.getItem("book-cinema")!);
+		dispatch(bookScreeningId(screening));
+		if(jwtString){
+			const jwtJson: any = parseJwt(jwtString);
+			dispatch(bookPayment({appUserId: jwtJson.userIdClaim}));
+			console.log(jwtJson.userIdClaim, "jwt userId");
+
+		}
 		dispatch(resetQuantityBookTicket())
 
 		// dispatch(emptyBookCombo())
@@ -311,3 +323,5 @@ const Booking: React.FC<{}> = () => {
 }
 
 export default Booking;
+
+

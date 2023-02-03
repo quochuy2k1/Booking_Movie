@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
-import { ActorPagingRequest, GetAllActor, GetAllActorPaging } from "../../services/actor.service";
+import { ActorCreateRequest, ActorPagingRequest, ActorUpdateRequest, CreateActor, GetAllActor, GetAllActorPaging, UpdateActor } from "../../services/actor.service";
 
 
 export interface Actor {
@@ -58,11 +58,46 @@ export const GetAllActorAsync = createAsyncThunk(
     }
 )
 
+export const CreateNewActorAsync = createAsyncThunk(
+    "actor/create",
+    async (request: ActorCreateRequest, { rejectWithValue }) => {
+        try {
+            const response = await CreateActor(request);
+            // The value we return becomes the `fulfilled` action payload
+            return response.data;
+        }
+        catch (err: any) {
+            return rejectWithValue(err.response.data)
+        }
+    }
+);
+
+export const UpdateActorAsync = createAsyncThunk(
+    "actor/update",
+    async (request: ActorUpdateRequest, { rejectWithValue }) => {
+        try {
+            const response = await UpdateActor(request);
+            // The value we return becomes the `fulfilled` action payload
+            return response.data;
+        }
+        catch (err: any) {
+            return rejectWithValue(err.response.data)
+        }
+    }
+);
+
 
 export const actorSlice = createSlice({
     name: 'actor',
     initialState,
-    reducers: {},
+    reducers: {
+        emptyActorStatus: (state) =>{
+            state.status = "";
+        },
+        emptyActorError: (state) => {
+            state.error = null;
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(GetAllActorPagingAsync.pending, (state, action) => {
             state.status = "loading"
@@ -87,8 +122,34 @@ export const actorSlice = createSlice({
             .addCase(GetAllActorAsync.rejected, (state, action) => {
                 state.status = "failed"
             })
+
+        builder.addCase(CreateNewActorAsync.pending, (state, action) => {
+            state.status = "loading"
+        })
+        .addCase(CreateNewActorAsync.fulfilled, (state, action) => {
+            state.status = "added"
+            state.actors.push(action.payload)
+        });
+
+        builder.addCase(UpdateActorAsync.pending, (state, action) => {
+            state.status = "loading"
+        })
+        .addCase(UpdateActorAsync.fulfilled, (state, action) => {
+            const {id} = action.payload;
+            state.status = "updated"
+            const existsActor = [...state.actors].findIndex(actor => actor.id === id);
+            console.log(existsActor, "existsActor")
+            if(existsActor !== -1){
+                state.actors[existsActor] = action.payload
+            }
+        })
+        .addCase(UpdateActorAsync.rejected, (state, action) => {
+            Object.assign(state, { status: "failed", error: action.payload })
+        });
     }
 
 })
+
+ export const {emptyActorError, emptyActorStatus } = actorSlice.actions;
 
 export default actorSlice.reducer;

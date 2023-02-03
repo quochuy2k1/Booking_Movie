@@ -8,19 +8,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Catalog\CouponVM\" />
-    <Folder Include="Catalog\BookingTicketVM\" />
-    <Folder Include="Catalog\BookingComboVM\" />
-    <Folder Include="Catalog\SeatReservedVM\" />
-    <Folder Include="Catalog\ScreeningVM\" />
     <Folder Include="Catalog\PaymentMethodVM\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Catalog\MovieTypeVM\MovieTypeUpdateRequest.cs">
+    <Compile Update="Catalog\ScreeningTypeVM\MovieTypeUpdateRequest.cs">
       <CustomToolNamespace>Movietype</CustomToolNamespace>
     </Compile>
     <Compile Update="Catalog\MovieVM\MovieUpdateRequest.cs">

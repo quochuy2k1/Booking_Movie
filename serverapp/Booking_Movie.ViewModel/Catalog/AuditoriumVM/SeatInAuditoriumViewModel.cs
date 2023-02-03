@@ -1,4 +1,5 @@
-﻿using Booking_Movie.ViewModel.Catalog.SeatVM;
+﻿using Booking_Movie.ViewModel.Catalog.SeatNoVM;
+using Booking_Movie.ViewModel.Catalog.SeatVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace Booking_Movie.ViewModel.Catalog.AuditoriumVM
     public class SeatInAuditoriumViewModel
     {
         public string PhysicalName { get; set; } = null!;
-        public List<SeatViewModel> Seats { get; set; } = null!;
+        public List<SeatNoClientViewModel> Seats { get; set; } = null!;
     }
 }

@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path'
 import fsp from 'fs/promises'
 import { createServer as createViteServer } from 'vite'
+import cookieParser from 'cookie-parser';
 
 let isProduction = process.env.NODE_ENV === "production";
 const __dirname = path.resolve();
@@ -24,7 +25,7 @@ async function createServer() {
         app.use(require("compression")());
         app.use(express.static(path.join(__dirname, "dist")));
     }
-
+    app.use(cookieParser());
     app.use("*", async (req, res) => {
         let url = req.originalUrl;
 

@@ -3,7 +3,7 @@ import { StringLiteralType } from "typescript";
 import { GetAllTicket } from "../../services/ticket.service";
 
 
-
+// Làm đúng là tạo interface BookingTicket extends Ticket
 export interface Ticket {
     id: string,
     name: string,

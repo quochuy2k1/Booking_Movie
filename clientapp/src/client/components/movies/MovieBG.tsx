@@ -1,29 +1,49 @@
 import classNames from "classnames";
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import ReactPlayer from "react-player"
 import { Link } from "react-router-dom";
 import { Grid, Button, Icon, Header, Image } from "semantic-ui-react";
 import { MovieModel } from "../../../slices/movie/movieSlice"
+import styled from "@emotion/styled";
 
 const MovieBG: React.FC<{ movies: MovieModel[] }> = ({ movies }) => {
     const [muted, setMuted] = useState(true);
-    const [movieBG, setMovieBG] = useState({} as MovieModel);
+    const [movieBG, setMovieBG] = useState<MovieModel | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     useEffect(() => {
         setMovieBG(movies[Math.floor(Math.random() * movies.length)])
-        console.log(movieBG, "movieRand")
-    }, [movies])
+        // console.log(movieBG, movies[Math.floor(Math.random() * movies.length)], "movieRand")
+
+    }, [movies, setMovieBG])
+
+    const PlayerHandle = useMemo(() => () => {
+     
+      
+        setIsPlaying(true);
+    }, []);
+
+    // const MovieImageBackground = styled.div<{url: string | undefined}>`
+    //     position: absolute;
+    //     background-image: url(${props => props.url ? props.url : ""});
+    //     height: 100%;
+
+    //     /* Center and scale the image nicely */
+    //     background-position: center;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    // `
     return (
         <>
             <div className="absolute flex w-full top-0 left-0" style={{ "zIndex": "-1" }}>
-                {isPlaying && <Image className='w-full' src={movieBG && movieBG.imageBackground}></Image>}
+                {/* <MovieImageBackground  url={movieBG?.imageBackground}></MovieImageBackground> */}
+               {!isPlaying &&  <Image className="w-full object-cover" src={"https://img.freepik.com/vecteurs-libre/fond-sombre-basse-poly_1048-7971.jpg?w=996&t=st=1671723569~exp=1671724169~hmac=01e1f1b9f88f36e6ff4bb191d85e49dc82bc4cf8884d61dbde6f4d907c47d5f5"}></Image>}
                 <ReactPlayer
                     width={"100%"}
                     // height={"40%"}
-                    url={movieBG && movieBG.videoTrailer}
-                    playing={true}
+                    url={movieBG?.videoTrailer}
+                    playing={isPlaying}
                     muted={muted}
-                    onReady={(player) => {setIsPlaying(true)}}
+                    onReady={PlayerHandle}
                     onEnded={() => setIsPlaying(false)}
                 />
             </div>
@@ -38,8 +58,8 @@ const MovieBG: React.FC<{ movies: MovieModel[] }> = ({ movies }) => {
             </Grid>
 
             <Grid className="pt-1/12 pb-5">
-                <Grid.Column width={6}>             
-                    <Header as={"h1"} className={classNames("transition-all ease-in-out delay-1000 duration-4000 text-white  pt-5 text-left leading-tight", {"text-7xl":!isPlaying, }, {"text-4xl pt-1/5":isPlaying, })}>{movieBG && movieBG.name}</Header>
+                <Grid.Column width={6}>
+                    <Header as={"h1"} className={classNames("transition-all ease-in-out delay-1000 duration-4000 text-white  pt-5 text-left leading-tight", { "text-7xl": !isPlaying, }, { "text-4xl pt-1/5": isPlaying, })}>{movieBG && movieBG.name}</Header>
 
                     <p className="text-white text-xl ">Nhà du hành và thám hiểm thế giới Gulliver được mời quay trở lại Lilliput - thị trấn trước đây đã được anh cứu khỏi hạm đội kẻ thù. Khi đến nơi, anh chỉ nhận thấy sự phẫn nộ và thất vọng của đám đông vì huyền thoại Gulliver khổng lồ giờ đây chỉ là một người bình thường. Cùng lúc đó, kẻ thù lại đe dọa xứ xở này thêm một lần nữa.</p>
                     <div className="flex pt-2">

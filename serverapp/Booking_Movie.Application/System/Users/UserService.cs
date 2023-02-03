@@ -42,12 +42,15 @@ namespace Booking_Movie.Application.System.Users
                         }
                     };
             }
-            if (user != null && await _userManager.CheckPasswordAsync(user, request.Password))
+
+            var result = await  _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe!.Value, true);
+            if (result.Succeeded)
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
 
                 var authClaims = new List<Claim>()
                 {
+                    new Claim("userIdClaim",  user.Id.ToString()),
                     new Claim(ClaimTypes.NameIdentifier, user.UserName),
                     new Claim(ClaimTypes.Name, $"{user.LastName} {user.FirstName}"),
                     new Claim(JwtRegisteredClaimNames.Jti, Jti),

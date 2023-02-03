@@ -6,6 +6,7 @@ namespace Booking_Movie.Data.Entities
     {
         public int Id { get; set; }
         public int Quantity { get; set; }
+        public decimal Total { get; set; }
 
         public int TicketId { get; set; }
         public int BookingId { get; set; }

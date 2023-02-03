@@ -17,6 +17,7 @@ import { GetAllActorAsync, GetAllActorPagingAsync } from '../../../../../slices/
 import { GetDirectorAsync } from '../../../../../slices/directors/directorSlice';
 import { GetNationalitiesAsync } from '../../../../../slices/nationalities/nationalitySlice';
 import { GetProducerAsync } from '../../../../../slices/producers/producerSlice';
+import UpdateActor from './updateActor';
 
 const columns: GridColDef[] = [
 	{ field: 'id', headerName: 'ID', flex: 1  },
@@ -92,10 +93,11 @@ function CustomPagination() {
 	);
 }
 
-function CustomCheckbox(props: any){
+const CustomCheckbox = React.forwardRef<HTMLInputElement, {props: any}>((props: any, ref) =>{
 	return (
 		<>
 			<Checkbox
+			ref={ref}
 			sx={{
 				color: "#fafafa",
 				'&.Mui-checked': {
@@ -108,7 +110,7 @@ function CustomCheckbox(props: any){
 			/>
 		</>
 	)
-}
+})
 
 const ActorManagement: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -140,11 +142,9 @@ const ActorManagement: React.FC = () => {
 			setOpenError(true);
 		}
 
-		// dispatch(GetCategoriesAsync());
-        // dispatch(GetNationalitiesAsync());
-        // dispatch(GetProducerAsync());
-        // dispatch(GetDirectorAsync());
-        // dispatch(GetAllActorAsync());
+	
+        dispatch(GetNationalitiesAsync());
+        
 		console.log(rowCountState, "      ", total, "rowCountState")
 	}, [dispatch, total, setRowCountState, error, setOpenError, actors.length]);
 
@@ -161,6 +161,7 @@ const ActorManagement: React.FC = () => {
 	const handleRowClick = (params: GridRowParams<any>) => {
 		setOpenUpdate(true);
 		setRowItems(params.row)
+		console.log(params.row, "data props row")
 	}
 
 
@@ -205,7 +206,7 @@ const ActorManagement: React.FC = () => {
 			<div className='py-2'>
 
 				<AddNewActor />
-				{openUpdate && <UpdateMovie {...rowItems} setOpenUpdateMovie={CloseUpdate} isOpen={openUpdate} />}
+				{openUpdate && <UpdateActor {...rowItems} setOpenUpdateActor={CloseUpdate} isOpen={openUpdate} />}
 				<DeleteMuilActor id={rowSelect}  />
 
 
