@@ -62,7 +62,7 @@ Website đặt vé xem phim online là website giúp khách hàng có thể xem 
 ![image](https://user-images.githubusercontent.com/72030082/215499155-fb85dff7-15a2-4113-b630-2d74e14dc09b.png)
 
 ### Giao diện lịch sử đặt vé
-![image](https://user-images.githubusercontent.com/72030082/215499859-6896e389-9359-4160-9c1c-955b69da4b4e.png)
+![image](https://user-images.githubusercontent.com/72030082/216868642-53b5cc67-a610-4bad-ab56-6f2852a9b1d0.png)
 
 ### Giao diện trang chủ quản trị
 ![booking_movie_dashboard](https://user-images.githubusercontent.com/72030082/215486888-bdf38106-6438-4ffa-928e-1f7fbb1813c0.png)
@@ -74,4 +74,5 @@ Website đặt vé xem phim online là website giúp khách hàng có thể xem 
 ![booking_movie_booking_management](https://user-images.githubusercontent.com/72030082/215486925-8e2055ff-efec-44e1-9b95-f148b097cc63.png)
 
 ### Giao diện quét mã QR
-![booking_movie_QR_scanning](https://user-images.githubusercontent.com/72030082/215486907-fee1364c-562c-4744-b449-9dcd1a27ae51.png)
+![image](https://user-images.githubusercontent.com/72030082/216868498-e26a85a1-4265-41fc-98c8-4860828c67de.png)
+
