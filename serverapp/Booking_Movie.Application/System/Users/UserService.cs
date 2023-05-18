@@ -72,6 +72,7 @@ namespace Booking_Movie.Application.System.Users
                         UserName = user.UserName,
                         LastName = user.LastName,
                         FirstName = user.FirstName,
+                        Roles = userRoles.ToList()
                     }
                 };
 
