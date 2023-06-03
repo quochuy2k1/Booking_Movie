@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useTheme } from '@mui/material/styles';
 import {
     Alert,
+    AlertColor,
     Box,
     Button,
     Checkbox,
@@ -42,7 +43,8 @@ import { emptyUserError, SignInAsync } from '../../../../../slices/user/userSlic
 import { Close } from '@mui/icons-material';
 import { emptyMovieError } from '../../../../../slices/movie/movieSlice';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-
+import { STATUS_MESSAGE, STATUS_RESPONSE } from '../../../../../common/status-message';
+import Notification from "../../../../ui-component/common/reusing/notification"
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AutoSubmitToken = () => {
@@ -69,12 +71,13 @@ const FirebaseLogin: React.FC<{[others: string]: any}> = ({ ...others }) => {
     const Navigation = useNavigate();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
     const customization = useAppSelector((state) => state.customization);
-    const {status, error } = useAppSelector((state) => state.user);
+    const {status, error, statusMessageResponse, statusResponse } = useAppSelector((state) => state.user);
 
     const [checked, setChecked] = useState(true);
     // const [userName, setUserName] = useState<string>("");
     // const [password, setPassword] = useState<string>("");
 	const [openError, setOpenError] = React.useState<boolean>(false);
+    const [openNoti, setOpenNoti] = React.useState<boolean>(false)
 
 
     const googleHandler = async () => {
@@ -208,6 +211,9 @@ const FirebaseLogin: React.FC<{[others: string]: any}> = ({ ...others }) => {
                             setStatus({ success: true });
                             setSubmitting(false);
                         }
+
+                        setOpenNoti(true)
+
                     } catch (err: any) {
                         console.error(err);
                         if (scriptedRef.current) {
@@ -317,6 +323,17 @@ const FirebaseLogin: React.FC<{[others: string]: any}> = ({ ...others }) => {
                     </form>
                 )}
             </Formik>
+
+            <Notification
+                    open={openNoti}
+                    severity={STATUS_RESPONSE[statusResponse!] as AlertColor}
+                    message={STATUS_MESSAGE[statusMessageResponse!]}
+                    handleClose={ (event?: Event | React.SyntheticEvent<Element, Event> | undefined, reason?: string | undefined): void => {
+                        if (reason === 'clickaway') {
+                            return;
+                        }
+                        setOpenNoti(false);
+                    }} />
         </>
     );
 };

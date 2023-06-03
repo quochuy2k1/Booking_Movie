@@ -1,11 +1,19 @@
 ﻿using Booking_Movie.Application.Catalog.Movies;
+using Booking_Movie.Utilities.Common;
 using Booking_Movie.ViewModel.Catalog.ActorVM;
 using Booking_Movie.ViewModel.Catalog.MovieVM;
+using Booking_Movie.ViewModel.Catalog.ScreeningVM;
+using Booking_Movie.ViewModel.Common;
+using DevExtreme.AspNet.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Booking_Movie.BackendApi.Controllers
@@ -30,6 +38,36 @@ namespace Booking_Movie.BackendApi.Controllers
             var host = $"{Request.Scheme}://{Request.Host}";
             if(!ModelState.IsValid) return BadRequest(ModelState);
             var movies = await _movieService.GetAllPaging(request, host);
+            return Ok(movies);
+        }
+        
+        [HttpPost("paging/admin")]
+        public async Task<IActionResult> GetAllPagingAdmin([FromForm]GetMoviePagingAdminRequest request)
+        {
+            var host = $"{Request.Scheme}://{Request.Host}";
+            var sort = Request.Form["sort"];
+            var filter = Request.Form["filter"];
+            var group = Request.Form["group"];
+
+            if (!String.IsNullOrEmpty(filter))
+            {
+                request.Filter = JsonConvert.DeserializeObject<IList>(filter);
+            }
+
+            if (!String.IsNullOrEmpty(sort))
+            {
+                request.Sort = JsonConvert.DeserializeObject<SortingInfo[]>(sort);
+
+
+            }
+            if (!String.IsNullOrEmpty(group))
+            {
+                request.Group = JsonConvert.DeserializeObject<GroupingInfo[]>(group);
+
+
+            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var movies = await _movieService.GetAllPagingAdmin(request, host);
             return Ok(movies);
         }
 
@@ -65,6 +103,36 @@ namespace Booking_Movie.BackendApi.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
             var screenings = await _movieService.GetAllScreening();
             return Ok(screenings);
+        }
+
+        [HttpPost("screening/paging/")]
+        public async Task<IActionResult> GetAllScreeningPagingAdmin([FromForm] GetScreeningPagingRequest request)
+        {
+            var host = $"{Request.Scheme}://{Request.Host}";
+            var sort = Request.Form["sort"];
+            var filter = Request.Form["filter"];
+            var group = Request.Form["group"];
+
+            if (!String.IsNullOrEmpty(filter))
+            {
+                request.Filter = JsonConvert.DeserializeObject<IList>(filter);
+            }
+
+            if (!String.IsNullOrEmpty(sort))
+            {
+                request.Sort = JsonConvert.DeserializeObject<SortingInfo[]>(sort);
+
+
+            }if (!String.IsNullOrEmpty(group))
+            {
+                request.Group = JsonConvert.DeserializeObject<GroupingInfo[]>(group);
+
+
+            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var screening = await _movieService.GetAllPagingScreeningAdmin(request, host);
+
+            return Ok(screening);
         }
 
         [HttpPost("create")]

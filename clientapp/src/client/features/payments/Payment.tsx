@@ -86,7 +86,7 @@ const Payment: React.FC<{}> = () => {
                 appUserId: userId,
                 couponId: couponId,
                 paymentMethodId: paymentMethodId,
-                screeningId: screening.id!,
+                screeningId: screening.movieSchedule[0].id,
                 Total: totalBookTicket + totalBookCombo,
                 bookingCombo: bookingCombo,
                 bookingTicket: bookingTicket,

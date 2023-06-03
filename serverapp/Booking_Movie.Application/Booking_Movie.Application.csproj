@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -11,8 +11,12 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="Aspose.BarCode" Version="23.5.0" />
     <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.9.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Include="ZXing.Net" Version="0.16.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,9 +33,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Report\DataSet\BookingQRCode.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BookingQRCode.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Properties\launchSettings.json">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+    <None Update="Report\DataSet\BookingQRCode.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BookingQRCode.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

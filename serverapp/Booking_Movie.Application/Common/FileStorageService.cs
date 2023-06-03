@@ -24,6 +24,13 @@ namespace Booking_Movie.Application.Common
             }
         }
 
+        public bool DoesFileExist(string fileName, string folderName)
+        {
+            string webRootPath = _webHostEnvironment.WebRootPath;
+            string filePath = Path.Combine(webRootPath, folderName, fileName);
+            return File.Exists(filePath);
+        }
+
         public string GetFilePath(string fileName, string folderName)
         {
             return Path.Combine(_webHostEnvironment.WebRootPath, folderName, fileName);
@@ -42,5 +49,7 @@ namespace Booking_Movie.Application.Common
             using var output = new FileStream(filePath, FileMode.Create); // make a new file with no name (empty file)
             await mediaBinaryStream.CopyToAsync(output); // copy the stream from the file save to the output file
         }
+
+       
     }
 }

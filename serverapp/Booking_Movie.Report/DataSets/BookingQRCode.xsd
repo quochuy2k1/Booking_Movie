@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BookingQRCode" targetNamespace="http://tempuri.org/BookingQRCode.xsd" xmlns:mstns="http://tempuri.org/BookingQRCode.xsd" xmlns="http://tempuri.org/BookingQRCode.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="BookingQRCode" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="BookingQRCode" msprop:Generator_DataSetName="BookingQRCode">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BookingHistory" msprop:Generator_RowEvHandlerName="BookingHistoryRowChangeEventHandler" msprop:Generator_RowDeletedName="BookingHistoryRowDeleted" msprop:Generator_RowDeletingName="BookingHistoryRowDeleting" msprop:Generator_RowEvArgName="BookingHistoryRowChangeEvent" msprop:Generator_TablePropName="BookingHistory" msprop:Generator_RowChangedName="BookingHistoryRowChanged" msprop:Generator_RowChangingName="BookingHistoryRowChanging" msprop:Generator_TableClassName="BookingHistoryDataTable" msprop:Generator_RowClassName="BookingHistoryRow" msprop:Generator_TableVarName="tableBookingHistory" msprop:Generator_UserTableName="BookingHistory">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="QrContent" msprop:Generator_ColumnPropNameInRow="QrContent" msprop:Generator_ColumnPropNameInTable="QrContentColumn" msprop:Generator_ColumnVarNameInTable="columnQrContent" msprop:Generator_UserColumnName="QrContent" type="xs:string" minOccurs="0" />
+              <xs:element name="OrderId" msprop:Generator_ColumnPropNameInRow="OrderId" msprop:Generator_ColumnPropNameInTable="OrderIdColumn" msprop:Generator_ColumnVarNameInTable="columnOrderId" msprop:Generator_UserColumnName="OrderId" type="xs:string" minOccurs="0" />
+              <xs:element name="MovieName" msprop:Generator_ColumnPropNameInRow="MovieName" msprop:Generator_ColumnPropNameInTable="MovieNameColumn" msprop:Generator_ColumnVarNameInTable="columnMovieName" msprop:Generator_UserColumnName="MovieName" type="xs:string" minOccurs="0" />
+              <xs:element name="MovieImage" msprop:Generator_ColumnPropNameInRow="MovieImage" msprop:Generator_ColumnPropNameInTable="MovieImageColumn" msprop:Generator_ColumnVarNameInTable="columnMovieImage" msprop:Generator_UserColumnName="MovieImage" type="xs:string" minOccurs="0" />
+              <xs:element name="CinemaName" msprop:Generator_ColumnPropNameInRow="CinemaName" msprop:Generator_ColumnPropNameInTable="CinemaNameColumn" msprop:Generator_ColumnVarNameInTable="columnCinemaName" msprop:Generator_UserColumnName="CinemaName" type="xs:string" minOccurs="0" />
+              <xs:element name="AuditoriumName" msprop:Generator_ColumnPropNameInRow="AuditoriumName" msprop:Generator_ColumnPropNameInTable="AuditoriumNameColumn" msprop:Generator_ColumnVarNameInTable="columnAuditoriumName" msprop:Generator_UserColumnName="AuditoriumName" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_UserColumnName="Status" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ShowTime" msprop:Generator_ColumnPropNameInRow="ShowTime" msprop:Generator_ColumnPropNameInTable="ShowTimeColumn" msprop:Generator_ColumnVarNameInTable="columnShowTime" msprop:Generator_UserColumnName="ShowTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BookingDate" msprop:Generator_ColumnPropNameInRow="BookingDate" msprop:Generator_ColumnPropNameInTable="BookingDateColumn" msprop:Generator_ColumnVarNameInTable="columnBookingDate" msprop:Generator_UserColumnName="BookingDate" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -45,7 +45,7 @@ namespace Booking_Movie.Data.Repositories
                     ComboId = requests[0].ComboId,
                     Quantity = requests[0].Quantity,
                     Total = requests[0].Total,
-                    Stauts = false,
+                    Status = false,
 
                 };
                 await this.MovieContext.BookingCombos.AddAsync(bookingCombo);
@@ -61,7 +61,7 @@ namespace Booking_Movie.Data.Repositories
                         ComboId = createBookingCombo.ComboId,
                         Quantity = createBookingCombo.Quantity,
                         Total = createBookingCombo.Total,
-                        Stauts = false,
+                        Status = false,
                     };
                     await this.MovieContext.BookingCombos.AddAsync(bookingCombo);
                 }
@@ -108,10 +108,10 @@ namespace Booking_Movie.Data.Repositories
                 var bookingTicket = new BookingTicket()
                 {
                     BookingId = id,
-                    TicketId = requests[0].TicketId,
+                    ScreeningTicketId = requests[0].ScreeingTicketId,
                     Quantity = requests[0].Quantity,
                     Total = requests[0].Total,
-                    Stauts = false,
+                    Status = false,
                 };
                 await this.MovieContext.BookingTickets.AddAsync(bookingTicket);
 
@@ -123,10 +123,10 @@ namespace Booking_Movie.Data.Repositories
                     var bookingTicket = new BookingTicket()
                     {
                         BookingId = id,
-                        TicketId = bookingticket.TicketId,
+                        ScreeningTicketId = bookingticket.ScreeingTicketId,
                         Quantity= bookingticket.Quantity,
                         Total= bookingticket.Total,
-                        Stauts = false
+                        Status = false
                     };
                     await this.MovieContext.BookingTickets.AddAsync(bookingTicket);
                 }
@@ -137,6 +137,8 @@ namespace Booking_Movie.Data.Repositories
         {
             var booking = from b in this.MovieContext.Bookings
                           join scr in this.MovieContext.Screenings on b.ScreeningId equals scr.Id
+                          join stt in this.MovieContext.ShowTimes on scr.ShowTimeId equals stt.Id
+
                           join au in this.MovieContext.Users on b.AppUserId equals au.Id
                           join p in this.MovieContext.PaymentMethods on b.PaymentMethodId equals p.Id
                           join cp in this.MovieContext.Coupons on b.CouponId equals cp.Id
@@ -148,15 +150,16 @@ namespace Booking_Movie.Data.Repositories
                               CouponId = b.CouponId,
                               PaymentMethod = p.Name,
                               OrderId = b.OrderId,
-                              ShowTime = scr.ShowTime,
-                              flagScanner = b.Stauts!.Value,
+                              ShowTime = stt.Time,
+                              flagScanner = b.Status!.Value,
                               UserFullName = au.FirstName + " " + au.LastName,
                               Combos =(from bcb in this.MovieContext.BookingCombos
                                                                  join cb in this.MovieContext.Combos on bcb.ComboId equals cb.Id
                                                                  where b.Id == bcb.BookingId
                                                                  select cb.Name).ToArray(),
                               Tickets =(from bt in this.MovieContext.BookingTickets
-                                                                 join t in this.MovieContext.Tickets on bt.TicketId equals t.Id
+                                                                 join st in this.MovieContext.ScreeningTickets on bt.ScreeningTicketId equals st.Id
+                                                                 join t in this.MovieContext.Tickets on st.TicketId equals t.Id
                                                                  where b.Id == bt.BookingId
                                                                  select t.Name).ToArray(),
                               SeatRevered = (from bs in this.MovieContext.SeatReserveds
@@ -173,6 +176,8 @@ namespace Booking_Movie.Data.Repositories
         {
             var booking = from b in this.MovieContext.Bookings
                           join scr in this.MovieContext.Screenings on b.ScreeningId equals scr.Id
+                          join stt in this.MovieContext.ShowTimes on scr.ShowTimeId equals stt.Id
+
                           join au in this.MovieContext.Users on b.AppUserId equals au.Id
                           join p in this.MovieContext.PaymentMethods on b.PaymentMethodId equals p.Id
                           join cp in this.MovieContext.Coupons on b.CouponId equals cp.Id
@@ -190,7 +195,7 @@ namespace Booking_Movie.Data.Repositories
                               Total = b.Total,
                               BookingDate = b.CreatedDate,
                               OrderId = b.OrderId,
-                              ShowTime = scr.ShowTime,
+                              ShowTime = stt.Time,
                               BookingCombo = (from bcb in this.MovieContext.BookingCombos
                                         join cb in this.MovieContext.Combos on bcb.ComboId equals cb.Id
                                         where b.Id == bcb.BookingId
@@ -201,7 +206,9 @@ namespace Booking_Movie.Data.Repositories
                                             Quantity = bcb.Quantity
                                         }).ToList(),
                               BookingTicket = (from bt in this.MovieContext.BookingTickets
-                                         join t in this.MovieContext.Tickets on bt.TicketId equals t.Id
+                                               join st in this.MovieContext.ScreeningTickets on bt.ScreeningTicketId equals st.Id
+
+                                               join t in this.MovieContext.Tickets on st.TicketId equals t.Id
                                          where b.Id == bt.BookingId
                                          select new BookingTicketViewModel()
                                          {
@@ -224,6 +231,8 @@ namespace Booking_Movie.Data.Repositories
             var orderId = EncryptorHelper.DecryptString(_configuration["QrSerect"], qrContent, _configuration["QrVector"]);
             var booking = from b in this.MovieContext.Bookings
                           join scr in this.MovieContext.Screenings on b.ScreeningId equals scr.Id
+                          join stt in this.MovieContext.ShowTimes on scr.ShowTimeId equals stt.Id
+
                           join au in this.MovieContext.Users on b.AppUserId equals au.Id
                           join p in this.MovieContext.PaymentMethods on b.PaymentMethodId equals p.Id
                           join cp in this.MovieContext.Coupons on b.CouponId equals cp.Id
@@ -238,11 +247,12 @@ namespace Booking_Movie.Data.Repositories
                               MovieImage = m.ImageBackground!,
                               AuditoriumName = aud.Name,
                               CinemaName = c.Name,
+                              CinemaAddress = c.Address,
                               Total = b.Total,
-                              Status = b.Stauts!.Value,
+                              Status = b.Status!.Value,
                               BookingDate = b.CreatedDate,
                               OrderId = b.OrderId!,
-                              ShowTime = scr.ShowTime,
+                              ShowTime = stt.Time,
                               BookingCombo = (from bcb in this.MovieContext.BookingCombos
                                               join cb in this.MovieContext.Combos on bcb.ComboId equals cb.Id
                                               where b.Id == bcb.BookingId
@@ -253,7 +263,9 @@ namespace Booking_Movie.Data.Repositories
                                                   Quantity = bcb.Quantity
                                               }).ToList(),
                               BookingTicket = (from bt in this.MovieContext.BookingTickets
-                                               join t in this.MovieContext.Tickets on bt.TicketId equals t.Id
+                                               join st in this.MovieContext.ScreeningTickets on bt.ScreeningTicketId equals st.Id
+
+                                               join t in this.MovieContext.Tickets on st.TicketId equals t.Id
                                                where b.Id == bt.BookingId
                                                select new BookingTicketViewModel()
                                                {
@@ -275,6 +287,8 @@ namespace Booking_Movie.Data.Repositories
         {
             var booking = from b in this.MovieContext.Bookings
                           join scr in this.MovieContext.Screenings on b.ScreeningId equals scr.Id
+                          join stt in this.MovieContext.ShowTimes on scr.ShowTimeId equals stt.Id
+
                           join au in this.MovieContext.Users on b.AppUserId equals au.Id
                           join p in this.MovieContext.PaymentMethods on b.PaymentMethodId equals p.Id
                           join cp in this.MovieContext.Coupons on b.CouponId equals cp.Id
@@ -292,7 +306,7 @@ namespace Booking_Movie.Data.Repositories
                               Total = b.Total,
                               BookingDate = b.CreatedDate,
                               OrderId = b.OrderId,
-                              ShowTime = scr.ShowTime,
+                              ShowTime = stt.Time,
                               BookingCombo = (from bcb in this.MovieContext.BookingCombos
                                               join cb in this.MovieContext.Combos on bcb.ComboId equals cb.Id
                                               where b.Id == bcb.BookingId
@@ -303,7 +317,9 @@ namespace Booking_Movie.Data.Repositories
                                                   Quantity = bcb.Quantity
                                               }).ToList(),
                               BookingTicket = (from bt in this.MovieContext.BookingTickets
-                                               join t in this.MovieContext.Tickets on bt.TicketId equals t.Id
+                                               join st in this.MovieContext.ScreeningTickets on bt.ScreeningTicketId equals st.Id
+
+                                               join t in this.MovieContext.Tickets on st.TicketId equals t.Id
                                                where b.Id == bt.BookingId
                                                select new BookingTicketViewModel()
                                                {
@@ -332,10 +348,10 @@ namespace Booking_Movie.Data.Repositories
             var booking = await this.MovieContext.Bookings.Where(x => x.OrderId == orderId).FirstOrDefaultAsync();
 
             if (booking == null) throw new BookingMovieException("Không tìm thấy đơn đặt hàng với id: " + orderId);
-            booking.Stauts = status;
+            booking.Status = status;
 
             this.MovieContext.Bookings.Attach(booking);
-            this.MovieContext.Entry(booking).Property(x => x.Stauts).IsModified = true;
+            this.MovieContext.Entry(booking).Property(x => x.Status).IsModified = true;
             return booking;
         }
 

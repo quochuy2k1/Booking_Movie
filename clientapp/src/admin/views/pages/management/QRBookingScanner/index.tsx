@@ -3,21 +3,23 @@ import React, { useCallback, useEffect, useMemo } from "react";
 import { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import { Container, Header, Item, Label, Image, Grid, Button, Placeholder, Card } from "semantic-ui-react";
-import { GetBookingByQrCode } from "../../../../../services/user.service";
+import { GetBookingByQrCode, GetReportBookingByQrCode } from "../../../../../services/user.service";
 import { IHistoryBookingState } from "../../../../../client/features/user/BookingHistory";
 import classNames from "classnames";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 import { UpdatePaymentStatusAsync } from "../../../../../slices/bookings/BookingSlice";
 import { PaymentStatusUpdateRequest } from "../../../../../services/booking.service";
+const url = `${import.meta.env.VITE_REACT_APP_API_BASE!}`
 
-export interface IQRBookingScanner extends IHistoryBookingState{
+export interface IQRBookingScanner extends IHistoryBookingState {
     status: boolean
 }
 
 const QRBookingScanner: React.FC = () => {
     const dispatch = useAppDispatch();
     const [data, setData] = useState<string>("")
-    const [booked, setBooked] = useState< IQRBookingScanner | null>(null);
+    const [booked, setBooked] = useState<IQRBookingScanner | null>(null);
+    const [fileReport, setFileReport] = useState<string | null>(null);
     const token = localStorage.getItem("token");
     const bookings = useAppSelector(state => state.booking.bookings)
     const GetBookingByQrCodeAsync = useCallback(async (qrContent: string) => {
@@ -25,8 +27,13 @@ const QRBookingScanner: React.FC = () => {
 
             const token = localStorage.getItem("token")!;
             const result = await GetBookingByQrCode(encodeURIComponent(qrContent), token);
+            const result_report = await GetReportBookingByQrCode(encodeURIComponent(qrContent), token);
             if (result) {
                 setBooked(result.data);
+            }
+            if (result_report) {
+                setFileReport(url + result_report.data);
+
             }
         } catch (error: any) {
             console.error(error.message)
@@ -54,16 +61,16 @@ const QRBookingScanner: React.FC = () => {
     }, [])
 
 
-    const HandlePaymentStatusUpdate = () =>{
-        const request: PaymentStatusUpdateRequest ={
+    const HandlePaymentStatusUpdate = () => {
+        const request: PaymentStatusUpdateRequest = {
             orderId: booked?.orderId,
             status: true,
-            token:token!
+            token: token!
         }
         dispatch(UpdatePaymentStatusAsync(request))
     }
 
-    const HandleResetQRCodeScanner = () =>{
+    const HandleResetQRCodeScanner = () => {
         setBooked(null);
     }
     return (
@@ -89,17 +96,17 @@ const QRBookingScanner: React.FC = () => {
                     //     videoContainerStyle={{ width: "50%" }}
                     // // videoStyle={{width: "50%"}}
                     />
-                   <div className="flex">
-                   <Button content='Xác nhận đã quét' size="large" color="orange" fluid icon='ticket alternate' labelPosition='left' onClick={HandlePaymentStatusUpdate} />
-                    <Button content='Làm mới' size="large" color="grey" fluid icon='erase' labelPosition='left' onClick={HandleResetQRCodeScanner} />
-                   </div>
+                    <div className="flex">
+                        <Button content='Xác nhận đã quét' size="large" color="orange" fluid icon='ticket alternate' labelPosition='left' onClick={HandlePaymentStatusUpdate} />
+                        <Button content='Làm mới' size="large" color="grey" fluid icon='erase' labelPosition='left' onClick={HandleResetQRCodeScanner} />
+                    </div>
                 </Grid.Column>
 
                 <Grid.Column width={6}>
                     <Header as="h3" color="orange" >{"Kết quả quét"}</Header>
                     <div className={classNames("relative p-5", { "bg-gray-700": booked }, { "bg-white": !booked })} >
                         <Label as='a' color={booked?.status ? "green" : "red"} ribbon>
-                           {booked?.status === true ? "Đã quét" : "Chưa quét"}
+                            {booked?.status === true ? "Đã quét" : "Chưa quét"}
                         </Label>
                         {booked?.movieImage ? <Image src={booked?.movieImage}></Image> : <Placeholder><Placeholder.Image rectangular></Placeholder.Image></Placeholder>}
                         <Header as="h3" className="text-orange-600">{booked?.movieName}</Header>
@@ -151,6 +158,25 @@ const QRBookingScanner: React.FC = () => {
 
 
                         </Item.Group>
+
+                    </div>
+                </Grid.Column>
+
+                <Grid.Column width={5}>
+                    <Header as="h3" color="orange" >{"Vé xem phim"}</Header>
+                    <div style={{ overflow: 'scroll', maxHeight: '100vh', height: '60vh', marginBottom: '1rem' }}>
+                        {fileReport && (
+                            <embed src={`${fileReport}#toolbar=0`} type="application/pdf" width="100%" height="100%">
+                        </embed>
+                        )}
+                    </div>
+                    <div className="flex">
+                        <Button content='In vé' size="large" color="green" fluid icon='print' labelPosition='left' onClick={() => {
+                           if(fileReport) {
+                            const w = window.open(fileReport, "_blank");
+                        
+                           }
+                        }} />
 
                     </div>
                 </Grid.Column>

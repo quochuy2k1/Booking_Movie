@@ -1,10 +1,7 @@
 ﻿using Booking_Movie.ViewModel.Catalog.AuditoriumVM;
 using Booking_Movie.ViewModel.Catalog.CinemaVM;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Booking_Movie.ViewModel.Common;
+using DevExtreme.AspNet.Data.ResponseModel;
 
 namespace Booking_Movie.Application.Catalog.Cinemas
 {
@@ -12,5 +9,7 @@ namespace Booking_Movie.Application.Catalog.Cinemas
     {
         Task<List<AuditoriumViewModel>> GetAuditoriumByCinemaId(int cinemaId);
         Task<List<CinemaViewModel>> GetAllCinema();
+        Task<PagedResult<CinemaViewModel>> GetAllPaging(GetCinemaPagingRequest pagingRequest, string host);
+        Task<LoadResult> GetAllPagingAdmin(GetCinemaPagingAdminRequest pagingRequest, string host);
     }
 }

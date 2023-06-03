@@ -31,10 +31,10 @@ namespace Booking_Movie.BackendApi.Controllers
             if(!ModelState.IsValid) return BadRequest(ModelState);
 
             var resultToken = await _userService.Authenticate(request);
-            HttpContext.Session.SetString(SystemConstant.AppSettings.Token, resultToken.token!);
 
-            if (resultToken.error != null) return BadRequest(resultToken.error);
-            
+            if (resultToken.StatusResponse != 1) return BadRequest(resultToken);
+            HttpContext.Session.SetString(SystemConstant.AppSettings.Token, resultToken.Token!);
+
             return Ok(resultToken);
         }
 

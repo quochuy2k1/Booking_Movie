@@ -27,7 +27,7 @@ namespace Booking_Movie.Data.Repositories
                         join sn in this.MovieContext.SeatNos on au.Id equals sn.AuditoriumId
                         join s in this.MovieContext.Seats on sn.SeatId equals s.SeatId
                         where au.Id == Id
-                        group new { s, SeatNoId = sn.Id, sn.Stauts, sn.RowIndex, sn.ColumnIndex, sn.SeatStyleId } by s.Row into g
+                        group new { s, SeatNoId = sn.Id, sn.Status, sn.RowIndex, sn.ColumnIndex, sn.SeatStyleId } by s.Row into g
                         select new SeatInAuditoriumViewModel()
                         {
                             PhysicalName = g.Key,
@@ -37,7 +37,7 @@ namespace Booking_Movie.Data.Repositories
                                 SeatNoId = x.SeatNoId,
                                 Number = x.s.Number,
                                 Row = x.s.Row,
-                                Status = x.Stauts,
+                                Status = x.Status,
                                 RowIndex =x.RowIndex,
                                 ColumnIndex =x.ColumnIndex,
                                 SeatStyle = x.SeatStyleId,

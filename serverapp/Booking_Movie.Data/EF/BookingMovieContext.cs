@@ -44,7 +44,9 @@ namespace Booking_Movie.Data.EF
             modelBuilder.ApplyConfiguration(new SeatNoConfiguration());
             modelBuilder.ApplyConfiguration(new SeatStyleConfiguration());
             modelBuilder.ApplyConfiguration(new SeatReservedConfiguration());
+            modelBuilder.ApplyConfiguration(new ShowTimeConfiguration());
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
+            modelBuilder.ApplyConfiguration(new ScreeningTicketConfiguration());
 
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
             modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new { x.UserId, x.RoleId });
@@ -86,6 +88,7 @@ namespace Booking_Movie.Data.EF
 
         public DbSet<Producer> Producers { get; set; }
         public DbSet<Screening> Screenings { get; set; }
+        public DbSet<ShowTime> ShowTimes { get; set; }
         public DbSet<Seat> Seats { get; set; }
 
         public DbSet<SeatNo> SeatNos { get; set; }
@@ -93,6 +96,7 @@ namespace Booking_Movie.Data.EF
 
         public DbSet<SeatReserved> SeatReserveds { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<ScreeningTicket> ScreeningTickets { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

@@ -4,6 +4,7 @@ using Booking_Movie.Data.Infrastructure;
 using Booking_Movie.Data.Repositories;
 using Booking_Movie.Utilities.Exceptions;
 using Booking_Movie.ViewModel.Catalog.ScreeningVM;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,40 +26,102 @@ namespace Booking_Movie.Application.Catalog.Screenings
             _mapper = mapper;
         }
 
-        public async Task<Screening?> AddNew(ScreeningCreateRequest request)
+        public async Task<bool?> AddNew(ScreeningCreateRequest request)
         {
-            var screening = new Screening()
+            //Screening? screening_entity = null;
+            foreach (var showTime in request.ShowTimeId)
             {
-                AuditoriumId = request.AuditoriumId,
-                MovieId = request.MovieId,
-                MovieTypeId = request.MovieTypeId,
-                ShowTime = request.ShowTime,
-            };
+                var screening = new Screening()
+                {
+                    AuditoriumId = request.AuditoriumId.Value,
+                    MovieId = request.MovieId.Value,
+                    ScreeningTypeId = request.ScreeningTypeId.Value,
+                    DateFrom = request.DateFrom.Value,
+                    DateTo = request.DateTo.Value,
+                    ShowTimeId = showTime
 
-            var screening_entity = await _screeningRepository.AddAsync(screening);
-            if (await unitOfWork.Commit())
-            {
-                return screening_entity;
+                };
+                await _screeningRepository.AddAsync(screening);
 
             }
 
-            return null;
+
+            if (await unitOfWork.Commit())
+            {
+
+                return true;
+
+            }
+
+            return false;
         }
 
-        public async Task<bool> Update(int id, ScreeningUpdateRequest request)
+        public async Task<bool> Update(int screeningGroupedId, ScreeningUpdateRequest request)
         {
-            var screening = await _screeningRepository.GetSingleById(id);
+            if (request != null)
+            {
+                var lstSrceening = await _screeningRepository.GetByScreeningGrouped(screeningGroupedId);
 
-            if (screening == null) throw new BookingMovieException("Không tìm thấy lịch chiếu có id: " + id);
+                if (lstSrceening != null)
+                {
 
-            if (request.MovieId != null) screening.MovieId = request.MovieId.Value;
-            if (request.MovieTypeId != null) screening.MovieTypeId = request.MovieTypeId.Value;
-            if (request.AuditoriumId != null) screening.AuditoriumId = request.AuditoriumId.Value;
-            if (request.ShowTime != null) screening.ShowTime = request.ShowTime.Value;
+                    if (request.ShowTimeId != null)
+                    {
+                        var screeningGrouped = await _screeningRepository.DeleteAllShowTimeScreening(screeningGroupedId);
 
-            _screeningRepository.Update(screening);
+                        foreach (var showTime in request.ShowTimeId)
+                        {
+                            var screening = new Screening()
+                            {
+                                AuditoriumId = request.AuditoriumId ?? screeningGrouped.AuditoriumId,
+                                MovieId = request.MovieId ?? screeningGrouped.MovieId,
+                                ScreeningTypeId = request.ScreeningTypeId ?? screeningGrouped.ScreeningTypeId,
+                                DateFrom = request.DateFrom ?? screeningGrouped.DateFrom,
+                                DateTo = request.DateTo ?? screeningGrouped.DateTo,
+                                ShowTimeId = showTime
 
-            return await unitOfWork.Commit();
+                            };
+                            await _screeningRepository.AddAsync(screening);
+
+                        }
+                        
+
+
+                    }
+                    else
+                    {
+
+                        if (lstSrceening != null)
+                        {
+                            foreach (var screening in lstSrceening)
+                            {
+                                screening.MovieId = request.MovieId ?? screening.MovieId;
+                                screening.AuditoriumId = request.AuditoriumId ?? screening.AuditoriumId;
+                                screening.ScreeningTypeId = request.ScreeningTypeId ?? screening.ScreeningTypeId;
+                                screening.DateFrom = request.DateFrom ?? screening.DateFrom;
+                                screening.DateTo = request.DateTo ?? screening.DateTo;
+
+                                _screeningRepository.Update(screening);
+                            }
+                        }
+                    }
+
+
+
+                    if (await unitOfWork.Commit())
+                    {
+
+                        return true;
+
+                    }
+                }
+
+
+
+                return false;
+            }
+
+            return false;
 
 
         }
@@ -92,25 +155,55 @@ namespace Booking_Movie.Application.Catalog.Screenings
 
                     return screenings.Select(x => x.Id).ToList();
                 }
-                
+
             }
             return null;
         }
 
         public async Task<ScreeningViewModel> GetById(int id)
         {
-            var screening = await _screeningRepository.GetSingleById(id);
+            var screening = await _screeningRepository.GetSingleByCondition(x => x.Id == id, new string[] { "ShowTime" });
 
-            if(screening == null) throw new BookingMovieException("Không tìm thấy screening với id: " + id);
+            if (screening == null) throw new BookingMovieException("Không tìm thấy screening với id: " + id);
 
             var screening_mapper = new ScreeningViewModel()
             {
                 Id = screening.Id,
                 MovieId = screening.MovieId,
                 AuditoriumId = screening.AuditoriumId,
-                ScreeningTypeId = screening.MovieTypeId,
-                ShowTime = new DateTime[] { screening.ShowTime }
+                ScreeningTypeId = screening.ScreeningTypeId,
+                MovieSchedule = new List<MovieSchedule>()
+                {
+                   new MovieSchedule() {
+                   ShowTime =  screening.ShowTime.Time ,
+                   Id = screening.Id
+                   }
+                }
             };
+
+            return screening_mapper;
+        }
+
+        public async Task<ScreeningViewModel> GetByShowTime(int movieId, int auditoriumId, string showTimeId)
+        {
+            var query = _screeningRepository.GetByShowTime(movieId, auditoriumId, showTimeId);
+
+            if (query == null) throw new BookingMovieException("Không tìm thấy screening với id: " + showTimeId);
+
+            var screening_mapper = await query.Select(x => new ScreeningViewModel()
+            {
+                Id = x.Id,
+                MovieId = x.MovieId,
+                AuditoriumId = x.AuditoriumId,
+                ScreeningTypeId = x.ScreeningTypeId,
+                MovieSchedule = new List<MovieSchedule>()
+                {
+                   new MovieSchedule() {
+                   ShowTime =  x.ShowTime.Time ,
+                   Id = x.Id
+                   }
+                }
+            }).FirstOrDefaultAsync();
 
             return screening_mapper;
         }

@@ -35,6 +35,8 @@ using Booking_Movie.Application.Catalog.Cinemas;
 using Booking_Movie.Application.Catalog.ScreeningTypes;
 using Booking_Movie.Application.Catalog.Screenings;
 using System.Text.Json.Serialization;
+using Booking_Movie.Application.Report.Booking;
+using Booking_Movie.Application.Catalog.ShowTimes;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -155,6 +157,7 @@ builder.Services.AddTransient<SeatNoRepository>();
 builder.Services.AddTransient<CimemaRepository>();
 builder.Services.AddTransient<ScreeningTypeRepository>();
 builder.Services.AddTransient<ScreeningRepository>();
+builder.Services.AddTransient<ShowTimeRepository>();
 //
 builder.Services.AddTransient<IAuditoriumService, AuditoriumService>();
 builder.Services.AddTransient<IBookingService, BookingService>();
@@ -171,6 +174,8 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICinemasService, CinemasService>();
 builder.Services.AddTransient<IScreeningTypeService, ScreeningTypeService>();
 builder.Services.AddTransient<IScreeningService, ScreeningService>();
+builder.Services.AddTransient<IShowTimeService, ShowTimeService>();
+builder.Services.AddTransient<IBookingReport, BookingReport>();
 
 //
 

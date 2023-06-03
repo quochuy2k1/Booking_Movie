@@ -74,7 +74,7 @@ const BookingInfo: React.FC<{}> = () => {
 
                     <Item className="py-2">
                         <Item.Content verticalAlign='middle' className="text-white">
-                            Suất chiếu: {moment(screening?.showTime[0]).format("HH:mm")} | {screening?.auditoriumName}
+                            Suất chiếu: {moment(screening?.movieSchedule[0].showTime).format("HH:mm")} | {screening?.auditoriumName}
                         </Item.Content>
                     </Item>
 

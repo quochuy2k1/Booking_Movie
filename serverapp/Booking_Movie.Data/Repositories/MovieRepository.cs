@@ -3,11 +3,13 @@ using Booking_Movie.Data.EF;
 using Booking_Movie.Data.Entities;
 using Booking_Movie.Data.Infrastructure;
 using Booking_Movie.Data.Models;
+using Booking_Movie.Utilities.Common;
 using Booking_Movie.Utilities.Exceptions;
 using Booking_Movie.ViewModel.Catalog.ActorVM;
 using Booking_Movie.ViewModel.Catalog.MovieVM;
 using Booking_Movie.ViewModel.Catalog.ScreeningVM;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -17,9 +19,10 @@ namespace Booking_Movie.Data.Repositories
 {
     public interface IMovieRepository : IRepository<Movie>
     {
+        #region Movie
         IQueryable<MovieVM> GetMoviePaging(List<Expression<Func<MovieVM, bool>>>? filter, out int total, int index = 0, int size = 50);
+        IQueryable<MovieVM> GetMoviePagingAdmin();
         Task<IQueryable<MovieVM>> GetMovieDetails(params Expression<Func<MovieVM, bool>>[] expressions);
-        Task<IQueryable<ScreeningViewModel>> GetScreeningByMovieId(int Id);
         Task<string> GetMovieCast(int Id);
         Task<Movie?> UpdateImageVideo(int Id, string? preview, string? background, string? video);
 
@@ -27,15 +30,36 @@ namespace Booking_Movie.Data.Repositories
         Task<List<MovieCategory>> FindMovieCategoryByMovieId(int Id);
         Task<MovieCategory?> FindMovieCategoryByMovieId(int Id, int categoryId);
         Task UpdateMovieCategory(int Id, int[] categoriesId);
+        #endregion
+
+        #region Cast
         Task AddCast(int Id, Guid[] actorsId);
         Task<List<Cast>> FindCastByMovieId(int Id);
         Task<Cast?> FindCastByMovieId(int Id, Guid actorId);
         Task UpdateCast(int Id, Guid[] actorsId);
 
+        #endregion
+
+        #region MovieDirector
         Task AddMovieDirector(int Id, Guid[] directorsId);
         Task<List<MovieDirector>> FindMovieDirectorByMovieId(int Id);
         Task<MovieDirector?> FindMovieDirectorByMovieId(int Id, Guid directorId);
         Task UpdateMovieDirector(int Id, Guid[] directorsId);
+
+        #endregion
+
+        #region Screening
+
+        Task<IQueryable<ScreeningViewModel>> GetScreeningByMovieId(int Id);
+
+        IQueryable<ScreeningViewModel> GetScreeningPaging(List<Expression<Func<ScreeningViewModel, bool>>>? filter, out int total, GetScreeningPagingRequest pagingRequest);
+        IQueryable<ScreeningViewModel> GetScreeningPagingAdmin(GetScreeningPagingRequest pagingRequest);
+
+        #endregion
+
+
+
+
 
     }
     public class MovieRepository : RepositoryBase<Movie>, IMovieRepository
@@ -44,10 +68,12 @@ namespace Booking_Movie.Data.Repositories
         {
         }
 
-        public IQueryable<MovieVM> GetMoviePaging(List<Expression<Func<MovieVM, bool>>>? filter, out int total,  int index = 0, int size = 50)
+        #region Movie
+
+        public IQueryable<MovieVM> GetMoviePaging(List<Expression<Func<MovieVM, bool>>>? filter, out int total, int index = 0, int size = 50)
         {
 
-            int skipCount =( index) * size;
+            int skipCount = (index) * size;
             //1. Truy vấn
             var query = from m in this.MovieContext.Movies
                         join p in this.MovieContext.Producers on m.ProducerId equals p.ID
@@ -70,14 +96,14 @@ namespace Booking_Movie.Data.Repositories
                                           select ct.Name).ToArray()
                         };
             //2. lọc dữ liệu
-            if(filter != null || filter?.Count > 0)
+            if (filter != null || filter?.Count > 0)
             {
                 foreach (var expression in filter)
                 {
                     query = query.Where(expression);
                 }
             }
-            
+
             // float totalPage = (float)query.Count() / size;
             // total = Convert.ToInt32(Math.Round(totalPage));
             total = query.Count(); // tổng dòng
@@ -86,6 +112,33 @@ namespace Booking_Movie.Data.Repositories
             query = query.Skip(skipCount)
                 .Take(size);
 
+
+            return query;
+        }
+
+        public IQueryable<MovieVM> GetMoviePagingAdmin()
+        {
+
+            var query = from m in this.MovieContext.Movies
+                        join p in this.MovieContext.Producers on m.ProducerId equals p.ID
+                        join n in this.MovieContext.Nationalities on m.NationalityId equals n.Id
+                        select new MovieVM()
+                        {
+                            directors = (from md in this.MovieContext.MovieDirectors
+                                         join d in this.MovieContext.Directors on md.DirectorId equals d.ID
+                                         where md.MovieId == m.Id
+                                         select d.Name).ToArray(),
+                            movie = m,
+                            actors = (from c in this.MovieContext.Casts
+                                      join a in this.MovieContext.Actors on c.ActorId equals a.ID
+                                      where c.MovieId == m.Id
+                                      select a.Name).ToArray(),
+                            nationality = n,
+                            categories = (from mc in this.MovieContext.MovieCategories
+                                          join ct in this.MovieContext.Categories on mc.CategoryId equals ct.Id
+                                          where mc.MovieId == m.Id
+                                          select ct.Name).ToArray()
+                        };
 
             return query;
         }
@@ -177,67 +230,23 @@ namespace Booking_Movie.Data.Repositories
             return null;
         }
 
-        public async Task<IQueryable<ScreeningViewModel>> GetScreeningByMovieId(int Id)
-        {
-            var query =
-               (from m in this.MovieContext.Movies
-                join sc in this.MovieContext.Screenings on m.Id equals sc.MovieId
-                join st in this.MovieContext.ScreeningTypes on sc.MovieTypeId equals st.Id
-                join au in this.MovieContext.Auditoriums on sc.AuditoriumId equals au.Id
-                join c in this.MovieContext.Cinemas on au.CinemaId equals c.Id
-                where m.Id == Id
-                group new { ScreeningId = sc.Id, CinemaId = c.Id, ScreeningTypeName = st.Name, sc = sc, AuditoriumName = au.Name} by c.Name into g
-               
-                select new ScreeningViewModel()
-                {
-                    Id = g.Select(x => x.ScreeningId).FirstOrDefault(),
-                    CinemaId = g.Select(x => x.CinemaId).FirstOrDefault(),
-                    CinemaName = g.Key,
-                    AuditoriumName = g.Select(x => x.AuditoriumName).FirstOrDefault(),
-                    ScreeningTypeName = g.Select(x => x.ScreeningTypeName).FirstOrDefault(),
-                    ShowTime = g.Select(x => x.sc.ShowTime).ToArray()
-                });
 
 
-            return await Task.FromResult(query);
-        }
-
-        public async Task<IQueryable<ScreeningViewModel>> GetAllScreening()
-        {
-            var query =
-               (from m in this.MovieContext.Movies
-                join sc in this.MovieContext.Screenings on m.Id equals sc.MovieId
-                join st in this.MovieContext.ScreeningTypes on sc.MovieTypeId equals st.Id
-                join au in this.MovieContext.Auditoriums on sc.AuditoriumId equals au.Id
-                join c in this.MovieContext.Cinemas on au.CinemaId equals c.Id
-                group new { ScreeningId = sc.Id, CinemaId = c.Id, CinemaName = c.Name, ScreeningTypeName = st.Name, sc = sc, AuditoriumName = au.Name } by m.Name into g
-
-                select new ScreeningViewModel()
-                {
-                    Id = g.Select(x => x.ScreeningId).FirstOrDefault(),
-                    CinemaId = g.Select(x => x.CinemaId).FirstOrDefault(),
-                    CinemaName = g.Select(x => x.CinemaName).FirstOrDefault(),
-                    MovieName = g.Key,
-                    AuditoriumName = g.Select(x => x.AuditoriumName).FirstOrDefault(),
-                    ScreeningTypeName = g.Select(x => x.ScreeningTypeName).FirstOrDefault(),
-                    ShowTime = g.Select(x => x.sc.ShowTime).ToArray()
-                });
 
 
-            return await Task.FromResult(query);
-        }
+
 
         public async Task AddMovieCategories(int Id, int[] categoriesId)
         {
-            
-            if(categoriesId.Length == 1)
+
+            if (categoriesId.Length == 1)
             {
                 var MovieCategory = new MovieCategory()
                 {
                     MovieId = Id,
                     CategoryId = categoriesId[0]
                 };
-               await this.MovieContext.MovieCategories.AddAsync(MovieCategory);
+                await this.MovieContext.MovieCategories.AddAsync(MovieCategory);
 
             }
             else
@@ -249,12 +258,16 @@ namespace Booking_Movie.Data.Repositories
                         MovieId = Id,
                         CategoryId = category
                     };
-                  await  this.MovieContext.MovieCategories.AddAsync(MovieCategory);
+                    await this.MovieContext.MovieCategories.AddAsync(MovieCategory);
                 }
             }
 
 
         }
+
+        #endregion
+
+        #region Cast
 
         public async Task AddCast(int Id, Guid[] actorsId)
         {
@@ -266,7 +279,7 @@ namespace Booking_Movie.Data.Repositories
                     MovieId = Id,
                     ActorId = actorsId[0]
                 };
-              await this.MovieContext.Casts.AddAsync(Cast);
+                await this.MovieContext.Casts.AddAsync(Cast);
 
             }
             else
@@ -278,37 +291,12 @@ namespace Booking_Movie.Data.Repositories
                         MovieId = Id,
                         ActorId = actorId
                     };
-                   await this.MovieContext.Casts.AddAsync(Cast);
+                    await this.MovieContext.Casts.AddAsync(Cast);
                 }
             }
 
         }
 
-        public async Task AddMovieDirector(int Id, Guid[] directorsId)
-        {
-            if (directorsId.Length == 1)
-            {
-                var MovieDirector = new MovieDirector()
-                {
-                    MovieId = Id,
-                    DirectorId = directorsId[0]
-                };
-                await this.MovieContext.MovieDirectors.AddAsync(MovieDirector);
-
-            }
-            else
-            {
-                foreach (var directorId in directorsId)
-                {
-                    var MovieDirector = new MovieDirector()
-                    {
-                        MovieId = Id,
-                        DirectorId = directorId
-                    };
-                   await this.MovieContext.MovieDirectors.AddAsync(MovieDirector);
-                }
-            }
-        }
 
         public async Task<Cast?> FindCastByMovieId(int Id, Guid actorId)
         {
@@ -322,8 +310,8 @@ namespace Booking_Movie.Data.Repositories
 
         public async Task UpdateCast(int Id, Guid[] actorsId)
         {
-           
-            var oldActor = this.MovieContext.Casts.Where(c => c.MovieId ==Id && !actorsId.Contains(c.ActorId));
+
+            var oldActor = this.MovieContext.Casts.Where(c => c.MovieId == Id && !actorsId.Contains(c.ActorId));
             if (oldActor != null)
             {
                 this.MovieContext.Casts.RemoveRange(oldActor);
@@ -340,18 +328,22 @@ namespace Booking_Movie.Data.Repositories
                         MovieId = Id,
                         ActorId = actorId
                     });
-                    
+
 
                 }
             }
 
         }
 
+        #endregion
+
+        #region MovieCategory
+
         public async Task<List<MovieCategory>> FindMovieCategoryByMovieId(int Id)
         {
             return await this.MovieContext.MovieCategories.Where(x => x.MovieId == Id).ToListAsync();
         }
-        
+
         public async Task<MovieCategory?> FindMovieCategoryByMovieId(int Id, int categoryId)
         {
             return await this.MovieContext.MovieCategories.Where(x => x.MovieId == Id && x.CategoryId == categoryId).FirstOrDefaultAsync();
@@ -386,6 +378,37 @@ namespace Booking_Movie.Data.Repositories
 
         }
 
+        #endregion
+
+        #region MovieDirector
+
+        public async Task AddMovieDirector(int Id, Guid[] directorsId)
+        {
+            if (directorsId.Length == 1)
+            {
+                var MovieDirector = new MovieDirector()
+                {
+                    MovieId = Id,
+                    DirectorId = directorsId[0]
+                };
+                await this.MovieContext.MovieDirectors.AddAsync(MovieDirector);
+
+            }
+            else
+            {
+                foreach (var directorId in directorsId)
+                {
+                    var MovieDirector = new MovieDirector()
+                    {
+                        MovieId = Id,
+                        DirectorId = directorId
+                    };
+                    await this.MovieContext.MovieDirectors.AddAsync(MovieDirector);
+                }
+            }
+        }
+
+
         public async Task<List<MovieDirector>> FindMovieDirectorByMovieId(int Id)
         {
             return await this.MovieContext.MovieDirectors.Where(x => x.MovieId == Id).ToListAsync();
@@ -408,7 +431,7 @@ namespace Booking_Movie.Data.Repositories
             foreach (var directorId in directorsId)
             {
                 var hasMovieDirector = await FindMovieDirectorByMovieId(Id, directorId);
-                       
+
                 if (hasMovieDirector == null)
                 {
                     await this.MovieContext.MovieDirectors.AddAsync(new MovieDirector()
@@ -422,5 +445,252 @@ namespace Booking_Movie.Data.Repositories
             }
 
         }
+
+        #endregion
+
+        #region Screening
+
+        public async Task<IQueryable<ScreeningViewModel>> GetScreeningByMovieId(int Id)
+        {
+            var query =
+               (from m in this.MovieContext.Movies
+                join sc in this.MovieContext.Screenings on m.Id equals sc.MovieId
+                join stt in this.MovieContext.ShowTimes on sc.ShowTimeId equals stt.Id
+                join st in this.MovieContext.ScreeningTypes on sc.ScreeningTypeId equals st.Id
+                join au in this.MovieContext.Auditoriums on sc.AuditoriumId equals au.Id
+                join c in this.MovieContext.Cinemas on au.CinemaId equals c.Id
+                where m.Id == Id
+                group new { ScreeningId = sc.Id, CinemaId = c.Id, ScreeningTypeName = st.Name, sc, stt, AuditoriumName = au.Name } by c.Name into g
+
+                select new ScreeningViewModel()
+                {
+                    Id = g.Select(x => x.ScreeningId).FirstOrDefault(),
+                    CinemaId = g.Select(x => x.CinemaId).FirstOrDefault(),
+                    CinemaName = g.Key,
+                    AuditoriumName = g.Select(x => x.AuditoriumName).FirstOrDefault(),
+                    ScreeningTypeName = g.Select(x => x.ScreeningTypeName).FirstOrDefault(),
+                    MovieSchedule = g.Select(x => new MovieSchedule()
+                    {
+                        Id = x.ScreeningId,
+                        ShowTime = x.stt.Time,
+                        ShowTimeId = x.stt.Id
+
+                    }).ToList(),
+                });
+
+
+            return await Task.FromResult(query);
+        }
+
+        public async Task<IQueryable<ScreeningViewModel>> GetAllScreening()
+        {
+            var query =
+               (from m in this.MovieContext.Movies
+                join sc in this.MovieContext.Screenings on m.Id equals sc.MovieId
+                join stt in this.MovieContext.ShowTimes on sc.ShowTimeId equals stt.Id
+
+                join st in this.MovieContext.ScreeningTypes on sc.ScreeningTypeId equals st.Id
+                join au in this.MovieContext.Auditoriums on sc.AuditoriumId equals au.Id
+                join c in this.MovieContext.Cinemas on au.CinemaId equals c.Id
+                group new { ScreeningId = sc.Id, CinemaId = c.Id, CinemaName = c.Name, ScreeningTypeName = st.Name, stt, sc, AuditoriumName = au.Name } by m.Name into g
+
+                select new ScreeningViewModel()
+                {
+                    Id = g.Select(x => x.ScreeningId).FirstOrDefault(),
+                    CinemaId = g.Select(x => x.CinemaId).FirstOrDefault(),
+                    CinemaName = g.Select(x => x.CinemaName).FirstOrDefault(),
+                    MovieName = g.Key,
+                    AuditoriumName = g.Select(x => x.AuditoriumName).FirstOrDefault(),
+                    ScreeningTypeName = g.Select(x => x.ScreeningTypeName).FirstOrDefault(),
+                    MovieSchedule = g.Select(x => new MovieSchedule()
+                    {
+                        Id = x.ScreeningId,
+                        ShowTime = x.stt.Time,
+                                 ShowTimeId = x.stt.Id
+
+                    }).ToList(),
+                }); ;
+
+
+            return await Task.FromResult(query);
+        }
+
+        public IQueryable<ScreeningViewModel> GetScreeningPaging(List<Expression<Func<ScreeningViewModel, bool>>>? filter, out int total, GetScreeningPagingRequest pagingRequest)
+        {
+            int skipCount = 0;
+            //if (pagingRequest.PageIndex == null && pagingRequest.PageSkip != null)
+            //{
+
+            //    skipCount = pagingRequest.PageSkip.Value;
+            //}
+            //1. Truy vấn
+            //var query =
+            //  (from m in this.MovieContext.Movies
+            //   join sc in this.MovieContext.Screenings on m.Id equals sc.MovieId
+            //   join st in this.MovieContext.ScreeningTypes on sc.MovieTypeId equals st.Id
+            //   join au in this.MovieContext.Auditoriums on sc.AuditoriumId equals au.Id
+            //   join c in this.MovieContext.Cinemas on au.CinemaId equals c.Id
+            //   group new { ScreeningId = sc.Id, CinemaId = c.Id, CinemaName = c.Name, ScreeningTypeName = st.Name, sc = sc, AuditoriumName = au.Name } by m.Name into g
+
+            //   select new ScreeningViewModel()
+            //   {
+            //       Id = g.Select(x => x.ScreeningId).FirstOrDefault(),
+
+            //       CinemaId = g.Select(x => x.CinemaId).FirstOrDefault(),
+            //       CinemaName = g.Select(x => x.CinemaName).FirstOrDefault(),
+            //       MovieId = 1,
+            //       MovieName = g.Key,
+            //       AuditoriumId = 1,
+            //       AuditoriumName = g.Select(x => x.AuditoriumName).FirstOrDefault(),
+            //       ScreeningTypeName = g.Select(x => x.ScreeningTypeName).FirstOrDefault(),
+            //       ScreeningTypeId = 1,
+            //       MovieSchedule = g.Select(x => new MovieSchedule()
+            //       {
+            //           Id = x.ScreeningId,
+            //           ShowTime = x.sc.ShowTime
+            //       }).ToList(),
+            //   }); ;
+
+            var query = (from m in this.MovieContext.Movies
+                         join sc in this.MovieContext.Screenings on m.Id equals sc.MovieId
+                         join stt in this.MovieContext.ShowTimes on sc.ShowTimeId equals stt.Id
+
+                         join st in this.MovieContext.ScreeningTypes on sc.ScreeningTypeId equals st.Id
+                         join au in this.MovieContext.Auditoriums on sc.AuditoriumId equals au.Id
+                         join c in this.MovieContext.Cinemas on au.CinemaId equals c.Id
+                         group new { ScreeningId = sc.Id, CinemaId = c.Id, CinemaName = c.Name, ScreeningTypeName = st.Name, stt, sc, ScreeingTypeId = st.Id, AuditoriumName = au.Name } by m.Name into g
+                         select new ScreeningViewModel()
+                         {
+                             Id = g.Select(x => x.ScreeningId).FirstOrDefault(),
+                             CinemaId = (int?)g.Select(x => x.CinemaId).FirstOrDefault(),
+                             CinemaName = (string?)g.Select(x => x.CinemaName).FirstOrDefault(),
+                             MovieId = (int?)g.Select(x => x.sc.MovieId).FirstOrDefault(),
+                             MovieName = (string?)g.Key,
+                             AuditoriumId = (int?)g.Select(x => x.sc.AuditoriumId).FirstOrDefault(),
+                             AuditoriumName = (string?)g.Select(x => x.AuditoriumName).FirstOrDefault(),
+                             ScreeningTypeName = (string?)g.Select(x => x.ScreeningTypeName).FirstOrDefault(),
+                             ScreeningTypeId = (int?)g.Select(x => x.ScreeingTypeId).FirstOrDefault(),
+                             MovieSchedule = (List<MovieSchedule>?)g.Select(x => new MovieSchedule()
+                             {
+                                 Id = x.sc.Id,
+                                 ShowTime = x.stt.Time,
+                                 ShowTimeId = x.stt.Id
+
+
+                             }).ToList(),
+                         });
+
+            //2. lọc dữ liệu
+            //if (filter != null || filter?.Count > 0)
+            //{
+            //    foreach (var expression in filter)
+            //    {
+            //        query = query.Where(expression);
+            //    }
+            //}
+
+            //if (pagingRequest.Filter != null)
+            //{
+            //    var buildFilter = ParseHelper<ScreeningViewModel>.BuildPredicate(pagingRequest.Filter);
+
+            //    query = query.Where(buildFilter);
+            //}
+
+            //    // Sắp xếp
+
+            //    if (pagingRequest.Sort != null)
+            //{
+            //    foreach(var expression in pagingRequest.Sort)
+            //    {
+            //        if(expression.Desc == false)
+            //        {
+            //            string propertyName = expression.Selector;
+            //            var parameter = Expression.Parameter(typeof(ScreeningViewModel), "x");
+            //            var property = Expression.Property(parameter, propertyName);
+            //            var lambda = Expression.Lambda(property, parameter);
+            //            var orderByExpression = Expression.Call(
+            //                typeof(Queryable),
+            //                "OrderBy",
+            //                new[] { typeof(ScreeningViewModel), property.Type },
+            //                query.Expression,
+            //                lambda
+            //            );
+            //            query = query.Provider.CreateQuery<ScreeningViewModel>(orderByExpression);
+            //        }
+            //        else if(expression.Desc == true)
+            //        {
+            //            string propertyName = expression.Selector;
+            //            var parameter = Expression.Parameter(typeof(ScreeningViewModel), "x");
+            //            var property = Expression.Property(parameter, propertyName);
+            //            var lambda = Expression.Lambda(property, parameter);
+            //            var orderByExpression = Expression.Call(
+            //                typeof(Queryable),
+            //                "OrderByDescending",
+            //                new[] { typeof(ScreeningViewModel), property.Type },
+            //                query.Expression,
+            //                lambda
+            //            );
+            //            query = query.Provider.CreateQuery<ScreeningViewModel>(orderByExpression);
+
+            //        }
+            //    }
+            //}
+
+            // float totalPage = (float)query.Count() / size;
+            // total = Convert.ToInt32(Math.Round(totalPage));
+            total = query.Count(); // tổng dòng
+            //3
+
+            //query = query.Skip(skipCount)
+            //    .Take(pagingRequest.PageSize);
+
+
+            return query;
+        }
+        public IQueryable<ScreeningViewModel> GetScreeningPagingAdmin(GetScreeningPagingRequest pagingRequest)
+        {
+
+            var query = (from m in this.MovieContext.Movies
+                         join sc in this.MovieContext.Screenings on m.Id equals sc.MovieId
+                         join st in this.MovieContext.ScreeningTypes on sc.ScreeningTypeId equals st.Id
+                         join stt in this.MovieContext.ShowTimes on sc.ShowTimeId equals stt.Id
+
+                         join au in this.MovieContext.Auditoriums on sc.AuditoriumId equals au.Id
+                         join c in this.MovieContext.Cinemas on au.CinemaId equals c.Id
+                         // filter
+                         where (pagingRequest.MovieId == null || sc.MovieId == pagingRequest.MovieId) &&
+                                (pagingRequest.CinemaId == null || c.Id == pagingRequest.CinemaId)
+                         group new { MovieName = m.Name, ScreeningId = sc.Id, CinemaId = c.Id, CinemaName = c.Name, ScreeningTypeName = st.Name, stt, sc, ScreeingTypeId = st.Id, AuditoriumName = au.Name } by new { auditoriumId = sc.AuditoriumId, movieId = sc.MovieId  } into g
+                         select new ScreeningViewModel()
+                         {
+                             Id = g.Select(x => x.ScreeningId).FirstOrDefault(),
+                             CinemaId = (int?)g.Select(x => x.CinemaId).FirstOrDefault(),
+                             CinemaName = (string?)g.Select(x => x.CinemaName).FirstOrDefault(),
+                             MovieId = (int?)g.Key.movieId,
+                             MovieName = (string?)g.Select(x => x.MovieName).FirstOrDefault(),
+                             AuditoriumId = (int?)g.Key.auditoriumId,
+                             AuditoriumName = (string?)g.Select(x => x.AuditoriumName).FirstOrDefault(),
+                             ScreeningTypeName = (string?)g.Select(x => x.ScreeningTypeName).FirstOrDefault(),
+                             ScreeningTypeId = (int?)g.Select(x => x.ScreeingTypeId).FirstOrDefault(),
+                             DateFrom = (DateTime?)g.Select(x => x.sc.DateFrom).FirstOrDefault(),
+                             DateTo = (DateTime?)g.Select(x => x.sc.DateTo).FirstOrDefault(),
+                             MovieSchedule = (List<MovieSchedule>?)g.Select(x => new MovieSchedule()
+                             {
+                                 Id = x.sc.Id,
+                                 ShowTime = x.stt.Time,
+                                 ShowTimeId = x.stt.Id
+
+
+                             }).ToList(),
+                             ShowTimeId = g.Select(x => x.stt.Id).ToList(),
+                         });
+
+
+
+            return query;
+        }
+
+        #endregion
+
     }
 }

@@ -1,8 +1,12 @@
-﻿namespace Booking_Movie.ViewModel.Common
+﻿using System.Linq.Expressions;
+
+namespace Booking_Movie.ViewModel.Common
 {
     public class PagingRequestBase : RequestBase
     {
-        public int PageIndex { get; set; }
+        public int? PageIndex { get; set; }
+        public int? PageSkip { get; set; }
         public int PageSize { get; set; }
     }
+
 }

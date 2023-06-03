@@ -1,5 +1,8 @@
 ﻿using Booking_Movie.Application.Catalog.Actors;
 using Booking_Movie.Application.Catalog.Auditoriums;
+using Booking_Movie.ViewModel.Catalog.ActorVM;
+using Booking_Movie.ViewModel.Catalog.AuditoriumVM;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,6 +43,23 @@ namespace Booking_Movie.BackendApi.Controllers
             }
             
             return BadRequest();    
+        }
+
+        [HttpGet("paging/")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAllPaging([FromQuery] GetAuditoriumPagingRequest pagingRequest)
+        {
+            try
+            {
+                var host = $"{Request.Scheme}://{Request.Host}";
+                var auditoriums = await _auditoriumService.GetAllPaging(pagingRequest, host);
+                if (auditoriums == null) return BadRequest("Cannot found auditoriums!");
+                return Ok(auditoriums);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

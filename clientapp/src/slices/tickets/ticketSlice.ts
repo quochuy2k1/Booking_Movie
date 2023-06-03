@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { StringLiteralType } from "typescript";
-import { GetAllTicket } from "../../services/ticket.service";
+import { GetAllTicket, GetTicketByScreeningId } from "../../services/ticket.service";
 
 
 // Làm đúng là tạo interface BookingTicket extends Ticket
@@ -26,9 +26,10 @@ const initialState: TicketState = {
 
 export const GetTicketsAsync = createAsyncThunk(
     "ticket/getTickets",
-    async (request, { rejectWithValue }) => {
+    async (id: string, { rejectWithValue }) => {
         try {
-            const response = await GetAllTicket();
+            // const response = await GetAllTicket();
+            const response = await GetTicketByScreeningId(id);
             console.log(response.data, "async ticket")
 
             // The value we return becomes the `fulfilled` action payload
@@ -72,6 +73,9 @@ export const TicketSlice = createSlice({
         resetQuantityBookTicket: (state) => {
             const newState = [...state.tickets].map(ticket => { ticket.quantity = 0; ticket.total = 0; return ticket })
             Object.assign({ chooseTotal: 0, tickets: newState })
+        },
+        clearAllTickets : (state) => {
+            state.tickets = []
         }
     },
     extraReducers: (builder) => {
@@ -90,6 +94,6 @@ export const TicketSlice = createSlice({
 });
 
 
-export const { incrementQuantityTicket, decrementQuantityTicket, resetQuantityBookTicket } = TicketSlice.actions
+export const { incrementQuantityTicket, decrementQuantityTicket, resetQuantityBookTicket, clearAllTickets } = TicketSlice.actions
 
 export default TicketSlice.reducer;

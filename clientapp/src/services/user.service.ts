@@ -53,3 +53,15 @@ export async function GetBookingByQrCode(qrContent: string, token: string) {
 
     // }
 }
+export async function GetReportBookingByQrCode(qrContent: string, token: string) {
+
+    var response = http.get<string>(`/api/Reports/cinema-ticket?qrContent=${qrContent}`, {
+        headers:{
+            'Authorization': `Bearer ${token}`,
+        }
+    })
+
+    return response;
+
+    // }
+}

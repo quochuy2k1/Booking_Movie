@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Enum\**" />
+    <EmbeddedResource Remove="Enum\**" />
+    <None Remove="Enum\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
@@ -25,10 +31,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Booking_Movie.Utilities\Booking_Movie.Utilities.csproj" />
     <ProjectReference Include="..\Booking_Movie.ViewModel\Booking_Movie.ViewModel.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Enum\" />
   </ItemGroup>
 
 </Project>
