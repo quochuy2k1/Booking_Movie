@@ -8,6 +8,7 @@ import { bookScreening } from "../../../slices/bookings/BookingSlice";
 import { ScreeningModel, addScreening } from "../../../slices/screenings/ScreeningSlice";
 import { bookScreeningId } from "../../../slices/bookings/BookingSliceClient";
 import { checkLogin } from "../../../slices/user/userSlice";
+import { clearAllTickets } from "../../../slices/tickets/ticketSlice";
 
 
 // interface ScreeningParamsProps{
@@ -37,6 +38,13 @@ const Screening: React.FC<{ id: string }> = ({ id }) => {
         // }
         // console.log(screenings, "screening state")
     }, [GetScreeningByMovie])
+
+    useEffect(() => {
+        dispatch(clearAllTickets())
+    })
+
+
+    
     return (
         <>
             <Header as='h3' dividing className="text-white">
@@ -53,7 +61,7 @@ const Screening: React.FC<{ id: string }> = ({ id }) => {
                                 <span className='price'>{screening.screeningTypeName}</span>
                             </Item.Meta>
                             <Item.Description className="pt-3">
-                                {screening && screening.showTime.map((showTime, idex) => (
+                                {screening && screening.movieSchedule?.map((showTime, idex) => (
                                     <Button
                                         key={idex}
                                         as={Link}
@@ -73,12 +81,12 @@ const Screening: React.FC<{ id: string }> = ({ id }) => {
                                                     cinemaName: screening.cinemaName,
                                                     auditoriumName: screening.auditoriumName,
                                                     screeningTypeName: screening.screeningTypeName,
-                                                    showTime: [showTime]
-                                                }))
+                                                    movieSchedule: [showTime]
+                                                } as ScreeningModel))
                                             }
 
                                         }}
-                                        to={`/booking/${screening.cinemaId}/movie/${movieId}/sessionId/${sessionId!}`}>{moment(showTime).format("HH:mm")}</Button>
+                                        to={`/booking/${screening.cinemaId}/movie/${movieId}/sessionId/${sessionId!}`}>{moment(showTime.showTime).format("HH:mm")}</Button>
                                 ))}
                             </Item.Description>
                         </Item.Content>

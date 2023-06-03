@@ -238,7 +238,7 @@ namespace Booking_Movie.Application.Catalog.Actors
                 expression = q => q.Nationality.Name.ToUpper().Contains(pagingRequest.Nationality.ToUpper());
             }
 
-            query = actorRepository.GetMultiPaging(expression, out total, pagingRequest.PageIndex, pagingRequest.PageSize, new string[] {"Nationality"});
+            query = actorRepository.GetMultiPaging(expression, out total, pagingRequest.PageIndex.Value, pagingRequest.PageSize, new string[] {"Nationality"});
 
 
             //3.paging

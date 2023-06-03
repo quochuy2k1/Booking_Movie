@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.AdminApp", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.BackendApi", "Booking_Movie.BackendApi\Booking_Movie.BackendApi.csproj", "{2764D908-FAC7-47D8-BFA0-35834D0F98F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking_Movie.Payment", "Booking_Movie.Payment\Booking_Movie.Payment.csproj", "{5D2C8198-9F12-4AC3-A232-CC6C16C4141B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booking_Movie.Payment", "Booking_Movie.Payment\Booking_Movie.Payment.csproj", "{5D2C8198-9F12-4AC3-A232-CC6C16C4141B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking_Movie.Report", "Booking_Movie.Report\Booking_Movie.Report.csproj", "{16ECD0E0-405E-466B-B071-DD997B47D7BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{5D2C8198-9F12-4AC3-A232-CC6C16C4141B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D2C8198-9F12-4AC3-A232-CC6C16C4141B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D2C8198-9F12-4AC3-A232-CC6C16C4141B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16ECD0E0-405E-466B-B071-DD997B47D7BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16ECD0E0-405E-466B-B071-DD997B47D7BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16ECD0E0-405E-466B-B071-DD997B47D7BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16ECD0E0-405E-466B-B071-DD997B47D7BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

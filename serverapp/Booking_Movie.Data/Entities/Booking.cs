@@ -10,7 +10,7 @@ namespace Booking_Movie.Data.Entities
 
         public DateTime CreatedDate { get; set; }
 
-        public int ScreeningId { get; set; }
+        public int? ScreeningId { get; set; }
         public Guid AppUserId { get; set; }
         public int PaymentMethodId { get; set; }
         public int? CouponId { get; set; }

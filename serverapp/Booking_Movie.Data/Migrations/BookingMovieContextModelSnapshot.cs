@@ -17,10 +17,10 @@ namespace Booking_Movie.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Booking_Movie.Data.Entities.Actor", b =>
                 {
@@ -50,7 +50,7 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar");
 
                     b.Property<string>("NationalityId")
                         .IsRequired()
@@ -75,79 +75,79 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("354b3fae-02fc-482f-bf68-1cc40b04c34f"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(444),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6866),
                             DateOfBirth = new DateTime(1990, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.64m,
                             Image = "",
                             Name = "Ninh Dương Lan Ngọc",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(444),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6867),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("1fa1a35a-d969-4b44-8cc0-1f6fbff578fb"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(447),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6871),
                             DateOfBirth = new DateTime(1991, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.67m,
                             Image = "",
                             Name = "Katy Nguyễn",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(447),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6872),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("343d4b37-c4f7-4d24-adb6-05abeda8aa41"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(449),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6875),
                             DateOfBirth = new DateTime(1989, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.7m,
                             Image = "",
                             Name = "NSƯT Lê Khanh",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(450),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6875),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("bf79e94c-2b38-4763-aacd-8161006e8347"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(452),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6878),
                             DateOfBirth = new DateTime(1988, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.65m,
                             Image = "",
                             Name = "Hữu Châu",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(452),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6879),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("26340d49-35d2-4696-addf-e4fc97cd5300"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(457),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6882),
                             DateOfBirth = new DateTime(1987, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.81m,
                             Image = "",
                             Name = "Lãnh Thanh",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(458),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6882),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("376ef100-3a18-45dd-b83c-517d2cafc0dc"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(459),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6885),
                             DateOfBirth = new DateTime(1986, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.76m,
                             Image = "",
                             Name = "Lê Xuân Tiền",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(460),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6885),
                             ViewCount = 0
                         });
                 });
@@ -158,7 +158,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<Guid>("ActorId")
                         .HasColumnType("uniqueidentifier");
@@ -197,17 +197,17 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar");
 
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar");
 
                     b.HasKey("ID");
 
@@ -309,13 +309,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("ab778d64-0d3e-4ab6-bc7c-a50b93de737b"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "49f8fefb-b102-424e-93b9-5a957dff50af",
+                            ConcurrencyStamp = "5e0c51ed-c314-4cdf-a568-36686a369813",
                             Email = "dangit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Đăng",
                             LastName = "Nguyễn Minh",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEAwgnaX0fb0pCzX0L7FDwJaGLZuJZXrGJggvGzJqJmwfp10X+nOSRm5y1ghU80rQsg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO7H22Bja31uNq2dovWEb0VLe9bv0Zxa8c0HNrTmGS2KmW0zLlI5STvfRbsscA/onA==",
                             PhoneNumber = "0364125410",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -325,13 +325,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("d83ac55f-ef97-468f-a493-e9a8eeec395e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9a528c4a-23a2-43a5-8212-cff184042424",
+                            ConcurrencyStamp = "dc33b4ae-de11-4368-8939-70542cf58990",
                             Email = "khanhit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Khánh",
                             LastName = "Nguyễn",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEAfBgD6qXDy8tVv3fjucrQ4neyJ5DsLbnuzfD1z5QjY0tbbYZB0kOkv8KWFU6XPNHQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEtCTwvbWqLXgo8XMKVaZF8FPHgt7/qPZTHaqizZO5gBADmxdA1FX9QzXU/zYOtJyA==",
                             PhoneNumber = "0364125420",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -341,13 +341,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("c8a04d06-2334-4806-92a6-6f6db3ed6692"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e0fcb97e-bfe9-4d9e-8827-25da20a86384",
+                            ConcurrencyStamp = "0d54859e-4116-48d2-a638-ec5c9dc5699c",
                             Email = "thaoit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Thảo",
                             LastName = "Nguyễn Hoàng",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEDkKfhv3pgHoTJYPR/tOXaARodteNTfHoOtyU6W7BCVFuYrjINMbe1X9Icf7qg3ILw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHs/OZBTt8bMuh8oQ1GTmtdQSRs/QBmhLivkxqbq3jsdKLihI6V/t2RkmT5CAcPBtA==",
                             PhoneNumber = "0364125430",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -361,7 +361,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CinemaId")
                         .HasColumnType("int");
@@ -445,7 +445,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<Guid>("AppUserId")
                         .HasColumnType("uniqueidentifier");
@@ -463,10 +463,10 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<int>("PaymentMethodId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ScreeningId")
+                    b.Property<int?>("ScreeningId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Stauts")
+                    b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
                     b.Property<decimal>("Total")
@@ -492,8 +492,7 @@ namespace Booking_Movie.Data.Migrations
                             CouponId = 2,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PaymentMethodId = 1,
-                            ScreeningId = 1,
-                            Stauts = true,
+                            Status = true,
                             Total = 420000m
                         },
                         new
@@ -503,8 +502,7 @@ namespace Booking_Movie.Data.Migrations
                             CouponId = 2,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PaymentMethodId = 1,
-                            ScreeningId = 2,
-                            Stauts = true,
+                            Status = true,
                             Total = 250000m
                         },
                         new
@@ -514,8 +512,7 @@ namespace Booking_Movie.Data.Migrations
                             CouponId = 2,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PaymentMethodId = 1,
-                            ScreeningId = 3,
-                            Stauts = true,
+                            Status = true,
                             Total = 15000m
                         },
                         new
@@ -525,8 +522,7 @@ namespace Booking_Movie.Data.Migrations
                             CouponId = 2,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PaymentMethodId = 1,
-                            ScreeningId = 4,
-                            Stauts = true,
+                            Status = true,
                             Total = 20000m
                         },
                         new
@@ -536,8 +532,7 @@ namespace Booking_Movie.Data.Migrations
                             CouponId = 2,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PaymentMethodId = 1,
-                            ScreeningId = 5,
-                            Stauts = true,
+                            Status = true,
                             Total = 560000m
                         },
                         new
@@ -547,8 +542,7 @@ namespace Booking_Movie.Data.Migrations
                             CouponId = 2,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PaymentMethodId = 1,
-                            ScreeningId = 5,
-                            Stauts = true,
+                            Status = true,
                             Total = 1000000m
                         },
                         new
@@ -558,8 +552,7 @@ namespace Booking_Movie.Data.Migrations
                             CouponId = 2,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PaymentMethodId = 1,
-                            ScreeningId = 10,
-                            Stauts = true,
+                            Status = true,
                             Total = 75000m
                         });
                 });
@@ -570,7 +563,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("BookingId")
                         .HasColumnType("int");
@@ -581,7 +574,7 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Stauts")
+                    b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
                     b.Property<decimal>("Total")
@@ -604,7 +597,7 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 1,
                             ComboId = 1,
                             Quantity = 2,
-                            Stauts = true,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -613,7 +606,7 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 1,
                             ComboId = 2,
                             Quantity = 1,
-                            Stauts = true,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -622,7 +615,7 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 1,
                             ComboId = 3,
                             Quantity = 1,
-                            Stauts = true,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -631,7 +624,7 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 3,
                             ComboId = 3,
                             Quantity = 1,
-                            Stauts = true,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -640,7 +633,7 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 4,
                             ComboId = 1,
                             Quantity = 1,
-                            Stauts = true,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -649,7 +642,7 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 4,
                             ComboId = 2,
                             Quantity = 1,
-                            Stauts = true,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -658,7 +651,7 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 5,
                             ComboId = 3,
                             Quantity = 1,
-                            Stauts = true,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -667,7 +660,7 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 6,
                             ComboId = 1,
                             Quantity = 3,
-                            Stauts = true,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -676,7 +669,7 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 7,
                             ComboId = 2,
                             Quantity = 3,
-                            Stauts = true,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -685,7 +678,7 @@ namespace Booking_Movie.Data.Migrations
                             BookingId = 7,
                             ComboId = 1,
                             Quantity = 1,
-                            Stauts = true,
+                            Status = true,
                             Total = 0m
                         });
                 });
@@ -696,7 +689,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("BookingId")
                         .HasColumnType("int");
@@ -704,10 +697,13 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Stauts")
+                    b.Property<int>("ScreeningTicketId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int>("TicketId")
+                    b.Property<int?>("TicketId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Total")
@@ -719,6 +715,8 @@ namespace Booking_Movie.Data.Migrations
 
                     b.HasIndex("BookingId");
 
+                    b.HasIndex("ScreeningTicketId");
+
                     b.HasIndex("TicketId");
 
                     b.ToTable("BookingTickets", (string)null);
@@ -729,8 +727,8 @@ namespace Booking_Movie.Data.Migrations
                             Id = 1,
                             BookingId = 1,
                             Quantity = 2,
-                            Stauts = true,
-                            TicketId = 1,
+                            ScreeningTicketId = 1,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -738,8 +736,8 @@ namespace Booking_Movie.Data.Migrations
                             Id = 2,
                             BookingId = 1,
                             Quantity = 1,
-                            Stauts = true,
-                            TicketId = 2,
+                            ScreeningTicketId = 2,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -747,8 +745,8 @@ namespace Booking_Movie.Data.Migrations
                             Id = 3,
                             BookingId = 2,
                             Quantity = 1,
-                            Stauts = true,
-                            TicketId = 1,
+                            ScreeningTicketId = 1,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -756,8 +754,8 @@ namespace Booking_Movie.Data.Migrations
                             Id = 4,
                             BookingId = 2,
                             Quantity = 1,
-                            Stauts = true,
-                            TicketId = 2,
+                            ScreeningTicketId = 2,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -765,8 +763,8 @@ namespace Booking_Movie.Data.Migrations
                             Id = 5,
                             BookingId = 3,
                             Quantity = 1,
-                            Stauts = true,
-                            TicketId = 1,
+                            ScreeningTicketId = 1,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -774,8 +772,8 @@ namespace Booking_Movie.Data.Migrations
                             Id = 6,
                             BookingId = 4,
                             Quantity = 3,
-                            Stauts = true,
-                            TicketId = 2,
+                            ScreeningTicketId = 2,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -783,8 +781,8 @@ namespace Booking_Movie.Data.Migrations
                             Id = 7,
                             BookingId = 5,
                             Quantity = 2,
-                            Stauts = true,
-                            TicketId = 2,
+                            ScreeningTicketId = 2,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -792,8 +790,8 @@ namespace Booking_Movie.Data.Migrations
                             Id = 8,
                             BookingId = 6,
                             Quantity = 3,
-                            Stauts = true,
-                            TicketId = 1,
+                            ScreeningTicketId = 1,
+                            Status = true,
                             Total = 0m
                         },
                         new
@@ -801,8 +799,8 @@ namespace Booking_Movie.Data.Migrations
                             Id = 9,
                             BookingId = 7,
                             Quantity = 1,
-                            Stauts = true,
-                            TicketId = 2,
+                            ScreeningTicketId = 2,
+                            Status = true,
                             Total = 0m
                         });
                 });
@@ -813,7 +811,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<Guid>("ActorId")
                         .HasColumnType("uniqueidentifier");
@@ -952,7 +950,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(512)");
@@ -1064,7 +1062,10 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -1097,65 +1098,82 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             Id = 1,
+                            Address = "116 Đ. Nguyễn Du, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocationId = 1,
-                            Name = "Galaxy Nguyễn Du",
+                            Name = "Berry Nguyễn Du",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
+                            Address = "Sense City, 9 Đ. Trần Hưng Đạo, Phường 5, Thành phố Cà Mau, Cà Mau",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocationId = 3,
-                            Name = "Galaxy Cà Mau",
+                            Name = "Berry Cà Mau",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
+                            Address = "246 Đ. Nguyễn Hồng Đào, Phường 13, Tân Bình, Thành phố Hồ Chí Minh",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocationId = 1,
-                            Name = "Galaxy Tân Bình",
+                            Name = "Berry Tân Bình",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
+                            Address = "718bis Đ. Kinh Dương Vương, Phường 13, Quận 6, Thành phố Hồ Chí Minh",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocationId = 1,
-                            Name = "Galaxy Kinh Dương Vương",
+                            Name = "Berry Kinh Dương Vương",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 5,
+                            Address = "304A Quang Trung, Phường 11, Gò Vấp, Thành phố Hồ Chí Minh",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocationId = 1,
-                            Name = "Galaxy Quang Trung",
+                            Name = "Berry Quang Trung",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 6,
+                            Address = "Lầu 1, TTTM Sense City, 26A Trần Quốc Tuấn, Phường 4, Bến Tre",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocationId = 9,
-                            Name = "Galaxy Bến Tre",
+                            Name = "Berry Bến Tre",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 7,
+                            Address = "Coop Mart, 478 Điện Biên Phủ, Thanh Khê Đông, Thanh Khê, Đà Nẵng",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocationId = 6,
-                            Name = "Galaxy Đà Nẵng",
+                            Name = "Berry Đà Nẵng",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 8,
+                            Address = "104 P. Lương Khánh Thiện, Lương Khá Thien, Ngô Quyền, Hải Phòng",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocationId = 10,
-                            Name = "Galaxy Hải Phòng",
+                            Name = "Berry Hải Phòng",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Address = "02 Đường 30.04, Phường 2, TP. Cao Lãnh, Đồng Tháp.",
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LocationId = 4,
+                            Name = "Berry Cao Lãnh",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
@@ -1166,7 +1184,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(255)");
@@ -1215,11 +1233,11 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Alias")
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar");
 
                     b.Property<int?>("AvailableQuantity")
                         .HasColumnType("int");
@@ -1323,118 +1341,118 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("01c9b39b-ad45-41fe-ace0-244b38254f99"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(341),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4839),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Jaume Collet-Serra",
                             NationalityId = "es",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(359),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4856),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("88034877-a697-472c-a2d8-3d133792c463"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(366),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4868),
                             DateOfBirth = new DateTime(1986, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.85m,
                             Image = "",
                             Name = "Bảo Nhân",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(366),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4869),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("55266710-251a-45a1-b11b-d2e2e7e104ea"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(371),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4876),
                             DateOfBirth = new DateTime(1985, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.65m,
                             Image = "",
                             Name = "Nam Cito",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(372),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4877),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("c089db2a-468a-4287-8b45-a832bb10fe93"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(374),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4882),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Jaume Collet-Serra",
                             NationalityId = "es",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(374),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4883),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("ff9a4cc9-3191-4da4-9bf8-6cd8bd129138"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(376),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4887),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Ilya Maksimov",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(377),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4888),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("e37edc8f-48ff-40fe-bcfc-d37a689a5b04"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(379),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4892),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Lee Seok Hoon",
                             NationalityId = "ukr",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(379),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4893),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("eb504714-17f9-4aa3-8b5b-6360102f8453"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(386),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4898),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Brando Lee",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(387),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4899),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("7e02a8db-94e7-4842-8b35-96c48d0e0c63"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(389),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4903),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Parker Finn",
                             NationalityId = "ms",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(389),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4904),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("e717c0c2-82f5-46a8-8e50-95999e661a67"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(391),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4908),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Park Gyu Tae",
                             NationalityId = "tha",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(391),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4909),
                             ViewCount = 0
                         });
                 });
@@ -1445,7 +1463,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Caption")
                         .HasMaxLength(255)
@@ -1484,7 +1502,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1555,11 +1573,14 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Alias")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("CommingSoon")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
@@ -1583,11 +1604,17 @@ namespace Booking_Movie.Data.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasDefaultValue("duongdan.jpg");
 
+                    b.Property<bool?>("IsShowing")
+                        .HasColumnType("bit");
+
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MetaKeyword")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MovieAgeRestriction")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1628,135 +1655,162 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = 1,
                             Alias = "Co_Gai_Den_Tu_Qua_Khu",
+                            CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(482),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6959),
                             Duration = (short)105,
+                            IsShowing = true,
+                            MovieAgeRestriction = 16,
                             Name = "Cô Gái Từ Quá Khứ",
                             NationalityId = "vi",
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(483),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6960),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
                         {
                             Id = 2,
                             Alias = "Black_Adam",
+                            CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(486),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6964),
                             Duration = (short)105,
+                            IsShowing = true,
+                            MovieAgeRestriction = 16,
                             Name = "Black Adam",
                             NationalityId = "en",
                             ProducerId = new Guid("3f8ba972-52da-4a37-b152-a92628e4b714"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(486),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6965),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
                         {
                             Id = 3,
                             Alias = "Confidential_Assignment_2_:_International",
+                            CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(488),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6968),
                             Duration = (short)105,
+                            IsShowing = true,
+                            MovieAgeRestriction = 16,
                             Name = "Confidential Assignment 2: International",
                             NationalityId = "vi",
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(488),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6969),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
                         {
                             Id = 4,
                             Alias = "Prey_For_The_Devil",
+                            CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(490),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6972),
                             Duration = (short)105,
+                            IsShowing = true,
+                            MovieAgeRestriction = 16,
                             Name = "Prey For The Devil",
                             NationalityId = "ukr",
                             ProducerId = new Guid("c6c6386c-78d9-4e32-b993-d7b660210437"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(491),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6973),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
                         {
                             Id = 5,
                             Alias = "Don't_Look_At_The_Demon",
+                            CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(493),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6978),
                             Duration = (short)105,
+                            IsShowing = true,
+                            MovieAgeRestriction = 16,
                             Name = "Don't Look At The Demon",
                             NationalityId = "tha",
                             ProducerId = new Guid("34652a25-e4ce-4994-a412-84ae013d775b"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(493),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6979),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
                         {
                             Id = 6,
                             Alias = "Gulliver_Returns",
+                            CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(495),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6982),
                             Duration = (short)105,
+                            IsShowing = true,
+                            MovieAgeRestriction = 16,
                             Name = "Gulliver Returns",
                             NationalityId = "ms",
                             ProducerId = new Guid("272d7cd7-6ed5-428d-9bd9-ddeb0f5affea"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(496),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6983),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
                         {
                             Id = 7,
                             Alias = "Life_Is_Beautiful",
+                            CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(501),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7013),
                             Duration = (short)105,
+                            IsShowing = true,
+                            MovieAgeRestriction = 16,
                             Name = "Life Is Beautiful",
                             NationalityId = "ko",
                             ProducerId = new Guid("e8a07088-de72-4b6c-bdd8-14370ab2a3ab"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(501),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7014),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
                         {
                             Id = 8,
                             Alias = "Smile",
+                            CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(503),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7017),
                             Duration = (short)105,
+                            IsShowing = true,
+                            MovieAgeRestriction = 16,
                             Name = "Smile",
                             NationalityId = "es",
                             ProducerId = new Guid("8e82c641-c8f2-4ac9-820a-f59789bbd12f"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(503),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7018),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
                         {
                             Id = 9,
                             Alias = "Love_Destiny_The_Movie",
+                            CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(505),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7021),
                             Duration = (short)105,
+                            IsShowing = true,
+                            MovieAgeRestriction = 16,
                             Name = "Love Destiny The Movie",
                             NationalityId = "vi",
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(506),
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7022),
                             VideoTrailer = "duongdan.mp4"
                         });
                 });
@@ -1767,7 +1821,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -1888,7 +1942,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<Guid>("DirectorId")
                         .HasColumnType("uniqueidentifier");
@@ -1971,12 +2025,12 @@ namespace Booking_Movie.Data.Migrations
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(8)
-                        .HasColumnType("varchar(8)");
+                        .HasColumnType("varchar");
 
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(8)
-                        .HasColumnType("varchar(8)");
+                        .HasColumnType("varchar");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -1996,7 +2050,7 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar");
 
                     b.HasKey("Id");
 
@@ -2110,7 +2164,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Alias")
                         .HasColumnType("nvarchar(max)");
@@ -2151,10 +2205,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_dien_tu_momo",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1121),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8352),
                             Name = "Ví điện tử momo",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1122)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8355)
                         },
                         new
                         {
@@ -2162,10 +2216,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_Zalo",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1124),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8359),
                             Name = "Ví Zalo",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1125)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8359)
                         },
                         new
                         {
@@ -2173,10 +2227,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "VNPAY",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1126),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8361),
                             Name = "VNPAY",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1126)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8362)
                         },
                         new
                         {
@@ -2184,10 +2238,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "HSBC/Payoo-ATM/VISA/MASTER/JCB/QRCODE",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1127),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8364),
                             Name = "HSBC/Payoo - ATM/VISA/MASTER/JCB/QRCODE",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1128)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8364)
                         },
                         new
                         {
@@ -2195,10 +2249,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_ShoppePay",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1129),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8366),
                             Name = "Ví ShopeePay",
                             Status = true,
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(1129)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8367)
                         });
                 });
 
@@ -2242,65 +2296,65 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(412),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6533),
                             Image = "",
                             Name = "MAR6 Pictures",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(412)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6547)
                         },
                         new
                         {
                             ID = new Guid("8e82c641-c8f2-4ac9-820a-f59789bbd12f"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(414),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6553),
                             Image = "",
                             Name = "GDH 559",
                             NationalityId = "tha",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(415)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6553)
                         },
                         new
                         {
                             ID = new Guid("e8a07088-de72-4b6c-bdd8-14370ab2a3ab"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(417),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6556),
                             Image = "",
                             Name = "Warner Bros",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(417)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6557)
                         },
                         new
                         {
                             ID = new Guid("272d7cd7-6ed5-428d-9bd9-ddeb0f5affea"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(419),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6561),
                             Image = "",
                             Name = "CJ Entertainment",
                             NationalityId = "ko",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(419)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6562)
                         },
                         new
                         {
                             ID = new Guid("34652a25-e4ce-4994-a412-84ae013d775b"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(421),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6564),
                             Image = "",
                             Name = "Lionsgate",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(422)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6565)
                         },
                         new
                         {
                             ID = new Guid("c6c6386c-78d9-4e32-b993-d7b660210437"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(423),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6567),
                             Image = "",
                             Name = "Bliss Pictures",
                             NationalityId = "ms",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(423)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6579)
                         },
                         new
                         {
                             ID = new Guid("3f8ba972-52da-4a37-b152-a92628e4b714"),
-                            CreatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(425),
+                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6595),
                             Image = "",
                             Name = "95 Animation Studio",
                             NationalityId = "ukr",
-                            UpdatedDate = new DateTime(2022, 12, 17, 12, 1, 25, 39, DateTimeKind.Local).AddTicks(425)
+                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6596)
                         });
                 });
 
@@ -2310,19 +2364,27 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AuditoriumId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("DateFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateTo")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MovieTypeId")
+                    b.Property<int>("ScreeningTypeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ShowTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("ShowTimeId")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.HasKey("Id");
 
@@ -2330,7 +2392,9 @@ namespace Booking_Movie.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.HasIndex("MovieTypeId");
+                    b.HasIndex("ScreeningTypeId");
+
+                    b.HasIndex("ShowTimeId");
 
                     b.ToTable("Screenings", (string)null);
 
@@ -2339,145 +2403,251 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = 1,
                             AuditoriumId = 1,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 1,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 10, 29, 9, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "08:00"
                         },
                         new
                         {
                             Id = 2,
                             AuditoriumId = 2,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 1,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 10, 29, 17, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "18:00"
                         },
                         new
                         {
                             Id = 3,
                             AuditoriumId = 5,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 1,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 10, 30, 9, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "08:00"
                         },
                         new
                         {
                             Id = 4,
                             AuditoriumId = 6,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 1,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 10, 31, 10, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "10:00"
                         },
                         new
                         {
                             Id = 5,
                             AuditoriumId = 7,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 1,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 1, 11, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "13:00"
                         },
                         new
                         {
                             Id = 6,
                             AuditoriumId = 2,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 2,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 2, 13, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "13:00"
                         },
                         new
                         {
                             Id = 7,
                             AuditoriumId = 3,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 3,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 3, 14, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "15:00"
                         },
                         new
                         {
                             Id = 8,
                             AuditoriumId = 4,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 4,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 4, 15, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "18:00"
                         },
                         new
                         {
                             Id = 9,
                             AuditoriumId = 5,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 4,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 5, 16, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "20:00"
                         },
                         new
                         {
                             Id = 10,
                             AuditoriumId = 6,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 5,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 1, 6, 17, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "18:00"
                         },
                         new
                         {
                             Id = 11,
                             AuditoriumId = 7,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 5,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 1, 7, 18, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "20:00"
                         },
                         new
                         {
                             Id = 12,
                             AuditoriumId = 6,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 6,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 8, 19, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "22:00"
                         },
                         new
                         {
                             Id = 13,
                             AuditoriumId = 5,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 7,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 9, 20, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "20:00"
                         },
                         new
                         {
                             Id = 14,
                             AuditoriumId = 4,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 8,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 10, 21, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "15:00"
                         },
                         new
                         {
                             Id = 15,
                             AuditoriumId = 3,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 9,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 11, 22, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "22:00"
                         },
                         new
                         {
                             Id = 16,
                             AuditoriumId = 2,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 2,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 12, 8, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "08:00"
                         },
                         new
                         {
                             Id = 17,
                             AuditoriumId = 1,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 3,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 13, 9, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "10:00"
                         },
                         new
                         {
                             Id = 18,
                             AuditoriumId = 2,
+                            DateFrom = new DateTime(2022, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateTo = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MovieId = 4,
-                            MovieTypeId = 1,
-                            ShowTime = new DateTime(2022, 11, 14, 14, 29, 59, 0, DateTimeKind.Unspecified)
+                            ScreeningTypeId = 1,
+                            ShowTimeId = "15:00"
+                        });
+                });
+
+            modelBuilder.Entity("Booking_Movie.Data.Entities.ScreeningTicket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(12,4)");
+
+                    b.Property<int>("ScreeningId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScreeningId");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("ScreeningTickets", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Price = 90000m,
+                            ScreeningId = 1,
+                            TicketId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Price = 75000m,
+                            ScreeningId = 1,
+                            TicketId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Price = 50000m,
+                            ScreeningId = 15,
+                            TicketId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Price = 50000m,
+                            ScreeningId = 6,
+                            TicketId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Price = 75000m,
+                            ScreeningId = 6,
+                            TicketId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Price = 50000m,
+                            ScreeningId = 16,
+                            TicketId = 1
                         });
                 });
 
@@ -2487,7 +2657,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .HasMaxLength(512)
@@ -3458,7 +3628,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AuditoriumId")
                         .HasColumnType("int");
@@ -3476,7 +3646,7 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<int?>("SeatStyleId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Stauts")
+                    b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -3498,7 +3668,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A1",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3508,7 +3678,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A2",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3518,7 +3688,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A3",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3528,7 +3698,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A4",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3538,7 +3708,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A5",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3548,7 +3718,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A6",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3558,7 +3728,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A7",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3568,7 +3738,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A8",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3578,7 +3748,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A9",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3588,7 +3758,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A10",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3598,7 +3768,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A11",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3608,7 +3778,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 1,
                             SeatId = "A12",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3618,7 +3788,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B1",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3628,7 +3798,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B2",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3638,7 +3808,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B3",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3648,7 +3818,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B4",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3658,7 +3828,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B5",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3668,7 +3838,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B6",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3678,7 +3848,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B7",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3688,7 +3858,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B8",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3698,7 +3868,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B9",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3708,7 +3878,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B10",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3718,7 +3888,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B11",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3728,7 +3898,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 2,
                             SeatId = "B12",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3738,7 +3908,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C1",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3748,7 +3918,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C2",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3758,7 +3928,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C3",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3768,7 +3938,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C4",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3778,7 +3948,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C5",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3788,7 +3958,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C6",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3798,7 +3968,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C7",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3808,7 +3978,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C8",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3818,7 +3988,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C9",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3828,7 +3998,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C10",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3838,7 +4008,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C11",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3848,7 +4018,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 3,
                             SeatId = "C12",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3858,7 +4028,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D1",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3868,7 +4038,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D2",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3878,7 +4048,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D3",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3888,7 +4058,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D4",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3898,7 +4068,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D5",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3908,7 +4078,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D6",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3918,7 +4088,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D7",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3928,7 +4098,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D8",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3938,7 +4108,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D9",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3948,7 +4118,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D10",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3958,7 +4128,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D11",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3968,7 +4138,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 4,
                             SeatId = "D12",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3978,7 +4148,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E1",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3988,7 +4158,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E2",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -3998,7 +4168,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E3",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4008,7 +4178,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E4",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4018,7 +4188,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E5",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4028,7 +4198,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E6",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4038,7 +4208,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E7",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4048,7 +4218,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E8",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4058,7 +4228,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E9",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4068,7 +4238,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E10",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4078,7 +4248,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E11",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4088,7 +4258,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 5,
                             SeatId = "E12",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4098,7 +4268,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F1",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4108,7 +4278,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F2",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4118,7 +4288,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F3",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4128,7 +4298,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F4",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4138,7 +4308,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F5",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4148,7 +4318,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F6",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4158,7 +4328,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F7",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4168,7 +4338,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F8",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4178,7 +4348,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F9",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4188,7 +4358,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F10",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4198,7 +4368,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F11",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4208,7 +4378,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 6,
                             SeatId = "F12",
                             SeatStyleId = 1,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4218,7 +4388,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G1",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4228,7 +4398,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G2",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4238,7 +4408,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G3",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4248,7 +4418,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G4",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4258,7 +4428,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G5",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4268,7 +4438,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G6",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4278,7 +4448,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G7",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4288,7 +4458,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G8",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4298,7 +4468,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G9",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4308,7 +4478,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G10",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4318,7 +4488,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G11",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4328,7 +4498,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 7,
                             SeatId = "G12",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4338,7 +4508,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H1",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4348,7 +4518,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H2",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4358,7 +4528,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H3",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4368,7 +4538,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H4",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4378,7 +4548,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H5",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4388,7 +4558,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H6",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4398,7 +4568,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H7",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4408,7 +4578,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H8",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4418,7 +4588,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H9",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4428,7 +4598,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H10",
                             SeatStyleId = 5,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4438,7 +4608,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H11",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4448,7 +4618,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 8,
                             SeatId = "H12",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4458,7 +4628,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I1",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4468,7 +4638,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I2",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4478,7 +4648,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I3",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4488,7 +4658,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I4",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4498,7 +4668,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I5",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4508,7 +4678,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I6",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4518,7 +4688,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I7",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4528,7 +4698,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I8",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4538,7 +4708,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I9",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4548,7 +4718,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I10",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4558,7 +4728,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I11",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4568,7 +4738,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 9,
                             SeatId = "I12",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4584,7 +4754,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J1",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4594,7 +4764,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J2",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4604,7 +4774,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J3",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4614,7 +4784,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J4",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4624,7 +4794,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J5",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4634,7 +4804,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J6",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4644,7 +4814,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J7",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4654,7 +4824,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J8",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4664,7 +4834,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J9",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4674,7 +4844,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J10",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4684,7 +4854,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J11",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4694,7 +4864,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J12",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4704,7 +4874,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J13",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4714,7 +4884,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 11,
                             SeatId = "J14",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4724,7 +4894,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K1",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4734,7 +4904,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K2",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4744,7 +4914,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K3",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4754,7 +4924,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K4",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4764,7 +4934,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K5",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4774,7 +4944,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K6",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4784,7 +4954,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K7",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4794,7 +4964,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K8",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4804,7 +4974,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K9",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4814,7 +4984,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K10",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4824,7 +4994,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K11",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4834,7 +5004,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K12",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4844,7 +5014,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K13",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4854,7 +5024,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 12,
                             SeatId = "K14",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4864,7 +5034,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L1",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4874,7 +5044,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L2",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4884,7 +5054,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L3",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4894,7 +5064,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L4",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4904,7 +5074,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L5",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4914,7 +5084,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L6",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4924,7 +5094,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L7",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4934,7 +5104,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L8",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4944,7 +5114,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L9",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4954,7 +5124,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L10",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4964,7 +5134,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L11",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4974,7 +5144,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L12",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4984,7 +5154,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L13",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -4994,7 +5164,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L14",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -5004,7 +5174,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L15",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         },
                         new
                         {
@@ -5014,7 +5184,7 @@ namespace Booking_Movie.Data.Migrations
                             RowIndex = 13,
                             SeatId = "L16",
                             SeatStyleId = 4,
-                            Stauts = false
+                            Status = false
                         });
                 });
 
@@ -5024,7 +5194,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("BookingId")
                         .HasColumnType("int");
@@ -5033,7 +5203,7 @@ namespace Booking_Movie.Data.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Stauts")
+                    b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -5050,105 +5220,105 @@ namespace Booking_Movie.Data.Migrations
                             Id = 1,
                             BookingId = 1,
                             SeatNoId = 2,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 2,
                             BookingId = 1,
                             SeatNoId = 3,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 3,
                             BookingId = 1,
                             SeatNoId = 4,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 4,
                             BookingId = 2,
                             SeatNoId = 5,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 5,
                             BookingId = 2,
                             SeatNoId = 6,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 6,
                             BookingId = 3,
                             SeatNoId = 7,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 7,
                             BookingId = 4,
                             SeatNoId = 8,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 8,
                             BookingId = 4,
                             SeatNoId = 9,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 9,
                             BookingId = 4,
                             SeatNoId = 10,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 10,
                             BookingId = 5,
                             SeatNoId = 25,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 11,
                             BookingId = 5,
                             SeatNoId = 26,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 12,
                             BookingId = 6,
                             SeatNoId = 36,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 13,
                             BookingId = 6,
                             SeatNoId = 37,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 14,
                             BookingId = 6,
                             SeatNoId = 38,
-                            Stauts = true
+                            Status = true
                         },
                         new
                         {
                             Id = 15,
                             BookingId = 7,
                             SeatNoId = 40,
-                            Stauts = true
+                            Status = true
                         });
                 });
 
@@ -5158,7 +5328,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .HasMaxLength(255)
@@ -5203,13 +5373,64 @@ namespace Booking_Movie.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Booking_Movie.Data.Entities.ShowTime", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ShowTimes", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "08:00",
+                            Time = new DateTime(2023, 6, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = "10:00",
+                            Time = new DateTime(2023, 6, 1, 3, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = "13:00",
+                            Time = new DateTime(2023, 6, 1, 6, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = "15:00",
+                            Time = new DateTime(2023, 6, 1, 8, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = "18:00",
+                            Time = new DateTime(2023, 6, 1, 11, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = "20:00",
+                            Time = new DateTime(2023, 6, 1, 13, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = "22:00",
+                            Time = new DateTime(2023, 6, 1, 15, 0, 0, 0, DateTimeKind.Utc)
+                        });
+                });
+
             modelBuilder.Entity("Booking_Movie.Data.Entities.Ticket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(255)");
@@ -5255,7 +5476,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -5277,7 +5498,7 @@ namespace Booking_Movie.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -5300,12 +5521,14 @@ namespace Booking_Movie.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LoginProvider")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProviderKey")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
@@ -5333,9 +5556,11 @@ namespace Booking_Movie.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LoginProvider")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Value")
@@ -5451,16 +5676,20 @@ namespace Booking_Movie.Data.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_bookingticket_booking");
 
-                    b.HasOne("Booking_Movie.Data.Entities.Ticket", "Ticket")
+                    b.HasOne("Booking_Movie.Data.Entities.ScreeningTicket", "ScreeningTicket")
                         .WithMany("BookingTickets")
-                        .HasForeignKey("TicketId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("ScreeningTicketId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_bookingticket_ticket");
+                        .HasConstraintName("fk_bookingticket_screeningticket");
+
+                    b.HasOne("Booking_Movie.Data.Entities.Ticket", null)
+                        .WithMany("BookingTickets")
+                        .HasForeignKey("TicketId");
 
                     b.Navigation("Booking");
 
-                    b.Navigation("Ticket");
+                    b.Navigation("ScreeningTicket");
                 });
 
             modelBuilder.Entity("Booking_Movie.Data.Entities.Cast", b =>
@@ -5611,18 +5840,48 @@ namespace Booking_Movie.Data.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_screening_movie");
 
-                    b.HasOne("Booking_Movie.Data.Entities.ScreeningType", "MovieType")
+                    b.HasOne("Booking_Movie.Data.Entities.ScreeningType", "ScreeningType")
                         .WithMany("Screenings")
-                        .HasForeignKey("MovieTypeId")
+                        .HasForeignKey("ScreeningTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_screening_movietype");
+
+                    b.HasOne("Booking_Movie.Data.Entities.ShowTime", "ShowTime")
+                        .WithMany("Screenings")
+                        .HasForeignKey("ShowTimeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_screening_showtime");
 
                     b.Navigation("Auditorium");
 
                     b.Navigation("Movie");
 
-                    b.Navigation("MovieType");
+                    b.Navigation("ScreeningType");
+
+                    b.Navigation("ShowTime");
+                });
+
+            modelBuilder.Entity("Booking_Movie.Data.Entities.ScreeningTicket", b =>
+                {
+                    b.HasOne("Booking_Movie.Data.Entities.Screening", "Screening")
+                        .WithMany("ScreeningTickets")
+                        .HasForeignKey("ScreeningId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_screening_screeingticket");
+
+                    b.HasOne("Booking_Movie.Data.Entities.Ticket", "Ticket")
+                        .WithMany("ScreeningTickets")
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_ticket_screeingticket");
+
+                    b.Navigation("Screening");
+
+                    b.Navigation("Ticket");
                 });
 
             modelBuilder.Entity("Booking_Movie.Data.Entities.SeatNo", b =>
@@ -5771,6 +6030,13 @@ namespace Booking_Movie.Data.Migrations
             modelBuilder.Entity("Booking_Movie.Data.Entities.Screening", b =>
                 {
                     b.Navigation("Bookings");
+
+                    b.Navigation("ScreeningTickets");
+                });
+
+            modelBuilder.Entity("Booking_Movie.Data.Entities.ScreeningTicket", b =>
+                {
+                    b.Navigation("BookingTickets");
                 });
 
             modelBuilder.Entity("Booking_Movie.Data.Entities.ScreeningType", b =>
@@ -5793,9 +6059,16 @@ namespace Booking_Movie.Data.Migrations
                     b.Navigation("SeatNos");
                 });
 
+            modelBuilder.Entity("Booking_Movie.Data.Entities.ShowTime", b =>
+                {
+                    b.Navigation("Screenings");
+                });
+
             modelBuilder.Entity("Booking_Movie.Data.Entities.Ticket", b =>
                 {
                     b.Navigation("BookingTickets");
+
+                    b.Navigation("ScreeningTickets");
                 });
 #pragma warning restore 612, 618
         }

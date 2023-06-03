@@ -25,6 +25,13 @@ namespace Booking_Movie.Application.Catalog.Tickets
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
+        public async Task<List<ScreeningTicketViewModel>> GetTicketByScreeningId(string id)
+        {
+            var query = _ticketRepository.GetTicketByScreeningId(id);
+            return await query.ToListAsync();
+        }
+
         public async Task<List<TicketViewModel>> GetTickets()
         {
             var query = _ticketRepository.GetAll();

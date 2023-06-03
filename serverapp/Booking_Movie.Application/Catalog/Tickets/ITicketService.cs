@@ -10,5 +10,6 @@ namespace Booking_Movie.Application.Catalog.Tickets
     public interface ITicketService
     {
         Task<List<TicketViewModel>> GetTickets();
+        Task<List<ScreeningTicketViewModel>> GetTicketByScreeningId(string id);
     }
 }

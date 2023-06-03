@@ -12,6 +12,7 @@ using Booking_Movie.ViewModel.Catalog.PaymentMethodVM;
 using Booking_Movie.ViewModel.Catalog.ProducerVM;
 using Booking_Movie.ViewModel.Catalog.ScreeningTypeVM;
 using Booking_Movie.ViewModel.Catalog.ScreeningVM;
+using Booking_Movie.ViewModel.Catalog.ShowTimeVM;
 using Booking_Movie.ViewModel.Catalog.TicketVM;
 
 namespace Booking_Movie.BackendApi.Mapper
@@ -21,6 +22,11 @@ namespace Booking_Movie.BackendApi.Mapper
         public MappingProfile()
         {
             CreateMap<Actor, ActorViewModel>();
+            CreateMap<Auditorium, AuditoriumViewModel>()
+                .ForMember(dest => dest.CinemaName, opt => opt.MapFrom(src => src.Cinema.Name));
+
+            CreateMap<Cinema, CinemaViewModel>()
+                .ForMember(dest => dest.LocationName, opt => opt.MapFrom(src => src.Location.Name));
             CreateMap<Director, DirectorViewModel>();
             CreateMap<Producer, ProducerViewModel>();
             //CreateMap<Movie, MovieViewModel>();
@@ -29,9 +35,8 @@ namespace Booking_Movie.BackendApi.Mapper
             CreateMap<Combo, ComboViewModel>();
             CreateMap<PaymentMethod, PaymentMethodViewModel>();
             CreateMap<Category, CategoryViewModel>();
-            CreateMap<Cinema, CinemaViewModel>();
-            CreateMap<Auditorium, AuditoriumViewModel>();
             CreateMap<ScreeningType, ScreeningTypeViewModel>();
+            CreateMap<ShowTime, ShowTimeViewModel>();
             //CreateMap<Screening, ScreeningViewModel>();
         }
     }

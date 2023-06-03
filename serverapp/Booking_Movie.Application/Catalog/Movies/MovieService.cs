@@ -8,6 +8,8 @@ using Booking_Movie.Utilities.Exceptions;
 using Booking_Movie.ViewModel.Catalog.MovieVM;
 using Booking_Movie.ViewModel.Catalog.ScreeningVM;
 using Booking_Movie.ViewModel.Common;
+using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Data.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -219,7 +221,7 @@ namespace Booking_Movie.Application.Catalog.Movies
             }
 
             //3.paging
-            query = _movieRepository.GetMoviePaging(expression, out total, pagingRequest.PageIndex, pagingRequest.PageSize);
+            query = _movieRepository.GetMoviePaging(expression, out total, pagingRequest.PageIndex.Value, pagingRequest.PageSize);
 
 
             //4. Get data
@@ -261,6 +263,43 @@ namespace Booking_Movie.Application.Catalog.Movies
             };
 
             return pagedResult;
+        }
+        
+        public async Task<LoadResult> GetAllPagingAdmin(GetMoviePagingAdminRequest pagingRequest, string host)
+        {
+            var query = _movieRepository.GetMoviePagingAdmin().Select(an => new MovieViewModel()
+            {
+
+                Id = an.movie.Id,
+                Name = an.movie.Name,
+                Content = an.movie.Content,
+                Duration = an.movie.Duration,
+                ReleaseDate = an.movie.ReleaseDate,
+                VideoTrailer = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/video-trailer/{an.movie.VideoTrailer}",
+                ImagePreview = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{an.movie.ImagePreview}",
+                ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{an.movie.ImageBackground}",
+                Status = an.movie.Status,
+                Actors = String.Join(", ", an.actors),
+                Producer = an.movie.Producer.Name,
+                Directors = String.Join(", ", an.directors),
+                Categories = String.Join(", ", an.categories),
+                Nationality = an.nationality.Name
+
+
+            });
+
+            try
+            {
+
+                var pagedResult = await DataSourceLoader.LoadAsync<MovieViewModel>(query, pagingRequest);
+                return pagedResult;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<MovieDetailViewModel?> GetMovieDetails(int Id, string host)
@@ -461,6 +500,76 @@ namespace Booking_Movie.Application.Catalog.Movies
             if (movieDirector == null) throw new BookingMovieException("Can't find a movie director with id: " + Id);
 
             return movieDirector;
+        }
+
+        public async Task<LoadResult> GetAllPagingScreening(GetScreeningPagingRequest pagingRequest, string host)
+        {
+            //1. query
+            int total = 0;
+            List<Expression<Func<ScreeningViewModel, bool>>>? expression = new List<Expression<Func<ScreeningViewModel, bool>>>();
+            IQueryable<ScreeningViewModel> query = null!;
+
+
+            //2. filter
+            //if (pagingRequest.Filter != null)
+            //{
+            //    //query = query.Where();
+            //    Expression<Func<MovieVM, bool>> nationalityFilter = m => m.nationality.Id.ToUpper().Contains(pagingRequest.Nationality.ToUpper()); ;
+            //    expression!.Add(nationalityFilter);
+            //}
+
+            //3.paging
+            query = _movieRepository.GetScreeningPaging(expression, out total, pagingRequest);
+            //var a = await DataSourceLoader.LoadAsync<ScreeningViewModel>(query, pagingRequest);
+
+            //4. Get data
+
+
+            //var data = await query.ToListAsync();
+            //var dataMapper = _mapper.Map<List<MovieViewModel>>(data);
+
+
+            //dataMapper.ForEach((movie) => {
+            //    movie.ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{movie.ImageBackground}";
+            //    movie.ImagePreview = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{movie.ImagePreview}";
+            //    movie.VideoTrailer = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/video-trailer/{movie.VideoTrailer}";
+            //});
+
+            //var pagedResult = new DXPagedResult<ScreeningViewModel>()
+            //{
+            //    Data = data,
+            //    TotalCount = total,
+            //};
+            try
+            {
+
+                var pagedResult = await DataSourceLoader.LoadAsync<ScreeningViewModel>(query, pagingRequest);
+                return pagedResult;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        } 
+        public async Task<LoadResult> GetAllPagingScreeningAdmin(GetScreeningPagingRequest pagingRequest, string host)
+        {
+            
+            var query = _movieRepository.GetScreeningPagingAdmin(pagingRequest);
+            
+            try
+            {
+
+                var pagedResult = await DataSourceLoader.LoadAsync<ScreeningViewModel>(query, pagingRequest);
+                return pagedResult;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

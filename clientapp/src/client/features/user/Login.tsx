@@ -5,11 +5,14 @@ import { SignInAsync, UserState, checkLogin } from "../../../slices/user/userSli
 import { Grid, Header, Form, Segment, Button, Message, Modal, Icon } from "semantic-ui-react";
 import { RootState } from "../../../app/store";
 import UserInfo from "./UserInfo";
+import Notification from "../../components/reusing/notification";
+import { STATUS_MESSAGE, STATUS_RESPONSE } from "../../../common/status-message";
+import { AlertColor } from "@mui/material";
 
 
 interface mapToProps {
     SignIn: (UserName: string, Password: string, Remember: boolean) => any,
-    CheckLogin: (isLogin: boolean| null) => any
+    CheckLogin: (isLogin: boolean | null) => any
 }
 
 type UserProps =
@@ -19,6 +22,7 @@ type UserProps =
 
 interface IStateLogin {
     open: boolean,
+    openNoti: boolean,
     userName: string,
     firstName?: string,
     lastName?: string,
@@ -43,10 +47,11 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
         super(props);
         this.state = {
             open: false,
+            openNoti: false,
             userName: '',
             password: '',
             remember: true,
-            isSignIn : false
+            isSignIn: false
         }
 
         this.onChangeUserName = this.onChangeUserName.bind(this)
@@ -58,27 +63,27 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
 
     }
 
-    componentWillReceiveProps({isLogin, CheckLogin}: {isLogin: boolean | null, CheckLogin: (isLogin: boolean| null) => any}): void{
-             
+    componentWillReceiveProps({ isLogin, CheckLogin }: { isLogin: boolean | null, CheckLogin: (isLogin: boolean | null) => any }): void {
+
         console.log(isLogin, "is login")
-        if(isLogin === false){
-            this.setState(pre =>({
+        if (isLogin === false) {
+            this.setState(pre => ({
                 ...pre,
                 open: true
             }));
             CheckLogin(null);
         }
 
-        if(isLogin === null){
-            this.setState(pre =>({
+        if (isLogin === null) {
+            this.setState(pre => ({
                 ...pre,
                 isSignIn: false
             }));
         }
     }
     componentDidMount(): void {
-        
-        
+
+
         console.log(this.props, "login props")
         var user_auth = JSON.parse(localStorage.getItem("user_authenticate")!);
         var exp_token = localStorage.getItem("exp_token");
@@ -134,16 +139,33 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
         console.log(this.props, "sign")
         this.setState(pre => ({
             ...pre, firstName: user.firstName, lastName: user.lastName, isSignIn: true, open: false,
+            openNoti: true
         }))
     }
 
     async onSign() {
-        console.log(await this.props.SignIn(this.state.userName, this.state.password, this.state.remember));
-        if (this.props.status === "idle") {
-            this.SignInComplete()
-
+        try{
+            await this.props.SignIn(this.state.userName, this.state.password, this.state.remember);
+            if (this.props.status === "idle") {
+                this.SignInComplete()
+    
+            }
+            else if(this.props.status === "failed"){
+                this.setState(pre => ({
+                    ...pre,
+                    openNoti: true
+                }))
+            }
         }
-        console.log(this.props, this.state.isSignIn, "props login sucesss")
+        catch(error){
+            this.setState(pre => ({
+                ...pre,
+                openNoti: true
+            }))
+        }
+       
+
+        
     }
     public render(): React.ReactNode {
         return (
@@ -164,7 +186,7 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
                     <Modal.Content>
                         <Grid textAlign='center' verticalAlign='middle'>
                             <Grid.Column style={{ maxWidth: 450 }}>
-                                <Header as='h2'  textAlign='center' className="border-b-white text-white">
+                                <Header as='h2' textAlign='center' className="border-b-white text-white">
                                     Chào mừng bạn trở lại,
                                 </Header>
                                 <Form size='large'>
@@ -188,11 +210,11 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
                                             Đăng nhập
                                         </Button>
                                         <Message>
-                                    Bạn là người mới? <a href='.' className="text-blue-700">Đăng ký</a>
-                                </Message>
+                                            Bạn là người mới? <a href='.' className="text-blue-700">Đăng ký</a>
+                                        </Message>
                                     </Segment>
                                 </Form>
-                               
+
                             </Grid.Column>
                         </Grid>
                     </Modal.Content>
@@ -206,6 +228,20 @@ class Login extends React.PureComponent<UserProps, IStateLogin> {
                     // : <span>{this.state.isSignIn && `${this.state.lastName} ${this.state.firstName} | `}Đăng xuất</span>
                     : <UserInfo></UserInfo>
                 }
+
+                <Notification
+                    open={this.state.openNoti}
+                    severity={STATUS_RESPONSE[this.props.statusResponse!] as AlertColor}
+                    message={STATUS_MESSAGE[this.props.statusMessageResponse!]}
+                    handleClose={ (event?: Event | React.SyntheticEvent<Element, Event> | undefined, reason?: string | undefined): void => {
+                        if (reason === 'clickaway') {
+                            return;
+                        }
+                        this.setState(pre => ({
+                            ...pre,
+                            openNoti: false
+                        }));
+                    }} />
             </>
         );
     }
@@ -215,7 +251,7 @@ const mapDispatchToProps = (dispatch: any) => {
     return {
         // dispatching plain actions
         SignIn: (UserName: string, Password: string, Remember: boolean) => dispatch(SignInAsync({ UserName, Password, Remember })),
-        CheckLogin: (isLogin: boolean | null) => dispatch(checkLogin({isLogin: isLogin}))
+        CheckLogin: (isLogin: boolean | null) => dispatch(checkLogin({ isLogin: isLogin }))
     }
 }
 export default connect(

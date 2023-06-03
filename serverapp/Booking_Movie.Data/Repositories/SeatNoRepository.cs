@@ -50,10 +50,10 @@ namespace Booking_Movie.Data.Repositories
             var seatNo = await this.MovieContext.SeatNos.FindAsync(id);
             if (seatNo == null) return null;
 
-            seatNo.Stauts = status;
+            seatNo.Status = status;
 
             this.MovieContext.SeatNos.Attach(seatNo);
-            this.MovieContext.Entry(seatNo).Property(x => x.Stauts).IsModified = true;
+            this.MovieContext.Entry(seatNo).Property(x => x.Status).IsModified = true;
             return seatNo;
         }
     }

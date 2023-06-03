@@ -9,5 +9,6 @@
         public decimal Price { get; set; }
 
         public virtual ICollection<BookingTicket> BookingTickets { get; set; } = null!;
+        public virtual ICollection<ScreeningTicket> ScreeningTickets { get; set; } = null!;
     }
 }

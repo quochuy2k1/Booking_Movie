@@ -12,6 +12,9 @@ namespace Booking_Movie.Data.Entities
         public string? VideoTrailer { get; set; } 
         public string? ImagePreview { get; set; } 
         public string? ImageBackground { get; set; } 
+        public int? MovieAgeRestriction { get; set; } 
+        public bool? CommingSoon { get; set; } 
+        public bool? IsShowing { get; set; } 
 
         public string NationalityId { get; set; } = null!;
         public Guid ProducerId { get; set; }

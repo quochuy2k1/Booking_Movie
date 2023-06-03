@@ -10,6 +10,8 @@ export interface UserState {
     },
     token: string,
     exp?: string,
+    statusResponse?: number,
+    statusMessageResponse?: string,
     status: string,
     sessionId: string,
     isLogin: boolean | null,
@@ -25,6 +27,8 @@ const initialState: UserState =
         userName: ""
     },
     token: "",
+    statusResponse: undefined,
+    statusMessageResponse: "",
     exp: undefined,
     sessionId: "",
     isLogin: null,
@@ -79,7 +83,7 @@ export const userSlice = createSlice({
             })
             .addCase(SignInAsync.fulfilled, (state, action) => {
                 const { userName, lastName, firstName } = action.payload.appUser
-                Object.assign(state, { status: 'idle', appUser: action.payload.appUser, isLogin: true })
+                Object.assign(state, { status: 'idle', appUser: action.payload.appUser, isLogin: true, statusMessageResponse: action.payload.statusMessageResponse, statusResponse: action.payload.statusResponse } as UserState)
                 // console.log(action.payload, "payload")
                 localStorage.setItem("token", action.payload.token);
                 localStorage.setItem("exp_token", action.payload.exp!);
@@ -88,7 +92,7 @@ export const userSlice = createSlice({
             })
             .addCase(SignInAsync.rejected, (state, action: any) => {
              
-                Object.assign(state, {status: 'failed', error: action.payload as any})
+                Object.assign(state, {status: 'failed', error: action.payload as any, statusMessageResponse: action.payload.statusMessageResponse, statusResponse: action.payload.statusResponse})
             });
 
             builder.addCase(SignOutAsync.pending, (state) => {

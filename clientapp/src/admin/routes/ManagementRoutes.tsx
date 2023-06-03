@@ -4,9 +4,10 @@ import { lazy } from 'react';
 import Loadable from '../ui-component/Loadable';
 import MainLayout from '../layout/MainLayout';
 import { ProtectedRoute } from './ProtectedRoute';
-import ScreeningManagement from '../views/pages/management/screening';
+// import ScreeningManagement from '../views/pages/management/screening';
 import BookingManagement from '../views/pages/management/booking';
 import QRBookingScanner from '../views/pages/management/QRBookingScanner';
+import ScreeningManagement from '../views/pages/management/screening/screening';
 
 // login option 3 routing
 const MovieManagement = Loadable(lazy(async () =>  ({default: (await import('../views/pages/management/movie/index')).default})));

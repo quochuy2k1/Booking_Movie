@@ -12,3 +12,12 @@ export async function GetAllTicket() {
     
     // }
 }
+
+export async function GetTicketByScreeningId(id: string) {
+   
+    var response = http.get<Ticket[]>(`api/tickets/${id}/screening`);
+
+    return response;
+    
+    // }
+}

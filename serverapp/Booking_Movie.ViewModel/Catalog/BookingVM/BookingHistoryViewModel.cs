@@ -13,7 +13,9 @@ namespace Booking_Movie.ViewModel.Catalog.BookingVM
         public string OrderId { get; set; } = null!;
         public string MovieName { get; set; } = null!;
         public string MovieImage { get; set; } = null!;
+        public string? Barcode { get; set; }
         public string CinemaName { get; set; } = null!;
+        public string? CinemaAddress { get; set; }
         public string AuditoriumName { get; set; } = null!;
         public decimal Total { get; set; }
         

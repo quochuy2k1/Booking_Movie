@@ -32,18 +32,23 @@ namespace Booking_Movie.Application.System.Users
         public async Task<LoginResponse> Authenticate(LoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
-            var expJWT = DateTime.Now.AddHours(3);
-            var Jti = Guid.NewGuid().ToString();
-            if(user == null) {
+
+            if (user == null)
+            {
                 return new LoginResponse()
+                {
+                    StatusMessageResponse = StatusMessageResponseContant.USER_NAME_NOT_EXISTS,
+                    StatusResponse = StatusResponseContant.FAILED,
+                    Error = new LoginErrorResponse()
                     {
-                        error = new LoginErrorResponse(){
-                            UserNameError = "Tài khoản không đúng"
-                        }
-                    };
+                        UserNameError = "Tài khoản không đúng"
+                    }
+                };
             }
 
-            var result = await  _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe!.Value, true);
+            var expJWT = DateTime.Now.AddHours(3);
+            var Jti = Guid.NewGuid().ToString();
+            var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe!.Value, true);
             if (result.Succeeded)
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
@@ -64,10 +69,12 @@ namespace Booking_Movie.Application.System.Users
                 JwtSecurityToken token = GetToken(authClaims, expJWT);
                 return new LoginResponse()
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    exp = expJWT,
-                    sessionId = Jti,
-                    appUser = new LoginUserViewModel()
+                    Token = new JwtSecurityTokenHandler().WriteToken(token),
+                    Exp = expJWT,
+                    SessionId = Jti,
+                    StatusMessageResponse = StatusMessageResponseContant.SIGN_IN_SUCCESS,
+                    StatusResponse = StatusResponseContant.SUCCESS,
+                    AppUser = new LoginUserViewModel()
                     {
                         UserName = user.UserName,
                         LastName = user.LastName,
@@ -79,17 +86,21 @@ namespace Booking_Movie.Application.System.Users
 
             }
             return new LoginResponse()
-                    {
-                        error = new LoginErrorResponse(){
-                            PasswordError = "Mật khẩu không đúng"
-                        }
-                    };
+            {
+                StatusMessageResponse = StatusMessageResponseContant.PASSWORD_INCORRECT,
+                StatusResponse = StatusResponseContant.FAILED,
+                Error = new LoginErrorResponse()
+                {
+                   
+                    PasswordError = "Mật khẩu không đúng"
+                }
+            };
         }
-        
+
         public async Task<bool> Register(RegisterRequest request)
         {
             var userExist = await _userManager.FindByNameAsync(request.UserName);
-            if (userExist == null )
+            if (userExist == null)
             {
                 AppUser user = new AppUser()
                 {
@@ -120,7 +131,7 @@ namespace Booking_Movie.Application.System.Users
         public async Task<bool> RegisterAdmin(RegisterRequest request)
         {
             var userExist = await _userManager.FindByNameAsync(request.UserName);
-            if (userExist == null )
+            if (userExist == null)
             {
                 AppUser user = new AppUser()
                 {
@@ -138,9 +149,9 @@ namespace Booking_Movie.Application.System.Users
                 //Tạo mới role
 
                 if (!await _roleManager.RoleExistsAsync(UserRoleConstants.ADMIN))
-                    await _roleManager.CreateAsync(new AppRole(UserRoleConstants.ADMIN) { Description = "Tài khoản quản trị hệ thống"});
+                    await _roleManager.CreateAsync(new AppRole(UserRoleConstants.ADMIN) { Description = "Tài khoản quản trị hệ thống" });
                 if (!await _roleManager.RoleExistsAsync(UserRoleConstants.USER))
-                    await _roleManager.CreateAsync(new AppRole(UserRoleConstants.USER) { Description = "Tài khoản người dùng thông thường"});
+                    await _roleManager.CreateAsync(new AppRole(UserRoleConstants.USER) { Description = "Tài khoản người dùng thông thường" });
 
 
                 if (await _roleManager.RoleExistsAsync(UserRoleConstants.ADMIN))

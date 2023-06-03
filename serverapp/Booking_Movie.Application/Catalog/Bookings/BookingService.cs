@@ -145,7 +145,7 @@ namespace Booking_Movie.Application.Catalog.Bookings
                 PaymentMethodId = bookingCreateRequest.PaymentMethodId,
                 ScreeningId = bookingCreateRequest.ScreeningId,
                 Total = bookingCreateRequest.Total,
-                Stauts = false,
+                Status = false,
 
             };
 

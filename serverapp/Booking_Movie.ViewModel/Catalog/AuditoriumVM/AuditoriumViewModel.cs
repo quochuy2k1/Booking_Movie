@@ -6,5 +6,6 @@
         public string Name { get; set; } = null!;
 
         public int CinemaId { get; set; }
+        public string? CinemaName { get; set; }
     }
 }

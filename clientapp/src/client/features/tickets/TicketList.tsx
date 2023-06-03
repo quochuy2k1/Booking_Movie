@@ -10,15 +10,16 @@ const TicketList: React.FC<{}> = () => {
 
     const dispatch = useAppDispatch();
     const { tickets } = useAppSelector(state => state.ticket)
+    const { screening } = useAppSelector(state => state.bookingClient.booking)
     const  status  = useAppSelector(state => state.ticket.status)
 
    
     useEffect(() => {
-        if(status === ""){
-            dispatch(GetTicketsAsync());
+        if(tickets.length <= 0){
+            dispatch(GetTicketsAsync(screening.movieSchedule[0].id.toString()));
 
         }
-    }, [dispatch, status])
+    }, [dispatch,])
     return (
         <>
             <Segment className="bg-gray-700">

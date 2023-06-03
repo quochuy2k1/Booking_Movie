@@ -29,6 +29,20 @@ namespace Booking_Movie.BackendApi.Controllers
             {
                 throw new Exception(ex.Message);
             }
+        } 
+        
+        [HttpGet("{screeningId}/screening")]
+        public async Task<IActionResult> GetTicketByScreeningId(string screeningId)
+        {
+            try
+            {
+                var tickets = await _ticketService.GetTicketByScreeningId(screeningId);
+                return Ok(tickets);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

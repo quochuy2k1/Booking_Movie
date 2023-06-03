@@ -1,16 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { GetAllScreening, GetScreeningByMovieId } from "../../services/movie.service";
 
+export interface MovieSchedule{
+    id: number,
+    showTime: string
+}
 
 export interface ScreeningModel{
     id: number,
     cinemaId: number,
     cinemaName: string,
     auditoriumName: string,
+    auditoriumId: number,
     movieName?: string,
+    movieId?: number,
     screeningTypeName: string,
-    showTime: string[],
+    screeningTypeId: number,
+    dateFrom: string,
+    dateTo: string,
+    movieSchedule?: MovieSchedule[]
+    showTimeId: string[]
 }
+
+
 
 export interface ScreeningState{
     screenings: ScreeningModel[],

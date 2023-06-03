@@ -1,6 +1,8 @@
 ﻿using Booking_Movie.Data.EF;
 using Booking_Movie.Data.Entities;
 using Booking_Movie.Data.Infrastructure;
+using Booking_Movie.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Booking_Movie.Data.Repositories
 {
@@ -8,6 +10,7 @@ namespace Booking_Movie.Data.Repositories
     {
         
         public IQueryable<Auditorium?> GetAuditoriumByCinemaId(int cinemaId);
+        IQueryable<Cinema> GetCinemaPagingAdmin();
     }
     public class CimemaRepository : RepositoryBase<Cinema>, ICimemaRepository
     {
@@ -23,6 +26,13 @@ namespace Booking_Movie.Data.Repositories
                               select au;
 
             return auditoriums;
+        }
+
+        public IQueryable<Cinema> GetCinemaPagingAdmin()
+        {
+            var query = this.MovieContext.Cinemas.Include(x => x.Location).AsQueryable();
+
+            return query;
         }
     }
 }

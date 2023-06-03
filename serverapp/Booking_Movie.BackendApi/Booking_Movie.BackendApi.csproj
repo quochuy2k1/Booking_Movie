@@ -7,13 +7,32 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <Content Remove="wwwroot\DataSet\BookingQRCode.cs" />
+    <Content Remove="wwwroot\DataSet\BookingQRCode.Designer.cs" />
+    <Content Remove="wwwroot\DataSet\BookingQRCode.xsc" />
+    <Content Remove="wwwroot\DataSet\BookingQRCode.xsd" />
+    <Content Remove="wwwroot\DataSet\BookingQRCode.xss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="wwwroot\DataSet\BookingQRCode.cs" />
+    <Compile Include="wwwroot\DataSet\BookingQRCode.Designer.cs">
+      <DependentUpon>BookingQRCode.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.9.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.17" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,7 +44,25 @@
   <ItemGroup>
     <Folder Include="wwwroot\movie-content\video-trailer\" />
     <Folder Include="wwwroot\category-content\" />
+    <Folder Include="wwwroot\barcode\" />
+    <Folder Include="wwwroot\cinema-ticket-pdf\" />
     <Folder Include="wwwroot\user-content\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\DataSet\BookingQRCode.xsc" />
+    <None Include="wwwroot\DataSet\BookingQRCode.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>BookingQRCode.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Include="wwwroot\DataSet\BookingQRCode.xss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Reports\BookingByQRCode.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

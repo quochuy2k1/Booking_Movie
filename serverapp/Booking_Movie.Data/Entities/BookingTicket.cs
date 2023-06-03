@@ -8,9 +8,9 @@ namespace Booking_Movie.Data.Entities
         public int Quantity { get; set; }
         public decimal Total { get; set; }
 
-        public int TicketId { get; set; }
+        public int ScreeningTicketId { get; set; }
         public int BookingId { get; set; }
-        public Ticket Ticket { get; set; } = null!;
+        public ScreeningTicket ScreeningTicket { get; set; } = null!;
         public Booking Booking { get; set; } = null!;
     }
 }

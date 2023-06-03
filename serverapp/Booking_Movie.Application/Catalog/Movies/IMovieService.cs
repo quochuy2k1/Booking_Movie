@@ -3,6 +3,7 @@ using Booking_Movie.Data.Models;
 using Booking_Movie.ViewModel.Catalog.MovieVM;
 using Booking_Movie.ViewModel.Catalog.ScreeningVM;
 using Booking_Movie.ViewModel.Common;
+using DevExtreme.AspNet.Data.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using System.Linq.Expressions;
 
@@ -28,10 +29,13 @@ namespace Booking_Movie.Application.Catalog.Movies
 
 
         Task<PagedResult<MovieViewModel>> GetAllPaging(GetMoviePagingRequest pagingRequest, string host);
+        Task<LoadResult> GetAllPagingAdmin(GetMoviePagingAdminRequest pagingRequest, string host);
         Task<MovieDetailViewModel?> GetMovieDetails(int Id, string host);
         Task<MovieViewModel?> GetById(int id, string host);
         Task<List<ScreeningViewModel>> GetScreeningByMovieId(int Id);
         Task<List<ScreeningViewModel>> GetAllScreening();
+        Task<LoadResult> GetAllPagingScreening(GetScreeningPagingRequest pagingRequest, string host);
+        Task<LoadResult> GetAllPagingScreeningAdmin(GetScreeningPagingRequest pagingRequest, string host);
         Task<bool> UpdateImageVideo(int id, MovieUpdateImageVideoRequest request);
 
         //Task<bool> Delete(Guid id);
