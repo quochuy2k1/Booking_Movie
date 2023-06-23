@@ -1,67 +1,99 @@
-﻿using Booking_Movie.Data.Configurations;
-using Booking_Movie.Data.EF;
+﻿using Booking_Movie.Data.EF;
 using Booking_Movie.Data.Entities;
 using Booking_Movie.Data.Infrastructure;
 using Booking_Movie.Data.Models;
-using Booking_Movie.Utilities.Common;
 using Booking_Movie.Utilities.Exceptions;
-using Booking_Movie.ViewModel.Catalog.ActorVM;
-using Booking_Movie.ViewModel.Catalog.MovieVM;
+using Booking_Movie.ViewModel.Catalog.ChartReportVM;
+using Booking_Movie.ViewModel.Catalog.ReportVM.MovieReportVM;
+using Booking_Movie.ViewModel.Catalog.ReportVM.TicketComboReportVM;
 using Booking_Movie.ViewModel.Catalog.ScreeningVM;
+using Booking_Movie.ViewModel.Utils.Extensions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.IO;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Security.Cryptography;
 
 namespace Booking_Movie.Data.Repositories
 {
     public interface IMovieRepository : IRepository<Movie>
     {
         #region Movie
+
         IQueryable<MovieVM> GetMoviePaging(List<Expression<Func<MovieVM, bool>>>? filter, out int total, int index = 0, int size = 50);
+
         IQueryable<MovieVM> GetMoviePagingAdmin();
+
         Task<IQueryable<MovieVM>> GetMovieDetails(params Expression<Func<MovieVM, bool>>[] expressions);
+
         Task<string> GetMovieCast(int Id);
+
         Task<Movie?> UpdateImageVideo(int Id, string? preview, string? background, string? video);
 
         Task AddMovieCategories(int Id, int[] categoryId);
+
         Task<List<MovieCategory>> FindMovieCategoryByMovieId(int Id);
+
         Task<MovieCategory?> FindMovieCategoryByMovieId(int Id, int categoryId);
+
         Task UpdateMovieCategory(int Id, int[] categoriesId);
-        #endregion
+
+        #endregion Movie
 
         #region Cast
+
         Task AddCast(int Id, Guid[] actorsId);
+
         Task<List<Cast>> FindCastByMovieId(int Id);
+
         Task<Cast?> FindCastByMovieId(int Id, Guid actorId);
+
         Task UpdateCast(int Id, Guid[] actorsId);
 
-        #endregion
+        #endregion Cast
 
         #region MovieDirector
+
         Task AddMovieDirector(int Id, Guid[] directorsId);
+
         Task<List<MovieDirector>> FindMovieDirectorByMovieId(int Id);
+
         Task<MovieDirector?> FindMovieDirectorByMovieId(int Id, Guid directorId);
+
         Task UpdateMovieDirector(int Id, Guid[] directorsId);
 
-        #endregion
+        #endregion MovieDirector
 
         #region Screening
 
         Task<IQueryable<ScreeningViewModel>> GetScreeningByMovieId(int Id);
 
         IQueryable<ScreeningViewModel> GetScreeningPaging(List<Expression<Func<ScreeningViewModel, bool>>>? filter, out int total, GetScreeningPagingRequest pagingRequest);
+
         IQueryable<ScreeningViewModel> GetScreeningPagingAdmin(GetScreeningPagingRequest pagingRequest);
 
-        #endregion
+        #endregion Screening
 
+        #region Report
 
+        IQueryable<MovieRevenueViewModel> MovieRevenueReport(List<Expression<Func<MovieRevenueViewModel, bool>>>? expressions);
 
+        IQueryable<TicketComboReportViewModel> TicketReport(List<Expression<Func<TicketComboReportViewModel, bool>>>? expression);
 
+        IQueryable<TicketComboReportViewModel> ComboReport(List<Expression<Func<TicketComboReportViewModel, bool>>>? expression);
 
+        IQueryable<TicketComboReportViewModel> TicketComboReport(List<Expression<Func<TicketComboReportViewModel, bool>>>? expression);
+
+        #endregion Report
+
+        #region ChartReport
+
+        IQueryable<MovieRevenueChartReportViewModel?> MovieRevenueChartReport(MovieRevenueChartReportRequest request);
+
+        IQueryable<TicketComboReportChartViewModel>? TicketComboQuantityChartReport(TicketComboChartReportRequest? request);
+
+        IQueryable<TicketComboReportChartViewModel>? TicketComboRevenueChartReport(TicketComboChartReportRequest? request);
+
+        #endregion ChartReport
     }
+
     public class MovieRepository : RepositoryBase<Movie>, IMovieRepository
     {
         public MovieRepository(BookingMovieContext movieContext, IDbFactory dbFactory) : base(movieContext, dbFactory)
@@ -72,7 +104,6 @@ namespace Booking_Movie.Data.Repositories
 
         public IQueryable<MovieVM> GetMoviePaging(List<Expression<Func<MovieVM, bool>>>? filter, out int total, int index = 0, int size = 50)
         {
-
             int skipCount = (index) * size;
             //1. Truy vấn
             var query = from m in this.MovieContext.Movies
@@ -112,13 +143,11 @@ namespace Booking_Movie.Data.Repositories
             query = query.Skip(skipCount)
                 .Take(size);
 
-
             return query;
         }
 
         public IQueryable<MovieVM> GetMoviePagingAdmin()
         {
-
             var query = from m in this.MovieContext.Movies
                         join p in this.MovieContext.Producers on m.ProducerId equals p.ID
                         join n in this.MovieContext.Nationalities on m.NationalityId equals n.Id
@@ -198,19 +227,16 @@ namespace Booking_Movie.Data.Repositories
             {
                 movie.ImagePreview = preview;
                 this.MovieContext.Entry(movie).Property(x => x.ImagePreview).IsModified = true;
-
             }
             if (background != null)
             {
                 movie.ImageBackground = background;
                 this.MovieContext.Entry(movie).Property(x => x.ImageBackground).IsModified = true;
-
             }
             if (video != null)
             {
                 movie.VideoTrailer = video;
                 this.MovieContext.Entry(movie).Property(x => x.VideoTrailer).IsModified = true;
-
             }
             return movie;
         }
@@ -230,15 +256,8 @@ namespace Booking_Movie.Data.Repositories
             return null;
         }
 
-
-
-
-
-
-
         public async Task AddMovieCategories(int Id, int[] categoriesId)
         {
-
             if (categoriesId.Length == 1)
             {
                 var MovieCategory = new MovieCategory()
@@ -247,7 +266,6 @@ namespace Booking_Movie.Data.Repositories
                     CategoryId = categoriesId[0]
                 };
                 await this.MovieContext.MovieCategories.AddAsync(MovieCategory);
-
             }
             else
             {
@@ -261,17 +279,14 @@ namespace Booking_Movie.Data.Repositories
                     await this.MovieContext.MovieCategories.AddAsync(MovieCategory);
                 }
             }
-
-
         }
 
-        #endregion
+        #endregion Movie
 
         #region Cast
 
         public async Task AddCast(int Id, Guid[] actorsId)
         {
-
             if (actorsId.Length == 1)
             {
                 var Cast = new Cast()
@@ -280,7 +295,6 @@ namespace Booking_Movie.Data.Repositories
                     ActorId = actorsId[0]
                 };
                 await this.MovieContext.Casts.AddAsync(Cast);
-
             }
             else
             {
@@ -294,9 +308,7 @@ namespace Booking_Movie.Data.Repositories
                     await this.MovieContext.Casts.AddAsync(Cast);
                 }
             }
-
         }
-
 
         public async Task<Cast?> FindCastByMovieId(int Id, Guid actorId)
         {
@@ -310,7 +322,6 @@ namespace Booking_Movie.Data.Repositories
 
         public async Task UpdateCast(int Id, Guid[] actorsId)
         {
-
             var oldActor = this.MovieContext.Casts.Where(c => c.MovieId == Id && !actorsId.Contains(c.ActorId));
             if (oldActor != null)
             {
@@ -328,14 +339,11 @@ namespace Booking_Movie.Data.Repositories
                         MovieId = Id,
                         ActorId = actorId
                     });
-
-
                 }
             }
-
         }
 
-        #endregion
+        #endregion Cast
 
         #region MovieCategory
 
@@ -351,7 +359,6 @@ namespace Booking_Movie.Data.Repositories
 
         public async Task UpdateMovieCategory(int Id, int[] categoriesId)
         {
-
             var oldMovieCategories = this.MovieContext.MovieCategories.Where(c => c.MovieId == Id && !categoriesId.Contains(c.CategoryId));
             if (oldMovieCategories != null)
             {
@@ -369,16 +376,11 @@ namespace Booking_Movie.Data.Repositories
                         MovieId = Id,
                         CategoryId = categoryId
                     });
-
-
                 }
             }
-
-
-
         }
 
-        #endregion
+        #endregion MovieCategory
 
         #region MovieDirector
 
@@ -392,7 +394,6 @@ namespace Booking_Movie.Data.Repositories
                     DirectorId = directorsId[0]
                 };
                 await this.MovieContext.MovieDirectors.AddAsync(MovieDirector);
-
             }
             else
             {
@@ -408,7 +409,6 @@ namespace Booking_Movie.Data.Repositories
             }
         }
 
-
         public async Task<List<MovieDirector>> FindMovieDirectorByMovieId(int Id)
         {
             return await this.MovieContext.MovieDirectors.Where(x => x.MovieId == Id).ToListAsync();
@@ -421,7 +421,6 @@ namespace Booking_Movie.Data.Repositories
 
         public async Task UpdateMovieDirector(int Id, Guid[] directorsId)
         {
-
             var oldMovieDirector = this.MovieContext.MovieDirectors.Where(c => c.MovieId == Id && !directorsId.Contains(c.DirectorId));
             if (oldMovieDirector != null)
             {
@@ -439,14 +438,11 @@ namespace Booking_Movie.Data.Repositories
                         MovieId = Id,
                         DirectorId = directorId
                     });
-
-
                 }
             }
-
         }
 
-        #endregion
+        #endregion MovieDirector
 
         #region Screening
 
@@ -460,7 +456,7 @@ namespace Booking_Movie.Data.Repositories
                 join au in this.MovieContext.Auditoriums on sc.AuditoriumId equals au.Id
                 join c in this.MovieContext.Cinemas on au.CinemaId equals c.Id
                 where m.Id == Id
-                group new { ScreeningId = sc.Id, CinemaId = c.Id, ScreeningTypeName = st.Name, sc, stt, AuditoriumName = au.Name } by c.Name into g
+                group new { ScreeningId = sc.Id, sc.DateFrom, sc.DateTo, CinemaId = c.Id, ScreeningTypeName = st.Name, sc, stt, AuditoriumId = au.Id, AuditoriumName = au.Name } by c.Name into g
 
                 select new ScreeningViewModel()
                 {
@@ -468,16 +464,27 @@ namespace Booking_Movie.Data.Repositories
                     CinemaId = g.Select(x => x.CinemaId).FirstOrDefault(),
                     CinemaName = g.Key,
                     AuditoriumName = g.Select(x => x.AuditoriumName).FirstOrDefault(),
+                    AuditoriumId = g.Select(x => x.AuditoriumId).FirstOrDefault(),
                     ScreeningTypeName = g.Select(x => x.ScreeningTypeName).FirstOrDefault(),
+                    DateFrom = g.Select(x => x.DateFrom).FirstOrDefault(),
+                    DateTo = g.Select(x => x.DateTo).FirstOrDefault(),
                     MovieSchedule = g.Select(x => new MovieSchedule()
                     {
                         Id = x.ScreeningId,
                         ShowTime = x.stt.Time,
                         ShowTimeId = x.stt.Id
-
+                    }).ToList(),
+                    AuditoriumScreenings = g.Select(x => new AuditoriumScreening()
+                    {
+                        AuditoriumName = x.AuditoriumName,
+                        MovieSchedule = new MovieSchedule()
+                        {
+                            Id = x.ScreeningId,
+                            ShowTime = x.stt.Time,
+                            ShowTimeId = x.stt.Id
+                        }
                     }).ToList(),
                 });
-
 
             return await Task.FromResult(query);
         }
@@ -506,11 +513,9 @@ namespace Booking_Movie.Data.Repositories
                     {
                         Id = x.ScreeningId,
                         ShowTime = x.stt.Time,
-                                 ShowTimeId = x.stt.Id
-
+                        ShowTimeId = x.stt.Id
                     }).ToList(),
                 }); ;
-
 
             return await Task.FromResult(query);
         }
@@ -520,7 +525,6 @@ namespace Booking_Movie.Data.Repositories
             int skipCount = 0;
             //if (pagingRequest.PageIndex == null && pagingRequest.PageSkip != null)
             //{
-
             //    skipCount = pagingRequest.PageSkip.Value;
             //}
             //1. Truy vấn
@@ -575,8 +579,6 @@ namespace Booking_Movie.Data.Repositories
                                  Id = x.sc.Id,
                                  ShowTime = x.stt.Time,
                                  ShowTimeId = x.stt.Id
-
-
                              }).ToList(),
                          });
 
@@ -644,12 +646,11 @@ namespace Booking_Movie.Data.Repositories
             //query = query.Skip(skipCount)
             //    .Take(pagingRequest.PageSize);
 
-
             return query;
         }
+
         public IQueryable<ScreeningViewModel> GetScreeningPagingAdmin(GetScreeningPagingRequest pagingRequest)
         {
-
             var query = (from m in this.MovieContext.Movies
                          join sc in this.MovieContext.Screenings on m.Id equals sc.MovieId
                          join st in this.MovieContext.ScreeningTypes on sc.ScreeningTypeId equals st.Id
@@ -660,7 +661,8 @@ namespace Booking_Movie.Data.Repositories
                          // filter
                          where (pagingRequest.MovieId == null || sc.MovieId == pagingRequest.MovieId) &&
                                 (pagingRequest.CinemaId == null || c.Id == pagingRequest.CinemaId)
-                         group new { MovieName = m.Name, ScreeningId = sc.Id, CinemaId = c.Id, CinemaName = c.Name, ScreeningTypeName = st.Name, stt, sc, ScreeingTypeId = st.Id, AuditoriumName = au.Name } by new { auditoriumId = sc.AuditoriumId, movieId = sc.MovieId  } into g
+                         group new { MovieName = m.Name, ScreeningId = sc.Id, CinemaId = c.Id, CinemaName = c.Name, ScreeningTypeName = st.Name, stt, sc, ScreeingTypeId = st.Id, AuditoriumName = au.Name } by new { auditoriumId = sc.AuditoriumId, movieId = sc.MovieId } into g
+
                          select new ScreeningViewModel()
                          {
                              Id = g.Select(x => x.ScreeningId).FirstOrDefault(),
@@ -679,18 +681,391 @@ namespace Booking_Movie.Data.Repositories
                                  Id = x.sc.Id,
                                  ShowTime = x.stt.Time,
                                  ShowTimeId = x.stt.Id
-
-
                              }).ToList(),
                              ShowTimeId = g.Select(x => x.stt.Id).ToList(),
                          });
 
+            return query;
+        }
 
+        #endregion Screening
+
+        #region Report
+
+        public IQueryable<MovieRevenueViewModel> MovieRevenueReport(List<Expression<Func<MovieRevenueViewModel, bool>>>? expressions)
+        {
+            var query = (from m in this.MovieContext.Movies
+                         join scr in this.MovieContext.Screenings on m.Id equals scr.MovieId
+                         join au in this.MovieContext.Auditoriums on scr.AuditoriumId equals au.Id
+                         join ci in this.MovieContext.Cinemas on au.CinemaId equals ci.Id
+                         join bo in this.MovieContext.Bookings on scr.Id equals bo.ScreeningId
+                         select new MovieRevenueViewModel()
+                         {
+                             MovieId = m.Id,
+                             MovieName = m.Name,
+                             CinemaId = ci.Id,
+                             CinemaName = ci.Name,
+                             AuditoriumId = au.Id,
+                             AuditoriumName = au.Name,
+                             BookingDate = bo.CreatedDate,
+                             Total = bo.Total
+                         });
+
+            // filter
+            if (expressions != null)
+            {
+                foreach (var filter in expressions)
+                {
+                    query = query.Where(filter);
+                }
+            }
+
+            query = query.GroupBy(g => g.MovieId)
+                         .Select(g => new MovieRevenueViewModel()
+                         {
+                             Id = Guid.NewGuid().ToString(),
+                             MovieId = g.Key,
+                             MovieName = g.FirstOrDefault()!.MovieName,
+                             CinemaId = g.FirstOrDefault()!.CinemaId,
+                             CinemaName = g.FirstOrDefault()!.CinemaName,
+                             AuditoriumId = g.FirstOrDefault()!.AuditoriumId,
+                             AuditoriumName = g.FirstOrDefault()!.AuditoriumName,
+                             DateFrom = g.Min(x => x.BookingDate),
+                             DateTo = g.Max(x => x.BookingDate),
+                             Total = g.Sum(x => x.Total)
+                         });
 
             return query;
         }
 
-        #endregion
+        public IQueryable<TicketComboReportViewModel> TicketReport(List<Expression<Func<TicketComboReportViewModel, bool>>>? expression)
+        {
+            var query = (from m in this.MovieContext.Movies
+                         join scr in this.MovieContext.Screenings on m.Id equals scr.MovieId
+                         join au in this.MovieContext.Auditoriums on scr.AuditoriumId equals au.Id
+                         join ci in this.MovieContext.Cinemas on au.CinemaId equals ci.Id
+                         join bo in this.MovieContext.Bookings on scr.Id equals bo.ScreeningId
+                         join bt in this.MovieContext.BookingTickets on bo.Id equals bt.BookingId
 
+                         join tc in this.MovieContext.Tickets on bt.TicketId equals tc.Id
+
+                         //join bc in this.MovieContext.BookingCombos on bo.Id equals bc.BookingId
+                         //join cb in  this.MovieContext.Combos on bc.ComboId equals cb.Id
+
+                         select new TicketComboReportViewModel()
+                         {
+                             MovieId = m.Id,
+                             MovieName = m.Name,
+                             CinemaId = ci.Id,
+                             CinemaName = ci.Name,
+                             AuditoriumId = au.Id,
+                             AuditoriumName = au.Name,
+                             TicketId = tc.Id,
+                             TicketName = tc.Name,
+                             BookingDate = bo.CreatedDate,
+                             TicketQuantity = bt.Quantity
+                         });
+
+            //filter
+
+            if (expression != null)
+            {
+                foreach (var filter in expression)
+                {
+                    query = query.Where(filter);
+                }
+            }
+
+            query = query.GroupBy(x => new { x.MovieId, x.TicketId })
+                .Select(g => new TicketComboReportViewModel()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    MovieId = g.Key.MovieId,
+                    MovieName = g.FirstOrDefault()!.MovieName,
+                    CinemaId = g.FirstOrDefault()!.CinemaId,
+                    CinemaName = g.FirstOrDefault()!.CinemaName,
+                    AuditoriumId = g.FirstOrDefault()!.AuditoriumId,
+                    AuditoriumName = g.FirstOrDefault()!.AuditoriumName,
+                    TicketId = g.Key!.TicketId,
+                    TicketName = g.FirstOrDefault()!.TicketName,
+                    DateFrom = g.Min(x => x.BookingDate),
+                    DateTo = g.Max(x => x.BookingDate),
+                    TicketQuantityTotal = g.Sum(x => x.TicketQuantity)
+                });
+
+            return query;
+        }
+
+        public IQueryable<TicketComboReportViewModel> ComboReport(List<Expression<Func<TicketComboReportViewModel, bool>>>? expression)
+        {
+            var query = (from m in this.MovieContext.Movies
+                         join scr in this.MovieContext.Screenings on m.Id equals scr.MovieId
+                         join au in this.MovieContext.Auditoriums on scr.AuditoriumId equals au.Id
+                         join ci in this.MovieContext.Cinemas on au.CinemaId equals ci.Id
+
+                         join bo in this.MovieContext.Bookings on scr.Id equals bo.ScreeningId
+                         join bc in this.MovieContext.BookingCombos on bo.Id equals bc.BookingId
+                         join cb in this.MovieContext.Combos on bc.ComboId equals cb.Id
+                         //group new { m, au, ci, bo, bc, cb } by m.Id into g
+                         select new TicketComboReportViewModel()
+                         {
+                             MovieId = m.Id,
+                             MovieName = m.Name,
+                             CinemaId = ci.Id,
+                             CinemaName = ci.Name,
+                             AuditoriumId = au.Id,
+                             AuditoriumName = au.Name,
+                             ComboId = cb.Id,
+                             ComboName = cb.Name,
+                             BookingDate = bo.CreatedDate,
+                             ComboQuantity = bc.Quantity
+                         });
+
+            //filter
+
+            if (expression != null)
+            {
+                foreach (var filter in expression)
+                {
+                    query = query.Where(filter);
+                }
+            }
+
+            query = query.GroupBy(x => new { x.MovieId, x.ComboId })
+                .Select(g => new TicketComboReportViewModel()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    MovieId = g.Key.MovieId,
+                    MovieName = g.FirstOrDefault()!.MovieName,
+                    CinemaId = g.FirstOrDefault()!.CinemaId,
+                    CinemaName = g.FirstOrDefault()!.CinemaName,
+                    AuditoriumId = g.FirstOrDefault()!.AuditoriumId,
+                    AuditoriumName = g.FirstOrDefault()!.AuditoriumName,
+                    ComboId = g.Key.ComboId,
+                    ComboName = g.FirstOrDefault()!.ComboName,
+                    DateFrom = g.Min(x => x.BookingDate),
+                    DateTo = g.Max(x => x.BookingDate),
+                    ComboQuantityTotal = g.Sum(x => x.ComboQuantity)
+                });
+
+            return query;
+        }
+
+        public IQueryable<TicketComboReportViewModel> TicketComboReport(List<Expression<Func<TicketComboReportViewModel, bool>>>? expression)
+        {
+            var query = this.MovieContext.Movies
+                            .Join(this.MovieContext.Screenings, m => m.Id, scr => scr.MovieId, (m, scr) => new { Movie = m, Screening = scr })
+                            .Join(this.MovieContext.Auditoriums, temp => temp.Screening.AuditoriumId, au => au.Id, (temp, au) => new { temp.Movie, temp.Screening, Auditorium = au })
+                            .Join(this.MovieContext.Cinemas, temp => temp.Auditorium.CinemaId, ci => ci.Id, (temp, ci) => new { temp.Movie, temp.Screening, temp.Auditorium, Cinema = ci })
+                            .Join(this.MovieContext.Bookings, temp => temp.Screening.Id, bo => bo.ScreeningId, (temp, bo) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, Booking = bo })
+                            .Join(this.MovieContext.BookingTickets, temp => temp.Booking.Id, bt => bt.BookingId, (temp, bt) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, temp.Booking, BookingTicket = bt })
+                            .Join(this.MovieContext.BookingCombos, temp => temp.Booking.Id, bc => bc.BookingId, (temp, bc) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, temp.Booking, temp.BookingTicket, BookingCombo = bc })
+                            .Join(this.MovieContext.Combos, temp => temp.BookingCombo.ComboId, cb => cb.Id, (temp, cb) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, temp.Booking, temp.BookingTicket, temp.BookingCombo, Combo = cb })
+                            .Select(x => new TicketComboReportViewModel()
+                            {
+                                MovieId = x.Movie.Id,
+                                MovieName = x.Movie.Name,
+                                CinemaId = x.Cinema.Id,
+                                CinemaName = x.Cinema.Name,
+                                AuditoriumId = x.Auditorium.Id,
+                                AuditoriumName = x.Auditorium.Name,
+                                ComboId = x.Combo.Id,
+                                ComboName = x.Combo.Name,
+                                ComboPrice = x.Combo.Price,
+                                TicketId = x.BookingTicket.Ticket.Id,
+                                TicketName = x.BookingTicket.Ticket.Name,
+                                TicketPrice = x.BookingTicket.Ticket.Price,
+                                BookingDate = x.Booking.CreatedDate,
+                                ComboQuantity = x.BookingCombo.Quantity,
+                                TicketQuantity = x.BookingTicket.Quantity,
+                                TotalCombo = x.BookingCombo.Total,
+                                TotalTicket = x.BookingTicket.Total,
+                            });
+            //filter
+
+            if (expression != null)
+            {
+                foreach (var filter in expression)
+                {
+                    query = query.Where(filter);
+                }
+            }
+            query = query.GroupBy(temp => new { temp.MovieId, temp.TicketId, temp.ComboId })
+                    .Select(g => new TicketComboReportViewModel()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        MovieId = g.Key.MovieId,
+                        MovieName = g.FirstOrDefault().MovieName,
+                        CinemaId = g.FirstOrDefault().CinemaId,
+                        CinemaName = g.FirstOrDefault().CinemaName,
+                        TicketId = g.Key.TicketId,
+                        TicketName = g.FirstOrDefault().TicketName,
+                        AuditoriumId = g.FirstOrDefault().AuditoriumId,
+                        AuditoriumName = g.FirstOrDefault().AuditoriumName,
+                        ComboId = g.Key.ComboId,
+                        ComboName = g.FirstOrDefault().ComboName,
+                        DateFrom = g.Min(x => x.BookingDate),
+                        DateTo = g.Max(x => x.BookingDate),
+                        ComboQuantityTotal = g.Sum(x => x.ComboQuantity),
+                        TicketQuantityTotal = g.Sum(x => x.TicketQuantity),
+                        TicketRevenueTotal = g.Sum(x => x.TotalTicket),
+                        ComboRevenueTotal = g.Sum(x => x.TotalCombo),
+                    });
+
+            //filter
+
+            return query;
+        }
+
+        #endregion Report
+
+        #region ChartReport
+
+        public IQueryable<MovieRevenueChartReportViewModel?> MovieRevenueChartReport(MovieRevenueChartReportRequest? request)
+        {
+            IQueryable<MovieRevenueChartReportViewModel>? queryResult = null;
+            var query = (from m in this.MovieContext.Movies
+                         join scr in this.MovieContext.Screenings on m.Id equals scr.MovieId
+                         join au in this.MovieContext.Auditoriums on scr.AuditoriumId equals au.Id
+                         join ci in this.MovieContext.Cinemas on au.CinemaId equals ci.Id
+                         join bo in this.MovieContext.Bookings on scr.Id equals bo.ScreeningId
+                         select new MovieRevenueViewModel()
+                         {
+                             MovieId = m.Id,
+                             MovieName = m.Name,
+                             CinemaId = ci.Id,
+                             CinemaName = ci.Name,
+                             AuditoriumId = au.Id,
+                             AuditoriumName = au.Name,
+                             BookingDate = bo.CreatedDate,
+                             Total = bo.Total
+                         });
+
+            // filter
+
+            if (request != null && request.Conditional != null && request.Conditional.Value.GetStringValue() == "year")
+            {
+                queryResult = query.GroupBy(g => g.BookingDate.Value.Year)
+                        .Select(g => new MovieRevenueChartReportViewModel()
+                        {
+                            Month = g.Key,
+                            Revenue = g.Sum(x => x.Total)
+                        });
+            }
+
+            if (request != null && request.Conditional != null && request.Conditional.Value.GetStringValue() == "month")
+            {
+                queryResult = query.Where(x => x.BookingDate.Value.Year == 2023).GroupBy(g => new { Month = g.BookingDate.Value.Month, Year = g.BookingDate.Value.Year })
+                         .Select(g => new MovieRevenueChartReportViewModel()
+                         {
+                             Month = g.Key.Month,
+                             Revenue = g.Sum(x => x.Total)
+                         });
+            }
+
+            return queryResult;
+        }
+
+        public IQueryable<TicketComboReportChartViewModel>? TicketComboQuantityChartReport(TicketComboChartReportRequest? request)
+        {
+            IQueryable<TicketComboReportChartViewModel>? queryResult = null;
+            var query = this.MovieContext.Movies
+                            .Join(this.MovieContext.Screenings, m => m.Id, scr => scr.MovieId, (m, scr) => new { Movie = m, Screening = scr })
+                            .Join(this.MovieContext.Auditoriums, temp => temp.Screening.AuditoriumId, au => au.Id, (temp, au) => new { temp.Movie, temp.Screening, Auditorium = au })
+                            .Join(this.MovieContext.Cinemas, temp => temp.Auditorium.CinemaId, ci => ci.Id, (temp, ci) => new { temp.Movie, temp.Screening, temp.Auditorium, Cinema = ci })
+                            .Join(this.MovieContext.Bookings, temp => temp.Screening.Id, bo => bo.ScreeningId, (temp, bo) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, Booking = bo })
+                            .Join(this.MovieContext.BookingTickets, temp => temp.Booking.Id, bt => bt.BookingId, (temp, bt) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, temp.Booking, BookingTicket = bt })
+                            .Join(this.MovieContext.BookingCombos, temp => temp.Booking.Id, bc => bc.BookingId, (temp, bc) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, temp.Booking, temp.BookingTicket, BookingCombo = bc })
+                            .Join(this.MovieContext.Combos, temp => temp.BookingCombo.ComboId, cb => cb.Id, (temp, cb) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, temp.Booking, temp.BookingTicket, temp.BookingCombo, Combo = cb })
+                            .Select(x => new TicketComboReportViewModel()
+                            {
+                                MovieId = x.Movie.Id,
+                                CinemaId = x.Cinema.Id,
+                                AuditoriumId = x.Auditorium.Id,
+                                ComboId = x.Combo.Id,
+                                TicketId = x.BookingTicket.Ticket.Id,
+                                BookingDate = x.Booking.CreatedDate,
+                                ComboQuantity = x.BookingCombo.Quantity,
+                                TicketQuantity = x.BookingTicket.Quantity,
+                            });
+
+            // filter
+
+            if (request != null && request.Conditional != null && request.Conditional.Value.GetStringValue() == "year")
+            {
+                queryResult = query.GroupBy(g => g.BookingDate.Value.Year)
+                        .Select(g => new TicketComboReportChartViewModel()
+                        {
+                            Month = g.Key,
+                            TotalQuantityCombo = g.Sum(x => x.ComboQuantity),
+                            TotalQuantityTicket = g.Sum(x => x.TicketQuantity)
+                        });
+            }
+
+            if (request != null && request.Conditional != null && request.Conditional.Value.GetStringValue() == "month")
+            {
+                queryResult = query.Where(x => x.BookingDate.Value.Year == 2023).GroupBy(g => new { Month = g.BookingDate.Value.Month, Year = g.BookingDate.Value.Year })
+                         .Select(g => new TicketComboReportChartViewModel()
+                         {
+                             Month = g.Key.Month,
+                             TotalQuantityCombo = g.Sum(x => x.ComboQuantity),
+                             TotalQuantityTicket = g.Sum(x => x.TicketQuantity)
+                         });
+            }
+
+            return queryResult;
+        }
+
+        public IQueryable<TicketComboReportChartViewModel>? TicketComboRevenueChartReport(TicketComboChartReportRequest? request)
+        {
+            IQueryable<TicketComboReportChartViewModel>? queryResult = null;
+            var query = this.MovieContext.Movies
+                            .Join(this.MovieContext.Screenings, m => m.Id, scr => scr.MovieId, (m, scr) => new { Movie = m, Screening = scr })
+                            .Join(this.MovieContext.Auditoriums, temp => temp.Screening.AuditoriumId, au => au.Id, (temp, au) => new { temp.Movie, temp.Screening, Auditorium = au })
+                            .Join(this.MovieContext.Cinemas, temp => temp.Auditorium.CinemaId, ci => ci.Id, (temp, ci) => new { temp.Movie, temp.Screening, temp.Auditorium, Cinema = ci })
+                            .Join(this.MovieContext.Bookings, temp => temp.Screening.Id, bo => bo.ScreeningId, (temp, bo) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, Booking = bo })
+                            .Join(this.MovieContext.BookingTickets, temp => temp.Booking.Id, bt => bt.BookingId, (temp, bt) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, temp.Booking, BookingTicket = bt })
+                            .Join(this.MovieContext.BookingCombos, temp => temp.Booking.Id, bc => bc.BookingId, (temp, bc) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, temp.Booking, temp.BookingTicket, BookingCombo = bc })
+                            .Join(this.MovieContext.Combos, temp => temp.BookingCombo.ComboId, cb => cb.Id, (temp, cb) => new { temp.Movie, temp.Screening, temp.Auditorium, temp.Cinema, temp.Booking, temp.BookingTicket, temp.BookingCombo, Combo = cb })
+                            .Select(x => new TicketComboReportViewModel()
+                            {
+                                MovieId = x.Movie.Id,
+                                CinemaId = x.Cinema.Id,
+                                AuditoriumId = x.Auditorium.Id,
+                                ComboId = x.Combo.Id,
+                                TicketId = x.BookingTicket.Ticket.Id,
+                                BookingDate = x.Booking.CreatedDate,
+                                TotalCombo = x.BookingCombo.Total,
+                                TotalTicket = x.BookingTicket.Total,
+                            });
+
+            // filter
+
+            if (request != null && request.Conditional != null && request.Conditional.Value.GetStringValue() == "year")
+            {
+                queryResult = query.GroupBy(g => g.BookingDate.Value.Year)
+                        .Select(g => new TicketComboReportChartViewModel()
+                        {
+                            Month = g.Key,
+                            RevenueCombo = g.Sum(x => x.TotalCombo),
+                            RevenueTicket = g.Sum(x => x.TotalTicket)
+                        });
+            }
+
+            if (request != null && request.Conditional != null && request.Conditional.Value.GetStringValue() == "month")
+            {
+                queryResult = query.Where(x => x.BookingDate.Value.Year == 2023).GroupBy(g => new { Month = g.BookingDate.Value.Month, Year = g.BookingDate.Value.Year })
+                         .Select(g => new TicketComboReportChartViewModel()
+                         {
+                             Month = g.Key.Month,
+                             RevenueCombo = g.Sum(x => x.TotalCombo),
+                             RevenueTicket = g.Sum(x => x.TotalTicket)
+                         });
+            }
+
+            return queryResult;
+        }
+
+        #endregion ChartReport
     }
 }

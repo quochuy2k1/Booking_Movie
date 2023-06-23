@@ -5,16 +5,16 @@ using Booking_Movie.Data.Infrastructure;
 using Booking_Movie.Data.Models;
 using Booking_Movie.Data.Repositories;
 using Booking_Movie.Utilities.Exceptions;
+using Booking_Movie.ViewModel.Catalog.ChartReportVM;
 using Booking_Movie.ViewModel.Catalog.MovieVM;
+using Booking_Movie.ViewModel.Catalog.ReportVM.MovieReportVM;
+using Booking_Movie.ViewModel.Catalog.ReportVM.TicketComboReportVM;
 using Booking_Movie.ViewModel.Catalog.ScreeningVM;
 using Booking_Movie.ViewModel.Common;
 using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Data.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.Hosting;
-using System.Drawing;
 using System.Linq.Expressions;
 using System.Net.Http.Headers;
 
@@ -46,6 +46,8 @@ namespace Booking_Movie.Application.Catalog.Movies
                 ReleaseDate = Request.ReleaseDate,
                 Content = Request.Content,
                 Status = Request.Status,
+                IsShowing = Request.IsShowing,
+                CommingSoon = Request.CommingSoon,
                 ProducerId = Request.ProducerId,
                 NationalityId = Request.NationalityId,
                 CreatedDate = DateTime.Now,
@@ -62,12 +64,10 @@ namespace Booking_Movie.Application.Catalog.Movies
                 movie.ImagePreview = await SaveFile(Request.ImagePreview);
             }
 
-
             if (Request.VideoTrailer != null)
             {
                 movie.VideoTrailer = await SaveFile(Request.VideoTrailer, "video-trailer");
             }
-
 
             var query = _movieRepository.Add(movie);
             await _unitOfWork.Commit();
@@ -78,7 +78,6 @@ namespace Booking_Movie.Application.Catalog.Movies
                 if (Request.CategoryId != null) await _movieRepository.AddMovieCategories(movie.Id, Request.CategoryId);
                 if (Request.DirectorId != null) await _movieRepository.AddMovieDirector(movie.Id, Request.DirectorId);
                 await _unitOfWork.Commit();
-
             }
             return await Task.Run(() => movie.Id);
         }
@@ -94,6 +93,8 @@ namespace Booking_Movie.Application.Catalog.Movies
             if (Request.ReleaseDate != null) movie.ReleaseDate = Request.ReleaseDate.Value;
             if (Request.Content != null) movie.Content = Request.Content;
             if (Request.Status != null) movie.Status = Request.Status.Value;
+            if (Request.CommingSoon != null) movie.CommingSoon = Request.CommingSoon.Value;
+            if (Request.IsShowing != null) movie.IsShowing = Request.IsShowing.Value;
             if (Request.NationalityId != null) movie.NationalityId = Request.NationalityId;
             if (Request.ProducerId != null) movie.ProducerId = Request.ProducerId.Value;
 
@@ -110,7 +111,6 @@ namespace Booking_Movie.Application.Catalog.Movies
             {
                 await _movieRepository.UpdateMovieCategory(id, Request.CategoryId);
             }
-
 
             movie.UpdatedDate = DateTime.Now;
 
@@ -134,7 +134,6 @@ namespace Booking_Movie.Application.Catalog.Movies
             if (await _unitOfWork.Commit())
             {
                 return movie.Id;
-
             }
             return null;
         }
@@ -162,7 +161,6 @@ namespace Booking_Movie.Application.Catalog.Movies
                 if (movies == null)
                     throw new BookingMovieException($"can't delete much for some reason");
 
-
                 if (await _unitOfWork.Commit())
                 {
                     foreach (var movie in movies)
@@ -177,7 +175,6 @@ namespace Booking_Movie.Application.Catalog.Movies
             }
 
             return null;
-
         }
 
         //public async Task<List<MovieViewModel>> GetAll()
@@ -211,7 +208,6 @@ namespace Booking_Movie.Application.Catalog.Movies
             List<Expression<Func<MovieVM, bool>>>? expression = new List<Expression<Func<MovieVM, bool>>>();
             IQueryable<MovieVM> query = null!;
 
-
             //2. filter
             if (!String.IsNullOrEmpty(pagingRequest.Nationality) && pagingRequest.Nationality != "all")
             {
@@ -219,17 +215,26 @@ namespace Booking_Movie.Application.Catalog.Movies
                 Expression<Func<MovieVM, bool>> nationalityFilter = m => m.nationality.Id.ToUpper().Contains(pagingRequest.Nationality.ToUpper()); ;
                 expression!.Add(nationalityFilter);
             }
+            if (pagingRequest.IsShowing != null)
+            {
+                //query = query.Where();
+                Expression<Func<MovieVM, bool>> isShowingFilter = m => m.movie.IsShowing.Equals(pagingRequest.IsShowing); ;
+                expression!.Add(isShowingFilter);
+            }
+            if (pagingRequest.CommingSoon != null)
+            {
+                //query = query.Where();
+                Expression<Func<MovieVM, bool>> comingSoonFilter = m => m.movie.CommingSoon.Equals(pagingRequest.CommingSoon); ;
+                expression!.Add(comingSoonFilter);
+            }
 
             //3.paging
             query = _movieRepository.GetMoviePaging(expression, out total, pagingRequest.PageIndex.Value, pagingRequest.PageSize);
 
-
             //4. Get data
-
 
             var data = await query.Select(an => new MovieViewModel()
             {
-
                 Id = an.movie.Id,
                 Name = an.movie.Name,
                 Content = an.movie.Content,
@@ -239,16 +244,15 @@ namespace Booking_Movie.Application.Catalog.Movies
                 ImagePreview = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{an.movie.ImagePreview}",
                 ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{an.movie.ImageBackground}",
                 Status = an.movie.Status,
+                IsShowing = an.movie.IsShowing,
+                CommingSoon = an.movie.CommingSoon,
                 Actors = String.Join(", ", an.actors),
                 Producer = an.movie.Producer.Name,
                 Directors = String.Join(", ", an.directors),
                 Categories = String.Join(", ", an.categories),
                 Nationality = an.nationality.Name
-
-
             }).ToListAsync();
             //var dataMapper = _mapper.Map<List<MovieViewModel>>(data);
-
 
             //dataMapper.ForEach((movie) => {
             //    movie.ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{movie.ImageBackground}";
@@ -264,12 +268,11 @@ namespace Booking_Movie.Application.Catalog.Movies
 
             return pagedResult;
         }
-        
+
         public async Task<LoadResult> GetAllPagingAdmin(GetMoviePagingAdminRequest pagingRequest, string host)
         {
             var query = _movieRepository.GetMoviePagingAdmin().Select(an => new MovieViewModel()
             {
-
                 Id = an.movie.Id,
                 Name = an.movie.Name,
                 Content = an.movie.Content,
@@ -279,25 +282,22 @@ namespace Booking_Movie.Application.Catalog.Movies
                 ImagePreview = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{an.movie.ImagePreview}",
                 ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{an.movie.ImageBackground}",
                 Status = an.movie.Status,
+                IsShowing = an.movie.IsShowing,
+                CommingSoon = an.movie.CommingSoon,
                 Actors = String.Join(", ", an.actors),
                 Producer = an.movie.Producer.Name,
                 Directors = String.Join(", ", an.directors),
                 Categories = String.Join(", ", an.categories),
                 Nationality = an.nationality.Name
-
-
             });
 
             try
             {
-
                 var pagedResult = await DataSourceLoader.LoadAsync<MovieViewModel>(query, pagingRequest);
                 return pagedResult;
-
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -312,7 +312,6 @@ namespace Booking_Movie.Application.Catalog.Movies
 
                 var movie = await query.Select(an => new MovieDetailViewModel()
                 {
-
                     Id = an.movie.Id,
                     Name = an.movie.Name,
                     Content = an.movie.Content,
@@ -327,19 +326,14 @@ namespace Booking_Movie.Application.Catalog.Movies
                     Directors = String.Join(", ", an.directors),
                     Categories = String.Join(", ", an.categories),
                     Nationality = an.nationality.Name
-
-
                 }).SingleOrDefaultAsync();
 
                 return movie!;
             }
             catch (Exception ex)
             {
-
             }
             return null;
-
-
         }
 
         public async Task<MovieViewModel?> GetById(int id, string host)
@@ -354,8 +348,6 @@ namespace Booking_Movie.Application.Catalog.Movies
             return movieVm;
         }
 
-
-
         public async Task<bool> UpdateImageVideo(int id, MovieUpdateImageVideoRequest request)
         {
             string? preview = null;
@@ -363,17 +355,14 @@ namespace Booking_Movie.Application.Catalog.Movies
             string? background = null;
             if (request.preview != null)
             {
-
                 preview = await this.SaveFile(request.preview);
             }
             if (request.background != null)
             {
-
                 background = await this.SaveFile(request.background);
             }
             if (request.video != null)
             {
-
                 video = await this.SaveFile(request.video, "video-trailer");
             }
 
@@ -381,22 +370,26 @@ namespace Booking_Movie.Application.Catalog.Movies
             if (movie == null)
                 throw new BookingMovieException($"Cann't find a movie with id: {id}");
             return await _unitOfWork.Commit();
-
         }
 
-        public async Task<List<ScreeningViewModel>> GetScreeningByMovieId(int Id)
+        public async Task<List<ScreeningViewModel>> GetScreeningByMovieId(int Id, DateTime? ShowDate)
         {
             try
             {
                 var screenings = await _movieRepository.GetScreeningByMovieId(Id);
+
+
+                
                 if (screenings == null) throw new BookingMovieException("Cannt find a movie with id: " + Id);
-
+                // filter
+                if(ShowDate != null)
+                {
+                   screenings = screenings.Where(x => x.DateFrom.Value.Date <= ShowDate.Value.Date && x.DateTo.Value.Date >= ShowDate.Value.Date);
+                }
                 return await screenings.ToListAsync();
-
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
@@ -409,14 +402,13 @@ namespace Booking_Movie.Application.Catalog.Movies
                 if (screenings == null) throw new BookingMovieException("Không thể tìm thấy lịch chiếu: ");
 
                 return await screenings.ToListAsync();
-
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
+
         private async Task<string> SaveFile(IFormFile file, string? folder = null)
         {
             var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName!.Trim('"'); // get original file name from Content Disposition Header
@@ -424,7 +416,6 @@ namespace Booking_Movie.Application.Catalog.Movies
             if (!String.IsNullOrEmpty(folder))
             {
                 await _fileStorage.SaveFileAsync(file.OpenReadStream(), fileName, $"{MOVIE_CONTENT_FOLDER_NAME}/{folder}"); // save file
-
             }
             else await _fileStorage.SaveFileAsync(file.OpenReadStream(), fileName, MOVIE_CONTENT_FOLDER_NAME); // save file
             return fileName;
@@ -448,7 +439,6 @@ namespace Booking_Movie.Application.Catalog.Movies
 
             return movieCategory;
         }
-
 
         public async Task<bool?> AddCast(int Id, Guid[] actorsId)
         {
@@ -509,7 +499,6 @@ namespace Booking_Movie.Application.Catalog.Movies
             List<Expression<Func<ScreeningViewModel, bool>>>? expression = new List<Expression<Func<ScreeningViewModel, bool>>>();
             IQueryable<ScreeningViewModel> query = null!;
 
-
             //2. filter
             //if (pagingRequest.Filter != null)
             //{
@@ -524,10 +513,8 @@ namespace Booking_Movie.Application.Catalog.Movies
 
             //4. Get data
 
-
             //var data = await query.ToListAsync();
             //var dataMapper = _mapper.Map<List<MovieViewModel>>(data);
-
 
             //dataMapper.ForEach((movie) => {
             //    movie.ImageBackground = $"{host}/{MOVIE_CONTENT_FOLDER_NAME}/{movie.ImageBackground}";
@@ -542,34 +529,222 @@ namespace Booking_Movie.Application.Catalog.Movies
             //};
             try
             {
-
                 var pagedResult = await DataSourceLoader.LoadAsync<ScreeningViewModel>(query, pagingRequest);
                 return pagedResult;
-
             }
             catch (Exception)
             {
-
-                throw;
-            }
-        } 
-        public async Task<LoadResult> GetAllPagingScreeningAdmin(GetScreeningPagingRequest pagingRequest, string host)
-        {
-            
-            var query = _movieRepository.GetScreeningPagingAdmin(pagingRequest);
-            
-            try
-            {
-
-                var pagedResult = await DataSourceLoader.LoadAsync<ScreeningViewModel>(query, pagingRequest);
-                return pagedResult;
-
-            }
-            catch (Exception)
-            {
-
                 throw;
             }
         }
+
+        public async Task<LoadResult> GetAllPagingScreeningAdmin(GetScreeningPagingRequest pagingRequest, string host)
+        {
+            var query = _movieRepository.GetScreeningPagingAdmin(pagingRequest);
+
+            try
+            {
+                var pagedResult = await DataSourceLoader.LoadAsync<ScreeningViewModel>(query, pagingRequest);
+                return pagedResult;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #region Report
+
+        public async Task<LoadResult> MovieRevenueReport(MovieRevenueRequest? request)
+        {
+            List<Expression<Func<MovieRevenueViewModel, bool>>> expressions = new List<Expression<Func<MovieRevenueViewModel, bool>>>(); ;
+
+            if (request != null && request.MovieId.HasValue)
+            {
+                Expression<Func<MovieRevenueViewModel, bool>> movieFilter = x => x.MovieId == request.MovieId;
+                expressions.Add(movieFilter);
+            }
+            if (request != null && request.CinemaId.HasValue)
+            {
+                Expression<Func<MovieRevenueViewModel, bool>> cinemaFilter = x => x.CinemaId == request.CinemaId;
+                expressions.Add(cinemaFilter);
+            }
+            if (request != null && request.DateFrom.HasValue && request.DateTo.HasValue)
+            {
+                Expression<Func<MovieRevenueViewModel, bool>> betweenDateFilter = x => x.BookingDate >= request.DateFrom && x.BookingDate <= request.DateTo;
+                expressions.Add(betweenDateFilter);
+            }
+            else if (request != null && request.DateFrom.HasValue)
+            {
+                Expression<Func<MovieRevenueViewModel, bool>> dateFromFilter = x => x.BookingDate >= request.DateFrom;
+                expressions.Add(dateFromFilter);
+            }
+            else if (request != null && request.DateTo.HasValue)
+            {
+                Expression<Func<MovieRevenueViewModel, bool>> dateToFilter = x => x.BookingDate <= request.DateTo;
+                expressions.Add(dateToFilter);
+            }
+            var query = _movieRepository.MovieRevenueReport(expressions);
+
+            return await DataSourceLoader.LoadAsync(query, request);
+        }
+
+        public async Task<LoadResult> MovieTicketReport(MovieTicketReportRequest request)
+        {
+            List<Expression<Func<TicketComboReportViewModel, bool>>> expressions = new List<Expression<Func<TicketComboReportViewModel, bool>>>(); ;
+
+            if (request.MovieId.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> movieFilter = x => x.MovieId == request.MovieId;
+                expressions.Add(movieFilter);
+            }
+            if (request.CinemaId.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> cinemaFilter = x => x.CinemaId == request.CinemaId;
+                expressions.Add(cinemaFilter);
+            }
+            if (request.DateFrom.HasValue && request.DateTo.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> betweenDateFilter = x => x.BookingDate >= request.DateFrom && x.BookingDate <= request.DateTo;
+                expressions.Add(betweenDateFilter);
+            }
+            else if (request.DateFrom.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> dateFromFilter = x => x.BookingDate >= request.DateFrom;
+                expressions.Add(dateFromFilter);
+            }
+            else if (request.DateTo.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> dateToFilter = x => x.BookingDate <= request.DateTo;
+                expressions.Add(dateToFilter);
+            }
+            var query = _movieRepository.TicketReport(expressions);
+
+            return await DataSourceLoader.LoadAsync(query, request);
+        }
+
+        public async Task<LoadResult> MovieComboReport(MovieComboReportRequest request)
+        {
+            List<Expression<Func<TicketComboReportViewModel, bool>>> expressions = new List<Expression<Func<TicketComboReportViewModel, bool>>>(); ;
+
+            if (request.MovieId.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> movieFilter = x => x.MovieId == request.MovieId;
+                expressions.Add(movieFilter);
+            }
+            if (request.CinemaId.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> cinemaFilter = x => x.CinemaId == request.CinemaId;
+                expressions.Add(cinemaFilter);
+            }
+            if (request.DateFrom.HasValue && request.DateTo.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> betweenDateFilter = x => x.BookingDate >= request.DateFrom && x.BookingDate <= request.DateTo;
+                expressions.Add(betweenDateFilter);
+            }
+            else if (request.DateFrom.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> dateFromFilter = x => x.BookingDate >= request.DateFrom;
+                expressions.Add(dateFromFilter);
+            }
+            else if (request.DateTo.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> dateToFilter = x => x.BookingDate <= request.DateTo;
+                expressions.Add(dateToFilter);
+            }
+            var query = _movieRepository.ComboReport(expressions);
+
+            return await DataSourceLoader.LoadAsync(query, request);
+        }
+
+        public async Task<LoadResult> MovieTicketComboReport(TicketComboReportRequest request)
+        {
+            List<Expression<Func<TicketComboReportViewModel, bool>>> expressions = new List<Expression<Func<TicketComboReportViewModel, bool>>>(); ;
+
+            if (request.MovieId.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> movieFilter = x => x.MovieId == request.MovieId;
+                expressions.Add(movieFilter);
+            }
+            if (request.CinemaId.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> cinemaFilter = x => x.CinemaId == request.CinemaId;
+                expressions.Add(cinemaFilter);
+            }
+            if (request.DateFrom.HasValue && request.DateTo.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> betweenDateFilter = x => x.BookingDate >= request.DateFrom && x.BookingDate <= request.DateTo;
+                expressions.Add(betweenDateFilter);
+            }
+            else if (request.DateFrom.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> dateFromFilter = x => x.BookingDate >= request.DateFrom;
+                expressions.Add(dateFromFilter);
+            }
+            else if (request.DateTo.HasValue)
+            {
+                Expression<Func<TicketComboReportViewModel, bool>> dateToFilter = x => x.BookingDate <= request.DateTo;
+                expressions.Add(dateToFilter);
+            }
+            var query = _movieRepository.TicketComboReport(expressions);
+
+            return await DataSourceLoader.LoadAsync(query, request);
+        }
+
+        #endregion Report
+
+        #region ChartReport
+
+        public async Task<List<MovieRevenueChartReportViewModel?>> MovieRevenueChartReport(MovieRevenueChartReportRequest? request)
+        {
+            //Expression<Func<MovieRevenueViewModel, int>>? expressionGroup = null;
+
+            //if (request != null && request.Conditional != null && request.Conditional.Value.GetStringValue() == "year")
+            //{
+            //    Expression<Func<MovieRevenueViewModel, int>> yearGroup =  g => g.BookingDate.Value.Year;
+            //    expressionGroup= yearGroup;
+            //}
+            //if (request != null && request.Conditional != null &&request.Conditional.Value.GetStringValue() == "month")
+            //{
+            //    Expression<Func<MovieRevenueViewModel, int>> yearGroup = g => g.BookingDate.Value.Month;
+            //    expressionGroup = yearGroup;
+            //}
+            //if (request != null && request.DateFrom.HasValue && request.DateTo.HasValue)
+            //{
+            //    Expression<Func<MovieRevenueViewModel, bool>> betweenDateFilter = x => x.BookingDate >= request.DateFrom && x.BookingDate <= request.DateTo;
+            //    expressions.Add(betweenDateFilter);
+            //}
+            //else if (request != null && request.DateFrom.HasValue)
+            //{
+            //    Expression<Func<MovieRevenueViewModel, bool>> dateFromFilter = x => x.BookingDate >= request.DateFrom;
+            //    expressions.Add(dateFromFilter);
+            //}
+
+            //else if (request != null && request.DateTo.HasValue)
+            //{
+            //    Expression<Func<MovieRevenueViewModel, bool>> dateToFilter = x => x.BookingDate <= request.DateTo;
+            //    expressions.Add(dateToFilter);
+            //}
+            var query = _movieRepository.MovieRevenueChartReport(request);
+
+            return await query.ToListAsync();
+        }
+
+        public async Task<List<TicketComboReportChartViewModel>?> TicketComboQuantityChartReport(TicketComboChartReportRequest? request)
+        {
+            var query = _movieRepository.TicketComboQuantityChartReport(request);
+            if (query == null) return null;
+            return await query.ToListAsync();
+        }
+
+        public async Task<List<TicketComboReportChartViewModel>?> TicketComboRevenueChartReport(TicketComboChartReportRequest? request)
+        {
+            var query = _movieRepository.TicketComboRevenueChartReport(request);
+
+            if (query == null) return null;
+            return await query.ToListAsync();
+        }
+
+        #endregion ChartReport
     }
 }

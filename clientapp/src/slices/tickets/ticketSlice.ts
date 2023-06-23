@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { StringLiteralType } from "typescript";
-import { GetAllTicket, GetTicketByScreeningId } from "../../services/ticket.service";
+import { GetAllTicket, GetTicketByMovieId, GetTicketByScreeningId, GetTicketRequest } from "../../services/ticket.service";
 
 
 // Làm đúng là tạo interface BookingTicket extends Ticket
 export interface Ticket {
     id: string,
     name: string,
+    ticketTypeName: string,
     price: number,
     quantity?: number,
     total?: number
@@ -26,10 +27,10 @@ const initialState: TicketState = {
 
 export const GetTicketsAsync = createAsyncThunk(
     "ticket/getTickets",
-    async (id: string, { rejectWithValue }) => {
+    async (request: GetTicketRequest, { rejectWithValue }) => {
         try {
             // const response = await GetAllTicket();
-            const response = await GetTicketByScreeningId(id);
+            const response = await GetTicketByMovieId(request);
             console.log(response.data, "async ticket")
 
             // The value we return becomes the `fulfilled` action payload
@@ -76,6 +77,7 @@ export const TicketSlice = createSlice({
         },
         clearAllTickets : (state) => {
             state.tickets = []
+            state.chooseTotal = 0
         }
     },
     extraReducers: (builder) => {

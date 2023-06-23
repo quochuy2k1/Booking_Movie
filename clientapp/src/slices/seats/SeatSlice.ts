@@ -2,19 +2,20 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
 export interface SeatState {
-    id: string,
-    row: string,
-    number: number,
+    id?: string,
+    row?: string,
+    number?: number,
 
 
 }
 
 export interface SeatNoState extends SeatState {
-
-    seatNoId: number,
-    rowIndex: number,
-    columnIndex: number,
-    seatStyle: number,
+    auditoriumId?: number,
+    seatId?: string,
+    seatNoId?: number,
+    rowIndex?: number,
+    columnIndex?: number,
+    seatStyle?: number,
     status: boolean,
 
 }

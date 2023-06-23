@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Booking_Movie.ViewModel.Catalog.MomoPaymentVM
+﻿namespace Booking_Movie.ViewModel.Catalog.MomoPaymentVM
 {
     public class ResultMomoPaymentViewModel
     {
@@ -27,7 +21,6 @@ namespace Booking_Movie.ViewModel.Catalog.MomoPaymentVM
 
     public class MomoResponseIpnPaymentViewModel
     {
-        public object ValueKind { get; set;  } = null!;
+        public object ValueKind { get; set; } = null!;
     }
-
 }

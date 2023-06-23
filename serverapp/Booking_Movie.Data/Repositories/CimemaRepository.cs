@@ -1,17 +1,17 @@
 ﻿using Booking_Movie.Data.EF;
 using Booking_Movie.Data.Entities;
 using Booking_Movie.Data.Infrastructure;
-using Booking_Movie.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Booking_Movie.Data.Repositories
 {
-    public interface ICimemaRepository: IRepository<Cinema>
+    public interface ICimemaRepository : IRepository<Cinema>
     {
-        
         public IQueryable<Auditorium?> GetAuditoriumByCinemaId(int cinemaId);
+
         IQueryable<Cinema> GetCinemaPagingAdmin();
     }
+
     public class CimemaRepository : RepositoryBase<Cinema>, ICimemaRepository
     {
         public CimemaRepository(BookingMovieContext movieContext, IDbFactory dbFactory) : base(movieContext, dbFactory)

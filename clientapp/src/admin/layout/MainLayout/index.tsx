@@ -84,7 +84,7 @@ const MainLayout: React.FC = () => {
     }, [matchDownMd]);
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', backgroundColor: "#fff" }}>
             <CssBaseline />
             {/* header */}
             <AppBar

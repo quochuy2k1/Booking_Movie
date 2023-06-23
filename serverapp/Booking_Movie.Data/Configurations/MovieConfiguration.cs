@@ -12,7 +12,7 @@ namespace Booking_Movie.Data.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Content).HasColumnType("nvarchar(max)");
-            builder.Property(x => x.Duration).HasColumnType("smallint");
+            builder.Property(x => x.Duration).HasColumnType("int");
             builder.Property(x => x.ImagePreview).HasColumnType("nvarchar(255)").HasDefaultValue("duongdan.jpg");
             builder.Property(x => x.ImageBackground).HasColumnType("nvarchar(255)").HasDefaultValue("duongdan.jpg");
             builder.Property(x => x.VideoTrailer).HasColumnType("nvarchar(255)").IsRequired(false);

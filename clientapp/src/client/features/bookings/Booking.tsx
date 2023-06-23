@@ -11,6 +11,8 @@ import { Confirm } from 'semantic-ui-react';
 import { SeatNoState, SeatState } from '../../../slices/seats/SeatSlice';
 import { parseJwt } from '../../utils/parseJwt';
 import { bookPayment, bookScreeningId } from '../../../slices/bookings/BookingSliceClient';
+import { useLocation, useParams } from 'react-router-dom';
+import { removeAllChooseSeats, removeAllClassSelected } from '../../../slices/auditoriums/AuditoriumSlice';
 
 const show_error: string[] = [
 	"Việc chọn vị trí ghế của bạn không được để trống 1 ghế ở bên trái, giữa hoặc bên phải trên cùng hàng ghế mà bạn vừa chọn.",
@@ -60,6 +62,8 @@ function ColorlibStepIcon(props: StepIconProps) {
 const Booking: React.FC<{}> = () => {
 
 	const dispatch = useAppDispatch();
+	const location = useLocation();
+	const {movieId } = useParams<{movieId: string}>();
 	const { classSelect } = useAppSelector(state => state.auditorium)
 	const { chooseTotal, tickets  } = useAppSelector(state => state.ticket)
 	const [preventNext, setPreventNext] = React.useState(false);
@@ -70,6 +74,17 @@ const Booking: React.FC<{}> = () => {
 	const [completed, setCompleted] = React.useState<{
 		[k: number]: boolean;
 	}>({});
+
+	React.useEffect(() => {
+		
+		return () => {
+		  // Hành động bạn muốn thực hiện khi rời khỏi component
+		  dispatch(removeAllClassSelected())
+		  dispatch(removeAllChooseSeats())
+		  sessionStorage.removeItem("class-select")
+		};
+	  }, [location]);
+	
 
 
 	const totalSteps = () => {
@@ -171,9 +186,9 @@ const Booking: React.FC<{}> = () => {
 	function compare(a: SeatNoState, b: SeatNoState) {
 
 		if (a.rowIndex === b.rowIndex) {
-			return a.columnIndex - b.columnIndex
+			return a.columnIndex! - b.columnIndex!
 		}
-		return a.rowIndex - b.rowIndex;
+		return a.rowIndex! - b.rowIndex!;
 	}
 
 	const onClose = () => setOpen(false);
@@ -190,7 +205,7 @@ const Booking: React.FC<{}> = () => {
 		console.log("after compare length")
 		for (let i = 0; i < seat_selected.length - 1; i++) {
 			if (seat_selected[i].rowIndex === seat_selected[i + 1].rowIndex
-				&& Math.abs(seat_selected[i].columnIndex - seat_selected[i + 1].columnIndex) === 2) {
+				&& Math.abs(seat_selected[i].columnIndex! - seat_selected[i + 1].columnIndex!) === 2) {
 				setPreventNext(true);
 				setOpen(true);
 				setActiveError(0);
@@ -207,7 +222,8 @@ const Booking: React.FC<{}> = () => {
 		// console.log(completed, "k in complete")
 		const jwtString = localStorage.getItem("token");
 		const screening = JSON.parse(sessionStorage.getItem("book-cinema")!);
-		dispatch(bookScreeningId(screening));
+		const showDate = JSON.parse(sessionStorage.getItem("showDate")!);
+		dispatch(bookScreeningId({screening, showDate}));
 		if(jwtString){
 			const jwtJson: any = parseJwt(jwtString);
 			dispatch(bookPayment({appUserId: jwtJson.userIdClaim}));
@@ -219,7 +235,7 @@ const Booking: React.FC<{}> = () => {
 		// dispatch(emptyBookCombo())
 		setSteps([{
 			label: 'Đặt loại vé và đồ ăn',
-			component: <BookingTicket />
+			component: <BookingTicket movieId ={movieId}/>
 		}, {
 			label: 'Chọn ghế',
 			component: <Auditorium />

@@ -9,8 +9,10 @@ namespace Booking_Movie.Data.Repositories
     public interface ISeatNoRepository : IRepository<SeatNo>
     {
         Task<SeatNo?> UpdateStatus(int id, bool status);
+
         Task<SeatNoViewModel?> GetSeatNoById(int id);
     }
+
     public class SeatNoRepository : RepositoryBase<SeatNo>, ISeatNoRepository
     {
         public SeatNoRepository(BookingMovieContext movieContext, IDbFactory dbFactory) : base(movieContext, dbFactory)
@@ -37,12 +39,10 @@ namespace Booking_Movie.Data.Repositories
                     ColumnIndex = x.seatNo.ColumnIndex,
                     RowIndex = x.seatNo.RowIndex,
                     SeatId = x.seatNo.SeatId
-
                 }).FirstOrDefaultAsync();
             if (seatNo == null) return null;
 
             return seatNo;
-
         }
 
         public async Task<SeatNo?> UpdateStatus(int id, bool status)

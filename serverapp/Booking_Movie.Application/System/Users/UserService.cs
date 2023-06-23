@@ -37,8 +37,8 @@ namespace Booking_Movie.Application.System.Users
             {
                 return new LoginResponse()
                 {
-                    StatusMessageResponse = StatusMessageResponseContant.USER_NAME_NOT_EXISTS,
-                    StatusResponse = StatusResponseContant.FAILED,
+                    StatusMessageResponse = StatusMessageResponseConstant.USER_NAME_NOT_EXISTS,
+                    StatusResponse = StatusResponseConstant.FAILED,
                     Error = new LoginErrorResponse()
                     {
                         UserNameError = "Tài khoản không đúng"
@@ -72,8 +72,8 @@ namespace Booking_Movie.Application.System.Users
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
                     Exp = expJWT,
                     SessionId = Jti,
-                    StatusMessageResponse = StatusMessageResponseContant.SIGN_IN_SUCCESS,
-                    StatusResponse = StatusResponseContant.SUCCESS,
+                    StatusMessageResponse = StatusMessageResponseConstant.SIGN_IN_SUCCESS,
+                    StatusResponse = StatusResponseConstant.SUCCESS,
                     AppUser = new LoginUserViewModel()
                     {
                         UserName = user.UserName,
@@ -87,8 +87,8 @@ namespace Booking_Movie.Application.System.Users
             }
             return new LoginResponse()
             {
-                StatusMessageResponse = StatusMessageResponseContant.PASSWORD_INCORRECT,
-                StatusResponse = StatusResponseContant.FAILED,
+                StatusMessageResponse = StatusMessageResponseConstant.PASSWORD_INCORRECT,
+                StatusResponse = StatusResponseConstant.FAILED,
                 Error = new LoginErrorResponse()
                 {
                    

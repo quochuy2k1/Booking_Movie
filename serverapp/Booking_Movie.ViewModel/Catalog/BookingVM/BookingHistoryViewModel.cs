@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Booking_Movie.ViewModel.Catalog.BookingVM
 {
@@ -18,13 +13,15 @@ namespace Booking_Movie.ViewModel.Catalog.BookingVM
         public string? CinemaAddress { get; set; }
         public string AuditoriumName { get; set; } = null!;
         public decimal Total { get; set; }
-        
-        [JsonProperty(NullValueHandling=NullValueHandling.Ignore)]
+
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public bool Status { get; set; }
+
         public DateTime ShowTime { get; set; }
+        public DateTime? ShowDate { get; set; }
         public DateTime BookingDate { get; set; }
         public List<BookingComboViewModel> BookingCombo { get; set; } = null!;
-        public List<BookingTicketViewModel>BookingTicket { get; set; } = null!;
+        public List<BookingTicketViewModel> BookingTicket { get; set; } = null!;
         public List<string> BookingSeats { get; set; } = null!;
     }
 
@@ -38,6 +35,7 @@ namespace Booking_Movie.ViewModel.Catalog.BookingVM
     public class BookingTicketViewModel
     {
         public string Name { get; set; } = null!;
+        public string TicketTypeName { get; set; } = null!;
         public int Quantity { get; set; }
         public decimal Price { get; set; }
     }

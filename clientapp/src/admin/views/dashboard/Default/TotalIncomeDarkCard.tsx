@@ -8,6 +8,7 @@ import TotalIncomeCard from '../../../ui-component/cards/Skeleton/TotalIncomeCar
 
 // assets
 import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
+import numeral from 'numeral';
 
 // styles
 const CardWrapper = styled(MainCard)(({ theme }) => ({
@@ -39,12 +40,12 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 
 // ==============================|| DASHBOARD - TOTAL INCOME DARK CARD ||============================== //
 
-const TotalIncomeDarkCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
+const TotalIncomeDarkCard: React.FC<{isLoading: boolean, revenueTicket?: number}> = (props) => {
     const theme = useTheme();
 
     return (
         <>
-            {isLoading ? (
+            {props.isLoading ? (
                 <TotalIncomeCard />
             ) : (
                 <CardWrapper border={false} content={false}>
@@ -72,7 +73,7 @@ const TotalIncomeDarkCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
                                     }}
                                     primary={
                                         <Typography variant="h4" sx={{ color: '#fff' }}>
-                                            70.000.000 vnđ
+                                            {numeral(props.revenueTicket).format("0,0")} vnđ
                                         </Typography>
                                     }
                                     secondary={

@@ -320,6 +320,8 @@ namespace Booking_Movie.BackendApi.wwwroot.DataSet {
             
             private global::System.Data.DataColumn columnPrice;
             
+            private global::System.Data.DataColumn columnTicketTypeName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public BookingTicketDataTable() {
@@ -379,6 +381,14 @@ namespace Booking_Movie.BackendApi.wwwroot.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TicketTypeNameColumn {
+                get {
+                    return this.columnTicketTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -414,12 +424,13 @@ namespace Booking_Movie.BackendApi.wwwroot.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BookingTicketRow AddBookingTicketRow(string Name, string Quantity, string Price) {
+            public BookingTicketRow AddBookingTicketRow(string Name, string Quantity, string Price, string TicketTypeName) {
                 BookingTicketRow rowBookingTicketRow = ((BookingTicketRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
                         Quantity,
-                        Price};
+                        Price,
+                        TicketTypeName};
                 rowBookingTicketRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBookingTicketRow);
                 return rowBookingTicketRow;
@@ -445,6 +456,7 @@ namespace Booking_Movie.BackendApi.wwwroot.DataSet {
                 this.columnName = base.Columns["Name"];
                 this.columnQuantity = base.Columns["Quantity"];
                 this.columnPrice = base.Columns["Price"];
+                this.columnTicketTypeName = base.Columns["TicketTypeName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -456,6 +468,8 @@ namespace Booking_Movie.BackendApi.wwwroot.DataSet {
                 base.Columns.Add(this.columnQuantity);
                 this.columnPrice = new global::System.Data.DataColumn("Price", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrice);
+                this.columnTicketTypeName = new global::System.Data.DataColumn("TicketTypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTicketTypeName);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -921,6 +935,22 @@ namespace Booking_Movie.BackendApi.wwwroot.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string TicketTypeName {
+                get {
+                    try {
+                        return ((string)(this[this.tableBookingTicket.TicketTypeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TicketTypeName\' in table \'BookingTicket\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBookingTicket.TicketTypeNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableBookingTicket.NameColumn);
             }
@@ -953,6 +983,18 @@ namespace Booking_Movie.BackendApi.wwwroot.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetPriceNull() {
                 this[this.tableBookingTicket.PriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsTicketTypeNameNull() {
+                return this.IsNull(this.tableBookingTicket.TicketTypeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetTicketTypeNameNull() {
+                this[this.tableBookingTicket.TicketTypeNameColumn] = global::System.Convert.DBNull;
             }
         }
         

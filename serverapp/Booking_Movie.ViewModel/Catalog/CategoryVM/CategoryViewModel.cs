@@ -1,5 +1,4 @@
-﻿
-namespace Booking_Movie.ViewModel.Catalog.CategoryVM
+﻿namespace Booking_Movie.ViewModel.Catalog.CategoryVM
 {
     public class CategoryViewModel
     {
@@ -14,7 +13,5 @@ namespace Booking_Movie.ViewModel.Catalog.CategoryVM
         public string Image { get; set; } = null!;
 
         public bool HomeFlag { get; set; }
-
-
     }
 }

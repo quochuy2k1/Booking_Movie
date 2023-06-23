@@ -7,6 +7,7 @@ export interface UserState {
         lastName: string,
         firstName: string,
         userName: string,
+        roles: string[]
     },
     token: string,
     exp?: string,
@@ -24,7 +25,8 @@ const initialState: UserState =
     appUser: {
         firstName: "",
         lastName: "",
-        userName: ""
+        userName: "",
+        roles: []
     },
     token: "",
     statusResponse: undefined,
@@ -82,13 +84,13 @@ export const userSlice = createSlice({
                 state.status = 'loading';
             })
             .addCase(SignInAsync.fulfilled, (state, action) => {
-                const { userName, lastName, firstName } = action.payload.appUser
+                const { userName, lastName, firstName, roles } = action.payload.appUser
                 Object.assign(state, { status: 'idle', appUser: action.payload.appUser, isLogin: true, statusMessageResponse: action.payload.statusMessageResponse, statusResponse: action.payload.statusResponse } as UserState)
                 // console.log(action.payload, "payload")
                 localStorage.setItem("token", action.payload.token);
                 localStorage.setItem("exp_token", action.payload.exp!);
                 localStorage.setItem("sessionId", action.payload.sessionId!);
-                localStorage.setItem("user_authenticate", JSON.stringify({ lastName: lastName, firstName: firstName, userName: userName, isSignIn: true }))
+                localStorage.setItem("user_authenticate", JSON.stringify({ lastName: lastName, firstName: firstName, userName: userName, roles: roles,  isSignIn: true, isLogin: true }))
             })
             .addCase(SignInAsync.rejected, (state, action: any) => {
              

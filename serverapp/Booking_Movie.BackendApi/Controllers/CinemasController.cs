@@ -1,8 +1,12 @@
 ﻿using Booking_Movie.Application.Catalog.Cinemas;
 using Booking_Movie.ViewModel.Catalog.CinemaVM;
+using DevExtreme.AspNet.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Booking_Movie.BackendApi.Controllers
 {
@@ -70,12 +74,29 @@ namespace Booking_Movie.BackendApi.Controllers
         
         [HttpPost("paging/admin")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetAllAdminPaging([FromForm] GetCinemaPagingAdminRequest pagingRequest)
+        public async Task<IActionResult> GetAllAdminPaging([FromForm] GetCinemaPagingAdminRequest request)
         {
             try
             {
+                var sort = Request.Form["sort"];
+                var filter = Request.Form["filter"];
+                var group = Request.Form["group"];
+
+                if (!String.IsNullOrEmpty(filter))
+                {
+                    request.Filter = JsonConvert.DeserializeObject<IList>(filter);
+                }
+
+                if (!String.IsNullOrEmpty(sort))
+                {
+                    request.Sort = JsonConvert.DeserializeObject<SortingInfo[]>(sort);
+                }
+                if (!String.IsNullOrEmpty(group))
+                {
+                    request.Group = JsonConvert.DeserializeObject<GroupingInfo[]>(group);
+                }
                 var host = $"{Request.Scheme}://{Request.Host}";
-                var cinemas = await _cinemasService.GetAllPagingAdmin(pagingRequest, host);
+                var cinemas = await _cinemasService.GetAllPagingAdmin(request, host);
                 if (cinemas == null) return BadRequest("Cannot found cinemas!");
                 return Ok(cinemas);
             }

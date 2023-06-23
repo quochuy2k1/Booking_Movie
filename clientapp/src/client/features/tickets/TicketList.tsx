@@ -3,10 +3,10 @@ import { Button, Grid, Header, Input, Segment } from "semantic-ui-react";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { decrementQuantityTicket, GetTicketsAsync, incrementQuantityTicket} from "../../../slices/tickets/ticketSlice";
 import "./ticket.css"
+import moment from "moment";
+import { useParams } from "react-router-dom";
 
-
-
-const TicketList: React.FC<{}> = () => {
+const TicketList: React.FC<{movieId?: string}> = (props) => {
 
     const dispatch = useAppDispatch();
     const { tickets } = useAppSelector(state => state.ticket)
@@ -16,7 +16,7 @@ const TicketList: React.FC<{}> = () => {
    
     useEffect(() => {
         if(tickets.length <= 0){
-            dispatch(GetTicketsAsync(screening.movieSchedule[0].id.toString()));
+            props.movieId && dispatch(GetTicketsAsync({movieId: props.movieId,  dateTo: moment.utc(screening.movieSchedule![0].showTime).toDate() }));
 
         }
     }, [dispatch,])
@@ -47,7 +47,7 @@ const TicketList: React.FC<{}> = () => {
                 {tickets && tickets.map((ticket, idx) => (
                     <Grid key={idx} className="bg-gray-700" textAlign="left" verticalAlign="middle" container>
                         <Grid.Column computer={4} className="text-white">
-                            {ticket.name}
+                            {ticket.ticketTypeName}
                         </Grid.Column>
 
                         <Grid.Column textAlign="right" computer={3} className="text-white">

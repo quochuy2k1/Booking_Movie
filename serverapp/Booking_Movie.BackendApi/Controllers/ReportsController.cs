@@ -47,8 +47,9 @@ namespace Booking_Movie.BackendApi.Controllers
                 new ReportParameter("CinemaAddress", TextHelper.RemoveVietnameseDiacritics(booking.CinemaAddress)),
                 new ReportParameter("AuditoriumName", TextHelper.RemoveVietnameseDiacritics(booking.AuditoriumName)),
                 new ReportParameter("MovieImage", booking.MovieImage),
-                new ReportParameter("ShowTime", booking.ShowTime.ToString("HH:mm tt")),
+                new ReportParameter("ShowTime", booking.ShowTime.ToLocalTime().ToString("HH:mm tt")),
                 new ReportParameter("BookingDate", booking.BookingDate.ToString("dd/MM/yyyy")),
+                new ReportParameter("ShowDate", booking.ShowDate != null ? booking.ShowDate!.Value.ToLocalTime().ToString("dd/MM/yyyy") : ""),
                 new ReportParameter("seats", String.Join(", ", booking.BookingSeats)), 
                 new ReportParameter("barCode", booking.Barcode) };
             using var report = new LocalReport();

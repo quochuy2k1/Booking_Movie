@@ -1,5 +1,5 @@
-import { Button, DataGrid, } from "devextreme-react";
-import { Column, Selection, ColumnFixing, FilterBuilderPopup, FilterPanel, FilterRow, GroupPanel, Grouping, HeaderFilter, Pager, Paging, SearchPanel, Editing, Item, LoadPanel, Toolbar } from "devextreme-react/data-grid";
+import { Button, DataGrid, Toast, } from "devextreme-react";
+import { Column, Selection, ColumnFixing, FilterBuilderPopup, FilterPanel, FilterRow, GroupPanel, Grouping, HeaderFilter, Pager, Paging, SearchPanel, Editing, Item, LoadPanel, Toolbar, RemoteOperations } from "devextreme-react/data-grid";
 import React, { useEffect, useState } from "react";
 import 'devextreme/data/odata/store';
 import 'whatwg-fetch';
@@ -23,6 +23,8 @@ import { GetAllShowTimePaging } from "../../../../../services/showTime.service";
 import { MovieSchedule, ScreeningModel } from "../../../../../slices/screenings/ScreeningSlice";
 import { GetAllScreeningTypePaging } from "../../../../../services/screening.service";
 import { ScreeningTypeModel } from "../../../../../slices/screenings/screeningTypeSlice";
+import { STATUS_MESSAGE, STATUS_RESPONSE } from "../../../../../common/status-message";
+import { ToastType } from "devextreme/ui/toast";
 
 
 const url = `${import.meta.env.VITE_REACT_APP_API_BASE!}`
@@ -45,8 +47,16 @@ interface IAuditoriumGrouped {
     items: IAuditoriumBaseModel[]
 }
 
-interface IShowTimeModel {
+interface IToast {
+    visible?: boolean;
+    message?: string;
+    type: ToastType;
+}
 
+const defaultToast: IToast = {
+    visible: false,
+    message: "",
+    type: 'success',
 }
 
 
@@ -130,6 +140,10 @@ const ScreeningManagement: React.FC = () => {
     // 
 
     const [filter, setFilter] = useState<IFilter>(defaultFilter);
+
+    // Toast
+
+    const [toast, setToast] = useState<IToast>(defaultToast);
 
     // 
     const filterBuilderPopupPosition = {
@@ -262,6 +276,18 @@ const ScreeningManagement: React.FC = () => {
             onBeforeSend: (method, ajaxOptions) => {
                 ajaxOptions.xhrFields = { withCredentials: true };
             },
+            errorHandler(e) {
+                // console.log(e., "error")
+
+
+                setToast({
+                    visible: true,
+                    type: STATUS_RESPONSE[0] as ToastType,
+                    message: STATUS_MESSAGE[e.message]
+
+                });
+
+            },
         });
 
         setDataSource(data);
@@ -327,7 +353,7 @@ const ScreeningManagement: React.FC = () => {
 
 
     return (
-        <MainCard title="Quản lý lịch chiếu phim">
+        <MainCard>
             <div>
                 <Collapse in={openError} >
                     <Alert
@@ -384,7 +410,7 @@ const ScreeningManagement: React.FC = () => {
                             });
                         }}
                         gridBoxDisplayExpr={function (item: any): string {
-                            return item && `${item?.name} - ${item?.ReleaseDate ?? "No release date yet"}`;
+                            return item && `${item?.name}`;
                         }}
 
                     // disabled={props.action === ACTIONS.VIEW}
@@ -427,21 +453,23 @@ const ScreeningManagement: React.FC = () => {
                 </div>
 
             </Paper>
-            <div style={{ height: 400, width: '100%', overflowY: 'scroll', marginTop: "0.5rem" }}>
+            <div style={{width: '100%', overflowY: 'scroll', marginTop: "0.5rem" }}>
 
                 <DataGrid
                     id="gridContainer"
                     ref={dataGridRef}
                     dataSource={dataSource}
                     showBorders={true}
-                    remoteOperations={{ grouping: false, filtering: true, sorting: true, paging: true }}
+                    // remoteOperations={{ grouping: false, filtering: true, sorting: false, paging: true, summary: true }}
                     allowColumnResizing={true}
-                    repaintChangesOnly
+                    repaintChangesOnly={true}
                     noDataText='Không có dữ liệu'
                     keyExpr={"id"}
                     // columnHidingEnabled={true}
                     columnMinWidth={50}
                     columnAutoWidth={true}
+                    // focusedRowEnabled={true}
+                    // autoNavigateToFocusedRow
                     onEditingStart={(e) => {
                         console.log('EditingStart')
                     }}
@@ -461,10 +489,27 @@ const ScreeningManagement: React.FC = () => {
                         // const tempData = [...dataTable01D0]
                         // tempData.push(e.data)
                         // setDataTable01D0(tempData)
+                        setToast({
+                            visible: true,
+                            type: STATUS_RESPONSE[e.data.status] as ToastType,
+                            message: STATUS_MESSAGE[e.data.message]
+
+                        });
                     }}
 
-                    onRowUpdating={() => console.log('RowUpdating')}
-                    onRowUpdated={(e) => console.log(e, 'RowUpdated')}
+                    onRowUpdating={(e) => console.log(e, 'RowUpdating')}
+                    onRowUpdated={(e) => {
+
+
+                        setToast({
+                            visible: true,
+                            type: STATUS_RESPONSE[e.data.status] as ToastType,
+                            message: STATUS_MESSAGE[e.data.message]
+
+                        });
+
+
+                    }}
                     onRowRemoving={() => console.log('RowRemoving')}
                     onRowRemoved={() => console.log('RowRemoved')}
                     onSaving={() => console.log('Saving')}
@@ -493,7 +538,7 @@ const ScreeningManagement: React.FC = () => {
 
                     }}
                     onContextMenuPreparing={handleContextMenuPreparing}
-                    
+
                     onEditorPreparing={(e) => {
 
                         if ((e.parentType === "dataRow" || e.parentType === "filterRow") && e.dataField === "showTimeId") {
@@ -518,13 +563,17 @@ const ScreeningManagement: React.FC = () => {
                             // 
                         }
                         if ((e.parentType === "dataRow" || e.parentType === "filterRow") && e.dataField === "cinemaId") {
+
+                            if (!e.row?.isNewRow) {
+                                e.editorOptions.readOnly = true;
+                            }
                             e.editorName = "dxSelectBox";
                             e.editorOptions = {
                                 ...e.editorOptions,
                                 onValueChanged: function (args: any) {
                                     console.log(args);
                                     e.setValue(args.value);
-                                    e.component.cellValue(e.row!.rowIndex, "auditoriumId", null);
+                                    // e.component.cellValue(e.row!.rowIndex, "auditoriumId", null);
                                     GetAllAuditoriumPaging({ PageIndex: 0, PageSize: 100, CinemaId: args.value })
                                         .then(res => {
                                             setAuditoriumOptions(groupData(res.data.result));
@@ -536,11 +585,18 @@ const ScreeningManagement: React.FC = () => {
                             };
 
                         }
+                        if ((e.parentType === "dataRow" || e.parentType === "filterRow") && e.dataField === "movieId") {
+                            if (!e.row?.isNewRow) {
+                                e.editorOptions.readOnly = true;
+                            }
+                        }
                         if ((e.parentType === "dataRow" || e.parentType === "filterRow") && e.dataField === "auditoriumId") {
+                            if (!e.row?.isNewRow || e.row?.data["cinemaId"] === null) {
+                                e.editorOptions.readOnly = true;
+                            }
                             e.editorName = "dxSelectBox";
                             e.editorOptions = {
                                 ...e.editorOptions,
-                                readOnly: e.row?.data["cinemaId"] === null,
                                 grouped: true,
                                 onValueChanged: function (args: any) {
                                     console.log(args);
@@ -555,8 +611,9 @@ const ScreeningManagement: React.FC = () => {
                     }}
 
                 >
+                    <RemoteOperations grouping={false} filtering={true} paging={true} sorting={true} summary={true} />
+
                     <HeaderFilter visible={true} allowSearch={true}  >
-                        {/* <RemoteOperations groupPaging={false} grouping={false}/> */}
                     </HeaderFilter>
                     <FilterPanel visible={isHiddenAdvantageFilter} texts={{ clearFilter: "Xóa lọc", createFilter: "Tạo bộ lọc" }} />
                     <FilterBuilderPopup title={"Tạo bộ lọc cho cột"} position={filterBuilderPopupPosition} />
@@ -577,6 +634,8 @@ const ScreeningManagement: React.FC = () => {
                         allowAdding={true}
                         allowDeleting={true}
                         useIcons={true}
+                        confirmDelete={true}
+                        refreshMode={"reshape"}
                     />
 
                     <FilterRow visible={isHiddenFilter} />
@@ -587,7 +646,7 @@ const ScreeningManagement: React.FC = () => {
                     <LoadPanel enabled={true} />
                     <Paging defaultPageSize={5} />
 
-                    <Column
+                    {/* <Column
                         dataField="id"
                         defaultVisible={false}
                         visible={false}
@@ -599,8 +658,9 @@ const ScreeningManagement: React.FC = () => {
                         allowFiltering={false}
                         allowSearch={false}
                         allowGrouping={false}
-                        
-                    />
+                        allowSorting={false}
+                    
+                    /> */}
                     {/* <Column
                         dataField="cinemaId"
                         dataType="number"
@@ -623,7 +683,7 @@ const ScreeningManagement: React.FC = () => {
                         }}
                         allowFiltering={true}
 
-
+                        calculateSortValue={"cinemaName"}
                     // cellComponent={(props) =>{
                     //    return <>{props.data.text}</>
                     // }}
@@ -650,6 +710,9 @@ const ScreeningManagement: React.FC = () => {
                         calculateDisplayValue={(dataRow: any) => {
                             return dataRow.movieName
                         }}
+                        calculateSortValue={"movieName"}
+                    // defaultSortOrder="asc"
+
                     // cellComponent={(props) => <>{props.data.value}</>}
                     />
                     <Column
@@ -665,6 +728,7 @@ const ScreeningManagement: React.FC = () => {
                             displayExpr: (items: any) => {
                                 return items && `${items.name} - ${items.cinemaName}`
                             },
+
                             valueExpr: "id"
 
                         }}
@@ -674,6 +738,8 @@ const ScreeningManagement: React.FC = () => {
                         calculateCellValue={(dataRow: any) => {
                             return (dataRow?.auditoriumId && dataRow?.cinemaId) && `${dataRow?.auditoriumName} - ${dataRow?.cinemaName}`
                         }}
+                        calculateSortValue={"auditoriumName"}
+
                     />
                     <Column
                         dataField="screeningTypeId"
@@ -694,9 +760,11 @@ const ScreeningManagement: React.FC = () => {
                         calculateDisplayValue={(dataRow: any) => {
                             return dataRow.screeningTypeName
                         }}
-                        calculateCellValue={(dataRow: any) => {
-                            return dataRow.screeningTypeName;
-                        }}
+                        // calculateCellValue={(dataRow: any) => {
+                        //     return dataRow.screeningTypeName;
+                        // }}
+                        calculateSortValue={"screeningTypeName"}
+
                     />
                     <Column
                         dataField="dateFrom"
@@ -756,10 +824,24 @@ const ScreeningManagement: React.FC = () => {
                     </Toolbar>
 
                 </DataGrid>
+
+
             </div>
 
 
+            <Toast
+                position={{ at: { x: "right", y: 'top' }, offset: { x: -250, y: 50 } }}
+                visible={toast.visible}
+                message={toast.message}
+                type={toast.type}
+                maxWidth={400}
+                onHiding={() => setToast(pre => ({
+                    ...pre,
+                    visible: false
+                } as IToast))}
 
+                displayTime={6000} // Thời gian hiển thị thông báo (tính bằng milliseconds)
+            />
         </MainCard >
     );
 }

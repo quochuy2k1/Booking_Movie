@@ -1,6 +1,7 @@
 import { AuditoriumModel, IAuditoriumBaseModel } from '../slices/auditoriums/AuditoriumSlice';
 import http from "../common/http-common";
 import { AxiosRequestConfig } from 'axios';
+import { ISeatNoChangeAction } from '../admin/views/pages/management/auditorium/auditorium';
 
 
 export interface AuditoriumPagingRequest{
@@ -37,5 +38,27 @@ export async function GetSeatByAuditorium(id: string) {
 
     return response;
     
+    // }
+}
+
+export async function SeatNoSaveChanage(auditoriumId: string, token: string, request: ISeatNoChangeAction[]) {
+    const body: any = {
+        seatNoActions: [...request]
+    }
+
+    console.log(token, "request token")
+
+    var response = http.post<any>(`/api/Auditoriums/${auditoriumId}/save-changes`, body, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`,
+            'CrossOrigin': "true",
+            'Mode': 'cors',
+        }
+    })
+    console.log("create api server")
+    return response;
+
     // }
 }

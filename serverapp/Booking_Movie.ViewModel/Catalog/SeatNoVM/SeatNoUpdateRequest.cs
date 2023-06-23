@@ -1,11 +1,9 @@
 ﻿using Booking_Movie.ViewModel.Abstract;
-using Microsoft.AspNetCore.Http;
 
 namespace Booking_Movie.ViewModel.Catalog.SeatNoVM
 {
-    public class SeatNoUpdateRequest: Switchable
+    public class SeatNoUpdateRequest : Switchable
     {
-
         public string SeatId { get; set; } = null!;
         public int AuditoriumId { get; set; }
         public int? SeatStyleId { get; set; }

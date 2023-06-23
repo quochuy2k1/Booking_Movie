@@ -24,7 +24,7 @@ namespace Booking_Movie.BackendApi.Controllers
         }
 
         [HttpPost("add-new")]
-        public async Task<IActionResult> AddNew([FromForm] ScreeningCreateRequest request)
+        public async Task<IActionResult> AddNew([FromForm] DXScreeningCreateRequest request)
         {
             if (!ModelState.IsValid)
             {
@@ -33,12 +33,12 @@ namespace Booking_Movie.BackendApi.Controllers
             try
             {
                 var req = Request.Form["values"];  
-                request = JsonConvert.DeserializeObject<ScreeningCreateRequest>(req);
-                var screening = await _screeningService.AddNew(request);
+                var requestParse = JsonConvert.DeserializeObject<ScreeningCreateRequest>(req);
+                var screening = await _screeningService.AddNew(requestParse);
                 if (screening == null || screening == false) return BadRequest("Xãy ra lỗi khi tạo lịch chiếu phim.Vui lòng tạo lại");
 
                 //var screening_created = await _screeningService.GetById(screening.Id);
-                return Ok(new {Status = StatusResponseContant.SUCCESS, Message = StatusMessageResponseContant .ADD_SUCCESS});
+                return Ok(new {Status = StatusResponseConstant.SUCCESS, Message = StatusMessageResponseConstant .ADD_SUCCESS});
 
             }
             catch (Exception ex)
@@ -64,11 +64,19 @@ namespace Booking_Movie.BackendApi.Controllers
                 if (screening == null || screening == false) return BadRequest("Xãy ra lỗi khi cập nhật lịch chiếu phim.Vui lòng cập nhập lại");
 
                 //var screening_created = await _screeningService.GetById(screening.Id);
-                return Ok(new {Status = StatusResponseContant.SUCCESS, Message = StatusMessageResponseContant.UPDATE_SUCCESS});
+                return Ok(new {Status = StatusResponseConstant.SUCCESS, Message = StatusMessageResponseConstant.UPDATE_SUCCESS});
 
             }
             catch (Exception ex)
             {
+                if (ex.InnerException is Microsoft.Data.SqlClient.SqlException sqlException &&
+                    sqlException.Number == 547) // Số lỗi 547 cho lỗi constraint
+                {
+                    // Lỗi xóa liên quan đến quan hệ khóa ngoại
+
+                    // Thông báo lỗi cho client
+                    return  StatusCode(500, new { Status = StatusResponseConstant.FAILED, Message = StatusMessageResponseConstant.FORIEGNKEY_CONFLICT });
+                }
                 return StatusCode(500, ex.Message);
             }
         }

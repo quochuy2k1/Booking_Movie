@@ -2,7 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { GetAllCombo } from "../../services/combo.service";
 import { GetTicketsAsync } from "../tickets/ticketSlice";
 
-
+export interface ComboModel {
+    id: string,
+    name: string,
+    description: string,
+    price: number,
+}
 
 // Làm đúng là tạo interface BookingCombo extends Combo
 export interface Combo {

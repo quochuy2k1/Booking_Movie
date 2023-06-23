@@ -16,6 +16,7 @@ import GetAppTwoToneIcon from '@mui/icons-material/GetAppOutlined';
 import FileCopyTwoToneIcon from '@mui/icons-material/FileCopyOutlined';
 import PictureAsPdfTwoToneIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import ArchiveTwoToneIcon from '@mui/icons-material/ArchiveOutlined';
+import numeral from 'numeral';
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
     backgroundColor: theme.palette.secondary.dark,
@@ -55,7 +56,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 
 // ===========================|| DASHBOARD DEFAULT - EARNING CARD ||=========================== //
 
-const EarningCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
+const EarningCard: React.FC<{isLoading: boolean, movieRevenue?: number}> = (props) => {
     const theme = useTheme();
 
     const [anchorEl, setAnchorEl] = useState<(HTMLDivElement & EventTarget) | null>(null);
@@ -70,7 +71,7 @@ const EarningCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
 
     return (
         <>
-            {isLoading ? (
+            {props.isLoading ? (
                 <SkeletonEarningCard />
             ) : (
                 <CardWrapper border={false} content={false}>
@@ -143,7 +144,7 @@ const EarningCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
                                 <Grid container alignItems="center">
                                     <Grid item>
                                         <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>
-                                            100.000.000 vnđ
+                                            {numeral(props.movieRevenue).format("0,0")} vnđ
                                         </Typography>
                                     </Grid>
                                     <Grid item>

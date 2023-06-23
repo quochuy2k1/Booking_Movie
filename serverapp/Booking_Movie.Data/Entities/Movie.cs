@@ -26,5 +26,6 @@ namespace Booking_Movie.Data.Entities
         public ICollection<MovieCategory> MovieCategories { get; set; } = null!;
         public ICollection<Cast> Casts { get; set; } = null!;
         public ICollection<Screening> Screenings { get; set; } = null!;
+        public ICollection<Ticket> Tickets { get; set; } = null!;
     }
 }

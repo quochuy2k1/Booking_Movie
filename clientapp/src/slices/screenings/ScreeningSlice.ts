@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { GetAllScreening, GetScreeningByMovieId } from "../../services/movie.service";
 
+export interface AuditoriumScreening{
+    auditoriumName: string,
+    movieSchedule: MovieSchedule
+}
 export interface MovieSchedule{
     id: number,
     showTime: string
@@ -16,10 +20,11 @@ export interface ScreeningModel{
     movieId?: number,
     screeningTypeName: string,
     screeningTypeId: number,
-    dateFrom: string,
-    dateTo: string,
+    dateFrom: Date,
+    dateTo: Date,
     movieSchedule?: MovieSchedule[]
-    showTimeId: string[]
+    showTimeId: string[],
+    auditoriumScreenings?: AuditoriumScreening[]
 }
 
 

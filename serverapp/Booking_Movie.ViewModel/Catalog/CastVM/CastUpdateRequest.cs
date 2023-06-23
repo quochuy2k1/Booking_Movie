@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace Booking_Movie.ViewModel.Catalog.CastVM
+﻿namespace Booking_Movie.ViewModel.Catalog.CastVM
 {
     public class CastUpdateRequest
     {

@@ -3,6 +3,7 @@
     public static class SystemConstant
     {
         public const string MainConnectionString = "BookingMovie";
+
         public class AppSettings
         {
             public const string DefaultLanguageId = "DefaultLanguageId";

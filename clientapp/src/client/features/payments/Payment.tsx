@@ -9,11 +9,13 @@ import { MovieModel } from "../../../slices/movie/movieSlice";
 import { parseJwt } from "../../utils/parseJwt";
 import { BookingSeatNo } from '../../../slices/seats/seatReservedSlice';
 import { Navigate } from "react-router-dom";
+import { STATUS_MESSAGE } from "../../../common/status-message";
+import Notify from 'devextreme/ui/notify';
 
 const Payment: React.FC<{}> = () => {
 
     const dispatch = useAppDispatch();
-    const { screening, couponId, paymentMethodId, Total, appUserId } = useAppSelector(state => state.bookingClient.booking)
+    const { screening, couponId, paymentMethodId, Total, appUserId, showDate } = useAppSelector(state => state.bookingClient.booking)
     const { seatNo } = useAppSelector(state => state.seatReserved)
     const { tickets } = useAppSelector(state => state.ticket)
     const { combos } = useAppSelector(state => state.combo)
@@ -41,7 +43,28 @@ const Payment: React.FC<{}> = () => {
     const paymentHandle = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: ButtonProps) => {
         const movie_session: string | null = sessionStorage.getItem("book-movie");
         var token = localStorage.getItem("token")!;
-        const movie: MovieModel = JSON.parse(movie_session!);
+        if(!movie_session || (movie_session === null || movie_session === 'undefined')){
+            Notify({
+                message: STATUS_MESSAGE["BOOK_MOVIE_FAILD"],
+                // height: 45,
+                width: 300,
+                minWidth: 300,
+                type: "warning",
+                displayTime: 3500,
+                animation: {
+                    show: {
+                        type: 'fade', duration: 400, from: 0, to: 1,
+                    },
+                    hide: { type: 'fade', duration: 40, to: 0 },
+                },
+            }, {
+                position: "top left",
+                direction: "down-stack",
+            });
+            return;
+        }
+        const movie: MovieModel = JSON.parse(movie_session);
+
 
         const userId = parseJwt(token).userIdClaim;
         
@@ -86,8 +109,9 @@ const Payment: React.FC<{}> = () => {
                 appUserId: userId,
                 couponId: couponId,
                 paymentMethodId: paymentMethodId,
-                screeningId: screening.movieSchedule[0].id,
+                screeningId: screening.movieSchedule![0].id,
                 Total: totalBookTicket + totalBookCombo,
+                showDate: showDate,
                 bookingCombo: bookingCombo,
                 bookingTicket: bookingTicket,
                 bookingSeatNo: bookingSeatNo 

@@ -1,13 +1,4 @@
-﻿using Booking_Movie.ViewModel.Common;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Booking_Movie.Utilities.Common
+﻿namespace Booking_Movie.Utilities.Common
 {
     public class ParseHelper<T> where T : class
     {
@@ -25,7 +16,6 @@ namespace Booking_Movie.Utilities.Common
 
         //                for (int i = 0; i < flattenArray.Count(); i++)
         //                {
-
         //                    if (i % 3 == 0 && i != 0)
         //                    {
         //                        result.Add(list.ToArray());
@@ -53,8 +43,7 @@ namespace Booking_Movie.Utilities.Common
 
         //    private static IEnumerable<string[]> FlattenArray(object[] filters)
         //    {
-
-        //        //foreach (var filter in filters.Where(f => f.GetType() == typeof(object[])).Cast<object[]>()) //we drop all "and"s  
+        //        //foreach (var filter in filters.Where(f => f.GetType() == typeof(object[])).Cast<object[]>()) //we drop all "and"s
         //        //{
         //        //    if (filter.All(f => f.GetType() != typeof(object[])))
         //        //        yield return filter.Select(o => o.ToString()).ToArray();
@@ -111,7 +100,6 @@ namespace Booking_Movie.Utilities.Common
         //        };
         //    }
 
-
         //    public static DXFilterExpression CreateExpression(object[] data, ref int index)
         //    {
         //        if (index >= data.Length)
@@ -147,9 +135,6 @@ namespace Booking_Movie.Utilities.Common
 
         //        return expression;
         //    }
-
-
-
 
         //    public static Expression<Func<T, bool>>? BuildPredicate(DXFilterExpression? conditionExpression)
         //    {

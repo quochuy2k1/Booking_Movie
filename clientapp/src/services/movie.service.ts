@@ -2,12 +2,37 @@ import http from "../common/http-common";
 import { AxiosRequestConfig } from 'axios';
 import { ScreeningModel } from "../slices/screenings/ScreeningSlice";
 import { MovieModel } from "../slices/movie/movieSlice";
+import { ISeriesBar } from "../admin/views/dashboard/Default/MovieRevenueBarChart";
+import { IConditionChartFilter } from "../common/interface";
+
+
+
+
+
+export interface ITicketComboRevenueChartReportResponse{
+    month: number,
+    revenueCombo : number,
+    revenueTicket  : number,
+
+}
+export interface ITicketComboQuantityChartReportResponse{
+    month: number,
+    totalQuantityTicket : number,
+    totalQuantityCombo  : number,
+
+}
+export interface IMovieRevenueChartReportResponse{
+    month: number,
+    revenue: number
+}
 
 export interface MoviePagingRequest {
     PageIndex: number,
     PageSize: number,
     Nationality?: string,
     Status?: number,
+    IsShowing?: boolean,
+    CommingSoon?: boolean,
 }
 
 export interface MovieCreateRequest {
@@ -20,6 +45,8 @@ export interface MovieCreateRequest {
     releaseDate: string,
     content: string,
     status: boolean,
+    isShowing?: boolean,
+    commingSoon?: boolean,
     nationality: string,
     producer: string,
     actorId?: string[],
@@ -39,6 +66,9 @@ export interface MovieUpdateRequest {
     releaseDate?: string,
     content?: string,
     status?: boolean,
+    isShowing?: boolean,
+    commingSoon?: boolean,
+
     nationality?: string,
     producer?: string,
     actorId?: string[],
@@ -64,6 +94,8 @@ export async function GetAllMoviePaging(request: MoviePagingRequest) {
             PageSize: request.PageSize,
             Nationality: request.Nationality,
             Status: request.Status,
+            IsShowing: request.IsShowing,
+            CommingSoon: request.CommingSoon
         }
     }
     var response = http.get<MoviesResponse<MovieModel>>("/api/movies/paging/", body)
@@ -109,9 +141,13 @@ export async function GetCasts(id: string) {
 }
 
 
-export async function GetScreeningByMovieId(id: string) {
+export async function GetScreeningByMovieId(id: string, bookingDate?: Date) {
 
-    var response = http.get<ScreeningModel[]>(`/api/movies/${id}/screening`)
+    var response = http.get<ScreeningModel[]>(`/api/movies/${id}/screening`, {
+        params: {
+            showDate: bookingDate
+        }
+    })
 
     return response;
 
@@ -151,6 +187,8 @@ export async function CreateMovie(request: MovieCreateRequest) {
     data.append("ReleaseDate", request.releaseDate);
     data.append("Content", request.content);
     data.append("Status", request.status.toString());
+    data.append("isShowing", request.isShowing !== undefined ? request.isShowing.toString() : "false");
+    data.append("commingSoon", request.commingSoon !== undefined ? request.commingSoon.toString() : "false");
     data.append("NationalityId", request.nationality);
     data.append("ProducerId", request.producer);
     request.imagePreview && data.append("ImagePreview", request.imagePreview);
@@ -197,6 +235,8 @@ export async function UpdateMovie(request: MovieUpdateRequest) {
     request.releaseDate && data.append("ReleaseDate", request.releaseDate);
     request.content && data.append("Content", request.content);
     request.status && data.append("Status", request.status.toString());
+    request.isShowing !== undefined  && data.append("isShowing", request.isShowing.toString());
+    request.commingSoon !== undefined && data.append("commingSoon", request.commingSoon.toString());
     request.nationality && data.append("NationalityId", request.nationality);
     request.producer && data.append("ProducerId", request.producer);
     request.imagePreview && data.append("ImagePreview", request.imagePreview);
@@ -246,3 +286,77 @@ export async function DeleteMovie(request: MovieDeleteRequest) {
 
     // }
 }
+
+//#region MovieReport
+
+export async function MovieRevenueChartReport(request: IConditionChartFilter) {
+    
+
+    const body: IConditionChartFilter = {
+        conditional: request.conditional
+    }
+    
+   
+    var response = http.post<IMovieRevenueChartReportResponse[]>(`/api/Movies/movie-revenue-chart-report`, body, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${request.token}`,
+            'WithCredentials': "true",
+            'CrossOrigin': "true",
+            'Mode': 'no-cors',
+        }
+    })
+    console.log("create api server")
+    return response;
+
+    // }
+}
+export async function TicketComboQuantityChartReport(request: IConditionChartFilter) {
+    
+
+    const body: IConditionChartFilter = {
+        conditional: request.conditional
+    }
+    
+   
+    var response = http.post<ITicketComboQuantityChartReportResponse[]>(`/api/Movies/ticket-combo-quantity-chart-report`, body, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${request.token}`,
+            'WithCredentials': "true",
+            'CrossOrigin': "true",
+            'Mode': 'no-cors',
+        }
+    })
+    console.log("create api server")
+    return response;
+
+    // }
+}
+export async function TicketComboRevenueChartReport(request: IConditionChartFilter) {
+    
+
+    const body: IConditionChartFilter = {
+        conditional: request.conditional
+    }
+    
+   
+    var response = http.post<ITicketComboRevenueChartReportResponse[]>(`/api/Movies/ticket-combo-revenue-chart-report`, body, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${request.token}`,
+            'WithCredentials': "true",
+            'CrossOrigin': "true",
+            'Mode': 'no-cors',
+        }
+    })
+    console.log("create api server")
+    return response;
+
+    // }
+}
+
+//#endregion

@@ -91,12 +91,12 @@ namespace Booking_Movie.Data.Extensions
                 new Movie() { Id = 1, Name = "Cô Gái Từ Quá Khứ", Alias = "Co_Gai_Den_Tu_Qua_Khu", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "vi", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("7935C4E4-A92A-401C-A994-7BCF420E00AA"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
                 new Movie() { Id = 2, Name = "Black Adam", Alias = "Black_Adam", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "en", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("3F8BA972-52DA-4A37-B152-A92628E4B714"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
                 new Movie() { Id = 3, Name = "Confidential Assignment 2: International", Alias = "Confidential_Assignment_2_:_International", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "vi", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("7935C4E4-A92A-401C-A994-7BCF420E00AA"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
-                new Movie() {Id = 4, Name = "Prey For The Devil", Alias = "Prey_For_The_Devil", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "ukr", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("C6C6386C-78D9-4E32-B993-D7B660210437"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
-                new Movie() {Id = 5, Name = "Don't Look At The Demon", Alias = "Don't_Look_At_The_Demon", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "tha", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("34652A25-E4CE-4994-A412-84AE013D775B"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
-                new Movie() {Id = 6, Name = "Gulliver Returns", Alias = "Gulliver_Returns", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "ms", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("272D7CD7-6ED5-428D-9BD9-DDEB0F5AFFEA"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
-                new Movie() {Id = 7, Name = "Life Is Beautiful", Alias = "Life_Is_Beautiful", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "ko", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("E8A07088-DE72-4B6C-BDD8-14370AB2A3AB"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
-                new Movie() {Id = 8, Name = "Smile", Alias = "Smile", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "es", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("8E82C641-C8F2-4AC9-820A-F59789BBD12F"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
-                new Movie() {Id = 9, Name = "Love Destiny The Movie", Alias = "Love_Destiny_The_Movie", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "vi", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("7935C4E4-A92A-401C-A994-7BCF420E00AA"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 }
+                new Movie() { Id = 4, Name = "Prey For The Devil", Alias = "Prey_For_The_Devil", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "ukr", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("C6C6386C-78D9-4E32-B993-D7B660210437"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
+                new Movie() { Id = 5, Name = "Don't Look At The Demon", Alias = "Don't_Look_At_The_Demon", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "tha", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("34652A25-E4CE-4994-A412-84AE013D775B"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
+                new Movie() { Id = 6, Name = "Gulliver Returns", Alias = "Gulliver_Returns", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "ms", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("272D7CD7-6ED5-428D-9BD9-DDEB0F5AFFEA"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
+                new Movie() { Id = 7, Name = "Life Is Beautiful", Alias = "Life_Is_Beautiful", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "ko", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("E8A07088-DE72-4B6C-BDD8-14370AB2A3AB"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
+                new Movie() { Id = 8, Name = "Smile", Alias = "Smile", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "es", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("8E82C641-C8F2-4AC9-820A-F59789BBD12F"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 },
+                new Movie() { Id = 9, Name = "Love Destiny The Movie", Alias = "Love_Destiny_The_Movie", Duration = 105, VideoTrailer = "duongdan.mp4", NationalityId = "vi", ReleaseDate = new DateTime(2022, 10, 13), ProducerId = Guid.Parse("7935C4E4-A92A-401C-A994-7BCF420E00AA"), CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now, Content = "", IsShowing = true, CommingSoon = false, MovieAgeRestriction = 16 }
                 );
 
             modelBuilder.Entity<MovieCategory>().HasData(
@@ -156,9 +156,9 @@ namespace Booking_Movie.Data.Extensions
 
 
             modelBuilder.Entity<Cinema>().HasData(
-                new Cinema() { Id = 1, Name = "Berry Nguyễn Du", LocationId = 1, Address= "116 Đ. Nguyễn Du, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh" },
+                new Cinema() { Id = 1, Name = "Berry Nguyễn Du", LocationId = 1, Address = "116 Đ. Nguyễn Du, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh" },
                 new Cinema() { Id = 2, Name = "Berry Cà Mau", LocationId = 3, Address = "Sense City, 9 Đ. Trần Hưng Đạo, Phường 5, Thành phố Cà Mau, Cà Mau" },
-                new Cinema() { Id = 3, Name = "Berry Tân Bình", LocationId = 1, Address= "246 Đ. Nguyễn Hồng Đào, Phường 13, Tân Bình, Thành phố Hồ Chí Minh" },
+                new Cinema() { Id = 3, Name = "Berry Tân Bình", LocationId = 1, Address = "246 Đ. Nguyễn Hồng Đào, Phường 13, Tân Bình, Thành phố Hồ Chí Minh" },
                 new Cinema() { Id = 4, Name = "Berry Kinh Dương Vương", LocationId = 1, Address = "718bis Đ. Kinh Dương Vương, Phường 13, Quận 6, Thành phố Hồ Chí Minh" },
                 new Cinema() { Id = 5, Name = "Berry Quang Trung", LocationId = 1, Address = "304A Quang Trung, Phường 11, Gò Vấp, Thành phố Hồ Chí Minh" },
                 new Cinema() { Id = 6, Name = "Berry Bến Tre", LocationId = 9, Address = "Lầu 1, TTTM Sense City, 26A Trần Quốc Tuấn, Phường 4, Bến Tre" },
@@ -195,37 +195,43 @@ namespace Booking_Movie.Data.Extensions
                 );
 
             modelBuilder.Entity<Screening>().HasData(
-                 new Screening() { Id = 1, MovieId = 1, AuditoriumId = 1, ScreeningTypeId = 1, ShowTimeId = "08:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 2, MovieId = 1, AuditoriumId = 2, ScreeningTypeId = 1, ShowTimeId = "18:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 3, MovieId = 1, AuditoriumId = 5, ScreeningTypeId = 1, ShowTimeId = "08:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 4, MovieId = 1, AuditoriumId = 6, ScreeningTypeId = 1, ShowTimeId = "10:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 5, MovieId = 1, AuditoriumId = 7, ScreeningTypeId = 1, ShowTimeId = "13:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 6, MovieId = 2, AuditoriumId = 2, ScreeningTypeId = 1, ShowTimeId = "13:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 7, MovieId = 3, AuditoriumId = 3, ScreeningTypeId = 1, ShowTimeId = "15:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 8, MovieId = 4, AuditoriumId = 4, ScreeningTypeId = 1, ShowTimeId = "18:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 9, MovieId = 4, AuditoriumId = 5, ScreeningTypeId = 1, ShowTimeId = "20:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 10, MovieId = 5, AuditoriumId = 6, ScreeningTypeId = 1, ShowTimeId = "18:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 11, MovieId = 5, AuditoriumId = 7, ScreeningTypeId = 1, ShowTimeId = "20:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 12, MovieId = 6, AuditoriumId = 6, ScreeningTypeId = 1, ShowTimeId = "22:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 13, MovieId = 7, AuditoriumId = 5, ScreeningTypeId = 1, ShowTimeId = "20:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 14, MovieId = 8, AuditoriumId = 4, ScreeningTypeId = 1, ShowTimeId = "15:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 15, MovieId = 9, AuditoriumId = 3, ScreeningTypeId = 1, ShowTimeId = "22:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 16, MovieId = 2, AuditoriumId = 2, ScreeningTypeId = 1, ShowTimeId = "08:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 17, MovieId = 3, AuditoriumId = 1, ScreeningTypeId = 1, ShowTimeId = "10:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)},
-                 new Screening() { Id = 18, MovieId = 4, AuditoriumId = 2, ScreeningTypeId = 1, ShowTimeId = "15:00", DateFrom= new DateTime(2022, 11, 01, 00,00,00), DateTo = new DateTime(2022, 12, 30, 00,00,00)}
+                 new Screening() { Id = 1, MovieId = 1, AuditoriumId = 1, ScreeningTypeId = 1, ShowTimeId = "08:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 2, MovieId = 1, AuditoriumId = 2, ScreeningTypeId = 1, ShowTimeId = "18:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 3, MovieId = 1, AuditoriumId = 5, ScreeningTypeId = 1, ShowTimeId = "08:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 4, MovieId = 1, AuditoriumId = 6, ScreeningTypeId = 1, ShowTimeId = "10:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 5, MovieId = 1, AuditoriumId = 7, ScreeningTypeId = 1, ShowTimeId = "13:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 6, MovieId = 2, AuditoriumId = 2, ScreeningTypeId = 1, ShowTimeId = "13:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 7, MovieId = 3, AuditoriumId = 3, ScreeningTypeId = 1, ShowTimeId = "15:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 8, MovieId = 4, AuditoriumId = 4, ScreeningTypeId = 1, ShowTimeId = "18:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 9, MovieId = 4, AuditoriumId = 5, ScreeningTypeId = 1, ShowTimeId = "20:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 10, MovieId = 5, AuditoriumId = 6, ScreeningTypeId = 1, ShowTimeId = "18:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 11, MovieId = 5, AuditoriumId = 7, ScreeningTypeId = 1, ShowTimeId = "20:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 12, MovieId = 6, AuditoriumId = 6, ScreeningTypeId = 1, ShowTimeId = "22:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 13, MovieId = 7, AuditoriumId = 5, ScreeningTypeId = 1, ShowTimeId = "20:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 14, MovieId = 8, AuditoriumId = 4, ScreeningTypeId = 1, ShowTimeId = "15:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 15, MovieId = 9, AuditoriumId = 3, ScreeningTypeId = 1, ShowTimeId = "22:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 16, MovieId = 2, AuditoriumId = 2, ScreeningTypeId = 1, ShowTimeId = "08:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 17, MovieId = 3, AuditoriumId = 1, ScreeningTypeId = 1, ShowTimeId = "10:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) },
+                 new Screening() { Id = 18, MovieId = 4, AuditoriumId = 2, ScreeningTypeId = 1, ShowTimeId = "15:00", DateFrom = new DateTime(2022, 11, 01, 00, 00, 00), DateTo = new DateTime(2022, 12, 30, 00, 00, 00) }
                  );
 
 
             modelBuilder.Entity<Ticket>().HasData(
-                new Ticket() { Id = 1, Name = "Người lớn", Description = "Vé 2D sử dụng từ 16 tuổi trở lên", Price = 90000 },
-                new Ticket() { Id = 2, Name = "Người trẻ em", Description = "Vé 2D sử dụng dưới 16", Price = 75000 },
-                new Ticket() { Id = 3, Name = "Sau 22h", Description = "Vé 2D chỉ sử dụng cho suất chiếu sau 22h", Price = 50000 }
+                new Ticket() { Id = 1, TicketTypeId = 1, Name = "Người lớn", Description = "Vé 2D sử dụng từ 16 tuổi trở lên", Price = 90000, ValidityDateFromId = "08:00", ValidityDateToId = "20:00", MovieId = 1 },
+                new Ticket() { Id = 2, TicketTypeId = 2, Name = "Người trẻ em", Description = "Vé 2D sử dụng dưới 16", Price = 75000, ValidityDateFromId = "08:00", ValidityDateToId = "20:00", MovieId = 1 },
+                new Ticket() { Id = 3, TicketTypeId = 3, Name = "Sau 22h", Description = "Vé 2D chỉ sử dụng cho suất chiếu sau 22h", Price = 50000, ValidityDateFromId = "22:00", ValidityDateToId = "22:00", MovieId = 1 }
                 );
-            
- 
+
+            modelBuilder.Entity<TicketType>().HasData(
+                new TicketType() { Id = 1, Name = "Người lớn", Description = "Vé 2D sử dụng từ 16 tuổi trở lên" },
+                new TicketType() { Id = 2, Name = "Người trẻ em", Description = "Vé 2D sử dụng dưới 16" },
+                new TicketType() { Id = 3, Name = "Sau 22h", Description = "Vé 2D chỉ sử dụng cho suất chiếu sau 22h" }
+                );
+
+
             modelBuilder.Entity<ScreeningTicket>().HasData(
-                new ScreeningTicket() { Id = 1, ScreeningId = 1, TicketId = 1,  Price = 90000 },
-                new ScreeningTicket() { Id = 2, ScreeningId = 1, TicketId = 2, Price= 75000 },
+                new ScreeningTicket() { Id = 1, ScreeningId = 1, TicketId = 1, Price = 90000 },
+                new ScreeningTicket() { Id = 2, ScreeningId = 1, TicketId = 2, Price = 75000 },
                 new ScreeningTicket() { Id = 3, ScreeningId = 15, TicketId = 3, Price = 50000 },
                 new ScreeningTicket() { Id = 4, ScreeningId = 6, TicketId = 1, Price = 50000 },
                 new ScreeningTicket() { Id = 5, ScreeningId = 6, TicketId = 2, Price = 75000 },
@@ -593,15 +599,15 @@ namespace Booking_Movie.Data.Extensions
                 new BookingCombo() { Id = 10, BookingId = 7, ComboId = 1, Quantity = 1, Status = true }
                 );
             modelBuilder.Entity<BookingTicket>().HasData(
-                new BookingTicket() { Id = 1, BookingId = 1, ScreeningTicketId = 1, Quantity = 2, Status = true },
-                new BookingTicket() { Id = 2, BookingId = 1, ScreeningTicketId = 2, Quantity = 1, Status = true },
-                new BookingTicket() { Id = 3, BookingId = 2, ScreeningTicketId = 1, Quantity = 1, Status = true },
-                new BookingTicket() { Id = 4, BookingId = 2, ScreeningTicketId = 2, Quantity = 1, Status = true },
-                new BookingTicket() { Id = 5, BookingId = 3, ScreeningTicketId = 1, Quantity = 1, Status = true },
-                new BookingTicket() { Id = 6, BookingId = 4, ScreeningTicketId = 2, Quantity = 3, Status = true },
-                new BookingTicket() { Id = 7, BookingId = 5, ScreeningTicketId = 2, Quantity = 2, Status = true },
-                new BookingTicket() { Id = 8, BookingId = 6, ScreeningTicketId = 1, Quantity = 3, Status = true },
-                new BookingTicket() { Id = 9, BookingId = 7, ScreeningTicketId = 2, Quantity = 1, Status = true }
+                new BookingTicket() { Id = 1, BookingId = 1, ScreeningTicketId = 1, TicketId = 1, Quantity = 2, Status = true },
+                new BookingTicket() { Id = 2, BookingId = 1, ScreeningTicketId = 2, TicketId = 2, Quantity = 1, Status = true },
+                new BookingTicket() { Id = 3, BookingId = 2, ScreeningTicketId = 1, TicketId = 1, Quantity = 1, Status = true },
+                new BookingTicket() { Id = 4, BookingId = 2, ScreeningTicketId = 2, TicketId = 2, Quantity = 1, Status = true },
+                new BookingTicket() { Id = 5, BookingId = 3, ScreeningTicketId = 1, TicketId = 1, Quantity = 1, Status = true },
+                new BookingTicket() { Id = 6, BookingId = 4, ScreeningTicketId = 2, TicketId = 2, Quantity = 3, Status = true },
+                new BookingTicket() { Id = 7, BookingId = 5, ScreeningTicketId = 2, TicketId = 2, Quantity = 2, Status = true },
+                new BookingTicket() { Id = 8, BookingId = 6, ScreeningTicketId = 1, TicketId = 1, Quantity = 3, Status = true },
+                new BookingTicket() { Id = 9, BookingId = 7, ScreeningTicketId = 2, TicketId = 2, Quantity = 1, Status = true }
                 );
 
             modelBuilder.Entity<SeatReserved>().HasData(
@@ -611,14 +617,14 @@ namespace Booking_Movie.Data.Extensions
                 new SeatReserved() { Id = 4, BookingId = 2, SeatNoId = 5, Status = true },
                 new SeatReserved() { Id = 5, BookingId = 2, SeatNoId = 6, Status = true },
                 new SeatReserved() { Id = 6, BookingId = 3, SeatNoId = 7, Status = true },
-                new SeatReserved() { Id = 7, BookingId = 4, SeatNoId =8, Status = true },
-                new SeatReserved() { Id = 8, BookingId = 4, SeatNoId =9, Status = true },
-                new SeatReserved() { Id = 9, BookingId = 4, SeatNoId =10, Status = true },
-                new SeatReserved() { Id = 10, BookingId = 5, SeatNoId =25, Status = true },
-                new SeatReserved() { Id = 11, BookingId = 5, SeatNoId =26, Status = true },
-                new SeatReserved() { Id = 12, BookingId = 6, SeatNoId =36, Status = true },
-                new SeatReserved() { Id = 13, BookingId = 6, SeatNoId =37, Status = true },
-                new SeatReserved() { Id = 14, BookingId = 6, SeatNoId =38, Status = true },
+                new SeatReserved() { Id = 7, BookingId = 4, SeatNoId = 8, Status = true },
+                new SeatReserved() { Id = 8, BookingId = 4, SeatNoId = 9, Status = true },
+                new SeatReserved() { Id = 9, BookingId = 4, SeatNoId = 10, Status = true },
+                new SeatReserved() { Id = 10, BookingId = 5, SeatNoId = 25, Status = true },
+                new SeatReserved() { Id = 11, BookingId = 5, SeatNoId = 26, Status = true },
+                new SeatReserved() { Id = 12, BookingId = 6, SeatNoId = 36, Status = true },
+                new SeatReserved() { Id = 13, BookingId = 6, SeatNoId = 37, Status = true },
+                new SeatReserved() { Id = 14, BookingId = 6, SeatNoId = 38, Status = true },
                 new SeatReserved() { Id = 15, BookingId = 7, SeatNoId = 40, Status = true }
                 );
         }

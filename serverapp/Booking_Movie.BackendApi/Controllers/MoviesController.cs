@@ -1,20 +1,15 @@
 ﻿using Booking_Movie.Application.Catalog.Movies;
-using Booking_Movie.Utilities.Common;
-using Booking_Movie.ViewModel.Catalog.ActorVM;
+using Booking_Movie.Utilities.Constants;
 using Booking_Movie.ViewModel.Catalog.MovieVM;
+using Booking_Movie.ViewModel.Catalog.ReportVM.MovieReportVM;
+using Booking_Movie.ViewModel.Catalog.ReportVM.TicketComboReportVM;
 using Booking_Movie.ViewModel.Catalog.ScreeningVM;
-using Booking_Movie.ViewModel.Common;
 using DevExtreme.AspNet.Data;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 
 namespace Booking_Movie.BackendApi.Controllers
 {
@@ -25,7 +20,6 @@ namespace Booking_Movie.BackendApi.Controllers
         private readonly IMovieService _movieService;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-
         public MoviesController(IMovieService movieService, IWebHostEnvironment webHostEnvironment)
         {
             _movieService = movieService;
@@ -33,16 +27,16 @@ namespace Booking_Movie.BackendApi.Controllers
         }
 
         [HttpGet("paging/")]
-        public async Task<IActionResult> GetAllPaging([FromQuery]GetMoviePagingRequest request)
+        public async Task<IActionResult> GetAllPaging([FromQuery] GetMoviePagingRequest request)
         {
             var host = $"{Request.Scheme}://{Request.Host}";
-            if(!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var movies = await _movieService.GetAllPaging(request, host);
             return Ok(movies);
         }
-        
+
         [HttpPost("paging/admin")]
-        public async Task<IActionResult> GetAllPagingAdmin([FromForm]GetMoviePagingAdminRequest request)
+        public async Task<IActionResult> GetAllPagingAdmin([FromForm] GetMoviePagingAdminRequest request)
         {
             var host = $"{Request.Scheme}://{Request.Host}";
             var sort = Request.Form["sort"];
@@ -57,14 +51,10 @@ namespace Booking_Movie.BackendApi.Controllers
             if (!String.IsNullOrEmpty(sort))
             {
                 request.Sort = JsonConvert.DeserializeObject<SortingInfo[]>(sort);
-
-
             }
             if (!String.IsNullOrEmpty(group))
             {
                 request.Group = JsonConvert.DeserializeObject<GroupingInfo[]>(group);
-
-
             }
             if (!ModelState.IsValid) return BadRequest(ModelState);
             var movies = await _movieService.GetAllPagingAdmin(request, host);
@@ -75,31 +65,32 @@ namespace Booking_Movie.BackendApi.Controllers
         public async Task<IActionResult> GetDetail(int id)
         {
             var host = $"{Request.Scheme}://{Request.Host}";
-            if(!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var movies = await _movieService.GetMovieDetails(id, host);
             return Ok(movies);
         }
 
         [HttpPatch("update-image-video/{id}")]
-        [RequestSizeLimit(50*1024*1024)]
-        [RequestFormLimits(MultipartBodyLengthLimit = 50*1024*1024)]
-        public async Task<IActionResult> UpdateImage(int id,[FromForm] MovieUpdateImageVideoRequest request)
+        [RequestSizeLimit(50 * 1024 * 1024)]
+        [RequestFormLimits(MultipartBodyLengthLimit = 50 * 1024 * 1024)]
+        public async Task<IActionResult> UpdateImage(int id, [FromForm] MovieUpdateImageVideoRequest request)
         {
-           
-            if(!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var movies = await _movieService.UpdateImageVideo(id, request);
             return Ok(movies);
         }
 
         [HttpGet("{id}/screening")]
-        public async Task<IActionResult> GetScreeningByMovieId(int id) { 
+        public async Task<IActionResult> GetScreeningByMovieId(int id, DateTime? ShowDate)
+        {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            var screenings = await _movieService.GetScreeningByMovieId(id);
+            var screenings = await _movieService.GetScreeningByMovieId(id, ShowDate);
             return Ok(screenings);
-        } 
-        
+        }
+
         [HttpGet("screening")]
-        public async Task<IActionResult> GetAllScreening() { 
+        public async Task<IActionResult> GetAllScreening()
+        {
             if (!ModelState.IsValid) return BadRequest(ModelState);
             var screenings = await _movieService.GetAllScreening();
             return Ok(screenings);
@@ -121,15 +112,14 @@ namespace Booking_Movie.BackendApi.Controllers
             if (!String.IsNullOrEmpty(sort))
             {
                 request.Sort = JsonConvert.DeserializeObject<SortingInfo[]>(sort);
-
-
-            }if (!String.IsNullOrEmpty(group))
+            }
+            if (!String.IsNullOrEmpty(group))
             {
                 request.Group = JsonConvert.DeserializeObject<GroupingInfo[]>(group);
-
-
             }
             if (!ModelState.IsValid) return BadRequest(ModelState);
+            request.PrimaryKey = new string[] { "Id" };
+            request.SortByPrimaryKey = false;
             var screening = await _movieService.GetAllPagingScreeningAdmin(request, host);
 
             return Ok(screening);
@@ -172,15 +162,13 @@ namespace Booking_Movie.BackendApi.Controllers
                 var movie_updated = await _movieService.GetMovieDetails(movieId.Value, host);
                 return Ok(movie_updated);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
-           
         }
 
         [HttpDelete("del")]
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete([FromBody] int[] id)
         {
             if (!ModelState.IsValid)
@@ -192,21 +180,16 @@ namespace Booking_Movie.BackendApi.Controllers
                 var isSuccess = await _movieService.Delete(id);
                 if (isSuccess == null) return BadRequest();
                 return Ok(isSuccess);
-
             }
             catch (DbUpdateException)
             {
-                
                 return StatusCode(500, "Không thể xoá nếu bảng movie còn tham chiếu đến bảng khác. (Danh mục phim, Đạo diễn, Diễn viên). Phải xoá những tham chiếu đến bảng này hết trước khi xoá.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
-
             }
-
         }
-
 
         [HttpPatch("{id}/update-cast")]
         public async Task<IActionResult> UpdateCast(int id, Guid[] actorsId)
@@ -220,15 +203,13 @@ namespace Booking_Movie.BackendApi.Controllers
                 var isSuccessful = await _movieService.UpdateCast(id, actorsId);
                 return Ok(isSuccessful);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
-            
         }
 
         [HttpPost("add-movie-categories/{Id}")]
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddMovieCategories(int Id, [FromBody] int[] categoriesId)
         {
             if (!ModelState.IsValid)
@@ -242,7 +223,6 @@ namespace Booking_Movie.BackendApi.Controllers
         }
 
         [HttpPost("add-cast/{Id}")]
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddCast(int Id, [FromBody] Guid[] actorsId)
         {
             if (!ModelState.IsValid)
@@ -256,7 +236,6 @@ namespace Booking_Movie.BackendApi.Controllers
         }
 
         [HttpPost("add-movie-director/{Id}")]
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddMovieCategory(int Id, [FromBody] Guid[] directorsId)
         {
             if (!ModelState.IsValid)
@@ -272,24 +251,21 @@ namespace Booking_Movie.BackendApi.Controllers
         [HttpGet("{id}/get-movie-director")]
         public async Task<IActionResult> GetMovieDirector(int id)
         {
-           
             if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
                 var movieDirectors = await _movieService.FindMovieDirectorByMovieId(id);
                 return Ok(movieDirectors);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return StatusCode(500, ex.Message); 
+                return StatusCode(500, ex.Message);
             }
-            
         }
 
         [HttpGet("{id}/get-movie-category")]
         public async Task<IActionResult> GetMovieCategory(int id)
         {
-
             if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
@@ -300,13 +276,11 @@ namespace Booking_Movie.BackendApi.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
+        }
 
-        } 
-        
         [HttpGet("{id}/get-cast")]
         public async Task<IActionResult> GetCast(int id)
         {
-
             if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
@@ -317,7 +291,184 @@ namespace Booking_Movie.BackendApi.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-
         }
+
+        #region Report
+
+        [HttpPost("movie-revenue-report")]
+        public async Task<IActionResult> MovieRevenueReport([FromForm] MovieRevenueRequest request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                var result = await _movieService.MovieRevenueReport(request);
+                if (result == null) return BadRequest(new { Status = StatusResponseConstant.FAILED, Message = StatusMessageResponseConstant.GET_ERROR });
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost("movie-ticket-report")]
+        public async Task<IActionResult> MovieTicketReport([FromForm] MovieTicketReportRequest request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                var sort = Request.Form["sort"];
+                var filter = Request.Form["filter"];
+                var group = Request.Form["group"];
+
+                if (!String.IsNullOrEmpty(filter))
+                {
+                    request.Filter = JsonConvert.DeserializeObject<IList>(filter);
+                }
+
+                if (!String.IsNullOrEmpty(sort))
+                {
+                    request.Sort = JsonConvert.DeserializeObject<SortingInfo[]>(sort);
+                }
+                if (!String.IsNullOrEmpty(group))
+                {
+                    request.Group = JsonConvert.DeserializeObject<GroupingInfo[]>(group);
+                }
+                var result = await _movieService.MovieTicketReport(request);
+                if (result == null) return BadRequest(new { Status = StatusResponseConstant.FAILED, Message = StatusMessageResponseConstant.GET_ERROR });
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost("movie-combo-report")]
+        public async Task<IActionResult> MovieComboReport([FromForm] MovieComboReportRequest request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                var sort = Request.Form["sort"];
+                var filter = Request.Form["filter"];
+                var group = Request.Form["group"];
+
+                if (!String.IsNullOrEmpty(filter))
+                {
+                    request.Filter = JsonConvert.DeserializeObject<IList>(filter);
+                }
+
+                if (!String.IsNullOrEmpty(sort))
+                {
+                    request.Sort = JsonConvert.DeserializeObject<SortingInfo[]>(sort);
+                }
+                if (!String.IsNullOrEmpty(group))
+                {
+                    request.Group = JsonConvert.DeserializeObject<GroupingInfo[]>(group);
+                }
+                var result = await _movieService.MovieComboReport(request);
+                if (result == null) return BadRequest(new { Status = StatusResponseConstant.FAILED, Message = StatusMessageResponseConstant.GET_ERROR });
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost("movie-ticket-combo-report")]
+        public async Task<IActionResult> MovieTicketComboReport([FromForm] TicketComboReportRequest request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                var sort = Request.Form["sort"];
+                var filter = Request.Form["filter"];
+                var group = Request.Form["group"];
+
+                if (!String.IsNullOrEmpty(filter))
+                {
+                    request.Filter = JsonConvert.DeserializeObject<IList>(filter);
+                }
+
+                if (!String.IsNullOrEmpty(sort))
+                {
+                    request.Sort = JsonConvert.DeserializeObject<SortingInfo[]>(sort);
+                }
+                if (!String.IsNullOrEmpty(group))
+                {
+                    request.Group = JsonConvert.DeserializeObject<GroupingInfo[]>(group);
+                }
+                var result = await _movieService.MovieTicketComboReport(request);
+                if (result == null) return BadRequest(new { Status = StatusResponseConstant.FAILED, Message = StatusMessageResponseConstant.GET_ERROR });
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion Report
+
+        #region ChartReport
+
+        [HttpPost("movie-revenue-chart-report")]
+        public async Task<IActionResult> MovieRevenueChartReport([FromBody] MovieRevenueChartReportRequest request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                var result = await _movieService.MovieRevenueChartReport(request);
+                if (result == null) return BadRequest(new { Status = StatusResponseConstant.FAILED, Message = StatusMessageResponseConstant.GET_ERROR });
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost("ticket-combo-quantity-chart-report")]
+        public async Task<IActionResult> TicketComboQuantityChartReport([FromBody] TicketComboChartReportRequest request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                var result = await _movieService.TicketComboQuantityChartReport(request);
+                if (result == null) return BadRequest(new { Status = StatusResponseConstant.FAILED, Message = StatusMessageResponseConstant.GET_ERROR });
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost("ticket-combo-revenue-chart-report")]
+        public async Task<IActionResult> TicketComboRevenueChartReport([FromBody] TicketComboChartReportRequest request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                var result = await _movieService.TicketComboRevenueChartReport(request);
+                if (result == null) return BadRequest(new { Status = StatusResponseConstant.FAILED, Message = StatusMessageResponseConstant.GET_ERROR });
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion ChartReport
     }
 }

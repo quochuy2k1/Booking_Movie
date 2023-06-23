@@ -1,5 +1,4 @@
-﻿
-namespace Booking_Movie.ViewModel.Catalog.NationalityVM
+﻿namespace Booking_Movie.ViewModel.Catalog.NationalityVM
 {
     public class NationalityViewModel
     {
@@ -11,8 +10,5 @@ namespace Booking_Movie.ViewModel.Catalog.NationalityVM
         public bool FlagDirector { get; set; }
         public bool FlagProducer { get; set; }
         public bool FlagMovie { get; set; }
-
-
-
     }
 }

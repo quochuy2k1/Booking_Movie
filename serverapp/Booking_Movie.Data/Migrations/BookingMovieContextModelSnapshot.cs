@@ -75,79 +75,79 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("354b3fae-02fc-482f-bf68-1cc40b04c34f"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6866),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(876),
                             DateOfBirth = new DateTime(1990, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.64m,
                             Image = "",
                             Name = "Ninh Dương Lan Ngọc",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6867),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(876),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("1fa1a35a-d969-4b44-8cc0-1f6fbff578fb"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6871),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(880),
                             DateOfBirth = new DateTime(1991, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.67m,
                             Image = "",
                             Name = "Katy Nguyễn",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6872),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(880),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("343d4b37-c4f7-4d24-adb6-05abeda8aa41"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6875),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(883),
                             DateOfBirth = new DateTime(1989, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.7m,
                             Image = "",
                             Name = "NSƯT Lê Khanh",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6875),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(883),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("bf79e94c-2b38-4763-aacd-8161006e8347"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6878),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(886),
                             DateOfBirth = new DateTime(1988, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.65m,
                             Image = "",
                             Name = "Hữu Châu",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6879),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(887),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("26340d49-35d2-4696-addf-e4fc97cd5300"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6882),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(889),
                             DateOfBirth = new DateTime(1987, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.81m,
                             Image = "",
                             Name = "Lãnh Thanh",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6882),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(890),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("376ef100-3a18-45dd-b83c-517d2cafc0dc"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6885),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(892),
                             DateOfBirth = new DateTime(1986, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.76m,
                             Image = "",
                             Name = "Lê Xuân Tiền",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6885),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(893),
                             ViewCount = 0
                         });
                 });
@@ -309,13 +309,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("ab778d64-0d3e-4ab6-bc7c-a50b93de737b"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5e0c51ed-c314-4cdf-a568-36686a369813",
+                            ConcurrencyStamp = "6f3282b6-03c5-4c4f-98ad-b5b0c7b5184f",
                             Email = "dangit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Đăng",
                             LastName = "Nguyễn Minh",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEO7H22Bja31uNq2dovWEb0VLe9bv0Zxa8c0HNrTmGS2KmW0zLlI5STvfRbsscA/onA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFXvemepvgKV7I3/NXbqplomTSXdLQkXwmUTzGVU/r/0hCyNlGRe1+qzurEA9NU4Dw==",
                             PhoneNumber = "0364125410",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -325,13 +325,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("d83ac55f-ef97-468f-a493-e9a8eeec395e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dc33b4ae-de11-4368-8939-70542cf58990",
+                            ConcurrencyStamp = "2728d7f2-10f4-4e7e-9ccc-429526faee81",
                             Email = "khanhit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Khánh",
                             LastName = "Nguyễn",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEEtCTwvbWqLXgo8XMKVaZF8FPHgt7/qPZTHaqizZO5gBADmxdA1FX9QzXU/zYOtJyA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFZZsM2HEvHRsulPy7SvcGnk2TOQuZV9S64v3MdwkUrdPdyEmvKANUsAG0AAuerQ6Q==",
                             PhoneNumber = "0364125420",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -341,13 +341,13 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = new Guid("c8a04d06-2334-4806-92a6-6f6db3ed6692"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0d54859e-4116-48d2-a638-ec5c9dc5699c",
+                            ConcurrencyStamp = "075c7929-d2b3-40fb-8051-1c62813cf0d8",
                             Email = "thaoit19@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Thảo",
                             LastName = "Nguyễn Hoàng",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEHs/OZBTt8bMuh8oQ1GTmtdQSRs/QBmhLivkxqbq3jsdKLihI6V/t2RkmT5CAcPBtA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIxO3h0f+GEDZnn+TPcpgtI12s3XXphpZ2MjmYqF4ZEJDykQBytvahOomFP/RwFFMg==",
                             PhoneNumber = "0364125430",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -450,8 +450,10 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<Guid>("AppUserId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime?>("BookingDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("CouponId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
@@ -465,6 +467,9 @@ namespace Booking_Movie.Data.Migrations
 
                     b.Property<int?>("ScreeningId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("ShowDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool?>("Status")
                         .HasColumnType("bit");
@@ -703,7 +708,7 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("TicketId")
+                    b.Property<int>("TicketId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Total")
@@ -714,8 +719,6 @@ namespace Booking_Movie.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BookingId");
-
-                    b.HasIndex("ScreeningTicketId");
 
                     b.HasIndex("TicketId");
 
@@ -729,6 +732,7 @@ namespace Booking_Movie.Data.Migrations
                             Quantity = 2,
                             ScreeningTicketId = 1,
                             Status = true,
+                            TicketId = 1,
                             Total = 0m
                         },
                         new
@@ -738,6 +742,7 @@ namespace Booking_Movie.Data.Migrations
                             Quantity = 1,
                             ScreeningTicketId = 2,
                             Status = true,
+                            TicketId = 2,
                             Total = 0m
                         },
                         new
@@ -747,6 +752,7 @@ namespace Booking_Movie.Data.Migrations
                             Quantity = 1,
                             ScreeningTicketId = 1,
                             Status = true,
+                            TicketId = 1,
                             Total = 0m
                         },
                         new
@@ -756,6 +762,7 @@ namespace Booking_Movie.Data.Migrations
                             Quantity = 1,
                             ScreeningTicketId = 2,
                             Status = true,
+                            TicketId = 2,
                             Total = 0m
                         },
                         new
@@ -765,6 +772,7 @@ namespace Booking_Movie.Data.Migrations
                             Quantity = 1,
                             ScreeningTicketId = 1,
                             Status = true,
+                            TicketId = 1,
                             Total = 0m
                         },
                         new
@@ -774,6 +782,7 @@ namespace Booking_Movie.Data.Migrations
                             Quantity = 3,
                             ScreeningTicketId = 2,
                             Status = true,
+                            TicketId = 2,
                             Total = 0m
                         },
                         new
@@ -783,6 +792,7 @@ namespace Booking_Movie.Data.Migrations
                             Quantity = 2,
                             ScreeningTicketId = 2,
                             Status = true,
+                            TicketId = 2,
                             Total = 0m
                         },
                         new
@@ -792,6 +802,7 @@ namespace Booking_Movie.Data.Migrations
                             Quantity = 3,
                             ScreeningTicketId = 1,
                             Status = true,
+                            TicketId = 1,
                             Total = 0m
                         },
                         new
@@ -801,6 +812,7 @@ namespace Booking_Movie.Data.Migrations
                             Quantity = 1,
                             ScreeningTicketId = 2,
                             Status = true,
+                            TicketId = 2,
                             Total = 0m
                         });
                 });
@@ -1341,118 +1353,118 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("01c9b39b-ad45-41fe-ace0-244b38254f99"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4839),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(693),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Jaume Collet-Serra",
                             NationalityId = "es",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4856),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(709),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("88034877-a697-472c-a2d8-3d133792c463"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4868),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(715),
                             DateOfBirth = new DateTime(1986, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.85m,
                             Image = "",
                             Name = "Bảo Nhân",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4869),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(715),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("55266710-251a-45a1-b11b-d2e2e7e104ea"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4876),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(720),
                             DateOfBirth = new DateTime(1985, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.65m,
                             Image = "",
                             Name = "Nam Cito",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4877),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(720),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("c089db2a-468a-4287-8b45-a832bb10fe93"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4882),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(724),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Jaume Collet-Serra",
                             NationalityId = "es",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4883),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(725),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("ff9a4cc9-3191-4da4-9bf8-6cd8bd129138"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4887),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(727),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Ilya Maksimov",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4888),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(728),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("e37edc8f-48ff-40fe-bcfc-d37a689a5b04"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4892),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(731),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Lee Seok Hoon",
                             NationalityId = "ukr",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4893),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(731),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("eb504714-17f9-4aa3-8b5b-6360102f8453"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4898),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(734),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Brando Lee",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4899),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(734),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("7e02a8db-94e7-4842-8b35-96c48d0e0c63"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4903),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(737),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Parker Finn",
                             NationalityId = "ms",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4904),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(738),
                             ViewCount = 0
                         },
                         new
                         {
                             ID = new Guid("e717c0c2-82f5-46a8-8e50-95999e661a67"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4908),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(741),
                             DateOfBirth = new DateTime(1974, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "",
                             Height = 1.75m,
                             Image = "",
                             Name = "Park Gyu Tae",
                             NationalityId = "tha",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(4909),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(741),
                             ViewCount = 0
                         });
                 });
@@ -1591,8 +1603,8 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<short>("Duration")
-                        .HasColumnType("smallint");
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImageBackground")
                         .ValueGeneratedOnAdd()
@@ -1657,8 +1669,8 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Co_Gai_Den_Tu_Qua_Khu",
                             CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6959),
-                            Duration = (short)105,
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(944),
+                            Duration = 105,
                             IsShowing = true,
                             MovieAgeRestriction = 16,
                             Name = "Cô Gái Từ Quá Khứ",
@@ -1666,7 +1678,7 @@ namespace Booking_Movie.Data.Migrations
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6960),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(945),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1675,8 +1687,8 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Black_Adam",
                             CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6964),
-                            Duration = (short)105,
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(950),
+                            Duration = 105,
                             IsShowing = true,
                             MovieAgeRestriction = 16,
                             Name = "Black Adam",
@@ -1684,7 +1696,7 @@ namespace Booking_Movie.Data.Migrations
                             ProducerId = new Guid("3f8ba972-52da-4a37-b152-a92628e4b714"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6965),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(950),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1693,8 +1705,8 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Confidential_Assignment_2_:_International",
                             CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6968),
-                            Duration = (short)105,
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(954),
+                            Duration = 105,
                             IsShowing = true,
                             MovieAgeRestriction = 16,
                             Name = "Confidential Assignment 2: International",
@@ -1702,7 +1714,7 @@ namespace Booking_Movie.Data.Migrations
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6969),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(955),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1711,8 +1723,8 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Prey_For_The_Devil",
                             CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6972),
-                            Duration = (short)105,
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(958),
+                            Duration = 105,
                             IsShowing = true,
                             MovieAgeRestriction = 16,
                             Name = "Prey For The Devil",
@@ -1720,7 +1732,7 @@ namespace Booking_Movie.Data.Migrations
                             ProducerId = new Guid("c6c6386c-78d9-4e32-b993-d7b660210437"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6973),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(959),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1729,8 +1741,8 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Don't_Look_At_The_Demon",
                             CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6978),
-                            Duration = (short)105,
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(962),
+                            Duration = 105,
                             IsShowing = true,
                             MovieAgeRestriction = 16,
                             Name = "Don't Look At The Demon",
@@ -1738,7 +1750,7 @@ namespace Booking_Movie.Data.Migrations
                             ProducerId = new Guid("34652a25-e4ce-4994-a412-84ae013d775b"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6979),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(963),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1747,8 +1759,8 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Gulliver_Returns",
                             CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6982),
-                            Duration = (short)105,
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(966),
+                            Duration = 105,
                             IsShowing = true,
                             MovieAgeRestriction = 16,
                             Name = "Gulliver Returns",
@@ -1756,7 +1768,7 @@ namespace Booking_Movie.Data.Migrations
                             ProducerId = new Guid("272d7cd7-6ed5-428d-9bd9-ddeb0f5affea"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6983),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(966),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1765,8 +1777,8 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Life_Is_Beautiful",
                             CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7013),
-                            Duration = (short)105,
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(987),
+                            Duration = 105,
                             IsShowing = true,
                             MovieAgeRestriction = 16,
                             Name = "Life Is Beautiful",
@@ -1774,7 +1786,7 @@ namespace Booking_Movie.Data.Migrations
                             ProducerId = new Guid("e8a07088-de72-4b6c-bdd8-14370ab2a3ab"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7014),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(987),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1783,8 +1795,8 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Smile",
                             CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7017),
-                            Duration = (short)105,
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(997),
+                            Duration = 105,
                             IsShowing = true,
                             MovieAgeRestriction = 16,
                             Name = "Smile",
@@ -1792,7 +1804,7 @@ namespace Booking_Movie.Data.Migrations
                             ProducerId = new Guid("8e82c641-c8f2-4ac9-820a-f59789bbd12f"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7018),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(998),
                             VideoTrailer = "duongdan.mp4"
                         },
                         new
@@ -1801,8 +1813,8 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Love_Destiny_The_Movie",
                             CommingSoon = false,
                             Content = "",
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7021),
-                            Duration = (short)105,
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(1001),
+                            Duration = 105,
                             IsShowing = true,
                             MovieAgeRestriction = 16,
                             Name = "Love Destiny The Movie",
@@ -1810,7 +1822,7 @@ namespace Booking_Movie.Data.Migrations
                             ProducerId = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
                             ReleaseDate = new DateTime(2022, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(7022),
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(1002),
                             VideoTrailer = "duongdan.mp4"
                         });
                 });
@@ -2205,10 +2217,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_dien_tu_momo",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8352),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(3707),
                             Name = "Ví điện tử momo",
                             Status = true,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8355)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(3712)
                         },
                         new
                         {
@@ -2216,10 +2228,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_Zalo",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8359),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(3714),
                             Name = "Ví Zalo",
                             Status = true,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8359)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(3715)
                         },
                         new
                         {
@@ -2227,10 +2239,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "VNPAY",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8361),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(3717),
                             Name = "VNPAY",
                             Status = true,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8362)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(3717)
                         },
                         new
                         {
@@ -2238,10 +2250,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "HSBC/Payoo-ATM/VISA/MASTER/JCB/QRCODE",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8364),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(3719),
                             Name = "HSBC/Payoo - ATM/VISA/MASTER/JCB/QRCODE",
                             Status = true,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8364)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(3720)
                         },
                         new
                         {
@@ -2249,10 +2261,10 @@ namespace Booking_Movie.Data.Migrations
                             Alias = "Vi_ShoppePay",
                             Cost = 0m,
                             CostAdditional = 0m,
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8366),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(3722),
                             Name = "Ví ShopeePay",
                             Status = true,
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(8367)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(3723)
                         });
                 });
 
@@ -2296,65 +2308,65 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             ID = new Guid("7935c4e4-a92a-401c-a994-7bcf420e00aa"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6533),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(784),
                             Image = "",
                             Name = "MAR6 Pictures",
                             NationalityId = "vi",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6547)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(784)
                         },
                         new
                         {
                             ID = new Guid("8e82c641-c8f2-4ac9-820a-f59789bbd12f"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6553),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(788),
                             Image = "",
                             Name = "GDH 559",
                             NationalityId = "tha",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6553)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(788)
                         },
                         new
                         {
                             ID = new Guid("e8a07088-de72-4b6c-bdd8-14370ab2a3ab"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6556),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(790),
                             Image = "",
                             Name = "Warner Bros",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6557)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(791)
                         },
                         new
                         {
                             ID = new Guid("272d7cd7-6ed5-428d-9bd9-ddeb0f5affea"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6561),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(793),
                             Image = "",
                             Name = "CJ Entertainment",
                             NationalityId = "ko",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6562)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(793)
                         },
                         new
                         {
                             ID = new Guid("34652a25-e4ce-4994-a412-84ae013d775b"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6564),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(795),
                             Image = "",
                             Name = "Lionsgate",
                             NationalityId = "en",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6565)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(796)
                         },
                         new
                         {
                             ID = new Guid("c6c6386c-78d9-4e32-b993-d7b660210437"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6567),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(797),
                             Image = "",
                             Name = "Bliss Pictures",
                             NationalityId = "ms",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6579)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(809)
                         },
                         new
                         {
                             ID = new Guid("3f8ba972-52da-4a37-b152-a92628e4b714"),
-                            CreatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6595),
+                            CreatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(827),
                             Image = "",
                             Name = "95 Animation Studio",
                             NationalityId = "ukr",
-                            UpdatedDate = new DateTime(2023, 6, 1, 13, 19, 14, 569, DateTimeKind.Local).AddTicks(6596)
+                            UpdatedDate = new DateTime(2023, 6, 22, 1, 8, 41, 418, DateTimeKind.Local).AddTicks(828)
                         });
                 });
 
@@ -2690,12 +2702,12 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<string>("SeatId")
                         .HasColumnType("varchar(5)");
 
-                    b.Property<byte>("Number")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
 
                     b.Property<string>("Row")
                         .IsRequired()
-                        .HasColumnType("varchar(1)");
+                        .HasColumnType("varchar(5)");
 
                     b.HasKey("SeatId");
 
@@ -2705,919 +2717,919 @@ namespace Booking_Movie.Data.Migrations
                         new
                         {
                             SeatId = "00",
-                            Number = (byte)0,
+                            Number = 0,
                             Row = "0"
                         },
                         new
                         {
                             SeatId = "A1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "A12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "A"
                         },
                         new
                         {
                             SeatId = "B1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "B12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "B"
                         },
                         new
                         {
                             SeatId = "C1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "C12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "C"
                         },
                         new
                         {
                             SeatId = "D1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "D12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "D"
                         },
                         new
                         {
                             SeatId = "E1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "E12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "E"
                         },
                         new
                         {
                             SeatId = "F1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "F12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "F"
                         },
                         new
                         {
                             SeatId = "G1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "G12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "G"
                         },
                         new
                         {
                             SeatId = "H1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "H12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "H"
                         },
                         new
                         {
                             SeatId = "I1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "I12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "I"
                         },
                         new
                         {
                             SeatId = "J1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J13",
-                            Number = (byte)13,
+                            Number = 13,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "J14",
-                            Number = (byte)14,
+                            Number = 14,
                             Row = "J"
                         },
                         new
                         {
                             SeatId = "K1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K13",
-                            Number = (byte)13,
+                            Number = 13,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "K14",
-                            Number = (byte)14,
+                            Number = 14,
                             Row = "K"
                         },
                         new
                         {
                             SeatId = "L1",
-                            Number = (byte)1,
+                            Number = 1,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L2",
-                            Number = (byte)2,
+                            Number = 2,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L3",
-                            Number = (byte)3,
+                            Number = 3,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L4",
-                            Number = (byte)4,
+                            Number = 4,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L5",
-                            Number = (byte)5,
+                            Number = 5,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L6",
-                            Number = (byte)6,
+                            Number = 6,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L7",
-                            Number = (byte)7,
+                            Number = 7,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L8",
-                            Number = (byte)8,
+                            Number = 8,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L9",
-                            Number = (byte)9,
+                            Number = 9,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L10",
-                            Number = (byte)10,
+                            Number = 10,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L11",
-                            Number = (byte)11,
+                            Number = 11,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L12",
-                            Number = (byte)12,
+                            Number = 12,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L13",
-                            Number = (byte)13,
+                            Number = 13,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L14",
-                            Number = (byte)14,
+                            Number = 14,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L15",
-                            Number = (byte)15,
+                            Number = 15,
                             Row = "L"
                         },
                         new
                         {
                             SeatId = "L16",
-                            Number = (byte)16,
+                            Number = 16,
                             Row = "L"
                         });
                 });
@@ -5435,14 +5447,37 @@ namespace Booking_Movie.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(12,4)");
 
+                    b.Property<int?>("TicketTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ValidityDateFromId")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<string>("ValidityDateToId")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("TicketTypeId");
+
+                    b.HasIndex("ValidityDateFromId");
+
+                    b.HasIndex("ValidityDateToId");
 
                     b.ToTable("Tickets", (string)null);
 
@@ -5451,22 +5486,74 @@ namespace Booking_Movie.Data.Migrations
                         {
                             Id = 1,
                             Description = "Vé 2D sử dụng từ 16 tuổi trở lên",
+                            MovieId = 1,
                             Name = "Người lớn",
-                            Price = 90000m
+                            Price = 90000m,
+                            TicketTypeId = 1,
+                            ValidityDateFromId = "08:00",
+                            ValidityDateToId = "20:00"
                         },
                         new
                         {
                             Id = 2,
                             Description = "Vé 2D sử dụng dưới 16",
+                            MovieId = 1,
                             Name = "Người trẻ em",
-                            Price = 75000m
+                            Price = 75000m,
+                            TicketTypeId = 2,
+                            ValidityDateFromId = "08:00",
+                            ValidityDateToId = "20:00"
                         },
                         new
                         {
                             Id = 3,
                             Description = "Vé 2D chỉ sử dụng cho suất chiếu sau 22h",
+                            MovieId = 1,
                             Name = "Sau 22h",
-                            Price = 50000m
+                            Price = 50000m,
+                            TicketTypeId = 3,
+                            ValidityDateFromId = "22:00",
+                            ValidityDateToId = "22:00"
+                        });
+                });
+
+            modelBuilder.Entity("Booking_Movie.Data.Entities.TicketType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TicketTypes", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Vé 2D sử dụng từ 16 tuổi trở lên",
+                            Name = "Người lớn"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Vé 2D sử dụng dưới 16",
+                            Name = "Người trẻ em"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Vé 2D chỉ sử dụng cho suất chiếu sau 22h",
+                            Name = "Sau 22h"
                         });
                 });
 
@@ -5619,7 +5706,7 @@ namespace Booking_Movie.Data.Migrations
                     b.HasOne("Booking_Movie.Data.Entities.Coupon", "Coupon")
                         .WithMany("Bookings")
                         .HasForeignKey("CouponId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_booking_coupon");
 
@@ -5633,7 +5720,7 @@ namespace Booking_Movie.Data.Migrations
                     b.HasOne("Booking_Movie.Data.Entities.Screening", "Screening")
                         .WithMany("Bookings")
                         .HasForeignKey("ScreeningId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_booking_screening");
 
@@ -5676,20 +5763,16 @@ namespace Booking_Movie.Data.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_bookingticket_booking");
 
-                    b.HasOne("Booking_Movie.Data.Entities.ScreeningTicket", "ScreeningTicket")
+                    b.HasOne("Booking_Movie.Data.Entities.Ticket", "Ticket")
                         .WithMany("BookingTickets")
-                        .HasForeignKey("ScreeningTicketId")
+                        .HasForeignKey("TicketId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_bookingticket_screeningticket");
-
-                    b.HasOne("Booking_Movie.Data.Entities.Ticket", null)
-                        .WithMany("BookingTickets")
-                        .HasForeignKey("TicketId");
+                        .HasConstraintName("fk_bookingticket_ticket");
 
                     b.Navigation("Booking");
 
-                    b.Navigation("ScreeningTicket");
+                    b.Navigation("Ticket");
                 });
 
             modelBuilder.Entity("Booking_Movie.Data.Entities.Cast", b =>
@@ -5873,11 +5956,10 @@ namespace Booking_Movie.Data.Migrations
                         .HasConstraintName("fk_screening_screeingticket");
 
                     b.HasOne("Booking_Movie.Data.Entities.Ticket", "Ticket")
-                        .WithMany("ScreeningTickets")
+                        .WithMany()
                         .HasForeignKey("TicketId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_ticket_screeingticket");
+                        .IsRequired();
 
                     b.Navigation("Screening");
 
@@ -5933,6 +6015,45 @@ namespace Booking_Movie.Data.Migrations
                     b.Navigation("Booking");
 
                     b.Navigation("SeatNo");
+                });
+
+            modelBuilder.Entity("Booking_Movie.Data.Entities.Ticket", b =>
+                {
+                    b.HasOne("Booking_Movie.Data.Entities.Movie", "Movie")
+                        .WithMany("Tickets")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_ticket_movie");
+
+                    b.HasOne("Booking_Movie.Data.Entities.TicketType", "TicketType")
+                        .WithMany("Tickets")
+                        .HasForeignKey("TicketTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_ticket_ticket_type");
+
+                    b.HasOne("Booking_Movie.Data.Entities.ShowTime", "ValidityDateFrom")
+                        .WithMany("ValidityDateFroms")
+                        .HasForeignKey("ValidityDateFromId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_ticket_validityDateFrom");
+
+                    b.HasOne("Booking_Movie.Data.Entities.ShowTime", "ValidityDateTo")
+                        .WithMany("ValidityDateTos")
+                        .HasForeignKey("ValidityDateToId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_ticket_validityDateTo");
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("TicketType");
+
+                    b.Navigation("ValidityDateFrom");
+
+                    b.Navigation("ValidityDateTo");
                 });
 
             modelBuilder.Entity("Booking_Movie.Data.Entities.Actor", b =>
@@ -6004,6 +6125,8 @@ namespace Booking_Movie.Data.Migrations
                     b.Navigation("MovieDirectors");
 
                     b.Navigation("Screenings");
+
+                    b.Navigation("Tickets");
                 });
 
             modelBuilder.Entity("Booking_Movie.Data.Entities.Nationality", b =>
@@ -6034,11 +6157,6 @@ namespace Booking_Movie.Data.Migrations
                     b.Navigation("ScreeningTickets");
                 });
 
-            modelBuilder.Entity("Booking_Movie.Data.Entities.ScreeningTicket", b =>
-                {
-                    b.Navigation("BookingTickets");
-                });
-
             modelBuilder.Entity("Booking_Movie.Data.Entities.ScreeningType", b =>
                 {
                     b.Navigation("Screenings");
@@ -6062,13 +6180,20 @@ namespace Booking_Movie.Data.Migrations
             modelBuilder.Entity("Booking_Movie.Data.Entities.ShowTime", b =>
                 {
                     b.Navigation("Screenings");
+
+                    b.Navigation("ValidityDateFroms");
+
+                    b.Navigation("ValidityDateTos");
                 });
 
             modelBuilder.Entity("Booking_Movie.Data.Entities.Ticket", b =>
                 {
                     b.Navigation("BookingTickets");
+                });
 
-                    b.Navigation("ScreeningTickets");
+            modelBuilder.Entity("Booking_Movie.Data.Entities.TicketType", b =>
+                {
+                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }

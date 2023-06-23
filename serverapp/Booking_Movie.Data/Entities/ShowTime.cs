@@ -12,5 +12,7 @@ namespace Booking_Movie.Data.Entities
         public DateTime Time { get; set; }
         
         public ICollection<Screening> Screenings { get; set; }
+        public ICollection<Ticket> ValidityDateFroms { get; set; }
+        public ICollection<Ticket> ValidityDateTos { get; set; }
     }
 }

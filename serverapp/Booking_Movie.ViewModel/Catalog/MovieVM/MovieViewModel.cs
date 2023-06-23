@@ -13,6 +13,8 @@
         public string Nationality { get; set; } = null!;
         public string Producer { get; set; } = null!;
         public bool? Status { get; set; }
+        public bool? CommingSoon { get; set; }
+        public bool? IsShowing { get; set; }
 
         public string Actors { get; set; } = null!;
         public string Categories { get; set; } = null!;

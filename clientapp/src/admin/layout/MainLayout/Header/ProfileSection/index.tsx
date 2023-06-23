@@ -39,12 +39,20 @@ import User1 from '../../../../assets/images/users/user-huy.jpg';
 // assets
 import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
 import { RootState } from '../../../../store';
+import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
+import { SignOutAsync } from '../../../../../slices/user/userSlice';
+import { IUserAuthentication } from '../../../../../common/interface';
 
 // ==============================|| PROFILE MENU ||============================== //
 
 const ProfileSection: React.FC<{}> = () => {
     const theme = useTheme();
+    const dispatch = useAppDispatch();
+    
+    
     const customization = useSelector((state: RootState) => state.customization);
+	const isLogin = useAppSelector((state) => state.user.isLogin);
+
     const navigate =  useNavigate ();
 
     const [sdm, setSdm] = useState(true);
@@ -58,8 +66,22 @@ const ProfileSection: React.FC<{}> = () => {
      * anchorRef is used on different componets and specifying one type leads to other components throwing an error
      * */
     const anchorRef = useRef<any>(null);
+
+    useEffect(() => {
+        var user_auth: IUserAuthentication = JSON.parse(localStorage.getItem("user_authenticate")!);
+        if(!user_auth.isLogin || !user_auth.roles.includes("Admin")){
+            navigate("/pages/login/login3", { replace : true});
+
+        }
+    }, [navigate])
     const handleLogout = async () => {
-        console.log('Logout');
+        dispatch(SignOutAsync()).then(value => {
+            console.log(value, "logout")
+            if(value.type.includes("fulfilled")){
+            navigate("/pages/login/login3", { replace : true});
+
+            }
+        })
     };
 
     const handleClose = (event: MouseEvent | TouchEvent) => {

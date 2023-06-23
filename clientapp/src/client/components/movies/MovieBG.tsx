@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Grid, Button, Icon, Header, Image } from "semantic-ui-react";
 import { MovieModel } from "../../../slices/movie/movieSlice"
 import styled from "@emotion/styled";
+import DOMPurify from 'dompurify';
 
 const MovieBG: React.FC<{ movies: MovieModel[] }> = ({ movies }) => {
     const [muted, setMuted] = useState(true);
@@ -61,7 +62,7 @@ const MovieBG: React.FC<{ movies: MovieModel[] }> = ({ movies }) => {
                 <Grid.Column width={6}>
                     <Header as={"h1"} className={classNames("transition-all ease-in-out delay-1000 duration-4000 text-white  pt-5 text-left leading-tight", { "text-7xl": !isPlaying, }, { "text-4xl pt-1/5": isPlaying, })}>{movieBG && movieBG.name}</Header>
 
-                    <p className="text-white text-xl ">Nhà du hành và thám hiểm thế giới Gulliver được mời quay trở lại Lilliput - thị trấn trước đây đã được anh cứu khỏi hạm đội kẻ thù. Khi đến nơi, anh chỉ nhận thấy sự phẫn nộ và thất vọng của đám đông vì huyền thoại Gulliver khổng lồ giờ đây chỉ là một người bình thường. Cùng lúc đó, kẻ thù lại đe dọa xứ xở này thêm một lần nữa.</p>
+                    <p className="text-white text-xl limit-text-3" dangerouslySetInnerHTML={{ __html: movieBG?.content ? DOMPurify.sanitize(movieBG?.content) : "" }}/>
                     <div className="flex pt-2">
                         <Button size="big" icon labelPosition='left'>
                             <Icon name='ticket' />

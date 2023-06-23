@@ -21,7 +21,7 @@ namespace Booking_Movie.Data.Repositories
 
         public async Task<IEnumerable<DirectorViewModel>> GetByNationality(string nationality)
         {
-            var directors = await this.MovieContext.Set<Director>().Include(x=>x.Nationality).Where(director => director.NationalityId == nationality)
+            var directors = await this.MovieContext.Set<Director>().Include(x => x.Nationality).Where(director => director.NationalityId == nationality)
                 .Select(director => new DirectorViewModel()
                 {
                     ID = director.ID,

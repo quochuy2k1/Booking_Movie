@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace Booking_Movie.ViewModel.Common
+﻿namespace Booking_Movie.ViewModel.Common
 {
     public class PagingRequestBase : RequestBase
     {
@@ -8,5 +6,4 @@ namespace Booking_Movie.ViewModel.Common
         public int? PageSkip { get; set; }
         public int PageSize { get; set; }
     }
-
 }

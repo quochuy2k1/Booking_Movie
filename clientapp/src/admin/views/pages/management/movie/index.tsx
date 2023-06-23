@@ -140,7 +140,7 @@ function CustomCheckbox(props: any){
 const MovieManger: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const { status, movies, total, error } = useAppSelector(state => state.movie);
-	const [pageSize, setPageSize] = React.useState<number>(1);
+	const [pageSize, setPageSize] = React.useState<number>(5);
 	const [pageIndex, setPageIndex] = React.useState<number>(0);
 	const [nationality, setNationality] = React.useState<string>("all");
 	const [openError, setOpenError] = React.useState<boolean>(false);
@@ -150,15 +150,12 @@ const MovieManger: React.FC = () => {
 	const [rowItems, setRowItems] = React.useState<{ [k: string]: any }>();
 
 	const [openUpdate, setOpenUpdate] = React.useState<boolean>(false);
-
-
+	const [reload, setReload] = React.useState<boolean>(false);
 
 
 
 	React.useEffect(() => {
-		if (movies.length <= 0) {
-			dispatch(GetAllMoviePagingAsync({ PageIndex: pageIndex, PageSize: pageSize }));
-		}
+		
 
 		setRowCountState((prevRowCountState) =>
 			total !== undefined ? total : prevRowCountState,
@@ -175,9 +172,16 @@ const MovieManger: React.FC = () => {
 		console.log(rowCountState, "      ", total, "rowCountState")
 	}, [dispatch, total, setRowCountState, error, setOpenError]);
 
+	React.useEffect(() => {
+		// if (movies.length <= 0) {
+			dispatch(GetAllMoviePagingAsync({ PageIndex: pageIndex, PageSize: pageSize }));
+		// }
+	}, [dispatch, reload, pageIndex, pageSize])
+
 
 	const handlePageChange = React.useMemo(() => (page: number) => {
 		console.log(page, "page index")
+		setPageIndex(page)
 		dispatch(GetAllMoviePagingAsync({ PageIndex: page, PageSize: pageSize, Nationality: nationality }));
 
 	}, [dispatch, pageSize]);
@@ -203,7 +207,7 @@ const MovieManger: React.FC = () => {
 		dispatch(GetAllMoviePagingAsync({ PageIndex: pageIndex, PageSize: pageSize, Nationality: data.value as string }));
 	}
 	return (
-		<MainCard title="Quản lý Phim">
+		<MainCard>
 			<div>
 				<Collapse in={openError} >
 					<Alert
@@ -232,7 +236,7 @@ const MovieManger: React.FC = () => {
 			<div className='py-2'>
 
 				<AddNewMovie />
-				{openUpdate && <UpdateMovie {...rowItems} setOpenUpdateMovie={CloseUpdate} isOpen={openUpdate} />}
+				{openUpdate && <UpdateMovie {...rowItems} setOpenUpdateMovie={CloseUpdate} isOpen={openUpdate} onEditSuccess={(data) => setReload(pre => !pre)} />}
 				<DeleteMuilMovie id={rowSelect}  />
 
 
@@ -253,8 +257,8 @@ const MovieManger: React.FC = () => {
 				<DataGrid
 					 sx={{
 						'.MuiDataGrid-columnHeader': {
-						  backgroundColor: "#333",
-						  color: "#fff"
+						//   backgroundColor: "#333",
+						//   color: "#fff"
 						},
 					  }}
 					loading={status === "loading" ? true : false}
@@ -262,6 +266,7 @@ const MovieManger: React.FC = () => {
 					columns={columns}
 					pageSize={pageSize}
 					rowsPerPageOptions={[1, 3, 5, 10, 20, 50, 100]}
+					
 					onPageSizeChange={(newPageSize) => { setPageSize(newPageSize); dispatch(GetAllMoviePagingAsync({ PageIndex: pageIndex, PageSize: newPageSize, Nationality: nationality })); }}
 					pagination
 					paginationMode="server"

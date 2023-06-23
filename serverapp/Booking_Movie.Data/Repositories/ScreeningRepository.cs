@@ -1,7 +1,6 @@
 ﻿using Booking_Movie.Data.EF;
 using Booking_Movie.Data.Entities;
 using Booking_Movie.Data.Infrastructure;
-using Booking_Movie.ViewModel.Catalog.ScreeningVM;
 using Microsoft.EntityFrameworkCore;
 
 namespace Booking_Movie.Data.Repositories
@@ -9,14 +8,18 @@ namespace Booking_Movie.Data.Repositories
     public interface IScreeningRepository : IRepository<Screening>
     {
         IQueryable<Screening> GetByShowTime(int movieId, int auditoriumId, string showTimeId);
+
         Task<Screening?> DeleteAllShowTimeScreening(int screeningGroupedId);
+
         Task<List<Screening>?> GetByScreeningGrouped(int screeningGroupedId);
+
+        Task<List<Screening>?> GetDeletedShowTime(int movieId, int auditoriumId, List<string> showTimeId);
     }
+
     public class ScreeningRepository : RepositoryBase<Screening>, IScreeningRepository
     {
         public ScreeningRepository(BookingMovieContext movieContext, IDbFactory dbFactory) : base(movieContext, dbFactory)
         {
-
         }
 
         public async Task<List<Screening>?> GetByScreeningGrouped(int screeningGroupedId)
@@ -37,7 +40,6 @@ namespace Booking_Movie.Data.Repositories
             }
 
             return screening;
-
         }
 
         public async Task<Screening?> DeleteAllShowTimeScreening(int screeningGroupedId)
@@ -68,6 +70,34 @@ namespace Booking_Movie.Data.Repositories
                           select s);
 
             return result;
+        }
+
+        public async Task<List<Screening>?> GetDeletedShowTime(int movieId, int auditoriumId, List<string> showTimeId)
+        {
+            List<Screening> deletedScreenings = null;
+            foreach (var showTime in showTimeId)
+            {
+                deletedScreenings = await (from s in this.MovieContext.Screenings
+                                           join st in this.MovieContext.ShowTimes on s.ShowTimeId equals st.Id
+                                           where s.MovieId == movieId && s.AuditoriumId == auditoriumId
+                                           select s).Where(x => !showTimeId.Contains(x.ShowTimeId)).ToListAsync();
+            }
+
+            return deletedScreenings;
+        }
+
+        public async Task<List<Screening>?> GetAddedShowTime(int movieId, int auditoriumId, List<string> showTimeId)
+        {
+            List<Screening> deletedScreenings = null;
+            foreach (var showTime in showTimeId)
+            {
+                deletedScreenings = await (from s in this.MovieContext.Screenings
+                                           join st in this.MovieContext.ShowTimes on s.ShowTimeId equals st.Id
+                                           where s.MovieId == movieId && s.AuditoriumId == auditoriumId
+                                           select s).Where(x => !showTimeId.Contains(x.ShowTimeId)).ToListAsync();
+            }
+
+            return deletedScreenings;
         }
     }
 }
