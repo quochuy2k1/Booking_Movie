@@ -1,11 +1,7 @@
-﻿using Booking_Movie.ViewModel.Abstract;
-using Microsoft.AspNetCore.Http;
-
-namespace Booking_Movie.ViewModel.Catalog.NationalityVM
+﻿namespace Booking_Movie.ViewModel.Catalog.NationalityVM
 {
     public class NationalityCreateRequest
     {
-
         public string Id { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string Code { get; set; } = null!;
@@ -14,6 +10,5 @@ namespace Booking_Movie.ViewModel.Catalog.NationalityVM
         public bool FlagDirector { get; set; }
         public bool FlagProducer { get; set; }
         public bool FlagMovie { get; set; }
-
     }
 }

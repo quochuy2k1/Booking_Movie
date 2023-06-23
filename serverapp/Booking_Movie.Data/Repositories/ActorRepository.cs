@@ -11,10 +11,15 @@ namespace Booking_Movie.Data.Repositories
         Task<IEnumerable<ActorViewModel>> GetByNationality(string nationality);
 
         Task<Actor> UpdateViewCount(Guid id);
-        Task<ActorImage> CreateActorImage(ActorImage ActorImage); 
+
+        Task<ActorImage> CreateActorImage(ActorImage ActorImage);
+
         void UpdateActorImage(ActorImage ActorImage);
+
         Task<List<ActorImage>?> DeleteActorImageAsync(int[] idListid);
+
         IQueryable<ActorImage>? GetActorImageDetail(int id, Guid actorId);
+
         IQueryable<ActorImage>? GetAllActorImage(Guid actorId);
     }
 
@@ -94,11 +99,9 @@ namespace Booking_Movie.Data.Repositories
                 }
 
                 return entities.Any() ? entities : null;
-
             }
             catch (Exception)
             {
-
                 return null;
             }
         }

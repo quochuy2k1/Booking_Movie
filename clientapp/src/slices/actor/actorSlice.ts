@@ -117,7 +117,7 @@ export const actorSlice = createSlice({
             state.status = "loading"
         })
             .addCase(GetAllActorAsync.fulfilled, (state, action) => {
-                Object.assign(state, { result: [...action.payload], status: "idle"})
+                Object.assign(state, { actors: [...action.payload], status: "idle"})
             })
             .addCase(GetAllActorAsync.rejected, (state, action) => {
                 state.status = "failed"

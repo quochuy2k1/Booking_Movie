@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Booking_Movie.ViewModel.System.Users
+﻿namespace Booking_Movie.ViewModel.System.Users
 {
     public class LoginResponse
     {
@@ -14,6 +8,6 @@ namespace Booking_Movie.ViewModel.System.Users
         public int? StatusResponse { get; set; }
         public string? StatusMessageResponse { get; set; }
         public LoginUserViewModel? AppUser { get; set; }
-        public LoginErrorResponse? Error {get; set;}
+        public LoginErrorResponse? Error { get; set; }
     }
 }

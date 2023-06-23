@@ -8,6 +8,7 @@ export interface BookingClientModel {
     couponId: number,
     appUserId: string,
     screening: ScreeningModel,
+    showDate: Date,
     Total: number
 }
 
@@ -49,14 +50,17 @@ export const BookingClientSlice = createSlice({
     initialState,
     reducers: {
         bookScreeningId: (state, action) => {
-            const screening: ScreeningModel = action.payload;
+            const screening: ScreeningModel = action.payload.screening;
+            const showDate: Date = action.payload.showDate;
             console.log(screening, "payload bookScreeningId")
 
             sessionStorage.setItem("book-cinema", JSON.stringify(screening))
+            showDate && sessionStorage.setItem("showTime", showDate.toISOString())
             Object.assign(state, {
                 booking: {
                     ...state.booking,
-                    screening: screening
+                    screening: screening,
+                    showDate: showDate ?? state.booking.showDate
                 }
             });
         },

@@ -1,6 +1,7 @@
 ﻿using Booking_Movie.Data.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System.Linq.Expressions;
 
 namespace Booking_Movie.Data.Infrastructure
@@ -155,9 +156,18 @@ namespace Booking_Movie.Data.Infrastructure
             return dbSet.AsQueryable();
         }
 
-        public IQueryable<T> GetMulti(Expression<Func<T, bool>> predicate, string[]? includes = null)
+        public IQueryable<T> GetMulti(Expression<Func<T, bool>> expression, string[]? includes = null)
         {
-            throw new NotImplementedException();
+            if (includes?.Count() > 0 && includes != null)
+            {
+                var query = this.dbSet.Include(includes.First());
+                foreach (var include in includes.Skip(1))
+                {
+                    query = query.Include(include);
+                    return  query.Where(expression);
+                }
+            }
+            return  dbSet.Where(expression);
         }
 
         public IQueryable<T> GetMultiPaging(Expression<Func<T, bool>>? filter, out int total, int index = 0, int size = 50, string[]? includes = null)

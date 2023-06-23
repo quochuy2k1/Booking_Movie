@@ -1,12 +1,11 @@
 import { Alert, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, useMediaQuery, useTheme } from "@mui/material";
 import { Editor } from "@tinymce/tinymce-react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Button, DropdownProps, Form, Icon, Input } from "semantic-ui-react";
+import { Button, Checkbox, DropdownProps, Form, Icon, Input } from "semantic-ui-react";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 import { GetAllActor } from "../../../../../services/actor.service";
 import { Actor, GetAllActorAsync } from "../../../../../slices/actor/actorSlice";
 import { GetCategoriesAsync } from "../../../../../slices/categories/categorySlice";
-import { GetDirectorAsync } from "../../../../../slices/directors/directorSlice";
 import { CreateNewMovieAsync, emptyMovieStatus } from "../../../../../slices/movie/movieSlice";
 import { GetNationalitiesAsync } from "../../../../../slices/nationalities/nationalitySlice";
 import { GetProducerAsync } from "../../../../../slices/producers/producerSlice";
@@ -65,6 +64,8 @@ const AddNewMovie: React.FC = () => {
     const [releaseDate, setReleaseDate] = useState<string>("");
     const [content, setContent] = useState<string>("");
     const [status, setStatus] = useState<boolean>(false);
+    const [commingSoon, setCommingSoon] = useState<boolean | undefined>(false);
+    const [isShowing, setIsShowing] = useState<boolean | undefined>(false);
     const [imgPreview, setImgPreview] = useState<File | null>(null);
     const [imgBackground, setImgBackground] = useState<File | null>(null);
     const [videoTrailer, setVideoTrailer] = useState<File | null>(null);
@@ -103,7 +104,7 @@ const AddNewMovie: React.FC = () => {
     const [dataDirectorsOption, setDataDirectorsOption] = useState<dataDropdownOption[]>();
 
     // 
-    const actors = useAppSelector(state => state.actor.result);
+    const actors = useAppSelector(state => state.actor.actors);
     const statusActors = useAppSelector(state => state.actor.status);
     const [dataActorsOption, setDataActorsOption] = useState<dataDropdownOption[]>();
 
@@ -189,7 +190,7 @@ const AddNewMovie: React.FC = () => {
     };
     const handleConfirmAdd = () => {
         // setOpenAdd(false);
-        dispatch(CreateNewMovieAsync({name: name, alias: alias, duration,  releaseDate: new Date(releaseDate).toISOString(), content, status, imageBackground: imgBackground!, imagePreview: imgPreview!,  videoTrailer: videoTrailer!, producer: producer!, nationality: nationality!, categoryId: category!, directorId: director!, actorId: actor!, token: token!  }))
+        dispatch(CreateNewMovieAsync({name: name, alias: alias, duration,  releaseDate: new Date(releaseDate).toISOString(), content, status, isShowing, commingSoon, imageBackground: imgBackground!, imagePreview: imgPreview!,  videoTrailer: videoTrailer!, producer: producer!, nationality: nationality!, categoryId: category!, directorId: director!, actorId: actor!, token: token!  }))
         console.log(name, duration, releaseDate, content, status, imgPreview, imgBackground, videoTrailer, actor, director, producer, nationality, category, content);
     };
 
@@ -402,6 +403,22 @@ const AddNewMovie: React.FC = () => {
                                     onSelectChange={(event, data) => setStatus(data.value as boolean)}
                                 />
                             </Form.Field>
+                            <Form.Group widths='equal'>
+                                <Form.Field>
+                                    <Checkbox
+                                        toggle
+                                        label="Sắp chiếu"
+                                        checked={commingSoon}
+                                        onChange={(e, data) => setCommingSoon(data.checked)} />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Checkbox
+                                        toggle
+                                        label="Đang chiếu"
+                                        checked={isShowing}
+                                        onChange={(e, data) => setIsShowing(data.checked)} />
+                                </Form.Field>
+                            </Form.Group>
 
                             <Form.Field>
                                 <Editor

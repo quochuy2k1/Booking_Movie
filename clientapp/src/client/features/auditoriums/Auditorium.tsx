@@ -17,15 +17,16 @@ const Auditorium: React.FC<{}> = () => {
     const { cinemaId } = useParams<string>();
     const dispatch = useAppDispatch();
     const { areas, length, status, classSelect } = useAppSelector(state => state.auditorium)
+    const { auditoriumId } = useAppSelector(state => state.bookingClient.booking.screening)
     const { chooseTotal } = useAppSelector(state => state.ticket)
 
     // const onOpen = () => setOpen(true)
 
     const GetSeatsByAuditorium = useCallback(async () => {
         // const result = await dispatch(GetSeatByAuditoriumAsync(cinemaId));
-        await dispatch(GetSeatByAuditoriumAsync(cinemaId!));
+        await dispatch(GetSeatByAuditoriumAsync(auditoriumId.toString()));
 
-    }, [cinemaId, dispatch])
+    }, [auditoriumId, dispatch])
 
     useEffect(() => {
         GetSeatsByAuditorium();
@@ -53,7 +54,7 @@ const Auditorium: React.FC<{}> = () => {
 
 
         // khi length của class select khác 0 và nhỏ hơn hoặc bằng tổng ticket đã chọn và status của seat bằng false (chưa chọn)
-        if (classSelect.length <= chooseTotal && !status) {
+        if (classSelect.length <= chooseTotal && chooseTotal !== 0 && !status) {
             // nếu bằng thì xoá phần tử đầu tiên
             if (classSelect.length === chooseTotal) {
                 // const newState = [...classSelect];
@@ -105,26 +106,35 @@ const Auditorium: React.FC<{}> = () => {
                         status === "idle" && areas.map((seats, idx) => (
                             <div className="flex relative justify-center " key={idx}>
 
-                                <span className="w-8 h-8 font-bold text-gray-700 bg-white rounded-lg text-center relative my-2 py-1 left-0">{seats.physicalName}</span>
+                                {
+                                    !seats.physicalName.includes("0") ? <span className="w-8 h-8 font-bold text-gray-700 bg-white rounded-lg text-center relative my-2 py-1 left-0">{seats.physicalName}</span> : <span className="w-8 h-8"></span>
 
+                                }
                                 <div className="flex flex-row relative " style={{ width: `${(length + 3) * 37}px` }}>
                                     <div className="relative cursor-pointer" >
                                         {seats.seats.map((seat, idex) => {
 
-                                           
+
 
                                             return seat.number !== 0 && <div
                                                 key={idex}
                                                 className={classNames("moon font-semibold h-7 w-7 hover:bg-orange-400 hover:text-white rounded-lg py-1 text-center absolute", { "bg-red-600 text-white cursor-not-allowed": seat.status }, { "bg-orange-400 text-white": (classSelect.findIndex(select => select.columnIndex === seat.columnIndex && select.rowIndex === seat.rowIndex) !== -1) })}
-                                                style={{ transform: `translate(${(seat.columnIndex - 0.7) * 100 + 20 + (seat.columnIndex - 0) * 70}%, ${10}%)` }}
+                                                style={{ transform: `translate(${(seat.columnIndex! - 0.7) * 100 + 20 + (seat.columnIndex! - 0) * 70}%, ${10}%)` }}
                                                 onClick={(event: React.MouseEvent<HTMLDivElement>) => selectSeat(event, seat)}>{seat.number}</div>
                                         })}
                                     </div>
 
 
                                 </div>
-                                <span className="w-8 h-8 py-1 font-bold bg-white rounded-lg text-gray-700 text-center my-2 relative right-0">{seats.physicalName}</span>
-
+                                {
+                                    !seats.physicalName.includes("0") ? (
+                                        <span className="w-8 h-8 py-1 font-bold bg-white rounded-lg text-gray-700 text-center my-2 relative right-0">
+                                            {seats.physicalName}
+                                        </span>
+                                    ) : (
+                                        <span className="w-8 h-8"></span>
+                                    )
+                                }
                             </div>
                         ))
                     }

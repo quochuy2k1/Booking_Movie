@@ -8,6 +8,7 @@ import TotalIncomeCard from '../../../ui-component/cards/Skeleton/TotalIncomeCar
 
 // assets
 import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone';
+import numeral from 'numeral';
 
 // styles
 const CardWrapper = styled(MainCard)(({ theme }) => ({
@@ -37,12 +38,12 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 
 // ==============================|| DASHBOARD - TOTAL INCOME LIGHT CARD ||============================== //
 
-const TotalIncomeLightCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => {
+const TotalIncomeLightCard: React.FC<{isLoading: boolean, revenueCombo?: number}> = (props) => {
     const theme = useTheme();
 
     return (
         <>
-            {isLoading ? (
+            {props.isLoading ? (
                 <TotalIncomeCard />
             ) : (
                 <CardWrapper border={false} content={false}>
@@ -68,7 +69,7 @@ const TotalIncomeLightCard: React.FC<{isLoading: boolean}> = ({ isLoading }) => 
                                         mt: 0.45,
                                         mb: 0.45
                                     }}
-                                    primary={<Typography variant="h4">30.000.000 vnđ</Typography>}
+                                    primary={<Typography variant="h4">{numeral(props.revenueCombo).format("0,0")} vnđ</Typography>}
                                     secondary={
                                         <Typography
                                             variant="subtitle2"

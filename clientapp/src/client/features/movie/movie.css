@@ -22,3 +22,12 @@ video {
     line-clamp: 1;
     -webkit-box-orient: vertical;
 }
+  .limit-text-3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    /* number of lines to show */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

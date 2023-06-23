@@ -16,6 +16,6 @@ namespace Booking_Movie.Data.Entities
         public Screening Screening { get; set; } = null!;
         public Ticket Ticket { get; set; } = null!;
 
-        public ICollection<BookingTicket> BookingTickets { get; set; } = null!;
+        //public ICollection<BookingTicket> BookingTickets { get; set; } = null!;
     }
 }

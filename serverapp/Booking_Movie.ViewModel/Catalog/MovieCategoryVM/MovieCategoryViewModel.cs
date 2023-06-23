@@ -15,7 +15,5 @@ namespace Booking_Movie.ViewModel.Catalog.MovieCategoryVM
         public string Image { get; set; } = null!;
 
         public bool HomeFlag { get; set; }
-
-       
     }
 }

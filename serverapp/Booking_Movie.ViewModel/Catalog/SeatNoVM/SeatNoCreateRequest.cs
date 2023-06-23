@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace Booking_Movie.ViewModel.Catalog.SeatNoVM
+﻿namespace Booking_Movie.ViewModel.Catalog.SeatNoVM
 {
     public class SeatNoCreateRequest
     {

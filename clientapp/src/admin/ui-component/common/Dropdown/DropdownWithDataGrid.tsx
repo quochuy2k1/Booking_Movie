@@ -5,7 +5,7 @@ import { ValueChangedInfo } from "devextreme/ui/editor/editor";
 import React from "react";
 import { ToVietNamCurrency } from "../../../../common/utils/number.util";
 import dxDataGrid, { DataType, SelectionChangedInfo } from "devextreme/ui/data_grid";
-import { Column, FilterRow, Paging, RemoteOperations, Scrolling, Selection } from "devextreme-react/data-grid";
+import { Column, FilterRow, Paging, RemoteOperations, Scrolling, SearchPanel, Selection } from "devextreme-react/data-grid";
 import { Box } from "@mui/material";
 import { createStore } from "devextreme-aspnet-data-nojquery";
 import { Image } from 'semantic-ui-react'
@@ -20,6 +20,7 @@ export interface IDataGirdColumn {
     data_type?: string | undefined;
     format_type?: string | undefined;
     number_order?: number | undefined;
+    isShowGrouping?: boolean | undefined;
     width?: number | undefined;
     default_hiden?: boolean | undefined;
     align?: string | undefined;
@@ -42,10 +43,12 @@ interface Iprops {
     value?: any;
     width?: any;
     valueExpr?: any;
+    keyExpr?: any;
     disabled?: boolean;
     placeholder?: string,
     table_name?: string;
-    filter?: any
+    filter?: any,
+    isEditColumnComponent?: boolean
 }
 
 const url = `${import.meta.env.VITE_REACT_APP_API_BASE!}`
@@ -56,6 +59,7 @@ export const DropdownWithDataGrid: React.FC<Iprops> = (props) => {
 
     const [columns, setColumns] = React.useState<IDataGirdColumn[]>([]);
     const [isGridBoxOpened, setIsGridBoxOpened] = React.useState<boolean>(false);
+    const [valueEditColumn, setValueEditColumn] = React.useState<any>(props.value);
 
     // 
     const dropDownRef = React.useRef<DropDownBox>(null);
@@ -68,6 +72,7 @@ export const DropdownWithDataGrid: React.FC<Iprops> = (props) => {
 
         const data = createStore({
             key: 'id',
+            loadMode: "raw",
             loadMethod: "POST",
             loadUrl: `${url}${props.apiUrl}`,
             loadParams: {
@@ -108,7 +113,12 @@ export const DropdownWithDataGrid: React.FC<Iprops> = (props) => {
         //   isGridBoxOpened: false,
         // });
         props.dataGridOnSelectionChanged && props.dataGridOnSelectionChanged({}, e.selectedRowsData[0])
+        setValueEditColumn(e.selectedRowsData[0][props.valueExpr])
         setIsGridBoxOpened(false);
+    }
+    const syncDataGridSelection = (e: NativeEventInfo<dxDropDownBox, Event> & ValueChangedInfo) => {
+        props.syncDataGridSelection && props.syncDataGridSelection(e);
+        setValueEditColumn(e.value)
     }
     const dataGridRender = () => {
         return (
@@ -116,12 +126,12 @@ export const DropdownWithDataGrid: React.FC<Iprops> = (props) => {
                 ref={dataGridRef}
                 width={props.width}
                 dataSource={dataSource}
+                keyExpr={props.keyExpr}
                 // columns={columns}
                 hoverStateEnabled={true}
                 // selectedRowKeys={selectedRowKeys}
                 remoteOperations={true}
                 onSelectionChanged={dataGridOnSelectionChanged}
-
 
             >
                 {
@@ -134,10 +144,11 @@ export const DropdownWithDataGrid: React.FC<Iprops> = (props) => {
                             caption={row.name_vn}
                             dataField={row.column_name ? row.column_name : ""}
                             dataType={row.data_type as DataType}
-                            format={(value: any) => formatDataType(row.format_type, value)}
+                            format={row.format_type}
                             width={row.width ? row.width : 150}
                             visible={row.column_name?.toLocaleLowerCase() !== "Id".toLocaleLowerCase()}
                             allowFiltering={row.allowFilter}
+                            grouped={row.isShowGrouping}
                             cellComponent={(props) => {
                                 if (row.type === 'image') {
 
@@ -152,7 +163,8 @@ export const DropdownWithDataGrid: React.FC<Iprops> = (props) => {
                 }
                 <Selection mode="single" />
                 <Scrolling mode="virtual" />
-                <Paging enabled={true} pageSize={10} />
+                <SearchPanel visible={true} />
+                {/* <Paging enabled={true} pageSize={10} /> */}
                 <FilterRow visible={true} />
                 {/* <RemoteOperations paging={true}> */}
 
@@ -168,7 +180,7 @@ export const DropdownWithDataGrid: React.FC<Iprops> = (props) => {
             <Box sx={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
                 <DropDownBox
                     ref={dropDownRef}
-                    value={props.value}
+                    value={props.isEditColumnComponent ? valueEditColumn : props.value}
                     opened={isGridBoxOpened}
                     valueExpr={props.valueExpr}
                     deferRendering={false}   
@@ -176,7 +188,7 @@ export const DropdownWithDataGrid: React.FC<Iprops> = (props) => {
                     placeholder={props.placeholder}
                     showClearButton={true}
                     dataSource={dataSource}
-                    onValueChanged={props.syncDataGridSelection}
+                    onValueChanged={syncDataGridSelection}
                     onOptionChanged={onGridBoxOpened}
                     contentRender={dataGridRender}
                     dropDownOptions={{

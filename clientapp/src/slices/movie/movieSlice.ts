@@ -14,6 +14,9 @@ export interface MovieModel {
     nationality: string,
     producer: string,
     status: boolean,
+    isShowing: boolean,
+    commingSoon: boolean,
+
     actors: string,
     categories: string,
     directors: string,

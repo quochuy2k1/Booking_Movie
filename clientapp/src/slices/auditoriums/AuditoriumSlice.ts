@@ -71,6 +71,12 @@ export const AuditoriumSlice = createSlice({
             newState.splice(index, 1)
             state.classSelect = newState;
         },
+        removeAllClassSelected: (state) => {
+            state.classSelect = []
+        },
+        removeAllChooseSeats: (state) => {
+            state.areas = []
+        },
         chooseSeats: (state, action) => {
             const { area, id } = action.payload as { area: number, id: string };
             const newState = [...state.areas[area].seats.map(seat => {
@@ -96,6 +102,6 @@ export const AuditoriumSlice = createSlice({
     }
 });
 
-export const { chooseSeats, loadClassSelect, addClassSelect, removeClassSelect, removeClassSelectByIndex } = AuditoriumSlice.actions;
+export const { chooseSeats, loadClassSelect, addClassSelect, removeClassSelect, removeClassSelectByIndex, removeAllClassSelected, removeAllChooseSeats } = AuditoriumSlice.actions;
 
 export default AuditoriumSlice.reducer;

@@ -115,7 +115,7 @@ const CustomCheckbox = React.forwardRef<HTMLInputElement, {props: any}>((props: 
 const ActorManagement: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const { status, actors, total, error } = useAppSelector(state => state.actor);
-	const [pageSize, setPageSize] = React.useState<number>(1);
+	const [pageSize, setPageSize] = React.useState<number>(5);
 	const [pageIndex, setPageIndex] = React.useState<number>(0);
 	const [nationality, setNationality] = React.useState<string>("all");
 	const [openError, setOpenError] = React.useState<boolean>(false);
@@ -177,7 +177,7 @@ const ActorManagement: React.FC = () => {
 		dispatch(GetAllActorPagingAsync({ PageIndex: pageIndex, PageSize: pageSize, Nationality: data.value as string }));
 	}
 	return (
-		<MainCard title="Quản lý diễn viên">
+		<MainCard>
 			<div>
 				<Collapse in={openError} >
 					<Alert

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Booking_Movie.ViewModel.Catalog.MovieVM
+﻿namespace Booking_Movie.ViewModel.Catalog.MovieVM
 {
-
     public class MoviePagingViewModel
     {
         public string[] directors { get; set; } = null!;

@@ -32,9 +32,10 @@ const NavBarMobile = (props: IProps) => {
                 inverted
                 vertical
                 visible={visible}
+
                 size='tiny'
             >
-                <Menu.Item >
+                <Menu.Item>
                     <Input
                         placeholder='Tìm phim hoặc diễn viên ...'
                     />
@@ -151,7 +152,7 @@ const NavBarDesktop = (props: {
                     />
                 </div>
             </Container> */}
-            <Menu className='z-10 bg-transparent'>
+            <Menu className='z-10 bg-transparent border-none shadow-none'>
                 <Menu.Item>
                     <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
                 </Menu.Item>
@@ -163,6 +164,8 @@ const NavBarDesktop = (props: {
                     onClick={handleItemClick}
                     as={Link}
                     to={"/"}
+                    
+
                 />
 
                 <Dropdown item text='Phim'>

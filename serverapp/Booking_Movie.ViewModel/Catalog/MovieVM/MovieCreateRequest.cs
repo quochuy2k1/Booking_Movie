@@ -13,12 +13,13 @@ namespace Booking_Movie.ViewModel.Catalog.MovieVM
         public IFormFile? ImageBackground { get; set; }
         public bool Status { get; set; }
         public IFormFile? VideoTrailer { get; set; }
+        public bool? CommingSoon { get; set; }
+        public bool? IsShowing { get; set; }
 
         public string NationalityId { get; set; } = null!;
         public Guid ProducerId { get; set; }
-        public Guid[]? ActorId { get; set; } 
-        public int[]? CategoryId { get; set; } 
-        public Guid[]? DirectorId { get; set; } 
-
+        public Guid[]? ActorId { get; set; }
+        public int[]? CategoryId { get; set; }
+        public Guid[]? DirectorId { get; set; }
     }
 }

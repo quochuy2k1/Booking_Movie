@@ -22,7 +22,7 @@ const SamplePage = Loadable(lazy(async () =>({ default: (await import('../views/
 
 const MainRoutes = {
     path: '/',
-    element: <MainLayout />,
+    element: <ProtectedRoute><MainLayout /></ProtectedRoute>,
     children: [
         {
             path: '/',

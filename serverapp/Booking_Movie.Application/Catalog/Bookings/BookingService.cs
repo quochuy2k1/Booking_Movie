@@ -1,11 +1,16 @@
-﻿using Booking_Movie.Application.Ngrok;
+﻿using Azure.Core;
+using Booking_Movie.Application.Ngrok;
 using Booking_Movie.Data.Entities;
 using Booking_Movie.Data.Infrastructure;
 using Booking_Movie.Data.Repositories;
 using Booking_Movie.Payment.Momo;
 using Booking_Movie.Utilities.Exceptions;
 using Booking_Movie.ViewModel.Catalog.BookingVM;
+using Booking_Movie.ViewModel.Catalog.ChartReportVM;
 using Booking_Movie.ViewModel.Catalog.MomoPaymentVM;
+using Booking_Movie.ViewModel.Catalog.ReportVM.BookingReportVM;
+using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Data.ResponseModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -49,6 +54,16 @@ namespace Booking_Movie.Application.Catalog.Bookings
         public async Task<List<BookingViewModel>?> GetAllBooking()
         {
             var bookings = await _bookingRepository.GetAllBooking().ToListAsync();
+            if (bookings == null) throw new BookingMovieException("Lấy danh sách đặt vé lỗi");
+
+            return bookings;
+        }
+        
+        public async Task<LoadResult> GetAllBookingAdminPaging(GetBookingPagingRequest? request)
+        {
+            var query =  _bookingRepository.GetAllPagingBookingAdmin(request);
+
+            var bookings = await DataSourceLoader.LoadAsync(query, request);
             if (bookings == null) throw new BookingMovieException("Lấy danh sách đặt vé lỗi");
 
             return bookings;
@@ -133,43 +148,53 @@ namespace Booking_Movie.Application.Catalog.Bookings
 
         public async Task<int?> SavePayment(ResultMomoPaymentViewModel result)
         {
-            var extraData = Encoding.UTF8.GetString(Convert.FromBase64String(result.ExtraData));
-            var bookingCreateRequest = JObject.Parse(extraData).ToObject<CreateBookingRequest>();
-
-            var booking = new Booking()
+            try
             {
-                AppUserId = bookingCreateRequest.AppUserId,
-                CouponId = bookingCreateRequest.CouponId,
-                CreatedDate = DateTime.Now,
-                OrderId = bookingCreateRequest.OrderId,
-                PaymentMethodId = bookingCreateRequest.PaymentMethodId,
-                ScreeningId = bookingCreateRequest.ScreeningId,
-                Total = bookingCreateRequest.Total,
-                Status = false,
-
-            };
-
-            var addBooking = await _bookingRepository.SaveMomoPayment(booking);
-
-            if(await unitOfWork.Commit())
-            {
-                var addBookingCombo = _bookingRepository.AddBookingCombo(addBooking.Id, bookingCreateRequest.BookingCombo);
-                var addBookingTicket = _bookingRepository.AddBookingTicket(addBooking.Id, bookingCreateRequest.BookingTicket);
-                var addSeatReserved = await _bookingRepository.AddBookingSeatReserved(addBooking.Id, bookingCreateRequest.BookingSeatNo);
-
-                if (addSeatReserved != null)
+                var extraData = Encoding.UTF8.GetString(Convert.FromBase64String(result.ExtraData));
+                var bookingCreateRequest = JObject.Parse(extraData).ToObject<CreateBookingRequest>();
+                var createdDate = DateTime.Now;
+                var booking = new Booking()
                 {
-                    foreach (var seatNoId in addSeatReserved)
+                    AppUserId = bookingCreateRequest.AppUserId,
+                    CouponId = bookingCreateRequest.CouponId,
+                    CreatedDate = createdDate,
+                    BookingDate = createdDate,
+                    ShowDate = bookingCreateRequest.ShowDate,
+                    OrderId = bookingCreateRequest.OrderId,
+                    PaymentMethodId = bookingCreateRequest.PaymentMethodId,
+                    ScreeningId = bookingCreateRequest.ScreeningId,
+                    Total = bookingCreateRequest.Total,
+                    Status = false,
+
+                };
+
+                var addBooking = await _bookingRepository.SaveMomoPayment(booking);
+
+                if (await unitOfWork.Commit())
+                {
+                    var addBookingCombo = _bookingRepository.AddBookingCombo(addBooking.Id, bookingCreateRequest.BookingCombo);
+                    var addBookingTicket = _bookingRepository.AddBookingTicket(addBooking.Id, bookingCreateRequest.BookingTicket);
+                    var addSeatReserved = await _bookingRepository.AddBookingSeatReserved(addBooking.Id, bookingCreateRequest.BookingSeatNo);
+
+                    if (addSeatReserved != null)
                     {
-                        await _seatNoRepository.UpdateStatus(seatNoId, true);
+                        foreach (var seatNoId in addSeatReserved)
+                        {
+                            await _seatNoRepository.UpdateStatus(seatNoId, true);
+                        }
                     }
-                }
 
-                await unitOfWork.Commit();
-            };
+                    await unitOfWork.Commit();
+                };
+                return booking.Id;
 
+
+            }
+            catch (Exception ex)
+            {
+                throw new BookingMovieException(ex.Message, ex);
+            }
             
-            return booking.Id;
         }
 
         public async Task<BookingHistoryViewModel?> GetBookingDetailByQrCode(string qrContent, string host)
@@ -192,5 +217,23 @@ namespace Booking_Movie.Application.Catalog.Bookings
             return await unitOfWork.Commit();
             
         }
+
+        #region ChartReport
+        public ScanningRateChartReportViewModel ScanningRateReportChart(ScanningRateChartReportRequest? request)
+        {
+            try
+            {
+                var result = _bookingRepository.ScanningRateReportChart(request);
+                if (result == null) throw new BookingMovieException("Không thể lấy tỉ lệ quét");
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        #endregion
     }
 }

@@ -2,11 +2,11 @@ import React from "react";
 import ComboList from "../combos/comboList";
 import TicketList from "../tickets/TicketList";
 
-const BookingTicket: React.FC<{}> = () =>{
+const BookingTicket: React.FC<{movieId?: string}> = (props) =>{
     return (
         <>
             <div>
-                <TicketList></TicketList>
+                <TicketList movieId={props.movieId}></TicketList>
                 <ComboList></ComboList>
             </div>
         </>

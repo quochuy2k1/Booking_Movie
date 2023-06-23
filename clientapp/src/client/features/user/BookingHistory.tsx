@@ -13,6 +13,7 @@ interface BookingComboResponse {
 }
 interface BookingTicketResponse {
     name: string,
+    ticketTypeName: string,
     quantity: number,
     price: number
 }
@@ -26,6 +27,7 @@ export interface IHistoryBookingState {
     auditoriumName: string,
     total: number,
     showTime: string,
+    showDate: string,
     bookingDate: string,
     bookingCombo: BookingComboResponse[],
     bookingTicket: BookingTicketResponse[],
@@ -55,6 +57,7 @@ const HistoryBooking: React.FC<{}> = () => {
 
         if (token) {
             const userId = parseJwt(token).userIdClaim;
+            console.log(parseJwt(token))
             GetBookingByUserAsync(userId, token);
         }
         else {
@@ -95,7 +98,7 @@ const HistoryBooking: React.FC<{}> = () => {
 
                                 <Item className="py-2">
                                     <Item.Content verticalAlign='middle' className="text-white">
-                                        Suất chiếu: {moment(booked?.showTime).format("HH:mm")} | {booked?.auditoriumName}
+                                        Suất chiếu: {`${booked.showDate ? moment(booked.showDate).format("DD/MM/yyyy"): "Lỗi"} ${moment.utc(booked?.showTime).local().format("HH:mm")}`} | {booked?.auditoriumName}
                                     </Item.Content>
                                 </Item>
 

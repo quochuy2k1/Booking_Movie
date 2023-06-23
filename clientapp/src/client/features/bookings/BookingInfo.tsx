@@ -27,7 +27,9 @@ const BookingInfo: React.FC<{}> = () => {
     React.useEffect(() => {
         console.log(sessionStorage.getItem("book-movie"), "session store book-movie)")
         const screening = JSON.parse(sessionStorage.getItem("book-cinema")!);
-		dispatch(bookScreeningId(screening));
+		const showDate = JSON.parse(sessionStorage.getItem("showDate")!);
+
+		dispatch(bookScreeningId({screening, showDate}));
         // get movie from session store
         const movie_session: string | null = sessionStorage.getItem("book-movie");
         const screening_session: string | null = sessionStorage.getItem("book-cinema");
@@ -74,7 +76,7 @@ const BookingInfo: React.FC<{}> = () => {
 
                     <Item className="py-2">
                         <Item.Content verticalAlign='middle' className="text-white">
-                            Suất chiếu: {moment(screening?.movieSchedule[0].showTime).format("HH:mm")} | {screening?.auditoriumName}
+                            Suất chiếu: {moment.utc(screening?.movieSchedule![0].showTime).local().format("HH:mm")} | {screening?.auditoriumName}
                         </Item.Content>
                     </Item>
 

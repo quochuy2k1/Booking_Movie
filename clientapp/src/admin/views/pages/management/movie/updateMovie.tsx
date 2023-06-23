@@ -1,19 +1,14 @@
 import { Alert, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, useMediaQuery, useTheme } from "@mui/material";
-import { GridSelectionModel } from "@mui/x-data-grid";
 import { Editor } from "@tinymce/tinymce-react";
 import moment from "moment";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { async } from "rxjs";
-import { Button, DropdownProps, Form, Icon, Input } from "semantic-ui-react";
+import { Button, Checkbox, DropdownProps, Form, Input } from "semantic-ui-react";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 import { GetAllActor } from "../../../../../services/actor.service";
-import { GetCasts, GetDetailMovie, GetMovieCategories, GetMovieDirectors } from "../../../../../services/movie.service";
-import { Actor, GetAllActorAsync } from "../../../../../slices/actor/actorSlice";
-import { CategoryModel, GetCategoriesAsync } from "../../../../../slices/categories/categorySlice";
-import { DirectorModel, GetDirectorAsync } from "../../../../../slices/directors/directorSlice";
-import { CreateNewMovieAsync, emptyMovieStatus, UpdateMovieAsync } from "../../../../../slices/movie/movieSlice";
-import { GetNationalitiesAsync } from "../../../../../slices/nationalities/nationalitySlice";
-import { GetProducerAsync, ProducerModel } from "../../../../../slices/producers/producerSlice";
+import { Actor } from "../../../../../slices/actor/actorSlice";
+import { CategoryModel } from "../../../../../slices/categories/categorySlice";
+import { DirectorModel } from "../../../../../slices/directors/directorSlice";
+import { emptyMovieStatus, MovieModel, UpdateMovieAsync } from "../../../../../slices/movie/movieSlice";
 import DropdownComponent, { dataDropdownOption } from "../../../../ui-component/common/Dropdown/DropdownComponent";
 import { toLowerCaseNonAccentVietnamese } from "../../../../utils/NonAccentVietnamese";
 
@@ -40,6 +35,7 @@ const dataStatusOption: dataDropdownOption[] = [
 interface IUpdateMovieProps {
     isOpen: boolean,
     setOpenUpdateMovie: (open: boolean) => void,
+    onEditSuccess: (data?: MovieModel) => void,
     [k: string]: any
 }
 
@@ -60,6 +56,8 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
     const [releaseDate, setReleaseDate] = useState<string>(moment(props.releaseDate).toISOString().substring(0, 10));
     const [content, setContent] = useState<string>(props.content);
     const [status, setStatus] = useState<boolean>(false);
+    const [commingSoon, setCommingSoon] = useState<boolean | undefined>(props.commingSoon);
+    const [isShowing, setIsShowing] = useState<boolean | undefined>(props.isShowing);
     const [imgPreview, setImgPreview] = useState<File | string | null>(null);
     const [imgBackground, setImgBackground] = useState<File | string | null>(null);
     const [videoTrailer, setVideoTrailer] = useState<File | string | null>(null);
@@ -78,7 +76,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
     const [openUpdate, setOpenUpdate] = useState(props.isOpen);
 
     const categories = useAppSelector(state => state.category.categories);
-    const status_categories = useAppSelector(state => state.category.status); 
+    const status_categories = useAppSelector(state => state.category.status);
     const [dataCategoriesOption, setDataCategoriesOption] = useState<dataDropdownOption[] | boolean>([] as dataDropdownOption[]);
 
     // 
@@ -125,7 +123,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
     const handleClickUpdateOpen = useMemo(() => () => {
         // setOpenUpdate(true);
 
-        const dataActorsOption:  dataDropdownOption[] | boolean =  [...actors].map(actor => (
+        const dataActorsOption: dataDropdownOption[] | boolean = [...actors].map(actor => (
             {
                 key: actor.id,
                 text: actor.name,
@@ -135,7 +133,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
 
         setDataActorsOption(dataActorsOption);
 
-        const dataCategoriesOption: dataDropdownOption[] | boolean =  [...categories].map(category => (
+        const dataCategoriesOption: dataDropdownOption[] | boolean = [...categories].map(category => (
             {
                 key: category.id,
                 text: category.name,
@@ -144,7 +142,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
         ));
         setDataCategoriesOption(dataCategoriesOption);
 
-        const dataProducersOption: dataDropdownOption[] | boolean =  [...producers].map(producer => (
+        const dataProducersOption: dataDropdownOption[] | boolean = [...producers].map(producer => (
             {
                 key: producer.id,
                 text: producer.name,
@@ -153,7 +151,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
         ));
         setDataProducersOption(dataProducersOption);
 
-        const dataDirectorsOption: dataDropdownOption[] | boolean =  [...directors].map(director => (
+        const dataDirectorsOption: dataDropdownOption[] | boolean = [...directors].map(director => (
             {
                 key: director.id,
                 text: director.name,
@@ -170,17 +168,17 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
             }
         ));
         setDataNationalitiesOption(dataNationalitiesOption);
-        
-        
-        
+
+
+
     }, []);
 
-   
+
 
 
     useEffect(() => {
 
-        
+
         if (openUpdate) {
             // dispatch(GetAllActorAsync());
             // dispatch(GetCategoriesAsync());
@@ -208,9 +206,9 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
 
 
 
-    }, [ status_update, dispatch, handleClickUpdateOpen ]);
+    }, [status_update, dispatch, handleClickUpdateOpen]);
 
-    
+
     const handleUpdateClose = () => {
         setOpenUpdate(false);
         props.setOpenUpdateMovie(false);
@@ -225,7 +223,12 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
         console.log(props.actors.split(", "), "actors props")
         console.log((actors && actors!.length > 0) && actors?.filter(actor => props.actors.split(", ").indexOf(actor.name) > -1).map((actor: Actor) => actor.id)
             , "hihi")
-        dispatch(UpdateMovieAsync({ id: props.id, name: name, alias: alias, duration, releaseDate: new Date(releaseDate).toISOString(), content, status, imageBackground: imgBackground! as File, imagePreview: imgPreview! as File, videoTrailer: videoTrailer! as File, producer: producer!, nationality: nationality!, categoryId: category!, directorId: director!, actorId: actor!, token: token! }))
+        dispatch(UpdateMovieAsync({ id: props.id, name: name, alias: alias, duration, isShowing, commingSoon, releaseDate: new Date(releaseDate).toISOString(), content, status, imageBackground: imgBackground! as File, imagePreview: imgPreview! as File, videoTrailer: videoTrailer! as File, producer: producer!, nationality: nationality!, categoryId: category!, directorId: director!, actorId: actor!, token: token! }))
+            .then(value => {
+                if (value.type.includes("fulfilled")) {
+                    props.onEditSuccess()
+                }
+            })
         console.log(name, duration, releaseDate, content, status, imgPreview, imgBackground, videoTrailer, actor, director, producer, nationality, category, content);
 
     };
@@ -275,7 +278,7 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title" className='text-3xl font-semibold'>
-                    {`Cập nhật phim "`}<span style={{color: "#f97316"}}>{props.name}</span>{`"`}
+                    {`Cập nhật phim "`}<span style={{ color: "#f97316" }}>{props.name}</span>{`"`}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
@@ -453,7 +456,22 @@ const UpdateMovie: React.FC<IUpdateMovieProps> = (props) => {
                                     onSelectChange={(event, data) => setStatus(data.value as boolean)}
                                 />
                             </Form.Field>
-
+                            <Form.Group widths='equal'>
+                                <Form.Field>
+                                    <Checkbox
+                                        toggle
+                                        label="Sắp chiếu"
+                                        checked={commingSoon}
+                                        onChange={(e, data) => setCommingSoon(data.checked)} />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Checkbox
+                                        toggle
+                                        label="Đang chiếu"
+                                        checked={isShowing}
+                                        onChange={(e, data) => setIsShowing(data.checked)} />
+                                </Form.Field>
+                            </Form.Group>
                             <Form.Field>
                                 <Editor
                                     apiKey='yillg49dt4io6vjxyvs8k26ldhgtxqnmurmteil8v2j6mljb'

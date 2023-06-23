@@ -9,6 +9,11 @@ import classNames from "classnames";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 import { UpdatePaymentStatusAsync } from "../../../../../slices/bookings/BookingSlice";
 import { PaymentStatusUpdateRequest } from "../../../../../services/booking.service";
+import MainCard from "../../../../ui-component/cards/MainCard";
+import { STATUS_MESSAGE } from "../../../../../common/status-message";
+import Notify from 'devextreme/ui/notify';
+
+
 const url = `${import.meta.env.VITE_REACT_APP_API_BASE!}`
 
 export interface IQRBookingScanner extends IHistoryBookingState {
@@ -67,14 +72,35 @@ const QRBookingScanner: React.FC = () => {
             status: true,
             token: token!
         }
-        dispatch(UpdatePaymentStatusAsync(request))
+        dispatch(UpdatePaymentStatusAsync(request)).then(value=> {
+            if(value.type.includes("fulfilled")){
+                Notify({
+                    message: STATUS_MESSAGE["SCAN_SUCCESS"],
+                    // height: 45,
+                    width: 300,
+                    minWidth: 300,
+                    type: "success",
+                    displayTime: 3500,
+                    animation: {
+                        show: {
+                            type: 'fade', duration: 400, from: 0, to: 1,
+                        },
+                        hide: { type: 'fade', duration: 40, to: 0 },
+                    },
+                }, {
+                    position: "top right",
+                    direction: "down-stack",
+                });
+            }
+        })
     }
 
     const HandleResetQRCodeScanner = () => {
         setBooked(null);
+        setFileReport(null)
     }
     return (
-        <>
+        <MainCard >
 
             <Grid >
                 <Grid.Column width={5}>
@@ -124,7 +150,7 @@ const QRBookingScanner: React.FC = () => {
 
                             <Item className="py-2">
                                 <Item.Content verticalAlign='middle' className="text-white">
-                                    {booked?.showTime ? <> Suất chiếu: {moment(booked?.showTime).format("HH:mm")} | {booked?.auditoriumName}</> : <Placeholder><Placeholder.Line length="long"></Placeholder.Line></Placeholder>}
+                                    {booked?.showTime ? <> Suất chiếu: {`${moment.utc(booked?.showDate).local().format("DD/MM/yyyy")} ${moment.utc(booked?.showTime).local().format("HH:mm")}`} | {booked?.auditoriumName}</> : <Placeholder><Placeholder.Line length="long"></Placeholder.Line></Placeholder>}
                                 </Item.Content>
                             </Item>
 
@@ -138,7 +164,7 @@ const QRBookingScanner: React.FC = () => {
                             <Item className="py-1">
                                 <Item.Content verticalAlign='middle' className="text-white">
                                     {booked?.bookingTicket ? <> Vé: {booked?.bookingTicket.map((ticket, idx) => ticket.quantity! > 0 && (<Label key={idx} className="my-1" color='blue' horizontal>
-                                        {`${ticket.name} (${ticket.quantity})`}
+                                        {`${ticket.ticketTypeName} (${ticket.quantity})`}
                                     </Label>))}</> : <Placeholder><Placeholder.Line length="full"></Placeholder.Line></Placeholder>}
                                 </Item.Content>
                             </Item>
@@ -166,12 +192,12 @@ const QRBookingScanner: React.FC = () => {
                     <Header as="h3" color="orange" >{"Vé xem phim"}</Header>
                     <div style={{ overflow: 'scroll', maxHeight: '100vh', height: '60vh', marginBottom: '1rem' }}>
                         {fileReport && (
-                            <embed src={`${fileReport}#toolbar=0`} type="application/pdf" width="100%" height="100%">
+                            <embed src={`${fileReport}#toolbar=0&view=FitH`} type="application/pdf" width="100%" height="100%">
                         </embed>
                         )}
                     </div>
                     <div className="flex">
-                        <Button content='In vé' size="large" color="green" fluid icon='print' labelPosition='left' onClick={() => {
+                        <Button content='In vé' size="large" color="green" fluid icon='print'  labelPosition='left' onClick={() => {
                            if(fileReport) {
                             const w = window.open(fileReport, "_blank");
                         
@@ -181,7 +207,7 @@ const QRBookingScanner: React.FC = () => {
                     </div>
                 </Grid.Column>
             </Grid>
-        </>
+        </MainCard>
 
 
     )

@@ -21,7 +21,7 @@ const MovieHome: React.FC<{}> = () => {
 
     const GetAllMovie = useCallback(async (request?: MoviePagingRequest): Promise<void> => {
         try {
-            console.log(await dispatch(GetAllMoviePagingAsync({ PageIndex: request?.PageIndex || 0, PageSize: request?.PageSize || 8, Status: request?.Status || 0 })))
+            console.log(await dispatch(GetAllMoviePagingAsync({ PageIndex: request?.PageIndex || 0, PageSize: request?.PageSize || 20 })))
         } catch (error) {
 
         }
@@ -30,12 +30,35 @@ const MovieHome: React.FC<{}> = () => {
 
     useEffect(() => {
 
-        GetAllMovie();
+        GetAllMovie({IsShowing: true} as MoviePagingRequest);
     }, [GetAllMovie])
 
 
     const PlayingList = <Grid className="pt-2" >
-        {movies && movies.map((movie, idx) => (
+        {movies && movies.filter(x => x.isShowing === true).map((movie, idx) => (
+            <Grid.Column key={idx} computer={2} tablet={4} mobile={8}>
+                <Card as={Link} to={`/movie/${movie.id}`}>
+                    <Image rounded src={movie.imagePreview} wrapped ui={false} />
+                    <Card.Content>
+                        <Card.Header className="limit-text">{movie.name}</Card.Header>
+                        <Card.Meta>Thời lượng: {movie.duration} phút</Card.Meta>
+                        <Card.Description>
+                            
+                        </Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+                        <Button icon labelPosition='left'>
+                            <Icon name='ticket' />
+                            Đặt vé
+                        </Button>
+                    </Card.Content>
+                </Card>
+            </Grid.Column>
+        ))}
+    </Grid>
+
+    const CommingSoonList = <Grid className="pt-2" >
+        {movies && movies.filter(x => x.commingSoon === true).map((movie, idx) => (
             <Grid.Column key={idx} computer={2} tablet={4} mobile={8}>
                 <Card as={Link} to={`/movie/${movie.id}`}>
                     <Image rounded src={movie.imagePreview} wrapped ui={false} />
@@ -90,7 +113,7 @@ const MovieHome: React.FC<{}> = () => {
                 },
                 {
                     menuItem: 'Phim sắp chiếu',
-                    render: () => <Tab.Pane attached={false}>Tạm thời chưa có phim sắp chiếu</Tab.Pane>,
+                    render: () => <Tab.Pane className="bg-transparent" attached={false}>{CommingSoonList}</Tab.Pane>,
                 },]} />
 
         </>

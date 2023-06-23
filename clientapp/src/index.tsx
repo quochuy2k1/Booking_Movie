@@ -7,6 +7,9 @@ import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css'
 import './index.css';
 import 'react-perfect-scrollbar/dist/css/styles.css';
+import 'devextreme/dist/css/dx.common.css';
+import 'devextreme/dist/css/dx.light.css';
+
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 

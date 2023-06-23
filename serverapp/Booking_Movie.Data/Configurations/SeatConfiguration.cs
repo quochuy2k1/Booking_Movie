@@ -11,8 +11,8 @@ namespace Booking_Movie.Data.Configurations
             builder.ToTable("Seats");
             builder.HasKey(x => x.SeatId);
             builder.Property(x => x.SeatId).HasColumnType("varchar(5)");
-            builder.Property(x => x.Number).HasColumnType("tinyint");
-            builder.Property(x => x.Row).HasColumnType("varchar(1)");
+            builder.Property(x => x.Number).HasColumnType("int");
+            builder.Property(x => x.Row).HasColumnType("varchar(5)");
         }
     }
 }

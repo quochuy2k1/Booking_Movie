@@ -46,6 +46,7 @@ namespace Booking_Movie.Data.EF
             modelBuilder.ApplyConfiguration(new SeatReservedConfiguration());
             modelBuilder.ApplyConfiguration(new ShowTimeConfiguration());
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
+            modelBuilder.ApplyConfiguration(new TicketTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ScreeningTicketConfiguration());
 
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
@@ -95,6 +96,7 @@ namespace Booking_Movie.Data.EF
         public DbSet<SeatStyle> SeatStyles { get; set; }
 
         public DbSet<SeatReserved> SeatReserveds { get; set; }
+        public DbSet<TicketType> TicketTypes { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<ScreeningTicket> ScreeningTickets { get; set; }
 

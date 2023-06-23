@@ -94,9 +94,14 @@ const FirebaseLogin: React.FC<{[others: string]: any}> = ({ ...others }) => {
     };
 
     useEffect(() => {
-        var user_auth = JSON.parse(localStorage.getItem("user_authenticate")!);
-        if (user_auth && status === "idle") {
-            Navigation(-1)
+        var user_auth : {
+            lastName: string,
+            firstName: string,
+            userName: string,
+            roles: string[]
+        } = JSON.parse(localStorage.getItem("user_authenticate")!);
+        if (user_auth && status === "idle" && user_auth.roles.includes("Admin")) {
+            Navigation("/")
         }
       
     }, [ Navigation, status])

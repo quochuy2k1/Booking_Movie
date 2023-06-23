@@ -9,6 +9,8 @@ namespace Booking_Movie.Data.Entities
         public string? OrderId { get; set; }
 
         public DateTime CreatedDate { get; set; }
+        public DateTime? BookingDate { get; set; }
+        public DateTime? ShowDate { get; set; }
 
         public int? ScreeningId { get; set; }
         public Guid AppUserId { get; set; }

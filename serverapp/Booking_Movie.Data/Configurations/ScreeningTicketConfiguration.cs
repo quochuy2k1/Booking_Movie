@@ -19,7 +19,7 @@ namespace Booking_Movie.Data.Configurations
             builder.Property(x => x.Price).HasColumnType("decimal(12,4)");
 
             builder.HasOne(x => x.Screening).WithMany(x => x.ScreeningTickets).HasForeignKey(x => x.ScreeningId).HasConstraintName("fk_screening_screeingticket");
-            builder.HasOne(x => x.Ticket).WithMany(x => x.ScreeningTickets).HasForeignKey(x => x.TicketId).HasConstraintName("fk_ticket_screeingticket");
+            //builder.HasOne(x => x.Ticket).WithMany(x => x.ScreeningTickets).HasForeignKey(x => x.TicketId).HasConstraintName("fk_ticket_screeingticket");
         }
     }
 }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Booking_Movie.Utilities.Common
 {
@@ -49,6 +45,5 @@ namespace Booking_Movie.Utilities.Common
             bool Password = BCrypt.Net.BCrypt.Verify(password, passwordHash, true, BCrypt.Net.HashType.SHA256);
             return Password;
         }
-
     }
 }

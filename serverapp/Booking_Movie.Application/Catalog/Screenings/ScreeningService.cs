@@ -36,8 +36,8 @@ namespace Booking_Movie.Application.Catalog.Screenings
                     AuditoriumId = request.AuditoriumId.Value,
                     MovieId = request.MovieId.Value,
                     ScreeningTypeId = request.ScreeningTypeId.Value,
-                    DateFrom = request.DateFrom.Value,
-                    DateTo = request.DateTo.Value,
+                    DateFrom = request.DateFrom.Value.ToLocalTime(),
+                    DateTo = request.DateTo.Value.ToLocalTime(),
                     ShowTimeId = showTime
 
                 };
@@ -65,56 +65,73 @@ namespace Booking_Movie.Application.Catalog.Screenings
                 if (lstSrceening != null)
                 {
 
+                    foreach (var screening in lstSrceening)
+                    {
+                        //screening.MovieId = request.MovieId ?? screening.MovieId;
+                        //screening.AuditoriumId = request.AuditoriumId ?? screening.AuditoriumId;
+                        screening.ScreeningTypeId = request.ScreeningTypeId ?? screening.ScreeningTypeId;
+                        screening.DateFrom = request.DateFrom == null ? screening.DateFrom : request.DateFrom.Value.ToLocalTime();
+                        screening.DateTo = request.DateTo == null ?  screening.DateTo : request.DateTo.Value.ToLocalTime();
+
+                        _screeningRepository.Update(screening);
+                    }
+
+
                     if (request.ShowTimeId != null)
                     {
-                        var screeningGrouped = await _screeningRepository.DeleteAllShowTimeScreening(screeningGroupedId);
+                        //var screeningGrouped = await _screeningRepository.DeleteAllShowTimeScreening(screeningGroupedId);
+                        var deletedScreenings = await _screeningRepository.GetDeletedShowTime(lstSrceening[0].MovieId, lstSrceening[0].AuditoriumId, request.ShowTimeId);
 
-                        foreach (var showTime in request.ShowTimeId)
+                        if (deletedScreenings.Count > 0)
                         {
-                            var screening = new Screening()
+                            foreach (var deletedScreening in deletedScreenings)
                             {
-                                AuditoriumId = request.AuditoriumId ?? screeningGrouped.AuditoriumId,
-                                MovieId = request.MovieId ?? screeningGrouped.MovieId,
-                                ScreeningTypeId = request.ScreeningTypeId ?? screeningGrouped.ScreeningTypeId,
-                                DateFrom = request.DateFrom ?? screeningGrouped.DateFrom,
-                                DateTo = request.DateTo ?? screeningGrouped.DateTo,
-                                ShowTimeId = showTime
+                                //var checkShowTime = await _screeningRepository.GetByShowTime(lstSrceening[0].MovieId, lstSrceening[0].AuditoriumId, showTime).FirstOrDefaultAsync();
 
-                            };
-                            await _screeningRepository.AddAsync(screening);
+                                await _screeningRepository.Delete(deletedScreening.Id);
+
+
+                            }
 
                         }
-                        
 
+                        var addedScreenings = request.ShowTimeId.Where(x => !lstSrceening.Select(x => x.ShowTimeId).Contains(x)).ToList();
 
-                    }
-                    else
-                    {
-
-                        if (lstSrceening != null)
+                        if (addedScreenings.Count > 0)
                         {
-                            foreach (var screening in lstSrceening)
+                            foreach (var addedScreening in addedScreenings)
                             {
-                                screening.MovieId = request.MovieId ?? screening.MovieId;
-                                screening.AuditoriumId = request.AuditoriumId ?? screening.AuditoriumId;
-                                screening.ScreeningTypeId = request.ScreeningTypeId ?? screening.ScreeningTypeId;
-                                screening.DateFrom = request.DateFrom ?? screening.DateFrom;
-                                screening.DateTo = request.DateTo ?? screening.DateTo;
+                                var screening = new Screening()
+                                {
+                                    AuditoriumId = request.AuditoriumId ?? lstSrceening[0].AuditoriumId,
+                                    MovieId = request.MovieId ?? lstSrceening[0].MovieId,
+                                    ScreeningTypeId = request.ScreeningTypeId ?? lstSrceening[0].ScreeningTypeId,
+                                    DateFrom = request.DateFrom ?? lstSrceening[0].DateFrom,
+                                    DateTo = request.DateTo ?? lstSrceening[0].DateTo,
+                                    ShowTimeId = addedScreening
 
-                                _screeningRepository.Update(screening);
+                                };
+                                await _screeningRepository.AddAsync(screening);
                             }
                         }
-                    }
 
 
 
-                    if (await unitOfWork.Commit())
-                    {
-
-                        return true;
 
                     }
+
+
                 }
+
+
+
+                if (await unitOfWork.Commit())
+                {
+
+                    return true;
+
+                }
+
 
 
 
